@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1.0",
+  "project": "the-last-sword-protocol",
+  "nodes": [
+    {
+      "id": "work_order.wo_0001",
+      "type": "work_order",
+      "name": "AtlasStudio Foundation",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Established the AtlasStudio repository, vision, workflow, agent roles, and work order format.",
+      "source": ["work-orders/WO-0001-atlasstudio-foundation.md"]
+    },
+    {
+      "id": "work_order.wo_0002",
+      "type": "work_order",
+      "name": "Last Sword Protocol Story Reset",
+      "status": "draft",
+      "work_order_status": "proposed",
+      "summary": "Resets the Last Sword Protocol story foundation for the overworld-first JRPG direction.",
+      "source": ["work-orders/WO-0002-last-sword-story-reset.md"]
+    },
+    {
+      "id": "work_order.wo_0003",
+      "type": "work_order",
+      "name": "Home Region Overworld Design",
+      "status": "draft",
+      "work_order_status": "proposed",
+      "summary": "Designs the starting home region (Ashford Vale) as an overworld-first JRPG region.",
+      "source": ["work-orders/WO-0003-home-region-overworld.md"]
+    },
+    {
+      "id": "work_order.wo_0004",
+      "type": "work_order",
+      "name": "Agent Assignment System",
+      "status": "draft",
+      "work_order_status": "proposed",
+      "summary": "Defines how work orders are matched and assigned to agents.",
+      "source": ["work-orders/WO-0004-agent-assignment-system.md"]
+    },
+    {
+      "id": "work_order.wo_0005",
+      "type": "work_order",
+      "name": "RPG Maker Bridge Design",
+      "status": "draft",
+      "work_order_status": "proposed",
+      "summary": "Designs the bridge that translates engine-independent design into RPG Maker MZ implementation work.",
+      "source": ["work-orders/WO-0005-rpg-maker-bridge.md"]
+    },
+    {
+      "id": "work_order.wo_0007",
+      "type": "work_order",
+      "name": "Atlas Graph Architecture",
+      "status": "draft",
+      "work_order_status": "submitted",
+      "summary": "Designs the Atlas Graph shared memory layer and seeds the initial graph files.",
+      "source": ["work-orders/WO-0007-atlas-graph.md"]
+    },
+    {
+      "id": "agent.gpt",
+      "type": "agent",
+      "name": "GPT",
+      "status": "draft",
+      "summary": "Story and creative systems agent role.",
+      "source": ["studio/agent-roles.md"]
+    },
+    {
+      "id": "agent.claude_code",
+      "type": "agent",
+      "name": "Claude Code",
+      "status": "draft",
+      "summary": "Senior software architect and implementation agent role.",
+      "source": ["studio/agent-roles.md"]
+    },
+    {
+      "id": "agent.human",
+      "type": "agent",
+      "name": "Human",
+      "status": "draft",
+      "summary": "Human creator, reviewer, and final approver.",
+      "source": ["studio/agent-roles.md"]
+    }
+  ]
+}

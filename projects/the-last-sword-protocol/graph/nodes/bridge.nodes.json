@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1.0",
+  "project": "the-last-sword-protocol",
+  "nodes": [
+    {
+      "id": "bridge.rpg_maker_mz",
+      "type": "bridge",
+      "name": "RPG Maker MZ Bridge",
+      "status": "draft",
+      "summary": "Translation layer between engine-independent AtlasStudio design and RPG Maker MZ implementation. Designed by WO-0005.",
+      "source": ["work-orders/WO-0005-rpg-maker-bridge.md"]
+    }
+  ]
+}

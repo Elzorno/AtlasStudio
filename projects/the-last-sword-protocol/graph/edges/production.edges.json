@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1.0",
+  "project": "the-last-sword-protocol",
+  "edges": [
+    {
+      "id": "edge.production.000001",
+      "from": "work_order.wo_0002",
+      "type": "MODIFIES",
+      "to": "character.hero",
+      "status": "draft",
+      "source": ["work-orders/WO-0002-last-sword-story-reset.md"]
+    },
+    {
+      "id": "edge.production.000002",
+      "from": "work_order.wo_0003",
+      "type": "MODIFIES",
+      "to": "region.ashford_vale",
+      "status": "draft",
+      "source": ["work-orders/WO-0003-home-region-overworld.md"]
+    },
+    {
+      "id": "edge.production.000003",
+      "from": "work_order.wo_0005",
+      "type": "CREATES",
+      "to": "bridge.rpg_maker_mz",
+      "status": "draft",
+      "source": ["work-orders/WO-0005-rpg-maker-bridge.md"]
+    },
+    {
+      "id": "edge.production.000004",
+      "from": "work_order.wo_0007",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-0007-atlas-graph.md"]
+    },
+    {
+      "id": "edge.production.000005",
+      "from": "work_order.wo_0001",
+      "type": "ASSIGNED_TO",
+      "to": "agent.gpt",
+      "status": "draft",
+      "source": ["work-orders/WO-0001-atlasstudio-foundation.md"]
+    }
+  ]
+}
