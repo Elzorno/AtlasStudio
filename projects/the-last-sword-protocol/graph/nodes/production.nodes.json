@@ -84,6 +84,15 @@
       "source": ["work-orders/WO-0010-graph-diff-engine.md"]
     },
     {
+      "id": "work_order.wo_0013",
+      "type": "work_order",
+      "name": "Canon Linter",
+      "status": "draft",
+      "work_order_status": "submitted",
+      "summary": "Implements a rule-driven deterministic canon design QA linter.",
+      "source": ["work-orders/WO-0013-canon-linter.md"]
+    },
+    {
       "id": "work_order.wo_0014",
       "type": "work_order",
       "name": "Immutable Formatting Guard",
@@ -135,6 +144,18 @@
         "tools/atlas_graph/diff_graph.py",
         "studio/atlas-graph/diff-model.md",
         "work-orders/WO-0010-graph-diff-engine.md"
+      ]
+    },
+    {
+      "id": "tool.canon_linter",
+      "type": "tool",
+      "name": "Canon Linter",
+      "status": "draft",
+      "summary": "Runs rule-driven deterministic design QA checks over Atlas Graph canon facts without modifying canon.",
+      "source": [
+        "tools/atlas_lint/canon_lint.py",
+        "tools/atlas_lint/rules/canon_lint_rules.json",
+        "work-orders/WO-0013-canon-linter.md"
       ]
     },
     {

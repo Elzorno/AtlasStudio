@@ -1,0 +1,162 @@
+{
+  "schema_version": "0.1.0",
+  "rules": [
+    {
+      "id": "structure.region_has_world_parent",
+      "category": "Structure",
+      "severity": "warning",
+      "description": "Regions should belong to a world.",
+      "kind": "required_relationship",
+      "target_types": ["region"],
+      "direction": "incoming",
+      "edge_types": ["CONTAINS"],
+      "neighbor_types": ["world"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "structure.region_contains_settlement",
+      "category": "Structure",
+      "severity": "warning",
+      "description": "Regions should contain at least one settlement location.",
+      "kind": "required_relationship",
+      "target_types": ["region"],
+      "direction": "outgoing",
+      "edge_types": ["CONTAINS"],
+      "neighbor_types": ["location"],
+      "neighbor_subtypes": ["settlement"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "structure.location_has_parent_place",
+      "category": "Structure",
+      "severity": "warning",
+      "description": "Locations should be contained by a region or another location.",
+      "kind": "required_relationship",
+      "target_types": ["location"],
+      "direction": "incoming",
+      "edge_types": ["CONTAINS"],
+      "neighbor_types": ["region", "location"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "structure.infrastructure_has_place",
+      "category": "Structure",
+      "severity": "warning",
+      "description": "Infrastructure should be located inside a region or location.",
+      "kind": "required_relationship",
+      "target_types": ["infrastructure"],
+      "direction": "incoming",
+      "edge_types": ["CONTAINS"],
+      "neighbor_types": ["region", "location"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "completeness.character_appears_somewhere",
+      "category": "Completeness",
+      "severity": "warning",
+      "description": "Characters should appear in a region, location, quest, or story beat.",
+      "kind": "required_relationship",
+      "target_types": ["character"],
+      "direction": "outgoing",
+      "edge_types": ["APPEARS_IN"],
+      "neighbor_types": ["region", "location", "quest", "story_beat"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "completeness.quest_has_progression_hook",
+      "category": "Completeness",
+      "severity": "warning",
+      "description": "Quests should have a start, requirement, reward, unlock, or completion hook.",
+      "kind": "required_relationship",
+      "target_types": ["quest"],
+      "direction": "outgoing",
+      "edge_types": ["STARTS_AT", "REQUIRES", "REWARDS", "UNLOCKS"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "coverage.concept_has_gameplay_representation",
+      "category": "Coverage",
+      "severity": "warning",
+      "description": "Concepts should be taught or represented by some gameplay/world entity.",
+      "kind": "required_relationship",
+      "target_types": ["concept"],
+      "direction": "incoming",
+      "edge_types": ["TEACHES", "REPRESENTS"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "completeness.monster_family_has_use",
+      "category": "Completeness",
+      "severity": "warning",
+      "description": "Monster families should be connected to an encounter, location, quest, or region.",
+      "kind": "required_relationship",
+      "target_types": ["monster_family"],
+      "direction": "either",
+      "edge_types": ["APPEARS_IN", "CONTAINS", "REQUIRES"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "completeness.story_beat_has_context",
+      "category": "Completeness",
+      "severity": "warning",
+      "description": "Story beats should be connected to a region, location, quest, character, or concept.",
+      "kind": "required_relationship",
+      "target_types": ["story_beat"],
+      "direction": "either",
+      "edge_types": ["APPEARS_IN", "REQUIRES", "REWARDS", "TEACHES", "UNLOCKS"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "consistency.unique_name_within_type",
+      "category": "Consistency",
+      "severity": "warning",
+      "description": "Canon node names should be unique within each node type.",
+      "kind": "duplicate_name_within_type",
+      "target_types": [
+        "world",
+        "region",
+        "location",
+        "character",
+        "faction",
+        "quest",
+        "story_beat",
+        "infrastructure",
+        "monster_family",
+        "item",
+        "concept"
+      ],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "production.canon_has_work_order_edge",
+      "category": "Production",
+      "severity": "info",
+      "description": "Canon nodes should be connected to at least one production work order when practical.",
+      "kind": "production_coverage",
+      "target_types": [
+        "region",
+        "location",
+        "character",
+        "faction",
+        "quest",
+        "story_beat",
+        "infrastructure",
+        "monster_family",
+        "item",
+        "concept"
+      ],
+      "edge_types": ["CREATES", "MODIFIES"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    },
+    {
+      "id": "bridge.canon_has_implementation_signal",
+      "category": "Bridge",
+      "severity": "info",
+      "description": "Implementation-ready canon should eventually link to bridge or implementation targets.",
+      "kind": "implementation_coverage",
+      "target_types": ["region", "location", "infrastructure"],
+      "edge_types": ["IMPLEMENTED_BY", "TRANSLATES_TO", "GENERATED_FROM"],
+      "applicable_statuses": ["draft", "proposed", "approved", "canon"]
+    }
+  ]
+}

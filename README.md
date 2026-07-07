@@ -81,3 +81,14 @@ python3 tools/atlas_format/format_guard.py --check --output reports/atlas-format
 ```
 
 The guard is check-only. It reports formatting-only graph JSON changes separately from semantic graph fact changes and warns when broad non-semantic churn may obscure review.
+
+## Canon Linting
+
+Run deterministic graph-based canon QA:
+
+```bash
+python3 tools/atlas_lint/canon_lint.py --project the-last-sword-protocol
+python3 tools/atlas_lint/canon_lint.py --project the-last-sword-protocol --output reports/atlas-lint/latest.md
+```
+
+The linter loads rule metadata from `tools/atlas_lint/rules/`, groups findings by category, and reports warnings without modifying canon.

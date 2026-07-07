@@ -161,6 +161,30 @@
       "to": "tool.immutable_formatting_guard",
       "status": "draft",
       "source": ["work-orders/WO-0014-immutable-formatting-guard.md"]
+    },
+    {
+      "id": "edge.production.000021",
+      "from": "work_order.wo_0013",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0008",
+      "status": "draft",
+      "source": ["work-orders/WO-0013-canon-linter.md"]
+    },
+    {
+      "id": "edge.production.000022",
+      "from": "work_order.wo_0013",
+      "type": "ASSIGNED_TO",
+      "to": "agent.codex",
+      "status": "draft",
+      "source": ["work-orders/WO-0013-canon-linter.md"]
+    },
+    {
+      "id": "edge.production.000023",
+      "from": "work_order.wo_0013",
+      "type": "CREATES",
+      "to": "tool.canon_linter",
+      "status": "draft",
+      "source": ["work-orders/WO-0013-canon-linter.md"]
     }
   ]
 }

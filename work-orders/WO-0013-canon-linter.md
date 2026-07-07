@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-0013
 title: Canon Linter
-status: proposed
+status: submitted
 project: atlasstudio
 recommended_agent: codex
 agent_role: implementation-engineer
@@ -180,3 +180,27 @@ Think of this as deterministic design QA, not syntax checking.
 Start conservative. It is acceptable for the first rule set to produce warnings on the current draft graph. Warnings should teach the team what canon is incomplete, not block progress unnecessarily.
 
 Formatting: preserve existing house style and avoid broad JSON rewrites.
+
+## Submission Record
+
+Submitted 2026-07-07 by Codex.
+
+Delivered:
+
+- `tools/atlas_lint/canon_lint.py`, a rule-driven deterministic canon QA command.
+- Rule metadata and rule format documentation under `tools/atlas_lint/rules/`.
+- `tools/atlas_lint/README.md` usage and category documentation.
+- Optional Markdown report support with sample output at `reports/atlas-lint/latest.md`.
+- Production graph records for `work_order.wo_0013` and `tool.canon_linter`.
+
+Verification performed:
+
+```bash
+python3 tools/atlas_lint/canon_lint.py --project the-last-sword-protocol
+python3 tools/atlas_lint/canon_lint.py --project the-last-sword-protocol --output reports/atlas-lint/latest.md
+python3 tools/atlas_graph/validate_graph.py
+python3 tools/atlas_format/format_guard.py --check
+python3 tools/atlas_doctor/doctor.py
+```
+
+Formatting: preserved existing house style; no broad reformatting performed.
