@@ -1,7 +1,7 @@
 ---
 work_order_id: WP-03-preflight
 title: RPG Maker Map Quality and Passability Preflight
-status: proposed
+status: submitted
 project: the-last-sword-protocol
 recommended_agent: codex
 agent_role: implementation-engineer
@@ -113,3 +113,28 @@ If read-only inspection scripts are created, they must not write to TheLastSword
 ## Notes for Assigned Agent
 
 This is a safety and quality gate. It exists because map appearance and passability must both be correct before game implementation begins.
+
+## Submission Record
+
+Submitted 2026-07-07 by Claude Code.
+
+**Primary finding - read before using any other output from this package or from `WP-03A`/`WP-03`:** this preflight discovered that `TheLastSwordProtocol-Atlas` (a sibling repository) is an independently canonical, actively-in-progress design and production system for the exact same first village, with a different protagonist (Kai, not "the Hero"), a different Elara ("Grandmother Elara," not a peer-age guardian), no Rowan character anywhere in that repository, and real hand-authored RPG Maker maps already built against its own version (`data/Map001.json`/`Map002.json`, marked `hand_authored` in `map_ownership.json`, produced under its own `WO-0025`/`WO-0026`/`WO-0035`/`WO-0036`). `work-orders/WP-02-implementation-target-readiness-audit.md` had already flagged this as an undecided question ("Decide whether the target project follows the older `TheLastSwordProtocol-Atlas` Home Island export, the current AtlasStudio first-playable-hour plan, or a merged transition plan") before `WP-03A` and `WP-03` were completed without resolving it. **AtlasStudio does not currently have enough information to responsibly finalize WP-03B for Ashford Village** until a human/Production Director makes this choice explicitly. See `reports/rpg-maker-bridge/implementation-preflight.md`'s Executive Summary and Primary Blocker section for the full evidence and options.
+
+Delivered:
+
+- `reports/rpg-maker-bridge/implementation-preflight.md` - the primary blocker (above), the full remaining blocker list, recommended tilesets grounded in the target repo's real `Tilesets.json` (IDs 2/Outside and 3/Inside, not generic role language), passability assumptions, engine constraints, event and transfer conventions observed directly in the real, already-implemented Map001/Map002, an honest answer on implementation reusability (the existing Ashford Exterior map already follows Dragon Quest-style overworld-connected architecture, not a Zelda-style screen chain - nothing needed rejecting on architectural grounds, only on canon/roster grounds), and concrete recommendations.
+- `reports/rpg-maker-bridge/sample-project-analysis.md` - average map sizes, decoration density, environmental storytelling, landmark usage, interior layouts, and event density extracted from the official sample project (99 maps inspected), with an explicit finding that the sample project is a better composition/scale reference than an event-density reference, and that the real target repository's own maps should be used for event-density benchmarking instead. No sample content was reproduced.
+- `reports/rpg-maker-bridge/ashford-village-route-validation.md` - required routes validated in two parts: Part A, the routes already real and implemented in Map001 today (six transfers, five NPCs, confirmed by direct JSON inspection); Part B, the routes AtlasStudio's `WP-03` package specified, explicitly marked pending the primary blocker's resolution. Includes a direct comparison of the two route sets and future validation requirements (an automated passability validator, a cross-repository route consistency check, and a reciprocal-transfer check).
+
+No file in `TheLastSwordProtocol-Game`, `TheLastSwordProtocol-Atlas`, or AtlasStudio's canon graph was modified. This was read-only throughout, verified directly rather than assumed.
+
+Formatting: preserved existing house style; no existing file was reformatted.
+
+Verification performed:
+
+```bash
+python3 tools/atlas_graph/validate_graph.py
+python3 tools/atlas_doctor/doctor.py
+python3 tools/atlas_lint/canon_lint.py --project the-last-sword-protocol
+python3 tools/atlas_format/format_guard.py --check
+```
