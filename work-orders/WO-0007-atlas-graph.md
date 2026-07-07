@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-0007
 title: Atlas Graph Architecture
-status: submitted
+status: accepted
 project: atlasstudio
 recommended_agent: claude-code
 agent_role: senior-software-architect
@@ -126,4 +126,4 @@ Verification performed (inline script; no `tools/` files added, per Allowed Chan
   - Work orders affecting the RPG Maker bridge: work_order.wo_0005 CREATES bridge.rpg_maker_mz.
   - Region borders: the BORDERS relationship type is defined; no border edges are seeded because the Iron Marches and neighboring regions are not yet canon. Seeding them would require a canon revision (Canon Change Rule), deferred to a future world-atlas work order.
 
-Awaiting QA review and acceptance per the work order lifecycle.
+Reviewed and accepted by human 2026-07-07.

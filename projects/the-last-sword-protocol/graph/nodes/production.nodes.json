@@ -52,7 +52,7 @@
       "type": "work_order",
       "name": "Atlas Graph Architecture",
       "status": "draft",
-      "work_order_status": "submitted",
+      "work_order_status": "accepted",
       "summary": "Designs the Atlas Graph shared memory layer and seeds the initial graph files.",
       "source": ["work-orders/WO-0007-atlas-graph.md"]
     },

@@ -41,6 +41,14 @@
       "to": "agent.gpt",
       "status": "draft",
       "source": ["work-orders/WO-0001-atlasstudio-foundation.md"]
+    },
+    {
+      "id": "edge.production.000006",
+      "from": "work_order.wo_0007",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-0007-atlas-graph.md"]
     }
   ]
 }
