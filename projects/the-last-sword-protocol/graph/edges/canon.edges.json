@@ -1,0 +1,166 @@
+{
+  "schema_version": "0.1.0",
+  "project": "the-last-sword-protocol",
+  "edges": [
+    {
+      "id": "edge.canon.000001",
+      "from": "world.elyndor",
+      "type": "CONTAINS",
+      "to": "region.ashford_vale",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/world-model.md"]
+    },
+    {
+      "id": "edge.canon.000002",
+      "from": "region.ashford_vale",
+      "type": "CONTAINS",
+      "to": "location.ashford_village",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000003",
+      "from": "region.ashford_vale",
+      "type": "CONTAINS",
+      "to": "location.hidden_cave",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000004",
+      "from": "location.hidden_cave",
+      "type": "CONTAINS",
+      "to": "location.sword_shrine",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000005",
+      "from": "region.ashford_vale",
+      "type": "CONTAINS",
+      "to": "location.glassfield_ruins",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000006",
+      "from": "location.glassfield_ruins",
+      "type": "CONTAINS",
+      "to": "infrastructure.first_relay",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000007",
+      "from": "region.ashford_vale",
+      "type": "CONTAINS",
+      "to": "location.rustshore_dock",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000008",
+      "from": "location.ashford_village",
+      "type": "CONNECTED_TO",
+      "to": "location.hidden_cave",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000009",
+      "from": "location.ashford_village",
+      "type": "CONNECTED_TO",
+      "to": "location.rustshore_dock",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000010",
+      "from": "character.hero",
+      "type": "APPEARS_IN",
+      "to": "region.ashford_vale",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/story-reset.md"]
+    },
+    {
+      "id": "edge.canon.000011",
+      "from": "character.elara",
+      "type": "APPEARS_IN",
+      "to": "location.ashford_village",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/story-reset.md"]
+    },
+    {
+      "id": "edge.canon.000012",
+      "from": "character.rowan",
+      "type": "APPEARS_IN",
+      "to": "location.ashford_village",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/story-reset.md"]
+    },
+    {
+      "id": "edge.canon.000013",
+      "from": "character.rowan",
+      "type": "KNOWS_ABOUT",
+      "to": "location.hidden_cave",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/story-reset.md"]
+    },
+    {
+      "id": "edge.canon.000014",
+      "from": "character.rowan",
+      "type": "MISUNDERSTANDS",
+      "to": "infrastructure.first_relay",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/story-reset.md"]
+    },
+    {
+      "id": "edge.canon.000015",
+      "from": "item.last_sword",
+      "type": "TEACHES",
+      "to": "concept.authentication",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/game-vision.md"]
+    },
+    {
+      "id": "edge.canon.000016",
+      "from": "location.glassfield_ruins",
+      "type": "TEACHES",
+      "to": "concept.access_control",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000017",
+      "from": "item.last_sword",
+      "type": "UNLOCKS",
+      "to": "location.glassfield_ruins",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000018",
+      "from": "infrastructure.first_relay",
+      "type": "UNLOCKS",
+      "to": "location.rustshore_dock",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000019",
+      "from": "location.sword_shrine",
+      "type": "REWARDS",
+      "to": "item.last_sword",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/home-region.md"]
+    },
+    {
+      "id": "edge.canon.000020",
+      "from": "item.last_sword",
+      "type": "REPRESENTS",
+      "to": "concept.authentication",
+      "status": "draft",
+      "source": ["projects/the-last-sword-protocol/story-reset.md"]
+    }
+  ]
+}
