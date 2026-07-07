@@ -49,6 +49,46 @@
       "to": "agent.human",
       "status": "draft",
       "source": ["work-orders/WO-0007-atlas-graph.md"]
+    },
+    {
+      "id": "edge.production.000007",
+      "from": "work_order.wo_0008",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0007",
+      "status": "draft",
+      "source": ["work-orders/WO-0008-atlas-graph-tools.md"]
+    },
+    {
+      "id": "edge.production.000008",
+      "from": "work_order.wo_0008",
+      "type": "ASSIGNED_TO",
+      "to": "agent.codex",
+      "status": "draft",
+      "source": ["work-orders/WO-0008-atlas-graph-tools.md"]
+    },
+    {
+      "id": "edge.production.000009",
+      "from": "work_order.wo_0008",
+      "type": "CREATES",
+      "to": "tool.atlas_graph_validator",
+      "status": "draft",
+      "source": ["work-orders/WO-0008-atlas-graph-tools.md"]
+    },
+    {
+      "id": "edge.production.000010",
+      "from": "work_order.wo_0008",
+      "type": "CREATES",
+      "to": "tool.atlas_graph_query",
+      "status": "draft",
+      "source": ["work-orders/WO-0008-atlas-graph-tools.md"]
+    },
+    {
+      "id": "edge.production.000011",
+      "from": "work_order.wo_0008",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-0008-atlas-graph-tools.md"]
     }
   ]
 }

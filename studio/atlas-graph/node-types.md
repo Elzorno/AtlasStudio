@@ -195,6 +195,15 @@ Examples:
 - `build.atlasstudio_0001`
 - `build.lsp_home_region_prototype_0001`
 
+### tool
+
+A production support script or utility that helps agents validate, query, export, or inspect project data.
+
+Examples:
+
+- `tool.atlas_graph_validator`
+- `tool.atlas_graph_query`
+
 ### qa_finding
 
 A review or validation result.

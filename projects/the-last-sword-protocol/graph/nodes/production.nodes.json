@@ -57,6 +57,37 @@
       "source": ["work-orders/WO-0007-atlas-graph.md"]
     },
     {
+      "id": "work_order.wo_0008",
+      "type": "work_order",
+      "name": "Atlas Graph Validation and Query Tools",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Implements the first stdlib Atlas Graph validation and query scripts.",
+      "source": ["work-orders/WO-0008-atlas-graph-tools.md"]
+    },
+    {
+      "id": "tool.atlas_graph_validator",
+      "type": "tool",
+      "name": "Atlas Graph Validator",
+      "status": "draft",
+      "summary": "Validates Atlas Graph JSON files for parseability, required fields, unique IDs, edge references, and source paths.",
+      "source": [
+        "tools/atlas_graph/validate_graph.py",
+        "work-orders/WO-0008-atlas-graph-tools.md"
+      ]
+    },
+    {
+      "id": "tool.atlas_graph_query",
+      "type": "tool",
+      "name": "Atlas Graph Query",
+      "status": "draft",
+      "summary": "Queries Atlas Graph JSON files for nodes, relationships, paths, work-order impact, statuses, orphans, and missing sources.",
+      "source": [
+        "tools/atlas_graph/query_graph.py",
+        "work-orders/WO-0008-atlas-graph-tools.md"
+      ]
+    },
+    {
       "id": "agent.gpt",
       "type": "agent",
       "name": "GPT",
@@ -70,6 +101,14 @@
       "name": "Claude Code",
       "status": "draft",
       "summary": "Senior software architect and implementation agent role.",
+      "source": ["studio/agent-roles.md"]
+    },
+    {
+      "id": "agent.codex",
+      "type": "agent",
+      "name": "Codex",
+      "status": "draft",
+      "summary": "Implementation and local verification agent role.",
       "source": ["studio/agent-roles.md"]
     },
     {
