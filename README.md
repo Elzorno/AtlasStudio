@@ -69,3 +69,15 @@ python3 tools/atlas_graph/diff_graph.py --base-dir old_graph --head-dir projects
 ```
 
 The report groups changes by canon, production, and bridge scope, and highlights status changes, scope moves, and source reference changes. See `studio/atlas-graph/diff-model.md` for the full model.
+
+## Immutable Formatting Guard
+
+Check graph JSON changes for suspicious formatting churn without rewriting files:
+
+```bash
+python3 tools/atlas_format/format_guard.py --check
+python3 tools/atlas_format/format_guard.py --check --base HEAD~1 --head HEAD
+python3 tools/atlas_format/format_guard.py --check --output reports/atlas-format/latest.md
+```
+
+The guard is check-only. It reports formatting-only graph JSON changes separately from semantic graph fact changes and warns when broad non-semantic churn may obscure review.

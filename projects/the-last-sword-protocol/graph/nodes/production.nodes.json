@@ -84,6 +84,15 @@
       "source": ["work-orders/WO-0010-graph-diff-engine.md"]
     },
     {
+      "id": "work_order.wo_0014",
+      "type": "work_order",
+      "name": "Immutable Formatting Guard",
+      "status": "draft",
+      "work_order_status": "submitted",
+      "summary": "Implements a check-only guard that warns about suspicious broad graph JSON formatting churn.",
+      "source": ["work-orders/WO-0014-immutable-formatting-guard.md"]
+    },
+    {
       "id": "tool.atlas_graph_validator",
       "type": "tool",
       "name": "Atlas Graph Validator",
@@ -126,6 +135,18 @@
         "tools/atlas_graph/diff_graph.py",
         "studio/atlas-graph/diff-model.md",
         "work-orders/WO-0010-graph-diff-engine.md"
+      ]
+    },
+    {
+      "id": "tool.immutable_formatting_guard",
+      "type": "tool",
+      "name": "Immutable Formatting Guard",
+      "status": "draft",
+      "summary": "Checks graph JSON diffs for formatting-only changes, semantic changes, and suspicious broad formatting churn without rewriting files.",
+      "source": [
+        "tools/atlas_format/format_guard.py",
+        "studio/immutable-formatting-rule.md",
+        "work-orders/WO-0014-immutable-formatting-guard.md"
       ]
     },
     {

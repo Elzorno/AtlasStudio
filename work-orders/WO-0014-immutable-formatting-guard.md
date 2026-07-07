@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-0014
 title: Immutable Formatting Guard
-status: proposed
+status: submitted
 project: atlasstudio
 recommended_agent: codex
 agent_role: implementation-engineer
@@ -107,3 +107,26 @@ If synthetic fixtures are useful, place them under a clearly named test or scrat
 ## Notes for Assigned Agent
 
 The goal is not to create a perfect formatter. The goal is to prevent accidental broad reformatting from sneaking into semantic work orders. Start conservative and explain limitations clearly.
+
+## Submission Record
+
+Submitted 2026-07-07 by Codex.
+
+Delivered:
+
+- `tools/atlas_format/format_guard.py`, a check-only formatting guard for graph JSON diffs.
+- README usage documentation for the Immutable Formatting Guard.
+- Optional report output support under `reports/atlas-format/`.
+- Production graph records for `work_order.wo_0014` and `tool.immutable_formatting_guard`.
+
+Verification performed:
+
+```bash
+python3 tools/atlas_format/format_guard.py --check
+python3 tools/atlas_format/format_guard.py --check --base HEAD~1 --head HEAD
+python3 tools/atlas_format/format_guard.py --check --output reports/atlas-format/latest.md
+python3 tools/atlas_graph/validate_graph.py
+python3 tools/atlas_doctor/doctor.py
+```
+
+Formatting: preserved existing house style; no broad reformatting performed.

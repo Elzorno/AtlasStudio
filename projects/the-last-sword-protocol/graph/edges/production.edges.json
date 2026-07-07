@@ -137,6 +137,30 @@
       "to": "tool.atlas_graph_diff",
       "status": "draft",
       "source": ["work-orders/WO-0010-graph-diff-engine.md"]
+    },
+    {
+      "id": "edge.production.000018",
+      "from": "work_order.wo_0014",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0010",
+      "status": "draft",
+      "source": ["work-orders/WO-0014-immutable-formatting-guard.md"]
+    },
+    {
+      "id": "edge.production.000019",
+      "from": "work_order.wo_0014",
+      "type": "ASSIGNED_TO",
+      "to": "agent.codex",
+      "status": "draft",
+      "source": ["work-orders/WO-0014-immutable-formatting-guard.md"]
+    },
+    {
+      "id": "edge.production.000020",
+      "from": "work_order.wo_0014",
+      "type": "CREATES",
+      "to": "tool.immutable_formatting_guard",
+      "status": "draft",
+      "source": ["work-orders/WO-0014-immutable-formatting-guard.md"]
     }
   ]
 }
