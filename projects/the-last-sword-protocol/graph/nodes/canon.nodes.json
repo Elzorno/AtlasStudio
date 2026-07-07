@@ -1,0 +1,156 @@
+{
+  "schema_version": "0.1.0",
+  "project": "the-last-sword-protocol",
+  "nodes": [
+    {
+      "id": "world.elyndor",
+      "type": "world",
+      "name": "Elyndor",
+      "status": "draft",
+      "summary": "Working name for the world of The Last Sword Protocol.",
+      "source": [
+        "projects/the-last-sword-protocol/game-vision.md",
+        "projects/the-last-sword-protocol/world-model.md"
+      ]
+    },
+    {
+      "id": "region.ashford_vale",
+      "type": "region",
+      "name": "Ashford Vale",
+      "status": "draft",
+      "summary": "Starting region for Journey I; teaches overworld exploration, authentication, access control, and trust.",
+      "source": [
+        "projects/the-last-sword-protocol/home-region.md"
+      ]
+    },
+    {
+      "id": "location.ashford_village",
+      "type": "location",
+      "subtype": "settlement",
+      "name": "Ashford Village",
+      "status": "draft",
+      "summary": "Starting village and emotional home base for the hero.",
+      "source": [
+        "projects/the-last-sword-protocol/home-region.md"
+      ]
+    },
+    {
+      "id": "location.hidden_cave",
+      "type": "location",
+      "subtype": "dungeon",
+      "name": "Hidden Cave",
+      "status": "draft",
+      "summary": "First adventure site leading to the Last Sword discovery.",
+      "source": [
+        "projects/the-last-sword-protocol/home-region.md"
+      ]
+    },
+    {
+      "id": "location.sword_shrine",
+      "type": "location",
+      "subtype": "shrine",
+      "name": "Sword Shrine",
+      "status": "draft",
+      "summary": "Ancient chamber where the sword authenticates the hero.",
+      "source": [
+        "projects/the-last-sword-protocol/home-region.md"
+      ]
+    },
+    {
+      "id": "location.glassfield_ruins",
+      "type": "location",
+      "subtype": "ruin",
+      "name": "Glassfield Ruins",
+      "status": "draft",
+      "summary": "First post-sword sealed site that reveals the sword can open ancient systems.",
+      "source": [
+        "projects/the-last-sword-protocol/home-region.md"
+      ]
+    },
+    {
+      "id": "infrastructure.first_relay",
+      "type": "infrastructure",
+      "name": "First Relay",
+      "status": "draft",
+      "summary": "First ancient relay restored by the hero; awakens wider network behavior and unlocks departure.",
+      "source": [
+        "projects/the-last-sword-protocol/home-region.md",
+        "projects/the-last-sword-protocol/story-reset.md"
+      ]
+    },
+    {
+      "id": "location.rustshore_dock",
+      "type": "location",
+      "subtype": "settlement",
+      "name": "Rustshore Dock",
+      "status": "draft",
+      "summary": "Weathered coastal departure point to the next region.",
+      "source": [
+        "projects/the-last-sword-protocol/home-region.md"
+      ]
+    },
+    {
+      "id": "character.hero",
+      "type": "character",
+      "name": "The Hero",
+      "status": "draft",
+      "summary": "Young villager authenticated by the Last Sword; not royalty or prophecy-based.",
+      "source": [
+        "projects/the-last-sword-protocol/story-reset.md"
+      ]
+    },
+    {
+      "id": "character.elara",
+      "type": "character",
+      "name": "Elara",
+      "status": "draft",
+      "summary": "Hero's guardian and emotional anchor.",
+      "source": [
+        "projects/the-last-sword-protocol/story-reset.md"
+      ]
+    },
+    {
+      "id": "character.rowan",
+      "type": "character",
+      "name": "Rowan",
+      "status": "draft",
+      "summary": "Village elder and local historian who understands legends but misunderstands the ancient technology.",
+      "source": [
+        "projects/the-last-sword-protocol/story-reset.md"
+      ]
+    },
+    {
+      "id": "item.last_sword",
+      "type": "item",
+      "name": "The Last Sword",
+      "status": "draft",
+      "summary": "A Protocol Blade that functions as both weapon and authenticated interface into the ancient network.",
+      "source": [
+        "projects/the-last-sword-protocol/game-vision.md",
+        "projects/the-last-sword-protocol/story-reset.md"
+      ]
+    },
+    {
+      "id": "concept.authentication",
+      "type": "concept",
+      "name": "Authentication",
+      "status": "draft",
+      "summary": "Cybersecurity concept represented in fantasy as worthiness, recognition, or being chosen by the sword.",
+      "source": [
+        "projects/the-last-sword-protocol/game-vision.md",
+        "projects/the-last-sword-protocol/story-reset.md"
+      ]
+    },
+    {
+      "id": "concept.access_control",
+      "type": "concept",
+      "name": "Access Control",
+      "status": "draft",
+      "summary": "Cybersecurity concept represented by sacred seals, ancient doors, and restricted ruins.",
+      "source": [
+        "projects/the-last-sword-protocol/game-vision.md",
+        "projects/the-last-sword-protocol/story-reset.md"
+      ]
+    }
+  ]
+}
