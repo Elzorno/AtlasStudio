@@ -84,6 +84,15 @@
       "source": ["work-orders/WO-0010-graph-diff-engine.md"]
     },
     {
+      "id": "work_order.wo_0011",
+      "type": "work_order",
+      "name": "Work Order Planner",
+      "status": "draft",
+      "work_order_status": "submitted",
+      "summary": "Implements Planning Engine v1 for deterministic, evidence-backed work recommendations.",
+      "source": ["work-orders/WO-0011-work-order-planner.md"]
+    },
+    {
       "id": "work_order.wo_0013",
       "type": "work_order",
       "name": "Canon Linter",
@@ -144,6 +153,17 @@
         "tools/atlas_graph/diff_graph.py",
         "studio/atlas-graph/diff-model.md",
         "work-orders/WO-0010-graph-diff-engine.md"
+      ]
+    },
+    {
+      "id": "tool.planning_engine",
+      "type": "tool",
+      "name": "Planning Engine",
+      "status": "draft",
+      "summary": "Recommends next work orders from graph state, work-order metadata, Studio Doctor signals, and Canon Linter findings without creating work automatically.",
+      "source": [
+        "tools/atlas_planner/planner.py",
+        "work-orders/WO-0011-work-order-planner.md"
       ]
     },
     {

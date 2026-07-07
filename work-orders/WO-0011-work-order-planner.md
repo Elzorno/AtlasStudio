@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-0011
 title: Work Order Planner
-status: proposed
+status: submitted
 project: atlasstudio
 recommended_agent: gpt
 agent_role: creative-systems-designer
@@ -15,7 +15,7 @@ created: 2026-07-07
 
 ## Purpose
 
-Design the first AtlasStudio planner that recommends next work orders from graph state, project health, dependencies, and milestone goals.
+Implement the first AtlasStudio planner that recommends next work orders from graph state, project health, dependencies, and milestone goals.
 
 ## Player-Facing Goal
 
@@ -83,4 +83,31 @@ Manual review of planner design.
 
 ## Notes for Assigned Agent
 
-This is a design work order first. Implementation should follow only after the recommendation model is approved.
+This began as a design work order and was implemented as Planning Engine v1 by human instruction. The planner must recommend work without creating work orders automatically.
+
+## Submission Record
+
+Submitted 2026-07-07 by Codex.
+
+Delivered:
+
+- `tools/atlas_planner/planner.py`, a deterministic Planning Engine v1 command.
+- Transparent priority scoring for milestone impact, dependency value, technical debt, player value, and core platform value.
+- Evidence-backed recommendations using work-order metadata, graph relationships, Studio Doctor signals, and Canon Linter findings.
+- Recommended agent output where metadata or rule context supports it.
+- Optional Markdown report support with sample output at `reports/atlas-planner/latest.md`.
+- Production graph records for `work_order.wo_0011` and `tool.planning_engine`.
+
+Verification performed:
+
+```bash
+python3 tools/atlas_planner/planner.py
+python3 tools/atlas_planner/planner.py --project the-last-sword-protocol
+python3 tools/atlas_planner/planner.py --output reports/atlas-planner/latest.md
+python3 tools/atlas_graph/validate_graph.py
+python3 tools/atlas_format/format_guard.py --check
+python3 tools/atlas_doctor/doctor.py
+python3 tools/atlas_lint/canon_lint.py --project the-last-sword-protocol
+```
+
+Formatting: preserved existing house style; no broad reformatting performed.

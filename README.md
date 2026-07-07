@@ -92,3 +92,15 @@ python3 tools/atlas_lint/canon_lint.py --project the-last-sword-protocol --outpu
 ```
 
 The linter loads rule metadata from `tools/atlas_lint/rules/`, groups findings by category, and reports warnings without modifying canon.
+
+## Planning Engine
+
+Recommend next work without creating work orders automatically:
+
+```bash
+python3 tools/atlas_planner/planner.py
+python3 tools/atlas_planner/planner.py --project the-last-sword-protocol
+python3 tools/atlas_planner/planner.py --output reports/atlas-planner/latest.md
+```
+
+The planner scores recommendations with transparent components for milestone impact, dependency value, technical debt, player value, and core platform value.

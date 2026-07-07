@@ -185,6 +185,38 @@
       "to": "tool.canon_linter",
       "status": "draft",
       "source": ["work-orders/WO-0013-canon-linter.md"]
+    },
+    {
+      "id": "edge.production.000024",
+      "from": "work_order.wo_0011",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0009",
+      "status": "draft",
+      "source": ["work-orders/WO-0011-work-order-planner.md"]
+    },
+    {
+      "id": "edge.production.000025",
+      "from": "work_order.wo_0011",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0013",
+      "status": "draft",
+      "source": ["work-orders/WO-0011-work-order-planner.md"]
+    },
+    {
+      "id": "edge.production.000026",
+      "from": "work_order.wo_0011",
+      "type": "ASSIGNED_TO",
+      "to": "agent.codex",
+      "status": "draft",
+      "source": ["work-orders/WO-0011-work-order-planner.md"]
+    },
+    {
+      "id": "edge.production.000027",
+      "from": "work_order.wo_0011",
+      "type": "CREATES",
+      "to": "tool.planning_engine",
+      "status": "draft",
+      "source": ["work-orders/WO-0011-work-order-planner.md"]
     }
   ]
 }
