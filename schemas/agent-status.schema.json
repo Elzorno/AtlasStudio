@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/agent-status.schema.json",
+  "title": "AtlasStudio Agent Status",
+  "description": "Human-maintained session and quota status for scheduling. Must never contain secrets.",
+  "type": "object",
+  "required": ["schema_version", "updated", "agents"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this file was last edited."
+    },
+    "updated_by": {
+      "type": "string",
+      "description": "Who edited the file, e.g. human."
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "availability"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^agent\\.[a-z0-9_]+$",
+            "description": "Atlas Graph agent node id."
+          },
+          "provider": {
+            "type": "string",
+            "pattern": "^provider\\.[a-z0-9_]+$",
+            "description": "Atlas Graph provider node id."
+          },
+          "availability": {
+            "type": "string",
+            "enum": ["available", "limited", "exhausted", "offline", "unknown"]
+          },
+          "quota": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "used": {
+                "type": "number",
+                "minimum": 0
+              },
+              "limit": {
+                "type": "number",
+                "minimum": 0
+              },
+              "unit": {
+                "type": "string",
+                "enum": ["sessions", "messages", "tokens", "hours"]
+              },
+              "resets_at": {
+                "type": "string",
+                "description": "ISO 8601 date or datetime when quota resets."
+              }
+            }
+          },
+          "notes": {
+            "type": "string"
+          },
+          "last_verified": {
+            "type": "string",
+            "format": "date",
+            "description": "Date a human last confirmed this entry. Entries older than 7 days degrade to unknown."
+          }
+        }
+      }
+    }
+  }
+}

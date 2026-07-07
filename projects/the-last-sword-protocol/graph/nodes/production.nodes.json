@@ -43,7 +43,7 @@
       "type": "work_order",
       "name": "RPG Maker Bridge Design",
       "status": "draft",
-      "work_order_status": "proposed",
+      "work_order_status": "submitted",
       "summary": "Designs the bridge that translates engine-independent design into RPG Maker MZ implementation work.",
       "source": ["work-orders/WO-0005-rpg-maker-bridge.md"]
     },
@@ -93,6 +93,15 @@
       "source": ["work-orders/WO-0011-work-order-planner.md"]
     },
     {
+      "id": "work_order.wo_0012",
+      "type": "work_order",
+      "name": "Agent Scheduler",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Designs the manual-first agent scheduling model that recommends agents for work orders by task type, capability, risk, and session status.",
+      "source": ["work-orders/WO-0012-agent-scheduler.md"]
+    },
+    {
       "id": "work_order.wo_0013",
       "type": "work_order",
       "name": "Canon Linter",
@@ -109,6 +118,15 @@
       "work_order_status": "submitted",
       "summary": "Implements a check-only guard that warns about suspicious broad graph JSON formatting churn.",
       "source": ["work-orders/WO-0014-immutable-formatting-guard.md"]
+    },
+    {
+      "id": "work_order.wo_1000",
+      "type": "work_order",
+      "name": "First Playable Hour Master Plan",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Designs the master production blueprint (milestone, roadmap, implementation plan, dependency map, work breakdown) for the first playable hour of The Last Sword Protocol.",
+      "source": ["work-orders/WO-1000-first-playable-hour-master-plan.md"]
     },
     {
       "id": "tool.atlas_graph_validator",
@@ -215,12 +233,60 @@
       "source": ["studio/agent-roles.md"]
     },
     {
+      "id": "agent.github_copilot",
+      "type": "agent",
+      "name": "GitHub Copilot",
+      "status": "draft",
+      "summary": "Local coding assistant agent role for boilerplate, small edits, and in-editor support.",
+      "source": ["studio/agent-roles.md"]
+    },
+    {
+      "id": "agent.ollama",
+      "type": "agent",
+      "name": "Ollama / Local Models",
+      "status": "draft",
+      "summary": "Low-cost local support agent role for review, critique, consistency checks, and summaries.",
+      "source": ["studio/agent-roles.md"]
+    },
+    {
       "id": "agent.human",
       "type": "agent",
       "name": "Human",
       "status": "draft",
       "summary": "Human creator, reviewer, and final approver.",
       "source": ["studio/agent-roles.md"]
+    },
+    {
+      "id": "provider.openai",
+      "type": "provider",
+      "name": "OpenAI",
+      "status": "draft",
+      "summary": "Provider platform for the GPT and Codex agent roles.",
+      "source": ["studio/scheduling/agent-scheduler-design.md"]
+    },
+    {
+      "id": "provider.anthropic",
+      "type": "provider",
+      "name": "Anthropic",
+      "status": "draft",
+      "summary": "Provider platform for the Claude Code agent role.",
+      "source": ["studio/scheduling/agent-scheduler-design.md"]
+    },
+    {
+      "id": "provider.github_copilot",
+      "type": "provider",
+      "name": "GitHub Copilot",
+      "status": "draft",
+      "summary": "Provider platform for the GitHub Copilot agent role.",
+      "source": ["studio/scheduling/agent-scheduler-design.md"]
+    },
+    {
+      "id": "provider.ollama",
+      "type": "provider",
+      "name": "Ollama",
+      "status": "draft",
+      "summary": "Local model provider platform for the Ollama agent role.",
+      "source": ["studio/scheduling/agent-scheduler-design.md"]
     }
   ]
 }

@@ -217,6 +217,110 @@
       "to": "tool.planning_engine",
       "status": "draft",
       "source": ["work-orders/WO-0011-work-order-planner.md"]
+    },
+    {
+      "id": "edge.production.000028",
+      "from": "work_order.wo_0012",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0004",
+      "status": "draft",
+      "source": ["work-orders/WO-0012-agent-scheduler.md"]
+    },
+    {
+      "id": "edge.production.000029",
+      "from": "work_order.wo_0012",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-0012-agent-scheduler.md"]
+    },
+    {
+      "id": "edge.production.000030",
+      "from": "agent.gpt",
+      "type": "PROVIDED_BY",
+      "to": "provider.openai",
+      "status": "draft",
+      "source": ["studio/scheduling/agent-scheduler-design.md"]
+    },
+    {
+      "id": "edge.production.000031",
+      "from": "agent.codex",
+      "type": "PROVIDED_BY",
+      "to": "provider.openai",
+      "status": "draft",
+      "source": ["studio/scheduling/agent-scheduler-design.md"]
+    },
+    {
+      "id": "edge.production.000032",
+      "from": "agent.claude_code",
+      "type": "PROVIDED_BY",
+      "to": "provider.anthropic",
+      "status": "draft",
+      "source": ["studio/scheduling/agent-scheduler-design.md"]
+    },
+    {
+      "id": "edge.production.000033",
+      "from": "agent.github_copilot",
+      "type": "PROVIDED_BY",
+      "to": "provider.github_copilot",
+      "status": "draft",
+      "source": ["studio/scheduling/agent-scheduler-design.md"]
+    },
+    {
+      "id": "edge.production.000034",
+      "from": "agent.ollama",
+      "type": "PROVIDED_BY",
+      "to": "provider.ollama",
+      "status": "draft",
+      "source": ["studio/scheduling/agent-scheduler-design.md"]
+    },
+    {
+      "id": "edge.production.000035",
+      "from": "work_order.wo_0012",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-0012-agent-scheduler.md"]
+    },
+    {
+      "id": "edge.production.000036",
+      "from": "work_order.wo_1000",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0002",
+      "status": "draft",
+      "source": ["work-orders/WO-1000-first-playable-hour-master-plan.md"]
+    },
+    {
+      "id": "edge.production.000037",
+      "from": "work_order.wo_1000",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0003",
+      "status": "draft",
+      "source": ["work-orders/WO-1000-first-playable-hour-master-plan.md"]
+    },
+    {
+      "id": "edge.production.000038",
+      "from": "work_order.wo_1000",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0005",
+      "status": "draft",
+      "source": ["work-orders/WO-1000-first-playable-hour-master-plan.md"]
+    },
+    {
+      "id": "edge.production.000039",
+      "from": "work_order.wo_1000",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-1000-first-playable-hour-master-plan.md"]
+    },
+    {
+      "id": "edge.production.000040",
+      "from": "work_order.wo_1000",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-1000-first-playable-hour-master-plan.md"]
     }
   ]
 }

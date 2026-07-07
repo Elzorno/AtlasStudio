@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1.0",
+  "updated": "2026-07-07",
+  "updated_by": "human",
+  "agents": [
+    {
+      "id": "agent.gpt",
+      "provider": "provider.openai",
+      "availability": "available",
+      "notes": "Plenty of headroom this week.",
+      "last_verified": "2026-07-07"
+    },
+    {
+      "id": "agent.claude_code",
+      "provider": "provider.anthropic",
+      "availability": "limited",
+      "quota": {
+        "used": 4,
+        "limit": 5,
+        "unit": "sessions",
+        "resets_at": "2026-07-10"
+      },
+      "notes": "One session left before weekly reset. Reserve for architecture work.",
+      "last_verified": "2026-07-07"
+    },
+    {
+      "id": "agent.codex",
+      "provider": "provider.openai",
+      "availability": "available",
+      "last_verified": "2026-07-07"
+    },
+    {
+      "id": "agent.github_copilot",
+      "provider": "provider.github_copilot",
+      "availability": "available",
+      "notes": "In-editor only.",
+      "last_verified": "2026-07-06"
+    },
+    {
+      "id": "agent.ollama",
+      "provider": "provider.ollama",
+      "availability": "offline",
+      "notes": "Local machine not running the model server this week.",
+      "last_verified": "2026-07-05"
+    }
+  ]
+}

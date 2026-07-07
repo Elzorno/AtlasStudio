@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-0005
 title: RPG Maker Bridge Design
-status: proposed
+status: submitted
 project: the-last-sword-protocol
 recommended_agent: claude-code
 agent_role: senior-software-architect
@@ -79,3 +79,30 @@ Manual architecture review.
 ## Notes for Assigned Agent
 
 This is a design work order, not an implementation work order. Preserve the successful ideas from Atlas v1 while avoiding its screen-first and implementation-leaking design.
+
+## Submission Record
+
+Submitted 2026-07-07 by Codex.
+
+Delivered:
+
+- `bridges/rpg-maker-mz/bridge-design.md`
+- `bridges/rpg-maker-mz/ownership-model.md`
+- `bridges/rpg-maker-mz/handoff-format.md`
+
+The bridge defines:
+
+- The boundary between engine-independent AtlasStudio design and RPG Maker MZ implementation details.
+- Ownership states for generated, agent-drafted, human-edited, hand-authored, and locked targets.
+- A handoff format for Codex-ready RPG Maker implementation work orders.
+- Audit expectations for maps, events, database rows, switches, variables, plugins, and assets.
+
+Verification performed:
+
+```bash
+python3 tools/atlas_graph/validate_graph.py
+python3 tools/atlas_format/format_guard.py --check
+python3 tools/atlas_doctor/doctor.py
+```
+
+Formatting: preserved existing house style; no broad reformatting performed.
