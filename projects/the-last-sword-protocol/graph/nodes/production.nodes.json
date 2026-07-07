@@ -66,6 +66,24 @@
       "source": ["work-orders/WO-0008-atlas-graph-tools.md"]
     },
     {
+      "id": "work_order.wo_0009",
+      "type": "work_order",
+      "name": "Studio Doctor",
+      "status": "draft",
+      "work_order_status": "submitted",
+      "summary": "Builds the first AtlasStudio diagnostic command and readable Studio Health report.",
+      "source": ["work-orders/WO-0009-studio-doctor.md"]
+    },
+    {
+      "id": "work_order.wo_0010",
+      "type": "work_order",
+      "name": "Graph Diff Engine",
+      "status": "draft",
+      "work_order_status": "submitted",
+      "summary": "Implements the Atlas Graph diff engine that explains changes between two graph states.",
+      "source": ["work-orders/WO-0010-graph-diff-engine.md"]
+    },
+    {
       "id": "tool.atlas_graph_validator",
       "type": "tool",
       "name": "Atlas Graph Validator",
@@ -85,6 +103,29 @@
       "source": [
         "tools/atlas_graph/query_graph.py",
         "work-orders/WO-0008-atlas-graph-tools.md"
+      ]
+    },
+    {
+      "id": "tool.studio_doctor",
+      "type": "tool",
+      "name": "Studio Doctor",
+      "status": "draft",
+      "summary": "Reports AtlasStudio project health across graph integrity, orphans, missing sources, work orders, and implementation readiness.",
+      "source": [
+        "tools/atlas_doctor/doctor.py",
+        "work-orders/WO-0009-studio-doctor.md"
+      ]
+    },
+    {
+      "id": "tool.atlas_graph_diff",
+      "type": "tool",
+      "name": "Atlas Graph Diff Engine",
+      "status": "draft",
+      "summary": "Compares Atlas Graph states between Git refs, commits, or directories and reports added, removed, and changed facts by scope.",
+      "source": [
+        "tools/atlas_graph/diff_graph.py",
+        "studio/atlas-graph/diff-model.md",
+        "work-orders/WO-0010-graph-diff-engine.md"
       ]
     },
     {

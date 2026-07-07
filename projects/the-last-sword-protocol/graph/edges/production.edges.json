@@ -89,6 +89,54 @@
       "to": "agent.human",
       "status": "draft",
       "source": ["work-orders/WO-0008-atlas-graph-tools.md"]
+    },
+    {
+      "id": "edge.production.000012",
+      "from": "work_order.wo_0009",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0008",
+      "status": "draft",
+      "source": ["work-orders/WO-0009-studio-doctor.md"]
+    },
+    {
+      "id": "edge.production.000013",
+      "from": "work_order.wo_0009",
+      "type": "ASSIGNED_TO",
+      "to": "agent.codex",
+      "status": "draft",
+      "source": ["work-orders/WO-0009-studio-doctor.md"]
+    },
+    {
+      "id": "edge.production.000014",
+      "from": "work_order.wo_0009",
+      "type": "CREATES",
+      "to": "tool.studio_doctor",
+      "status": "draft",
+      "source": ["work-orders/WO-0009-studio-doctor.md"]
+    },
+    {
+      "id": "edge.production.000015",
+      "from": "work_order.wo_0010",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0008",
+      "status": "draft",
+      "source": ["work-orders/WO-0010-graph-diff-engine.md"]
+    },
+    {
+      "id": "edge.production.000016",
+      "from": "work_order.wo_0010",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-0010-graph-diff-engine.md"]
+    },
+    {
+      "id": "edge.production.000017",
+      "from": "work_order.wo_0010",
+      "type": "CREATES",
+      "to": "tool.atlas_graph_diff",
+      "status": "draft",
+      "source": ["work-orders/WO-0010-graph-diff-engine.md"]
     }
   ]
 }

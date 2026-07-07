@@ -45,3 +45,27 @@ work-orders/
 Atlas v1 proved that structured canon, work orders, validation, and machine-readable exports can help AI agents coordinate. AtlasStudio starts fresh from those lessons and shifts the emphasis from artifact production to playable game production.
 
 Atlas v1 is the research prototype. AtlasStudio is the production director.
+
+## Studio Diagnostics
+
+Run the Studio Doctor for a readable project health report:
+
+```bash
+python3 tools/atlas_doctor/doctor.py
+python3 tools/atlas_doctor/doctor.py --project the-last-sword-protocol
+python3 tools/atlas_doctor/doctor.py --output reports/atlas-doctor/latest.md
+```
+
+The report summarizes graph integrity, orphan nodes, missing sources, work order status, implementation readiness, registered tools, and recommendations.
+
+## Graph Diffing
+
+Compare two Atlas Graph states to see which facts were added, removed, or changed:
+
+```bash
+python3 tools/atlas_graph/diff_graph.py --base HEAD~1 --head HEAD
+python3 tools/atlas_graph/diff_graph.py --base HEAD
+python3 tools/atlas_graph/diff_graph.py --base-dir old_graph --head-dir projects/the-last-sword-protocol/graph
+```
+
+The report groups changes by canon, production, and bridge scope, and highlights status changes, scope moves, and source reference changes. See `studio/atlas-graph/diff-model.md` for the full model.

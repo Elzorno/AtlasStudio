@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-0010
 title: Graph Diff Engine
-status: proposed
+status: submitted
 project: atlasstudio
 recommended_agent: claude-code
 agent_role: senior-software-architect
@@ -85,3 +85,29 @@ python3 tools/atlas_graph/diff_graph.py --base-dir old_graph --head-dir projects
 ## Notes for Assigned Agent
 
 Design this as a reusable Atlas Core feature, not a Last Sword Protocol-specific feature.
+
+## Submission Record
+
+Submitted 2026-07-07 by Claude Code.
+
+Delivered:
+
+- `tools/atlas_graph/diff_graph.py`, a dependency-free graph diff engine that compares two graph states from Git refs, commits, or directories (Git refs are read with `git ls-tree` and `git show`, no checkout required).
+- Added, removed, and changed nodes and edges reported with field-level base -> head values, grouped by canon, production, and bridge scope.
+- Highlighted sections for status changes (including `work_order_status`), scope moves such as production -> canon promotion, and source reference changes.
+- `--json` machine-readable output, `--output` report file support, and `--exit-code` for scripting.
+- `studio/atlas-graph/diff-model.md` documentation and a README "Graph Diffing" section.
+- Sample report at `reports/atlas-diff/latest.md`.
+- Production graph records for `work_order.wo_0010` and `tool.atlas_graph_diff`.
+
+Verification performed:
+
+```bash
+python3 tools/atlas_graph/diff_graph.py --base HEAD~1 --head HEAD
+python3 tools/atlas_graph/diff_graph.py --base HEAD
+python3 tools/atlas_graph/diff_graph.py --base-dir <base_copy> --head-dir projects/the-last-sword-protocol/graph
+python3 tools/atlas_graph/diff_graph.py --base HEAD --json
+python3 tools/atlas_graph/diff_graph.py --base HEAD --output reports/atlas-diff/latest.md
+python3 tools/atlas_graph/validate_graph.py
+python3 tools/atlas_graph/query_graph.py missing-sources
+```

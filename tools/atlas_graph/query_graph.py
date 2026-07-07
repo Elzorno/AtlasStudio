@@ -3,8 +3,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from typing import Any
 
+
+sys.dont_write_bytecode = True
 from atlas_graph import DEFAULT_GRAPH_DIR, AtlasGraph, format_edge, node_summary, repo_root_from
 
 

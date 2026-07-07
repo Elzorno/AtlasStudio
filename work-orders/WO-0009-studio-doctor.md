@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-0009
 title: Studio Doctor
-status: proposed
+status: submitted
 project: atlasstudio
 recommended_agent: codex
 agent_role: implementation-engineer
@@ -111,3 +111,25 @@ python3 tools/atlas_graph/query_graph.py missing-sources
 ## Notes for Assigned Agent
 
 Start with deterministic checks over the existing graph files. Do not introduce a database or dependency-heavy framework. Studio Doctor should feel like a project health command, not a full application.
+
+## Submission Record
+
+Submitted 2026-07-07 by Codex.
+
+Delivered:
+
+- `tools/atlas_doctor/doctor.py`, a dependency-free Studio Doctor command.
+- Readable Studio Health report sections for Graph Integrity, Canon, Production, Implementation, Tools, Missing Sources, and Recommendations.
+- Optional report output support via `--output`.
+- README usage instructions.
+- Production graph records for `work_order.wo_0009` and `tool.studio_doctor`.
+
+Verification performed:
+
+```bash
+python3 tools/atlas_doctor/doctor.py
+python3 tools/atlas_doctor/doctor.py --project the-last-sword-protocol
+python3 tools/atlas_doctor/doctor.py --output reports/atlas-doctor/latest.md
+python3 tools/atlas_graph/validate_graph.py
+python3 tools/atlas_graph/query_graph.py missing-sources
+```
