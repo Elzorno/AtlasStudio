@@ -321,6 +321,46 @@
       "to": "agent.human",
       "status": "draft",
       "source": ["work-orders/WO-1000-first-playable-hour-master-plan.md"]
+    },
+    {
+      "id": "edge.production.000041",
+      "from": "work_order.wp_01",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_1000",
+      "status": "draft",
+      "source": ["work-orders/WP-01-engine-bridge-foundation.md"]
+    },
+    {
+      "id": "edge.production.000042",
+      "from": "work_order.wp_01",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_0005",
+      "status": "draft",
+      "source": ["work-orders/WP-01-engine-bridge-foundation.md"]
+    },
+    {
+      "id": "edge.production.000043",
+      "from": "work_order.wp_01",
+      "type": "ASSIGNED_TO",
+      "to": "agent.codex",
+      "status": "draft",
+      "source": ["work-orders/WP-01-engine-bridge-foundation.md"]
+    },
+    {
+      "id": "edge.production.000044",
+      "from": "work_order.wp_01",
+      "type": "CREATES",
+      "to": "tool.rpg_maker_bridge_handoff_generator",
+      "status": "draft",
+      "source": ["work-orders/WP-01-engine-bridge-foundation.md"]
+    },
+    {
+      "id": "edge.production.000045",
+      "from": "bridge.rpg_maker_mz",
+      "type": "TRANSLATES_TO",
+      "to": "implementation_target.the_last_sword_protocol_game",
+      "status": "draft",
+      "source": ["work-orders/WP-01-engine-bridge-foundation.md"]
     }
   ]
 }

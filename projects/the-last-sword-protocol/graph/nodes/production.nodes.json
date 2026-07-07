@@ -129,6 +129,15 @@
       "source": ["work-orders/WO-1000-first-playable-hour-master-plan.md"]
     },
     {
+      "id": "work_order.wp_01",
+      "type": "work_order",
+      "name": "Engine Bridge Foundation",
+      "status": "draft",
+      "work_order_status": "submitted",
+      "summary": "Implements the read-only RPG Maker MZ bridge handoff foundation for First Playable Hour work packages.",
+      "source": ["work-orders/WP-01-engine-bridge-foundation.md"]
+    },
+    {
       "id": "tool.atlas_graph_validator",
       "type": "tool",
       "name": "Atlas Graph Validator",
@@ -206,6 +215,18 @@
         "tools/atlas_format/format_guard.py",
         "studio/immutable-formatting-rule.md",
         "work-orders/WO-0014-immutable-formatting-guard.md"
+      ]
+    },
+    {
+      "id": "tool.rpg_maker_bridge_handoff_generator",
+      "type": "tool",
+      "name": "RPG Maker Bridge Handoff Generator",
+      "status": "draft",
+      "summary": "Generates read-only RPG Maker MZ implementation handoff checklists from AtlasStudio work packages, bridge docs, and graph data.",
+      "source": [
+        "tools/rpg_maker_bridge/handoff_generator.py",
+        "bridges/rpg-maker-mz/handoff-format.md",
+        "work-orders/WP-01-engine-bridge-foundation.md"
       ]
     },
     {

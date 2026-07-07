@@ -9,6 +9,14 @@
       "status": "draft",
       "summary": "Translation layer between engine-independent AtlasStudio design and RPG Maker MZ implementation. Designed by WO-0005.",
       "source": ["work-orders/WO-0005-rpg-maker-bridge.md"]
+    },
+    {
+      "id": "implementation_target.the_last_sword_protocol_game",
+      "type": "implementation_target",
+      "name": "TheLastSwordProtocol-Game",
+      "status": "draft",
+      "summary": "Read-only RPG Maker MZ implementation target prepared for AtlasStudio bridge handoffs.",
+      "source": ["work-orders/WP-01-engine-bridge-foundation.md"]
     }
   ]
 }
