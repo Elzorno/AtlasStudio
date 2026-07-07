@@ -138,6 +138,26 @@
       "source": ["work-orders/WP-01-engine-bridge-foundation.md"]
     },
     {
+      "id": "work_order.wp_02",
+      "type": "work_order",
+      "name": "Implementation Target Readiness Audit",
+      "status": "draft",
+      "work_order_status": "submitted",
+      "summary": "Audits TheLastSwordProtocol-Game read-only to determine RPG Maker MZ implementation readiness and bridge-safe first targets.",
+      "source": ["work-orders/WP-02-implementation-target-readiness-audit.md"]
+    },
+    {
+      "id": "report.implementation_readiness_repository_audit",
+      "type": "report",
+      "name": "Implementation Readiness Repository Audit",
+      "status": "draft",
+      "summary": "Read-only audit report for TheLastSwordProtocol-Game repository structure, RPG Maker MZ readiness, ownership boundaries, and first implementation targets.",
+      "source": [
+        "reports/implementation-readiness/repository-audit.md",
+        "bridges/rpg-maker-mz/target-readiness-guidance.md"
+      ]
+    },
+    {
       "id": "tool.atlas_graph_validator",
       "type": "tool",
       "name": "Atlas Graph Validator",

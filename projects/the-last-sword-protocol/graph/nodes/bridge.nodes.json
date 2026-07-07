@@ -15,8 +15,11 @@
       "type": "implementation_target",
       "name": "TheLastSwordProtocol-Game",
       "status": "draft",
-      "summary": "Read-only RPG Maker MZ implementation target prepared for AtlasStudio bridge handoffs.",
-      "source": ["work-orders/WP-01-engine-bridge-foundation.md"]
+      "summary": "Read-only audited RPG Maker MZ implementation target prepared for AtlasStudio bridge handoffs.",
+      "source": [
+        "work-orders/WP-01-engine-bridge-foundation.md",
+        "reports/implementation-readiness/repository-audit.md"
+      ]
     }
   ]
 }
