@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0",
+  "updated_at": "2026-07-07T00:00:00-04:00",
+  "providers": [
+    {
+      "id": "gpt",
+      "available": true,
+      "quota_remaining": "unknown",
+      "reset_time": null,
+      "online": true,
+      "local": false,
+      "cost_class": "subscription",
+      "notes": "Strong for story, planning, dialogue, design critique, and general reasoning."
+    },
+    {
+      "id": "claude-code",
+      "available": true,
+      "quota_remaining": "manual",
+      "reset_time": null,
+      "online": true,
+      "local": false,
+      "cost_class": "subscription",
+      "notes": "Strong for architecture, refactoring, schema design, and long-context code work."
+    },
+    {
+      "id": "codex",
+      "available": true,
+      "quota_remaining": "manual",
+      "reset_time": null,
+      "online": true,
+      "local": false,
+      "cost_class": "subscription",
+      "notes": "Strong for implementation, Python tooling, JSON work, tests, and automation."
+    },
+    {
+      "id": "github-copilot",
+      "available": true,
+      "quota_remaining": "unknown",
+      "reset_time": null,
+      "online": true,
+      "local": false,
+      "cost_class": "subscription",
+      "notes": "Strong for local editor assistance, autocomplete, boilerplate, and small edits."
+    },
+    {
+      "id": "ollama",
+      "available": true,
+      "quota_remaining": "unlimited-local",
+      "reset_time": null,
+      "online": false,
+      "local": true,
+      "cost_class": "local-compute",
+      "notes": "Useful for low-cost consistency scans, summaries, and draft review."
+    },
+    {
+      "id": "human",
+      "available": true,
+      "quota_remaining": "attention-limited",
+      "reset_time": null,
+      "online": true,
+      "local": true,
+      "cost_class": "human-time",
+      "notes": "Final authority for creative direction, scope, risk acceptance, and canon approval."
+    }
+  ]
+}
