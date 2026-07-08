@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/academy-map-grade.schema.json",
+  "title": "Atlas Academy Map Grade",
+  "description": "A single, structured grading result for one map, per academy/grading-system.md. Combines nine per-category scores (schemas/academy-observation.schema.json and schemas/academy-map-metrics.schema.json are the raw evidence these scores must trace to), an overall recommendation, a final outcome drawn unchanged from studio/operations/PLAYTEST_AND_ACCEPTANCE.md's four-outcome vocabulary, and zero or more remediation tags giving that outcome actionable routing. A grade recommends; it does not itself accept or reject a build - per academy/grading-rubric.md, a Production Director's recorded PLAYTEST_AND_ACCEPTANCE.md decision remains the actual authority, exactly as the Work Order Router and Agent Scheduler recommend without dispatching.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "grade_id",
+    "target",
+    "grader",
+    "created",
+    "category_scores",
+    "overall_recommendation",
+    "outcome",
+    "remediation_tags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema the record was produced against."
+    },
+    "grade_id": {
+      "type": "string",
+      "pattern": "^GRD-[A-Za-z0-9]+(-[A-Za-z0-9]+)*-[0-9]{3,}$",
+      "description": "Stable identifier for this grading pass, e.g. GRD-ASHFORDINN-001. A map graded more than once (a rejected pass, then a revised one) gets a new grade_id each time - grades are never overwritten in place, matching academy/compositions/README.md's per-pass filing convention."
+    },
+    "target": {
+      "type": "object",
+      "required": ["repo", "file_path", "captured_at"],
+      "additionalProperties": false,
+      "properties": {
+        "repo": {
+          "type": "string",
+          "enum": ["TheLastSwordProtocol-Game", "TheLastSwordProtocol-Atlas", "AtlasStudio", "rpgmakerLSP", "other"],
+          "description": "Matches schemas/academy-observation.schema.json's source.repo enum."
+        },
+        "file_path": { "type": "string" },
+        "map_name": { "type": ["string", "null"] },
+        "ownership_state_at_capture": {
+          "type": ["string", "null"],
+          "enum": ["generated", "agent-drafted", "human-edited", "hand-authored", "locked", null],
+          "description": "Matches schemas/academy-observation.schema.json's identical field - a grade is pinned to the map's ownership-ledger state at grading time, since that state can change later."
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date",
+          "description": "Date this target was graded."
+        }
+      }
+    },
+    "grader": {
+      "type": "string",
+      "description": "The agent or human who produced this grade, matching the observer/owner convention used across every other Academy and pattern record."
+    },
+    "created": {
+      "type": "string",
+      "format": "date"
+    },
+    "category_scores": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["category", "score", "confidence", "rationale", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "composition",
+              "traffic_flow",
+              "readability",
+              "visual_hierarchy",
+              "passability",
+              "environmental_storytelling",
+              "project_fit",
+              "rpg_maker_quality",
+              "dragon_quest_exploration_feel"
+            ],
+            "description": "Nine of work-orders/WO-2005-map-grading-system.md's ten named Example Categories. The tenth, 'overall recommendation', is not a tenth independently-measurable score - it is this record's own overall_recommendation field, a synthesis across the other nine, not a parallel axis. composition, traffic_flow, visual_hierarchy, and environmental_storytelling are also academy/composition-analysis.md topics; where both exist, this field's score is the composite verdict, and that document's finer-grained per-topic Holds/Gap/N/A detail is the evidence behind it, cited via this entry's evidence field rather than restated here."
+          },
+          "score": {
+            "type": ["integer", "null"],
+            "minimum": 1,
+            "maximum": 5,
+            "description": "1 (fails this category badly) to 5 (exemplary), per academy/grading-rubric.md's scale - adapted from references/atlas_academy_jrpg_map_research.md's Part 10 proposed 1-5 rubric, at that document's own research-hypothesis confidence tier, not upgraded to a settled standard. Null only when confidence is insufficient_evidence - a category must never receive a numeric score invented in the absence of grounding evidence."
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low", "insufficient_evidence"],
+            "description": "How well-grounded this category's score is, per studio/design-patterns/PATTERN_CONFIDENCE_MODEL.md's tiering spirit applied to a grading context. insufficient_evidence is a legitimate, expected value - not every category can be scored from what currently exists on file for a given target, and a grade recording that honestly is more useful than one that guesses."
+          },
+          "rationale": {
+            "type": "string",
+            "description": "The specific, falsifiable reason behind this score, per academy/curriculum.md Level 3's diagnostic standard - not a restatement of the score itself in words."
+          },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Paths to the observation record(s), metric record(s), composition analysis, reference source record, or other cited document(s) this score traces to. An empty array paired with confidence other than insufficient_evidence is invalid in spirit, though not schema-enforced as a hard dependency, matching this schema family's existing convention (see schemas/academy-observation.schema.json's inference_reasoning field)."
+          }
+        }
+      }
+    },
+    "overall_recommendation": {
+      "type": "object",
+      "required": ["summary"],
+      "additionalProperties": false,
+      "properties": {
+        "summary": {
+          "type": "string",
+          "description": "A short synthesis across all scored categories - not a restatement of each category, but the reasoning that connects them into one recommendation. WO-2005's tenth 'Example Category' lives here, not as a parallel score."
+        },
+        "dragon_quest_exploration_feel_applicable": {
+          "type": "boolean",
+          "description": "Whether the dragon_quest_exploration_feel category applied to this target at all, per WO-2005's own 'when applicable' qualifier - false for a target with no stated Dragon Quest-style exploration requirement (e.g. no governing DDR names it), in which case that category's score should be null with confidence insufficient_evidence or a note explaining inapplicability rather than a forced score."
+        }
+      }
+    },
+    "outcome": {
+      "type": "string",
+      "enum": ["accepted", "accepted_with_notes", "rejected", "deferred"],
+      "description": "Drawn unchanged from studio/operations/PLAYTEST_AND_ACCEPTANCE.md's four outcomes - this schema does not add a fifth or sixth top-level outcome value, per academy/grading-rubric.md's explicit reconciliation of WO-2005's six 'Required Outcomes' into four final outcomes plus two remediation tags (see remediation_tags). This field records what a grade recommends; the actual PLAYTEST_AND_ACCEPTANCE.md decision remains a separate, human, Production-Director act this schema does not perform or substitute for."
+    },
+    "remediation_tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["needs_art_direction", "needs_functional_fix"]
+      },
+      "description": "Zero or more diagnostic routing tags, per academy/grading-rubric.md's reconciliation of WO-2005's Required Outcomes list. needs_art_direction routes to a composition/asset/tile-correctness follow-up (academy/composition-analysis.md, academy/observation-model.md's tile_usage category); needs_functional_fix routes to a passability/event/transfer follow-up (bridges/rpg-maker-mz/passability-rule.md). Both may apply to the same grade. An empty array is expected and correct for a clean accepted outcome."
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Free-text notes not captured by the structured fields above."
+    }
+  }
+}
