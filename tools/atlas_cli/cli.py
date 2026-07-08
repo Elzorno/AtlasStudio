@@ -77,6 +77,8 @@ def main(argv: list[str] | None = None) -> int:
             return handle_history(args)
         if args.command == "dispatch":
             return passthrough("tools/atlas_router/cli.py", ["wo", "dispatch", *args.forwarded_args])
+        if args.command == "academy":
+            return passthrough("tools/atlas_academy/cli.py", args.forwarded_args)
     except (OSError, json.JSONDecodeError, ValueError, RouterConfigurationError) as error:
         print(f"atlas failed: {error}", file=sys.stderr)
         return 1
@@ -97,7 +99,7 @@ def build_parser() -> argparse.ArgumentParser:
     status = subparsers.add_parser("status", help="One-screen Studio Health snapshot.")
     add_project_json(status)
 
-    for name in ("doctor", "planner", "plan", "graph", "route", "work", "dispatch"):
+    for name in ("doctor", "planner", "plan", "graph", "route", "work", "dispatch", "academy"):
         sub = subparsers.add_parser(name)
         sub.add_argument("forwarded_args", nargs=argparse.REMAINDER)
 
@@ -860,7 +862,7 @@ def print_shell_help() -> None:
     print("Situational awareness   today, status, doctor, history")
     print("Routing and work        route, work, dispatch")
     print("Quality gates           review, validate")
-    print("Knowledge and graph     graph, planner")
+    print("Knowledge and graph     graph, planner, academy")
     print()
     print("Type `exit` to leave the shell.")
 

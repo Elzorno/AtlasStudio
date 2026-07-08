@@ -57,6 +57,9 @@ atlas> exit
   `work review`.
 - `history`: router log, work-order commit, and decision-record history.
 - `dispatch`: passthrough to `tools/atlas_router/cli.py wo dispatch`.
+- `academy`: passthrough to `tools/atlas_academy/cli.py` - read-only access
+  to Atlas Academy's case studies, knowledge, reports, grades, and
+  reference-governance documents. See `tools/atlas_academy/README.md`.
 
 ## Verification
 

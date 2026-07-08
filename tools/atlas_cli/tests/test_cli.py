@@ -38,6 +38,12 @@ class AtlasCliTests(unittest.TestCase):
             ("tools/atlas_format/format_guard.py", ["--check"]),
         )
 
+    def test_academy_command_passes_through_to_atlas_academy_cli(self) -> None:
+        with patch("tools.atlas_cli.cli.passthrough", return_value=0) as passthrough:
+            code = cli.main(["academy", "study", "001", "--json"])
+        self.assertEqual(code, 0)
+        passthrough.assert_called_once_with("tools/atlas_academy/cli.py", ["study", "001", "--json"])
+
     def test_work_show_reads_existing_work_order(self) -> None:
         stdout = io.StringIO()
         with contextlib.redirect_stdout(stdout):
