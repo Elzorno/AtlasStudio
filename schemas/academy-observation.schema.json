@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/academy-observation.schema.json",
+  "title": "Atlas Academy Map Observation",
+  "description": "A single, structured record of factual observations about one source map, per academy/observation-model.md and studio/design-patterns/PATTERN_EXTRACTION_GUIDE.md's extraction discipline. This schema formalizes what a Level 1 ('Recognize', academy/curriculum.md) extraction pass produces as a machine-checkable companion to the existing prose extraction report format (reports/map-analysis/*.md, reports/design-patterns/*.md) - it does not replace that prose format, and a report may exist without a matching observation record or vice versa until tooling connects the two. This schema records observations only; it does not grade, score, or judge a map (see academy/grading-rubric.md and the future WO-2005 Map Grading System for that), and it is not itself analysis code (this work order, WO-2001, is documentation and schema only).",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "observation_id",
+    "source",
+    "observer",
+    "created",
+    "objective_observations",
+    "subjective_observations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema the record was produced against."
+    },
+    "observation_id": {
+      "type": "string",
+      "pattern": "^OBS-[A-Za-z0-9]+(-[A-Za-z0-9]+)*-[0-9]{3,}$",
+      "description": "Stable identifier for this observation record, e.g. OBS-ITEMSHOP-001. Never reused for a different observation pass over the same or a different source, matching the stability convention already used by pattern_id (schemas/design-pattern.schema.json) and work order IDs."
+    },
+    "source": {
+      "type": "object",
+      "required": ["repo", "file_path", "source_class", "captured_at"],
+      "additionalProperties": false,
+      "properties": {
+        "repo": {
+          "type": "string",
+          "enum": [
+            "TheLastSwordProtocol-Game",
+            "TheLastSwordProtocol-Atlas",
+            "AtlasStudio",
+            "rpgmakerLSP",
+            "other"
+          ],
+          "description": "Which repository the source file lives in. An observation of a Game-repo map file does not, by itself, authorize any write to that repository - this is a read-only record, per this work order's constraint against modifying TheLastSwordProtocol-Game."
+        },
+        "file_path": {
+          "type": "string",
+          "description": "Path to the source map file, relative to the named repo's own root, e.g. data/Map021.json. This is the single authoritative source every objective observation's evidence must trace back to, per PATTERN_EXTRACTION_GUIDE.md: 'Work from the actual map data file... not from a screenshot or memory of the tileset.'"
+        },
+        "map_name": {
+          "type": ["string", "null"],
+          "description": "The map's tree name in MapInfos.json, if applicable, e.g. 'Item Shop'. Null for a source that is not an RPG Maker map file."
+        },
+        "tileset_reference": {
+          "type": ["string", "null"],
+          "description": "The tileset family or ID this map uses (e.g. 'Inside', tilesetId: 3), cross-checked against Tilesets.json per PATTERN_EXTRACTION_GUIDE.md's 'Autotile and tile usage' requirement, not guessed from appearance."
+        },
+        "source_class": {
+          "type": "string",
+          "enum": ["official_sample", "accepted_build", "rejected_build", "other"],
+          "description": "Which reference source class this observation studies, per academy/references/README.md. Full governance of these classes (provenance, confidence, allowed use, a gold-standard list) is work-orders/WO-2004-reference-library-governance.md's scope; this field only records which class applied at capture time."
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date",
+          "description": "Date this specific source file was read to produce these observations. Usually the same as the record's top-level created date, but kept separate so a record assembled or revised later can still state exactly when the underlying source was actually examined."
+        },
+        "ownership_state_at_capture": {
+          "type": ["string", "null"],
+          "enum": ["generated", "agent-drafted", "human-edited", "hand-authored", "locked", null],
+          "description": "For a Game-repo map, its bridges/rpg-maker-mz/ownership-model.md state at the moment this observation was captured, read from map_ownership.json. Null for a source with no ownership ledger (e.g. an official sample map, or a non-Game-repo source). Recording this pins the observation to a specific moment - an ownership state, and the file behind it, can both change later."
+        },
+        "provenance_ref": {
+          "type": ["string", "null"],
+          "description": "A git commit hash, tag, or ISO date anchoring exactly which version of file_path this observation was captured against, so the record stays valid evidence even if the source file is later edited. Null only when no such anchor is available (e.g. an uncommitted local file); this should be filled in as soon as one exists."
+        }
+      }
+    },
+    "observer": {
+      "type": "string",
+      "description": "The agent or human who performed this observation pass, for accountability - matching the convention already used by pattern documents' owner field and work order submission records."
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this observation record was produced."
+    },
+    "objective_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["category", "description", "evidence", "is_inferred"],
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "dimensions",
+              "door_threshold",
+              "spawn_position",
+              "structural_object",
+              "walkable_tiles",
+              "interaction_distance",
+              "npc_placement",
+              "dead_space",
+              "tile_usage",
+              "shadow_lighting",
+              "event",
+              "transfer",
+              "room_zone",
+              "other"
+            ],
+            "description": "One of PATTERN_EXTRACTION_GUIDE.md's 'What to Measure' categories (dimensions through transfer inventory), extended with room_zone to cover WO-2001's own named example ('room zones') and the multi-zone finding already documented in studio/design-patterns/interiors/inn.pattern.md. 'other' is an escape hatch, not a default - prefer a specific category."
+          },
+          "description": {
+            "type": "string",
+            "description": "The factual claim itself, stated so a second observer given the same source file would record the same thing, per PATTERN_EXTRACTION_GUIDE.md's reproducibility bar."
+          },
+          "value": {
+            "description": "The measured value, in whatever shape fits the category (a number, a coordinate pair, a string, or a small object) - deliberately untyped here since 'dimensions' and 'event trigger type' need different shapes. description carries the human-readable claim; value carries the machine-usable fact behind it."
+          },
+          "evidence": {
+            "type": "object",
+            "required": ["evidence_type", "file_path"],
+            "additionalProperties": false,
+            "properties": {
+              "evidence_type": {
+                "type": "string",
+                "enum": [
+                  "map_json_tile_layer",
+                  "map_json_event",
+                  "tileset_data",
+                  "screenshot_supplementary",
+                  "other"
+                ],
+                "description": "What kind of source data backs this observation. screenshot_supplementary may only corroborate, never solely support, an objective observation - see screenshot_references and PATTERN_EXTRACTION_GUIDE.md's core rule against working from a screenshot or memory."
+              },
+              "file_path": {
+                "type": "string",
+                "description": "Path to the exact file this evidence was read from - normally the same as source.file_path, but may differ (e.g. Tilesets.json for tile_usage evidence)."
+              },
+              "coordinates": {
+                "type": ["array", "null"],
+                "items": { "type": "integer" },
+                "description": "Tile coordinate(s) this observation is anchored to, e.g. [8, 11], where applicable. Null for observations that are not tile-anchored (e.g. an event-count summary)."
+              },
+              "event_id": {
+                "type": ["string", "null"],
+                "description": "RPG Maker event ID this observation concerns, where applicable (e.g. 'EV002'). Per Home_Island_Event_Registry.md's own Validation Rules elsewhere in this project, an RPG Maker event ID is implementation detail, not a design ID - do not use this field in place of an Atlas EVT-* identifier when one exists."
+              },
+              "layer": {
+                "type": ["integer", "string", "null"],
+                "description": "Tile layer or data structure this observation was read from, where applicable."
+              }
+            }
+          },
+          "is_inferred": {
+            "type": "boolean",
+            "description": "True if this fact is not explicitly present in the source data and was instead inferred (e.g. a player spawn position with no incoming transfer to confirm it), per PATTERN_EXTRACTION_GUIDE.md's 'What Not to Infer'. An inferred observation is still objective in kind (it is a claim about the source data, not a design judgment) but carries weaker evidentiary weight than a confirmed one - never silently treat is_inferred: true the same as a confirmed fact downstream."
+          },
+          "inference_reasoning": {
+            "type": ["string", "null"],
+            "description": "Required in practice whenever is_inferred is true (not schema-enforced as a hard dependency, to keep the schema simple, but a record with is_inferred: true and this field null should be treated as incomplete): the specific reasoning behind the inference - a sibling-map convention, adjacency to a known tile, and so on. Null when is_inferred is false."
+          }
+        }
+      },
+      "description": "Directly verifiable facts about the source, kept structurally separate from subjective_observations per PATTERN_EXTRACTION_GUIDE.md's central discipline: 'Every objective observation must be reproducible: a second agent given the same map file should arrive at the same fact.'"
+    },
+    "subjective_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "grounded_in"],
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "The interpretive claim, stated in 'why' or 'feels' language tied explicitly to the objective observation(s) it is derived from, per PATTERN_EXTRACTION_GUIDE.md."
+          },
+          "grounded_in": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "description": "References (by category, coordinate, or a short pointer string) into this record's own objective_observations that this interpretation is derived from. A subjective observation with nothing here is ungrounded and should not be recorded until it is - per PATTERN_EXTRACTION_GUIDE.md's test: 'if a second agent, given the same map data, could disagree with the claim while agreeing on every objective fact, the claim is subjective and must be labeled as such,' which presupposes there are objective facts to agree on in the first place."
+          }
+        }
+      },
+      "description": "Interpretive judgments about why a layout works, kept structurally separate from objective_observations. Legitimate and necessary (per PATTERN_EXTRACTION_GUIDE.md, subjective observations are what a pattern's Composition Rules section ultimately depends on) but never presented as fact."
+    },
+    "screenshot_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "role"],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path or URL to a supplementary screenshot or render."
+          },
+          "caption": {
+            "type": ["string", "null"],
+            "description": "Short human-readable caption."
+          },
+          "role": {
+            "type": "string",
+            "enum": ["illustrative_only"],
+            "description": "Fixed at illustrative_only: a screenshot may accompany an observation record for human readability, but per PATTERN_EXTRACTION_GUIDE.md's core rule ('Work from the actual map data file... not from a screenshot'), it can never be the evidence field for an objective_observations entry. This is why the enum has exactly one value - there is no role that would let a screenshot substitute for map_json_tile_layer/map_json_event/tileset_data evidence."
+          }
+        }
+      },
+      "description": "Optional supplementary screenshots or engine-render images (e.g. the *-render.png files already produced by rpgmakerLSP build reports), never authoritative on their own."
+    },
+    "feeds": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "extraction_report": {
+          "type": ["string", "null"],
+          "description": "Path to the prose extraction report (per PATTERN_EXTRACTION_GUIDE.md's output format) this observation record supports or was derived alongside, if one exists. Null if this observation record has not yet been written up as a report."
+        },
+        "pattern_candidates": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "pattern_id values (existing or proposed) this observation record's findings are relevant to, per academy/curriculum.md's Level 4 ('Propose'). An empty array means no pattern-extraction use has been identified yet, not that none is possible."
+        },
+        "case_study": {
+          "type": ["string", "null"],
+          "description": "Path to an academy/reports/ case study (per academy/reports/README.md) this observation record was used in, if any."
+        }
+      },
+      "description": "How this observation record feeds downstream work - pattern extraction (studio/design-patterns/PATTERN_REVIEW_PROCESS.md) or an Atlas Academy case study (academy/reports/README.md). Optional and typically populated after the fact, once a downstream use actually exists - recording an observation does not require already knowing what it will be used for."
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Free-text notes that do not fit the structured fields above - open questions, caveats about data quality, or anything else worth flagging for whoever reads this record next."
+    }
+  }
+}
