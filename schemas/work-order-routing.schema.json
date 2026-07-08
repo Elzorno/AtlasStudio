@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/work-order-routing.schema.json",
+  "title": "AtlasStudio Work Order Routing Decision",
+  "description": "A single routing decision produced by the Work Order Router (studio/orchestration/work-order-router.md) for one work order request. Records classification, target repository, and safety state. This is an audit record, not a dispatch instruction: producing one does not itself create, move, or write any file in any repository.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "work_order_id",
+    "classification",
+    "target_repository",
+    "routing_status",
+    "rationale",
+    "created"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema the record was produced against."
+    },
+    "work_order_id": {
+      "type": "string",
+      "pattern": "^(WO|WP)-[0-9A-Za-z-]+$",
+      "description": "The work order or work package identifier this routing decision applies to."
+    },
+    "title": {
+      "type": "string",
+      "description": "Short title of the request being routed, for human readability."
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "canon",
+        "game_implementation",
+        "production_orchestration",
+        "cross_repository_bridge",
+        "ambiguous"
+      ],
+      "description": "Which of the five classification categories the router assigned, per the Classification Model in work-order-router.md."
+    },
+    "target_repository": {
+      "type": "string",
+      "enum": [
+        "TheLastSwordProtocol-Atlas",
+        "TheLastSwordProtocol-Game",
+        "AtlasStudio",
+        "none"
+      ],
+      "description": "The repository the router determined owns this work. 'none' is only valid when routing_status is blocked_ambiguous."
+    },
+    "target_path_hint": {
+      "type": "string",
+      "description": "A non-binding hint at where the work would land in the target repository, per the Target Repository / Path Mapping table. The router does not choose a sibling repository's internal paths - this field is advisory only for AtlasStudio-owned paths."
+    },
+    "routing_status": {
+      "type": "string",
+      "enum": [
+        "routed",
+        "pending_approval",
+        "blocked_ambiguous",
+        "rejected_authority_violation"
+      ],
+      "description": "routed: classification resolved and, if AtlasStudio-owned, safe to file. pending_approval: game_implementation awaiting explicit human approval before any direct write to TheLastSwordProtocol-Game. blocked_ambiguous: classification could not be resolved; no repository assigned. rejected_authority_violation: request attempted to route canon or game_implementation content directly into AtlasStudio and was refused."
+    },
+    "requires_explicit_approval": {
+      "type": "boolean",
+      "default": false,
+      "description": "True only when classification is game_implementation and the request proposes a direct write to TheLastSwordProtocol-Game rather than an AtlasStudio-side implementation contract."
+    },
+    "approved_by": {
+      "type": "string",
+      "description": "Who granted explicit approval, when requires_explicit_approval is true and routing_status has moved past pending_approval. Human identity only, not an agent name."
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date",
+      "description": "Date explicit approval was granted."
+    },
+    "signals_matched": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which rows of the Signals Used For Classification table matched, so the decision can be audited against work-order-router.md."
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Human-readable explanation of why this classification and target were chosen, or why the request is blocked_ambiguous."
+    },
+    "safety_flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "canon_leak_risk": {
+          "type": "boolean",
+          "description": "True if the request showed any canon signal but a non-Atlas target was considered before being corrected or rejected."
+        },
+        "cross_repo_write_attempted": {
+          "type": "boolean",
+          "description": "True if the request, as written, asked the router or an agent to write directly into a sibling repository outside the approved game_implementation path."
+        }
+      }
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this routing record was produced."
+    },
+    "decided_by": {
+      "type": "string",
+      "description": "Who or what produced this decision, e.g. tools/atlas_router/router.py or a human override, per the Human Correction Logging step in work-order-router.md."
+    }
+  }
+}
