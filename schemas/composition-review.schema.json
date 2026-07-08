@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/composition-review.schema.json",
+  "title": "Atlas Academy Composition Review",
+  "description": "A single, structured composition-only scoring result for one map, per academy/composition-validator.md and academy/scoring-model.md (WO-2008). Scores ten evaluation areas independently of any full map grade. This record is evidence a future schemas/academy-map-grade.schema.json record's composition category should cite; it does not itself carry outcome or remediation-tag authority, and it does not substitute for schemas/academy-map-grade.schema.json's broader project_fit or readability categories - see academy/composition-validator.md's Ten Evaluation Areas table for the exact non-overlap boundary on each new area.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "review_id",
+    "target",
+    "reviewer",
+    "created",
+    "area_scores",
+    "overall_composition_summary"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema the record was produced against."
+    },
+    "review_id": {
+      "type": "string",
+      "pattern": "^CMP-[A-Za-z0-9]+(-[A-Za-z0-9]+)*-[0-9]{3,}$",
+      "description": "Stable identifier for this composition review, e.g. CMP-ITEMSHOP-001. A map reviewed more than once gets a new review_id each time - reviews are never overwritten in place, matching schemas/academy-map-grade.schema.json's grade_id convention."
+    },
+    "target": {
+      "type": "object",
+      "required": ["repo", "file_path", "captured_at"],
+      "additionalProperties": false,
+      "properties": {
+        "repo": {
+          "type": "string",
+          "enum": ["TheLastSwordProtocol-Game", "TheLastSwordProtocol-Atlas", "AtlasStudio", "rpgmakerLSP", "other"],
+          "description": "Matches schemas/academy-observation.schema.json's source.repo enum."
+        },
+        "file_path": { "type": "string" },
+        "map_name": { "type": ["string", "null"] },
+        "ownership_state_at_capture": {
+          "type": ["string", "null"],
+          "enum": ["generated", "agent-drafted", "human-edited", "hand-authored", "locked", null],
+          "description": "Matches schemas/academy-observation.schema.json's identical field."
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date",
+          "description": "Date this target was reviewed."
+        }
+      }
+    },
+    "reviewer": {
+      "type": "string",
+      "description": "The agent or human who produced this review, matching the observer/owner/grader convention used across every other Academy record."
+    },
+    "created": {
+      "type": "string",
+      "format": "date"
+    },
+    "governing_pattern": {
+      "type": ["string", "null"],
+      "description": "pattern_id of the Design Pattern this map's composition is checked against for the Project Identity area, if one exists (e.g. PAT-INTERIOR-SHOP). Null if no governing pattern is cited."
+    },
+    "area_scores": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["area", "score", "confidence", "rationale", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "area": {
+            "type": "string",
+            "enum": [
+              "visual_hierarchy",
+              "traffic_flow",
+              "negative_space",
+              "furniture_grouping",
+              "room_zoning",
+              "environmental_storytelling",
+              "landmarks",
+              "navigation",
+              "atmosphere",
+              "project_identity"
+            ],
+            "description": "The ten evaluation areas named in work-orders/WO-2008-composition-validator.md, reconciled against existing Academy documents in academy/composition-validator.md's Ten Evaluation Areas table. Six correspond directly to an academy/composition-analysis.md topic; four (landmarks, navigation, atmosphere, project_identity) are new and deliberately scoped narrower than any similarly-named schemas/academy-map-grade.schema.json category to avoid duplicating that category's authority."
+          },
+          "score": {
+            "type": ["integer", "null"],
+            "minimum": 1,
+            "maximum": 5,
+            "description": "1 (actively undermines the map) to 5 (exemplary), per academy/scoring-model.md's scale. Null only when confidence is insufficient_evidence - never invented in the absence of grounding evidence."
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low", "insufficient_evidence"],
+            "description": "Matches schemas/academy-map-grade.schema.json's identical field and academy/scoring-model.md's confidence discipline."
+          },
+          "rationale": {
+            "type": "string",
+            "description": "The specific, falsifiable reason behind this score, per academy/curriculum.md Level 3's diagnostic standard."
+          },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Paths to the academy/composition-rubric.md verdict, observation record, metrics record, Design Pattern, or Implementation Packet this score traces to. For the six areas with a direct academy/composition-analysis.md topic match, the corresponding academy/composition-rubric.md Holds/Gap/N/A verdict must be cited here, per academy/scoring-model.md's Evidence Discipline."
+          }
+        }
+      }
+    },
+    "overall_composition_summary": {
+      "type": "string",
+      "description": "A short synthesis across all ten area scores explaining why the composition succeeds or fails, per work-orders/WO-2008's Success Criteria. Not an eleventh score. This is the field a future schemas/academy-map-grade.schema.json record's composition category should cite directly rather than re-deriving a verdict from raw evidence a second time."
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Free-text notes not captured by the structured fields above."
+    }
+  }
+}
