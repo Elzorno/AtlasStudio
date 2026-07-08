@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/design-pattern.schema.json",
+  "title": "AtlasStudio Design Pattern",
+  "description": "Machine-checkable representation of a Design Pattern Library document under studio/design-patterns/, extended for the inheritance model in studio/design-patterns/PATTERN_INHERITANCE_MODEL.md and studio/design-patterns/PATTERN_RESOLUTION_RULES.md. This schema formalizes the frontmatter fields a pattern's .pattern.md file carries; it does not replace the prose Layout/Composition/Passability/Event Rules sections required by studio/design-patterns/PATTERN_SCHEMA.md, which remain the authoritative full text. No existing pattern file's frontmatter is required to conform to this schema retroactively - it governs patterns authored under the inheritance model going forward. Validating an instance against this schema does not by itself resolve inheritance; see PATTERN_RESOLUTION_RULES.md for the resolution procedure a future Pattern Validator would run using these fields.",
+  "type": "object",
+  "required": [
+    "pattern_id",
+    "name",
+    "version",
+    "parent_pattern",
+    "category",
+    "status",
+    "confidence",
+    "evidence_count",
+    "observed_sources",
+    "exceptions",
+    "applicable_conditions",
+    "inherited_rules",
+    "local_rules",
+    "references"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "pattern_id": {
+      "type": "string",
+      "pattern": "^PAT-[A-Z0-9]+(-[A-Z0-9]+)*$",
+      "description": "Stable, uppercase identifier for this pattern, e.g. PAT-INTERIOR-SHOP. Never reused for a different pattern, even after deprecation, per PATTERN_SCHEMA.md."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable pattern name, matching the name an 'Apply:' citation uses per PATTERN_APPLICATION_GUIDE.md."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "MAJOR.MINOR version. See PATTERN_REVIEW_PROCESS.md for what triggers each kind of bump."
+    },
+    "parent_pattern": {
+      "type": ["string", "null"],
+      "pattern": "^PAT-[A-Z0-9]+(-[A-Z0-9]+)*$",
+      "description": "The pattern_id of this pattern's single parent in the hierarchy defined by PATTERN_INHERITANCE_MODEL.md, or null if this pattern is currently a root for its branch (either a top-level category with no materialized environment-tier parent yet, or an environment-tier pattern itself). Single-inheritance only: a pattern has at most one parent. Absence of a parent does not mean the pattern is orphaned - see PATTERN_INHERITANCE_MODEL.md, 'Materialized vs. Virtual Nodes'."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["interior", "town", "overworld", "dungeon"],
+      "description": "The environment tier this pattern belongs to, per PATTERN_INHERITANCE_MODEL.md. Adding a new value here is a structural change to the hierarchy and should go through a dedicated work order, per that document's 'Future Extensibility' section - it is not a routine addition the way a new category or specialization pattern is."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "accepted", "deprecated"],
+      "description": "Lifecycle status per PATTERN_REVIEW_PROCESS.md."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "experimental"],
+      "description": "Confidence level per PATTERN_CONFIDENCE_MODEL.md. Reported per pattern, never merged across a resolved inheritance chain - see PATTERN_RESOLUTION_RULES.md, 'Confidence Interactions'."
+    },
+    "evidence_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number of genuinely independent corroborating sources behind this pattern's confidence claim, per PATTERN_CONFIDENCE_MODEL.md's bars. This is not simply the length of observed_sources: two floors of one building, or two zones of one shared map, count as one independent source, not two - see PATTERN_INHERITANCE_MODEL.md's discussion of interiors/chief-house.pattern.md and interiors/weapon-shop.pattern.md / interiors/armor-shop.pattern.md for worked cases where evidence_count is lower than len(observed_sources)."
+    },
+    "observed_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Every source this pattern cites as evidence - official sample map paths, accepted AtlasStudio build reports, or (per PATTERN_CONFIDENCE_MODEL.md's Low tier) a recorded project-preference decision. May be longer than evidence_count when sources are not mutually independent."
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rule", "relationship", "source_pattern", "reason"],
+        "properties": {
+          "rule": {
+            "type": "string",
+            "description": "The exact rule being deviated from, named or closely paraphrased from its source pattern - not merely a description of the difference in outcome, per PATTERN_RESOLUTION_RULES.md's 'Overrides'."
+          },
+          "relationship": {
+            "type": "string",
+            "enum": ["vertical_override", "cross_branch_clarification"],
+            "description": "Which of PATTERN_INHERITANCE_MODEL.md's two override relationship types this is. vertical_override: source_pattern is this pattern's ancestor. cross_branch_clarification: source_pattern is not an ancestor (e.g. a sibling), and this pattern is stating that the named rule does not extend to its own domain."
+          },
+          "source_pattern": {
+            "type": "string",
+            "pattern": "^PAT-[A-Z0-9]+(-[A-Z0-9]+)*$",
+            "description": "pattern_id of the pattern the deviated rule originally comes from."
+          },
+          "reason": {
+            "type": "string",
+            "description": "Why this pattern deviates from the named rule."
+          }
+        }
+      },
+      "description": "Explicit, named deviations from another pattern's rule, of either relationship type. An empty array means this pattern introduces no deviations from any other pattern. Every entry here is what a future Pattern Validator checks against the named source_pattern's own local_rules, per PATTERN_APPLICATION_GUIDE.md's 'Future Integration'."
+    },
+    "applicable_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The gating preconditions that must hold for this pattern to apply at all, per its Required Conditions prose section (PATTERN_SCHEMA.md). A specialization's applicable_conditions must satisfy every condition its parent states that it does not explicitly narrow further - it may tighten, never loosen, an inherited condition (PATTERN_INHERITANCE_MODEL.md, 'Specialization')."
+    },
+    "inherited_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Short labels identifying which of this pattern's parent's rules apply here unchanged (e.g. 'layout.threshold_construction', 'passability.region_free'). These are lightweight references into the parent pattern's own prose sections, not restated rule text - the full rule text lives once, in the ancestor pattern that states it, per PATTERN_INHERITANCE_MODEL.md's 'Shared Behavior'. Empty for a pattern with no parent."
+    },
+    "local_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Short labels identifying the rules this pattern states itself - new rules its parent does not have, or rules listed in exceptions as overrides/clarifications of a parent or sibling rule. A specialization with no local_rules entries collapses onto its parent's guidance entirely, per PATTERN_INHERITANCE_MODEL.md's 'The Shop / Item Shop Double Duty'."
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Paths to every document this pattern depends on or was cross-checked against, matching the prose References section required by PATTERN_SCHEMA.md."
+    },
+    "applicable_genres": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Which project genres this pattern is intended for, per PATTERN_SCHEMA.md. Optional here since it is not directly part of the inheritance/resolution mechanism, but retained for continuity with existing pattern frontmatter."
+    },
+    "source_report": {
+      "type": "string",
+      "description": "Path to the extraction report or corpus review this pattern's evidence was drawn from, per PATTERN_EXTRACTION_GUIDE.md's citation discipline. Optional here; observed_sources is the field this schema's inheritance-aware tooling actually consumes."
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this pattern was first authored."
+    },
+    "last_reviewed": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this pattern's frontmatter was last confirmed accurate, per PATTERN_REVIEW_PROCESS.md."
+    }
+  }
+}
