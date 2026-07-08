@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/academy-reference-source.schema.json",
+  "title": "Atlas Academy Reference Source",
+  "description": "A governed reference source record for Atlas Academy. This schema classifies source provenance, approval status, confidence contribution, licensing notes, citation rules, allowed uses, and whether the source may influence implementation contracts.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "reference_id",
+    "title",
+    "source_class",
+    "approval_status",
+    "confidence_contribution",
+    "provenance",
+    "scope",
+    "allowed_uses",
+    "licensing",
+    "citation",
+    "created"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema the record was produced against."
+    },
+    "reference_id": {
+      "type": "string",
+      "pattern": "^REF-[A-Za-z0-9]+(-[A-Za-z0-9]+)*-[0-9]{3,}$",
+      "description": "Stable identifier for this reference source, e.g. REF-RMMZ-ITEMSHOP-001."
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable source title or map name."
+    },
+    "source_class": {
+      "type": "string",
+      "enum": [
+        "official_rpg_maker_sample",
+        "approved_project_map",
+        "rejected_project_map",
+        "design_reference",
+        "comparative_jrpg_reference"
+      ],
+      "description": "Governed Academy source class."
+    },
+    "approval_status": {
+      "type": "string",
+      "enum": ["candidate", "approved", "gold_standard", "diagnostic_only", "deprecated", "rejected"],
+      "description": "Academy approval status for this reference source."
+    },
+    "confidence_contribution": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "none"],
+      "description": "How much positive confidence this source may contribute inside its declared scope."
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["origin", "source_locator", "captured_at"],
+      "additionalProperties": false,
+      "properties": {
+        "origin": {
+          "type": "string",
+          "enum": ["TheLastSwordProtocol-Game", "TheLastSwordProtocol-Atlas", "AtlasStudio", "rpgmakerLSP", "external", "other"],
+          "description": "Where this source comes from."
+        },
+        "source_locator": {
+          "type": "string",
+          "description": "Path, URL, title, or other stable locator."
+        },
+        "file_path": {
+          "type": ["string", "null"],
+          "description": "Repository-relative file path, if applicable."
+        },
+        "map_id": {
+          "type": ["string", "integer", "null"],
+          "description": "Map ID, if applicable."
+        },
+        "map_name": {
+          "type": ["string", "null"],
+          "description": "Map name, if applicable."
+        },
+        "tileset_reference": {
+          "type": ["string", "null"],
+          "description": "Tileset family or ID, if applicable."
+        },
+        "version_ref": {
+          "type": ["string", "null"],
+          "description": "Commit, tag, release, source version, or date anchoring the source."
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date",
+          "description": "Date this source was captured or reviewed."
+        },
+        "ownership_state_at_capture": {
+          "type": ["string", "null"],
+          "enum": ["generated", "agent-drafted", "human-edited", "hand-authored", "locked", null],
+          "description": "Game-repo map ownership state at capture, if applicable."
+        }
+      }
+    },
+    "scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["label", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Short scope label, e.g. interior_shop_counter_readability."
+          },
+          "description": {
+            "type": "string",
+            "description": "What this source may be used to reason about."
+          }
+        }
+      },
+      "description": "Specific design, implementation, or diagnostic scopes this reference supports."
+    },
+    "allowed_uses": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "observation",
+          "metrics",
+          "composition_analysis",
+          "pattern_extraction",
+          "implementation_contract",
+          "grading",
+          "diagnostic_case_study",
+          "comparative_context",
+          "historical_context"
+        ]
+      },
+      "description": "What this source may influence."
+    },
+    "licensing": {
+      "type": "object",
+      "required": ["status", "notes", "asset_copy_allowed"],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["first_party_sample", "project_owned", "external_citation_only", "unknown", "restricted"],
+          "description": "Licensing posture for Academy use."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Plain-language licensing or use notes."
+        },
+        "asset_copy_allowed": {
+          "type": "boolean",
+          "description": "Whether source assets/screenshots/map files may be copied into AtlasStudio. Default posture should be false unless explicitly cleared."
+        }
+      }
+    },
+    "citation": {
+      "type": "object",
+      "required": ["required_citation", "citation_granularity"],
+      "additionalProperties": false,
+      "properties": {
+        "required_citation": {
+          "type": "string",
+          "description": "Required citation text or citation format for this source."
+        },
+        "citation_granularity": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["file_path", "url", "commit_or_version", "map_id", "coordinates", "event_id", "layer", "observation_id", "acceptance_record"]
+          },
+          "description": "Granularity required when citing this source."
+        }
+      }
+    },
+    "implementation_contract_influence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "may_influence": {
+          "type": "boolean",
+          "description": "Whether this source may influence implementation contracts."
+        },
+        "influence_type": {
+          "type": ["string", "null"],
+          "enum": ["positive_guidance", "warning_or_antipattern", "comparative_context", "none", null],
+          "description": "How this source may influence a contract."
+        },
+        "conditions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Conditions that must be satisfied before contract influence."
+        }
+      }
+    },
+    "evidence_links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "observation_records": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Observation records related to this source."
+        },
+        "metric_records": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Metric records related to this source."
+        },
+        "extraction_reports": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Extraction or analysis reports related to this source."
+        },
+        "acceptance_records": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Playtest or acceptance records, especially for project maps."
+        },
+        "pattern_documents": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Pattern documents this source supports or relates to."
+        }
+      }
+    },
+    "caveats": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Known limitations, scope restrictions, or warnings."
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this reference source record was created."
+    },
+    "last_reviewed": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date this source record was last reviewed."
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Free-text notes."
+    }
+  }
+}

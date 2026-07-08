@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/academy-map-metrics.schema.json",
+  "title": "Atlas Academy Map Metrics",
+  "description": "A structured record of reproducible map metrics for Atlas Academy. This schema defines the output shape for a future analyzer; it does not implement analysis code, grade maps, or assign acceptance outcomes.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "metric_record_id",
+    "source",
+    "generated_by",
+    "created",
+    "metric_groups",
+    "metrics"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema the record was produced against."
+    },
+    "metric_record_id": {
+      "type": "string",
+      "pattern": "^MET-[A-Za-z0-9]+(-[A-Za-z0-9]+)*-[0-9]{3,}$",
+      "description": "Stable identifier for this metric record, e.g. MET-ITEMSHOP-001."
+    },
+    "source": {
+      "type": "object",
+      "required": ["repo", "file_path", "source_class", "captured_at"],
+      "additionalProperties": false,
+      "properties": {
+        "repo": {
+          "type": "string",
+          "enum": [
+            "TheLastSwordProtocol-Game",
+            "TheLastSwordProtocol-Atlas",
+            "AtlasStudio",
+            "rpgmakerLSP",
+            "other"
+          ],
+          "description": "Repository containing the measured source."
+        },
+        "file_path": {
+          "type": "string",
+          "description": "Path to the source map or observation file, relative to the named repo."
+        },
+        "map_name": {
+          "type": ["string", "null"],
+          "description": "Map display/tree name, if applicable."
+        },
+        "tileset_reference": {
+          "type": ["string", "null"],
+          "description": "Tileset family or ID, if applicable."
+        },
+        "source_class": {
+          "type": "string",
+          "enum": ["official_sample", "accepted_build", "rejected_build", "other"],
+          "description": "Academy source class for the measured map."
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the source was read for metric generation."
+        },
+        "ownership_state_at_capture": {
+          "type": ["string", "null"],
+          "enum": ["generated", "agent-drafted", "human-edited", "hand-authored", "locked", null],
+          "description": "Game-repo ownership state at capture time, if applicable."
+        },
+        "provenance_ref": {
+          "type": ["string", "null"],
+          "description": "Commit, tag, or date anchoring the source version."
+        }
+      }
+    },
+    "generated_by": {
+      "type": "string",
+      "description": "Human, agent, or future tool that generated this metric record."
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this metric record was produced."
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "observation_record": {
+          "type": ["string", "null"],
+          "description": "Path or ID of the Academy observation record this metric record depends on, if any."
+        },
+        "implementation_contract": {
+          "type": ["string", "null"],
+          "description": "Path to an implementation contract, if this metric record is tied to a project build."
+        },
+        "playtest_or_acceptance_record": {
+          "type": ["string", "null"],
+          "description": "Path to the playtest or acceptance record defining accepted/rejected/deferred status, if any."
+        }
+      }
+    },
+    "metric_groups": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "geometry",
+          "traversal",
+          "events_interaction",
+          "composition_inputs",
+          "rpg_maker_production_health",
+          "other"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Metric groups represented in this record."
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "metric_id",
+          "name",
+          "group",
+          "value",
+          "unit",
+          "method",
+          "evidence",
+          "confidence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "metric_id": {
+            "type": "string",
+            "pattern": "^metric\\.[a-z0-9_]+$",
+            "description": "Stable metric identifier, e.g. metric.walkable_percentage."
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable metric name."
+          },
+          "group": {
+            "type": "string",
+            "enum": [
+              "geometry",
+              "traversal",
+              "events_interaction",
+              "composition_inputs",
+              "rpg_maker_production_health",
+              "other"
+            ],
+            "description": "Metric group."
+          },
+          "value": {
+            "description": "Measured value. Shape depends on unit and metric method."
+          },
+          "unit": {
+            "type": "string",
+            "enum": ["tiles", "ratio", "percent", "count", "boolean", "enum", "pixels", "other"],
+            "description": "Explicit unit for the value."
+          },
+          "method": {
+            "type": "object",
+            "required": ["method_type", "description", "is_heuristic"],
+            "additionalProperties": false,
+            "properties": {
+              "method_type": {
+                "type": "string",
+                "enum": ["direct_count", "derived_ratio", "pathfinding", "classification", "heuristic", "manual_entry", "other"],
+                "description": "How this metric was produced."
+              },
+              "description": {
+                "type": "string",
+                "description": "Plain-language method description sufficient for a second agent to reproduce the metric."
+              },
+              "is_heuristic": {
+                "type": "boolean",
+                "description": "True if the metric depends on a heuristic classification or judgment rather than direct source data."
+              },
+              "inputs": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Input files, observation IDs, or source fields used by this method."
+              }
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["evidence_type", "file_path"],
+              "additionalProperties": false,
+              "properties": {
+                "evidence_type": {
+                  "type": "string",
+                  "enum": [
+                    "map_json_tile_layer",
+                    "map_json_event",
+                    "tileset_data",
+                    "academy_observation",
+                    "implementation_contract",
+                    "playtest_record",
+                    "screenshot_supplementary",
+                    "other"
+                  ],
+                  "description": "Source data backing this metric. Screenshots are supplementary only."
+                },
+                "file_path": {
+                  "type": "string",
+                  "description": "Path to the file used as evidence."
+                },
+                "coordinates": {
+                  "type": ["array", "null"],
+                  "items": { "type": "integer" },
+                  "description": "Tile coordinate(s), when applicable."
+                },
+                "event_id": {
+                  "type": ["string", "null"],
+                  "description": "RPG Maker event ID, when applicable."
+                },
+                "layer": {
+                  "type": ["integer", "string", "null"],
+                  "description": "Tile layer or data structure, when applicable."
+                },
+                "observation_ref": {
+                  "type": ["string", "null"],
+                  "description": "Observation entry or observation record reference, when applicable."
+                }
+              }
+            },
+            "description": "Evidence used to compute or support this metric."
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low"],
+            "description": "Confidence in the metric method, not a map-quality grade."
+          },
+          "caveats": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Known limitations, especially for heuristic metrics."
+          }
+        }
+      },
+      "description": "Metric entries included in this record."
+    },
+    "downstream_uses": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "composition_analysis": {
+          "type": ["string", "null"],
+          "description": "Path to composition analysis using this metric record, if any."
+        },
+        "map_grade": {
+          "type": ["string", "null"],
+          "description": "Path to map grade record using this metric record, if any."
+        },
+        "case_study": {
+          "type": ["string", "null"],
+          "description": "Path to Academy case study using this metric record, if any."
+        },
+        "pattern_candidates": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Pattern IDs this metric record may inform."
+        }
+      }
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Free-text notes or open questions."
+    }
+  }
+}
