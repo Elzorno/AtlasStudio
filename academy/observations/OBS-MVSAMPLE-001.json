@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.1.0",
+  "observation_id": "OBS-MVSAMPLE-001",
+  "source": {
+    "repo": "other",
+    "file_path": "references/rpg-maker-mz-samples/official sample project/MV_SampleMap_en/data/Map001.json",
+    "map_name": "World (untitled displayName)",
+    "tileset_reference": "tilesetId 7 'Overworld_MV' (World_A1/A2/B/C), confirmed against the sample's own data/Tilesets.json - a different tileset family from this project's 'Outside' (tilesetId 2)",
+    "source_class": "official_sample",
+    "captured_at": "2026-07-09",
+    "ownership_state_at_capture": null,
+    "provenance_ref": null
+  },
+  "observer": "claude-code",
+  "created": "2026-07-09",
+  "objective_observations": [
+    {
+      "category": "dimensions",
+      "description": "The sample world map is 140x140 tiles, using tilesetId 7 (World_A1/A2/B/C) - a dedicated overworld tileset family distinct from and much richer than the 'Outside' tileset (id 2) this project's own Map027 previously used.",
+      "value": {"width": 140, "height": 140, "tilesetId": 7},
+      "evidence": {"evidence_type": "map_json_tile_layer", "file_path": "data/Map001.json", "coordinates": null, "layer": null},
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "Layer 0 (base ground) is overwhelmingly two flat fills: 68.7% A1 kind 0 (deep ocean water) and 25.2% A2 kind 0 (plain grass), plus small amounts of A2 kind 16, 24, 8 (under 4% each). Layer 0 alone would look nearly as flat as this project's rejected first Map027 pass.",
+      "value": {"A1_kind0_pct": 68.7, "A2_kind0_pct": 25.2},
+      "evidence": {"evidence_type": "map_json_tile_layer", "file_path": "data/Map001.json", "coordinates": null, "layer": 0},
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "All visual biome richness - mountains, forest, snow, coastline - is carried on layer 1 (the upper/overlay layer), not layer 0. Layer 1's nonzero tiles are dominated by A1 kind 1 (shallow coastal water, 2204 cells - the single largest layer-1 category), A2 kind 7 'rock-mtn' (1300 cells), A2 kind 4 'forest' (784), A2 kind 1 'grass2' (617), A2 kind 6 'green-mtn' (554), plus smaller amounts of A2 kinds 15 (gold-cliff), 17, 31 (frost-mtn), 23 (volcano-mtn), 22 (granite-mtn), 25 (snow-mtn), 29, 14, 28, 20, 12.",
+      "value": {"top_layer1_kinds": [["A1",1,2204],["A2",7,1300],["A2",4,784],["A2",1,617],["A2",6,554]]},
+      "evidence": {"evidence_type": "map_json_tile_layer", "file_path": "data/Map001.json", "coordinates": null, "layer": 1},
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "Coastlines are not a hard edge between land and deep water: shallow water (A1 kind 1, layer 1) forms the single largest overlay category, more common than any individual mountain type. This implies coastlines are built as a graduated water-depth transition (deep water base -> shallow water overlay -> land), not a direct land/deep-water boundary.",
+      "value": {"shallow_water_layer1_cells": 2204},
+      "evidence": {"evidence_type": "map_json_tile_layer", "file_path": "data/Map001.json", "coordinates": null, "layer": 1},
+      "is_inferred": true,
+      "inference_reasoning": "Cell counts alone don't prove adjacency ordering; this is inferred from the shallow-water category's sheer size relative to deep water's coastline perimeter, consistent with standard RPG Maker world-map convention, not directly measured tile-by-tile in this pass."
+    },
+    {
+      "category": "tile_usage",
+      "description": "Mountain ranges mix multiple distinct A2 mountain kinds rather than using one uniform kind: rock-mtn (7, brown craggy) dominates at 1300 cells, but green-mtn (6, grassy foothill), gold-cliff (15), frost-mtn (31), volcano-mtn (23), granite-mtn (22), and snow-mtn (25) all appear in the same map, each in the hundreds-to-tens of cells. This reads as regional mountain-type variation (a snowy range using frost/snow kinds, a volcanic area using volcano-mtn, ordinary ranges using rock/granite) rather than one mountain texture reused everywhere.",
+      "value": {"distinct_mountain_kinds_used": 6},
+      "evidence": {"evidence_type": "map_json_tile_layer", "file_path": "data/Map001.json", "coordinates": null, "layer": 1},
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "World_A2.png (this project's own copy, confirmed structurally identical in dimensions to the sample's World_A2_MV_placement.png) has two visually and functionally distinct classes of 'mountain' kind: green-mtn (kind 6, rounded grassy hill silhouette) is passable per Tilesets.json flags, while rock-mtn (kind 7), gold-cliff (15), volcano-mtn (23), snow-pine-mtn (27), and frost-mtn (31) are impassable. This lets a single mountain range include a walkable grassy foothill fringe around an impassable rocky/snowy core, rather than one uniform impassable block.",
+      "value": {"passable_mountain_kind": 6, "impassable_mountain_kinds": [7, 15, 23, 27, 31]},
+      "evidence": {"evidence_type": "tileset_data", "file_path": "data/Tilesets.json", "coordinates": null, "layer": null},
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "World_A2 kind 4 (deciduous forest canopy) and kind 5 (pine forest canopy) are both passable per Tilesets.json flags, unlike this project's earlier assumption that forest ground itself should block movement. This matches the reference poster's own 'Design Notes for Codex/Claude' panel ('Forest density: 70-80% passable'): forest ground is walkable texture, and only sparse individual tree object stamps (not the ground fill) would need to block movement for local variety.",
+      "value": {"forest_kinds_passable": [4, 5]},
+      "evidence": {"evidence_type": "tileset_data", "file_path": "data/Tilesets.json", "coordinates": null, "layer": null},
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "World_A1 kind 4 ('toxic-swamp', a distinct purple textured autotile) is passable per Tilesets.json flags - a purpose-built marsh/wetland ground type this project's earlier attempt lacked (it substituted an unrelated mossy-green A2 kind from the 'Outside' tileset, which a direct crop inspection showed did not read as swamp/wetland).",
+      "value": {"marsh_candidate_kind": 4, "sheet": "World_A1"},
+      "evidence": {"evidence_type": "tileset_data", "file_path": "data/Tilesets.json", "coordinates": null, "layer": null},
+      "is_inferred": false
+    },
+    {
+      "category": "structural_object",
+      "description": "World_B.png (this project's own copy) contains large multi-tile stamped landmarks matching the reference poster's own legend categories directly: castle/city stamps (approx. ids 43-135), snow and desert village stamps (ids 8-31), cave/dungeon entrance stamps (ids 32-39), single-tile mountain/volcano decorative stamps distinct from the ground autotile (ids 159, 169, 175, 184-185, 191, 207), and tower stamps (ids 160-167). This is the asset set the poster's 'Major Town/City,' 'Village/Settlement,' 'Dungeon/Cave,' and similar icons could be built from directly, rather than needing new art.",
+      "value": {"sheet": "World_B", "categories_found": ["castle", "village", "cave_entrance", "mountain_stamp", "tower"]},
+      "evidence": {"evidence_type": "tileset_data", "file_path": "img/tilesets/World_B.png", "coordinates": null, "layer": null},
+      "is_inferred": false
+    }
+  ],
+  "subjective_observations": [
+    {
+      "description": "The single biggest technique gap between this project's rejected Map027 pass and this official sample is the layering strategy, not tile choice alone: painting mountains/forest/coastline as layer-0 ground fills (as the rejected pass did) produces harsh, blocky single-color regions, while the sample's layer-1 overlay approach - a plain base plus alpha-blended biome overlays on top - is what produces the graduated, natural-reading transitions in professional RPG Maker world maps.",
+      "grounded_in": ["tile_usage: layer0 flat fills", "tile_usage: layer1 biome variety"]
+    },
+    {
+      "description": "The rejected pass's flat black-void 'mountain' was a doubly wrong choice: not only does this tileset (World_A2) have real mountain autotiles the 'Outside' tileset lacked, but the sample's own construction shows mountains should be a layer-1 overlay with a passable grassy fringe, not a single flat impassable block on layer 0 at all.",
+      "grounded_in": ["tile_usage: mountain kind variety", "tile_usage: passable vs impassable mountain kinds"]
+    }
+  ],
+  "screenshot_references": [],
+  "feeds": {
+    "extraction_report": null,
+    "pattern_candidates": [],
+    "case_study": null
+  },
+  "notes": "Produced at the user's direction to have Academy study the official sample map and apply its construction technique to Map027, after Map027's second attempt (Outside tileset, flat single-layer biome fills) was rejected as 'not even close to representing the reference map.' Read-only inspection of the sample project's Map001.json and this project's own (already-present, previously unused) World_A1/A2/B/C.png assets and Tilesets.json flags. No file was modified to produce this record."
+}
