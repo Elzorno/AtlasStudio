@@ -12,6 +12,7 @@ Examples include:
 - Engine documentation
 - Tileset references
 - Style guides
+- Overworld reference images
 
 ## Rules
 
@@ -21,3 +22,9 @@ Examples include:
 - They must not be copied directly into production without an approved work order.
 
 Atlas may analyze these resources to learn implementation patterns, quality standards, and engine conventions.
+
+## Current Reference Images
+
+| File | Use | Notes |
+|---|---|---|
+| `a_detailed_illustrated_game_design_map_poster_wo.png` | Home Island overworld composition reference for `IMP-HOM-024` | Reference-only image used alongside Atlas canon; not direct RPG Maker map data |
