@@ -1,0 +1,32 @@
+{
+  "target": "../TheLastSwordProtocol-Game/data/Map027.json",
+  "passed": false,
+  "findings": [
+    {
+      "code": "overworld_too_small",
+      "severity": "error",
+      "message": "Production overworld candidate is below the compiler foundation's minimum review size.",
+      "evidence": {
+        "width": 34,
+        "height": 30,
+        "minimum": "64x48"
+      }
+    },
+    {
+      "code": "missing_intermediate_model_provenance",
+      "severity": "error",
+      "message": "RPG Maker map does not cite an intermediate terrain model.",
+      "evidence": {
+        "note": "WO-0024 Home Island overworld foundation. Canonical compact island hub replacing direct Ashford boundary jumps to prototype destination maps. Reference image: AtlasStudio/references/a_detailed_illustrated_game_design_map_poster_wo.png. Ashf"
+      }
+    },
+    {
+      "code": "known_negative_example",
+      "severity": "error",
+      "message": "Map027 foundation is explicitly retained as a negative example for WO-0025.",
+      "evidence": {
+        "note": "WO-0024 Home Island overworld foundation. Canonical compact island hub replacing direct Ashford boundary jumps to prototype destination maps. Reference image: AtlasStudio/references/a_detailed_illustrated_game_design_map_poster_wo.png. Ashf"
+      }
+    }
+  ]
+}

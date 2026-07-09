@@ -1,0 +1,60 @@
+{
+  "region_id": "REG-HOM-001",
+  "map_name": "Home Island",
+  "size": {
+    "width": 96,
+    "height": 72
+  },
+  "shape": {
+    "type": "organic_island",
+    "style": "compact",
+    "coastline": "irregular",
+    "tone": "warm_start_mysterious_center_north"
+  },
+  "canonical_locations": {
+    "ashford": {
+      "label": "Ashford",
+      "placement": "southwest",
+      "required": true
+    },
+    "rustshore": {
+      "label": "Rustshore Docks",
+      "placement": "south",
+      "required": true
+    },
+    "fogfen": {
+      "label": "Fogfen Marsh",
+      "placement": "east",
+      "required": true
+    },
+    "glassfield": {
+      "label": "Glassfield Ruins",
+      "placement": "center",
+      "required": true
+    },
+    "skyreach": {
+      "label": "Skyreach Hill",
+      "placement": "north",
+      "required": true,
+      "gate": "J1_Skyreach_AccessOpen"
+    },
+    "hidden_cave": {
+      "label": "Hidden Cave",
+      "placement": "north",
+      "required": true,
+      "gate": "J1_Tremor_Event"
+    },
+    "sealed_node": {
+      "label": "Sealed Node",
+      "placement": "beneath_glassfield",
+      "required": true,
+      "gate": "J1_Sword_Obtained"
+    }
+  },
+  "required_routes": [
+    ["ashford", "glassfield", "rustshore"],
+    ["ashford", "glassfield", "skyreach"],
+    ["glassfield", "sealed_node"],
+    ["glassfield", "fogfen"]
+  ]
+}

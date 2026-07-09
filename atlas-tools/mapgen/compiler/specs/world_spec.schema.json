@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1.0",
+  "description": "Atlas Map Compiler world specification shape. This is documentation-level schema, validated by spec_parser.py without external dependencies.",
+  "required": ["region_id", "map_name", "size", "shape", "canonical_locations"],
+  "size": {
+    "required": ["width", "height"],
+    "minimum_width": 24,
+    "minimum_height": 18
+  },
+  "canonical_locations": {
+    "required_keys": [
+      "ashford",
+      "rustshore",
+      "fogfen",
+      "glassfield",
+      "skyreach",
+      "hidden_cave",
+      "sealed_node"
+    ],
+    "location_required_fields": ["placement"],
+    "optional_fields": ["label", "required", "gate"]
+  },
+  "notes": [
+    "This schema is intentionally simple so the compiler remains stdlib-only.",
+    "World specs describe design intent, not RPG Maker tile IDs."
+  ]
+}
