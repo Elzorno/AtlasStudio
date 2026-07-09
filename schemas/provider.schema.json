@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/provider.schema.json",
+  "title": "AtlasStudio Provider Registry Entry",
+  "description": "Machine-checkable definition of one entry in the Provider Registry described by atlas-core/providers/README.md ('Each provider should eventually have a JSON definition with...'). This schema formalizes that registry direction; it does not itself populate atlas-core/providers/, which is outside this document's allowed change paths. A future work order should add the actual per-provider JSON files there, validated against this schema. Volatile session/quota status is deliberately not part of this schema - see schemas/agent-status.schema.json, which changes far more often than a provider's identity and capabilities.",
+  "type": "object",
+  "required": ["id", "name", "provider_type", "locality", "capabilities_supplied"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable kebab-case identifier, e.g. gpt, claude-code, codex, github-copilot, ollama, human, matching studio/work-order-format.md's Recommended Agents list and schemas/work-order.schema.json's recommended_agent/fallback_agent enums."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable provider name."
+    },
+    "provider_type": {
+      "type": "string",
+      "enum": ["ai_model", "ai_coding_tool", "human"],
+      "description": "Broad kind of provider. `human` is reserved for the id human, per 'Human As Provider' in studio/orchestration/capability-based-orchestration.md."
+    },
+    "locality": {
+      "type": "string",
+      "enum": ["cloud", "local", "n/a"],
+      "description": "Where this provider runs. `n/a` applies only to provider_type human."
+    },
+    "capabilities_supplied": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["capability_id", "confidence"],
+        "additionalProperties": false,
+        "properties": {
+          "capability_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "id of a schemas/capability.schema.json entry this provider can supply."
+          },
+          "confidence": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3,
+            "description": "0-3 scale: 3 primary strength (prefer this provider), 2 competent/acceptable, 1 possible but wasteful or needs review, 0 avoid. Same scale studio/scheduling/agent-scheduler-design.md used for named agents; here it is scoped per capability_id instead of per fixed task class, per ADR-0007's capability-first replacement."
+          }
+        }
+      },
+      "description": "Every capability this provider can supply, each with its own confidence score. A provider with no entry for a capability is treated as confidence 0 for it."
+    },
+    "risk_ceiling": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Highest risk_level this provider may take unreviewed, per studio/agent-assignment-model.md's Risk-Based Routing. Work above this ceiling requires a REVIEWED_BY provider.human condition."
+    },
+    "context_depth": {
+      "type": "string",
+      "enum": ["shallow", "medium", "deep"],
+      "description": "How much cross-document or cross-graph context this provider can hold reliably in one session. Work orders spanning many documents need medium or deep."
+    },
+    "scarcity": {
+      "type": "string",
+      "enum": ["none", "medium", "high"],
+      "description": "Quota-conservation signal, not a capability rating: how precious this provider's available sessions are. Used to prefer cheap/local providers for low-stakes work so scarce strong providers stay available for work that needs them."
+    },
+    "cost_class": {
+      "type": "string",
+      "description": "Free-text relative cost signal, e.g. 'free', 'subscription', 'metered-high'. Not a source of truth for billing."
+    },
+    "strengths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-text summary of what this provider is best used for, restating studio/agent-roles.md as short labels rather than paraphrasing its prose."
+    },
+    "avoid_when": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-text conditions under which this provider should not be assigned even if capability confidence is nonzero, restating studio/agent-roles.md's 'Avoid assigning' guidance."
+    }
+  }
+}

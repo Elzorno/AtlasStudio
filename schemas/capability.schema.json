@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/capability.schema.json",
+  "title": "AtlasStudio Capability Registry Entry",
+  "description": "Machine-checkable definition of one entry in the Capability Registry described by atlas-core/capabilities/README.md ('Each capability should eventually have a JSON definition with...'). This schema formalizes that registry direction; it does not itself populate atlas-core/capabilities/, which is outside this document's allowed change paths. A future work order should add the actual per-capability JSON files there, validated against this schema.",
+  "type": "object",
+  "required": ["id", "name", "description", "category", "typical_deliverables"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable kebab-case identifier, e.g. architecture-review, rpg-maker-json, canon-design, matching the Initial Capability Examples in atlas-core/capabilities/README.md."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable capability name."
+    },
+    "description": {
+      "type": "string",
+      "description": "What work this capability covers, concretely enough that a human can judge whether a given work order needs it."
+    },
+    "category": {
+      "type": "string",
+      "description": "Grouping label, e.g. creative, architecture, implementation, review, governance. Open-ended: the registry is still emerging, so no fixed enum is imposed yet."
+    },
+    "typical_deliverables": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Concrete artifact types this capability tends to produce, e.g. 'design document', 'python module', 'RPG Maker event page'."
+    },
+    "risk_notes": {
+      "type": "string",
+      "description": "What can go wrong when this capability is applied carelessly, and what raises or lowers the risk_level a work order requiring it should carry."
+    },
+    "verification_signals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Observable signals a human or tool can check to confirm this capability was actually exercised competently, e.g. 'tests pass', 'canon linter reports no new findings', 'playtest confirms the described player experience'."
+    },
+    "human_only": {
+      "type": "boolean",
+      "default": false,
+      "description": "True for capabilities no AI provider may supply regardless of confidence score - final-canon, creative-direction, risk-acceptance, scope-approval, merge-approval - per atlas-core/orchestration and studio/orchestration/capability-based-orchestration.md's 'Human As Provider'. When true, every provider except provider.human is excluded during assignment, matching the canon_decision task class handling in studio/agent-assignment-model.md."
+    }
+  }
+}

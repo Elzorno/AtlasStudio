@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/work-order.schema.json",
+  "title": "AtlasStudio Work Order Frontmatter",
+  "description": "Machine-checkable representation of the YAML frontmatter block required by studio/work-order-format.md for every work-orders/WO-NNNN-*.md file. This schema covers frontmatter only; the Markdown body sections (Purpose, Scope, Deliverables, Acceptance Criteria, and the rest of the template) remain prose and are not validated here. No existing work order is required to conform retroactively - this schema governs new and revised frontmatter going forward, per studio/agent-assignment-model.md.",
+  "type": "object",
+  "required": [
+    "work_order_id",
+    "title",
+    "status",
+    "project",
+    "recommended_agent",
+    "agent_role",
+    "risk_level",
+    "player_facing",
+    "engine_specific",
+    "created"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "work_order_id": {
+      "type": "string",
+      "pattern": "^WO-[0-9]{4,}$",
+      "description": "Stable identifier matching the WO-NNNN prefix used in the file name and every cross-reference to this work order."
+    },
+    "title": {
+      "type": "string",
+      "description": "Short action title, per the Work Order Design Standard in work-order-format.md - small enough for one agent session, meaningful enough to matter."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "approved",
+        "assigned",
+        "in_progress",
+        "submitted",
+        "qa_review",
+        "needs_revision",
+        "accepted",
+        "closed"
+      ],
+      "description": "Lifecycle status per work-order-format.md's Recommended Status Values. This is the file's own frontmatter status; the graph's work_order_status field on the corresponding work_order node is the operational source of truth and may lag or diverge until reconciled."
+    },
+    "project": {
+      "type": "string",
+      "description": "Project this work order belongs to, e.g. the-last-sword-protocol or atlasstudio. Open-ended: new projects are not enumerated here."
+    },
+    "recommended_agent": {
+      "type": "string",
+      "enum": ["atlasstudio", "gpt", "claude-code", "codex", "github-copilot", "ollama", "human"],
+      "description": "Primary agent recommendation per studio/work-order-format.md's Recommended Agents list, produced or confirmed via the assignment model in studio/agent-assignment-model.md. This is advisory metadata, not a dispatch instruction - the human creator remains the final authority on assignment."
+    },
+    "fallback_agent": {
+      "type": "string",
+      "enum": ["atlasstudio", "gpt", "claude-code", "codex", "github-copilot", "ollama", "human"],
+      "description": "Next-best agent if recommended_agent is unavailable (exhausted, offline, or over its risk ceiling), per the fallback chain in studio/agent-assignment-model.md. Optional: older work orders predating this field may omit it, and it should default to no fallback recorded rather than an assumed value."
+    },
+    "agent_role": {
+      "type": "string",
+      "description": "Role label from studio/agent-roles.md the recommended_agent is filling for this work order, e.g. senior-software-architect, creative-systems-designer, implementation-engineer, implementation-auditor, director. Open-ended: new roles are not enumerated here."
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Risk ceiling this work order requires, per the Risk-Based Routing rules in studio/agent-assignment-model.md."
+    },
+    "player_facing": {
+      "type": "boolean",
+      "description": "Whether this work order directly changes what a player can experience, per AtlasStudio's Success Metric in studio/STATUS.md."
+    },
+    "engine_specific": {
+      "type": "boolean",
+      "description": "Whether this work order touches RPG Maker MZ implementation detail (TheLastSwordProtocol-Game) rather than engine-independent design or tooling."
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this work order was first authored."
+    },
+    "task_class": {
+      "type": "string",
+      "enum": ["creative_design", "architecture", "implementation", "repetitive_edit", "review_qa", "canon_decision"],
+      "description": "Optional explicit override of the task classification studio/agent-assignment-model.md would otherwise infer from agent_role, engine_specific, and title/purpose keywords. Set this when automatic classification would be ambiguous or wrong."
+    }
+  }
+}

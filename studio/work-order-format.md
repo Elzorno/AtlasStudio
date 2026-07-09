@@ -11,6 +11,7 @@ title: Short Action Title
 status: proposed
 project: the-last-sword-protocol
 recommended_agent: atlasstudio
+fallback_agent: human
 agent_role: director
 risk_level: low
 player_facing: true
@@ -18,6 +19,8 @@ engine_specific: false
 created: 2026-07-07
 ---
 ```
+
+`fallback_agent` is optional. It names the next-best agent if `recommended_agent` is unavailable or over its risk ceiling, per `studio/agent-assignment-model.md`'s fallback chain. Older work orders may omit it.
 
 ## Recommended Status Values
 

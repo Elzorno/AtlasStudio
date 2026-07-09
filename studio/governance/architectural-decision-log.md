@@ -151,9 +151,9 @@ New entries use `studio/governance/decision-record-template.md`. See `studio/gov
 
 **Alternatives Considered:** Patching the named-agent scheduler to add an aliasing layer - rejected as a half-measure that would keep vendor names as the primary key internally.
 
-**Related:** Work order: `WO-0012` (revised scope, `supersedes: Agent Scheduler`). Documents: `studio/orchestration/capability-based-orchestration.md`, `atlas-core/capabilities/README.md`, `atlas-core/providers/README.md`.
+**Related:** Work orders: `WO-0012` (revised scope, `supersedes: Agent Scheduler`), `WO-0004` (accepted 2026-07-09 on top of this decision - see `studio/agent-assignment-model.md`). Documents: `studio/orchestration/capability-based-orchestration.md`, `atlas-core/capabilities/README.md`, `atlas-core/providers/README.md`, `studio/agent-assignment-model.md`.
 
-**Governance Note:** Assignment model decision; supersedes ADR-0006. This is also the concrete case study behind the "Capabilities outlive providers" principle in `studio/governance/atlas-principles.md`.
+**Governance Note:** Assignment model decision; supersedes ADR-0006. This is also the concrete case study behind the "Capabilities outlive providers" principle in `studio/governance/atlas-principles.md`. WO-0004 filled the schema and algorithm gap this decision's registries left open.
 
 ---
 

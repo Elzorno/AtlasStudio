@@ -34,7 +34,7 @@
       "type": "work_order",
       "name": "Agent Assignment System",
       "status": "draft",
-      "work_order_status": "proposed",
+      "work_order_status": "accepted",
       "summary": "Defines how work orders are matched and assigned to agents.",
       "source": ["work-orders/WO-0004-agent-assignment-system.md"]
     },

@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-0004
 title: Agent Assignment System
-status: proposed
+status: accepted
 project: atlasstudio
 recommended_agent: claude-code
 agent_role: senior-software-architect
@@ -76,3 +76,7 @@ Manual review and test against WO-0002 through WO-0005.
 ## Notes for Assigned Agent
 
 Assume quota APIs may not be available. Design for manual status updates first, automated provider connectors later.
+
+## Resolution
+
+Accepted 2026-07-09. Delivered as `studio/agent-assignment-model.md`, `schemas/work-order.schema.json`, `schemas/capability.schema.json`, and `schemas/provider.schema.json`, plus the `fallback_agent` field added to `studio/work-order-format.md`. Built on the capability-based orchestration model from ADR-0007 rather than the superseded named-agent scheduler from ADR-0006, per that supersession. See `studio/agent-assignment-model.md`'s Acceptance Criteria Status section for the criteria-by-criteria mapping.
