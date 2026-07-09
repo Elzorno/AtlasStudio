@@ -328,6 +328,117 @@
       "status": "draft",
       "summary": "Local model provider platform for the Ollama agent role.",
       "source": ["studio/scheduling/agent-scheduler-design.md"]
+    },
+    {
+      "id": "tool.atlas_academy",
+      "type": "tool",
+      "name": "Atlas Academy",
+      "status": "draft",
+      "summary": "Design-learning subsystem that studies reference, accepted, and rejected maps and exposes observation, composition, metrics, grading, and knowledge-extraction methodology through a read-only CLI.",
+      "source": [
+        "academy/README.md",
+        "tools/atlas_academy/cli.py",
+        "work-orders/WO-2000-atlas-academy-foundation.md"
+      ]
+    },
+    {
+      "id": "work_order.wo_2000",
+      "type": "work_order",
+      "name": "Atlas Academy Foundation",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Establishes the Atlas Academy design-learning subsystem: purpose, curriculum, foundation grading rubric, and reference/report directory structure.",
+      "source": ["work-orders/WO-2000-atlas-academy-foundation.md"]
+    },
+    {
+      "id": "work_order.wo_2001",
+      "type": "work_order",
+      "name": "Atlas Academy Observation Engine",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Defines the Observation Engine: factual, evidence-backed map observations separated from interpretation, with a JSON schema for observation records.",
+      "source": ["work-orders/WO-2001-academy-observation-engine.md"]
+    },
+    {
+      "id": "work_order.wo_2002",
+      "type": "work_order",
+      "name": "Composition Analysis Framework",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Defines the Composition Analysis Framework: ten composition topics (focal point, negative space, traffic flow, and more) for evaluating why a map composition works or fails.",
+      "source": ["work-orders/WO-2002-composition-analysis-framework.md"]
+    },
+    {
+      "id": "work_order.wo_2003",
+      "type": "work_order",
+      "name": "Map Metrics Framework",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Defines the Map Metrics Framework: measurable map metrics (walkable percentage, event density, and more) a future analyzer can compute consistently.",
+      "source": ["work-orders/WO-2003-map-metrics-framework.md"]
+    },
+    {
+      "id": "work_order.wo_2004",
+      "type": "work_order",
+      "name": "Reference Library Governance",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Governs Atlas Academy's reference library: source classes, provenance, confidence contribution, and gold-standard map criteria.",
+      "source": ["work-orders/WO-2004-reference-library-governance.md"]
+    },
+    {
+      "id": "work_order.wo_2005",
+      "type": "work_order",
+      "name": "Map Grading System",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Defines the Map Grading System: a nine-category scoring model producing one of PLAYTEST_AND_ACCEPTANCE.md's four outcomes plus remediation tags.",
+      "source": ["work-orders/WO-2005-map-grading-system.md"]
+    },
+    {
+      "id": "work_order.wo_2006",
+      "type": "work_order",
+      "name": "Atlas Academy Knowledge Extraction",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Extracts the Atlas Academy JRPG map research corpus into provenance-tagged Atlas-native knowledge rules across observation, composition, pattern, and validation.",
+      "source": ["work-orders/WO-2006-atlas-academy-knowledge-extraction.md"]
+    },
+    {
+      "id": "work_order.wo_2007",
+      "type": "work_order",
+      "name": "Official RPG Maker Corpus Study",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Establishes the repeatable Academy methodology for studying official RPG Maker sample maps, proven against one official map.",
+      "source": ["work-orders/WO-2007-official-rpgmaker-corpus-study.md"]
+    },
+    {
+      "id": "work_order.wo_2008",
+      "type": "work_order",
+      "name": "Composition Validator",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Defines the Composition Validator: a ten-area scoring model that critiques map composition as evidence for a full map grade.",
+      "source": ["work-orders/WO-2008-composition-validator.md"]
+    },
+    {
+      "id": "work_order.wo_2009",
+      "type": "work_order",
+      "name": "Atlas Academy CLI",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Implements the `atlas academy` CLI command group as a read-only, first-class subsystem of the unified AtlasStudio CLI.",
+      "source": ["work-orders/WO-2009-atlas-academy-cli.md"]
+    },
+    {
+      "id": "work_order.wo_2010",
+      "type": "work_order",
+      "name": "Screenshot Analysis Pipeline",
+      "status": "draft",
+      "work_order_status": "accepted",
+      "summary": "Designs the screenshot-based review workflow for analyzing rendered maps alongside RPG Maker JSON data.",
+      "source": ["work-orders/WO-2010-screenshot-analysis-pipeline.md"]
     }
   ]
 }

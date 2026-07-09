@@ -393,6 +393,422 @@
       "to": "implementation_target.the_last_sword_protocol_game",
       "status": "draft",
       "source": ["reports/implementation-readiness/repository-audit.md"]
+    },
+    {
+      "id": "edge.production.000050",
+      "from": "work_order.wo_2000",
+      "type": "CREATES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2000-atlas-academy-foundation.md"]
+    },
+    {
+      "id": "edge.production.000051",
+      "from": "work_order.wo_2000",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-2000-atlas-academy-foundation.md"]
+    },
+    {
+      "id": "edge.production.000052",
+      "from": "work_order.wo_2000",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2000-atlas-academy-foundation.md"]
+    },
+    {
+      "id": "edge.production.000053",
+      "from": "work_order.wo_2001",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2001-academy-observation-engine.md"]
+    },
+    {
+      "id": "edge.production.000054",
+      "from": "work_order.wo_2001",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2000",
+      "status": "draft",
+      "source": ["work-orders/WO-2001-academy-observation-engine.md"]
+    },
+    {
+      "id": "edge.production.000055",
+      "from": "work_order.wo_2001",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-2001-academy-observation-engine.md"]
+    },
+    {
+      "id": "edge.production.000056",
+      "from": "work_order.wo_2001",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2001-academy-observation-engine.md"]
+    },
+    {
+      "id": "edge.production.000057",
+      "from": "work_order.wo_2002",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2002-composition-analysis-framework.md"]
+    },
+    {
+      "id": "edge.production.000058",
+      "from": "work_order.wo_2002",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2001",
+      "status": "draft",
+      "source": ["work-orders/WO-2002-composition-analysis-framework.md"]
+    },
+    {
+      "id": "edge.production.000059",
+      "from": "work_order.wo_2002",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-2002-composition-analysis-framework.md"]
+    },
+    {
+      "id": "edge.production.000060",
+      "from": "work_order.wo_2002",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2002-composition-analysis-framework.md"]
+    },
+    {
+      "id": "edge.production.000061",
+      "from": "work_order.wo_2003",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2003-map-metrics-framework.md"]
+    },
+    {
+      "id": "edge.production.000062",
+      "from": "work_order.wo_2003",
+      "type": "ASSIGNED_TO",
+      "to": "agent.codex",
+      "status": "draft",
+      "source": ["work-orders/WO-2003-map-metrics-framework.md"]
+    },
+    {
+      "id": "edge.production.000063",
+      "from": "work_order.wo_2003",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2003-map-metrics-framework.md"]
+    },
+    {
+      "id": "edge.production.000064",
+      "from": "work_order.wo_2004",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2004-reference-library-governance.md"]
+    },
+    {
+      "id": "edge.production.000065",
+      "from": "work_order.wo_2004",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2000",
+      "status": "draft",
+      "source": ["work-orders/WO-2004-reference-library-governance.md"]
+    },
+    {
+      "id": "edge.production.000066",
+      "from": "work_order.wo_2004",
+      "type": "ASSIGNED_TO",
+      "to": "agent.codex",
+      "status": "draft",
+      "source": ["work-orders/WO-2004-reference-library-governance.md"]
+    },
+    {
+      "id": "edge.production.000067",
+      "from": "work_order.wo_2004",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2004-reference-library-governance.md"]
+    },
+    {
+      "id": "edge.production.000068",
+      "from": "work_order.wo_2005",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2005-map-grading-system.md"]
+    },
+    {
+      "id": "edge.production.000069",
+      "from": "work_order.wo_2005",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2000",
+      "status": "draft",
+      "source": ["work-orders/WO-2005-map-grading-system.md"]
+    },
+    {
+      "id": "edge.production.000070",
+      "from": "work_order.wo_2005",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2001",
+      "status": "draft",
+      "source": ["work-orders/WO-2005-map-grading-system.md"]
+    },
+    {
+      "id": "edge.production.000071",
+      "from": "work_order.wo_2005",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2003",
+      "status": "draft",
+      "source": ["work-orders/WO-2005-map-grading-system.md"]
+    },
+    {
+      "id": "edge.production.000072",
+      "from": "work_order.wo_2005",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-2005-map-grading-system.md"]
+    },
+    {
+      "id": "edge.production.000073",
+      "from": "work_order.wo_2005",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2005-map-grading-system.md"]
+    },
+    {
+      "id": "edge.production.000074",
+      "from": "work_order.wo_2006",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2006-atlas-academy-knowledge-extraction.md"]
+    },
+    {
+      "id": "edge.production.000075",
+      "from": "work_order.wo_2006",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2005",
+      "status": "draft",
+      "source": ["work-orders/WO-2006-atlas-academy-knowledge-extraction.md"]
+    },
+    {
+      "id": "edge.production.000076",
+      "from": "work_order.wo_2006",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2000",
+      "status": "draft",
+      "source": ["work-orders/WO-2006-atlas-academy-knowledge-extraction.md"]
+    },
+    {
+      "id": "edge.production.000077",
+      "from": "work_order.wo_2006",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-2006-atlas-academy-knowledge-extraction.md"]
+    },
+    {
+      "id": "edge.production.000078",
+      "from": "work_order.wo_2006",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2006-atlas-academy-knowledge-extraction.md"]
+    },
+    {
+      "id": "edge.production.000079",
+      "from": "work_order.wo_2007",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2007-official-rpgmaker-corpus-study.md"]
+    },
+    {
+      "id": "edge.production.000080",
+      "from": "work_order.wo_2007",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2002",
+      "status": "draft",
+      "source": ["work-orders/WO-2007-official-rpgmaker-corpus-study.md"]
+    },
+    {
+      "id": "edge.production.000081",
+      "from": "work_order.wo_2007",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2003",
+      "status": "draft",
+      "source": ["work-orders/WO-2007-official-rpgmaker-corpus-study.md"]
+    },
+    {
+      "id": "edge.production.000082",
+      "from": "work_order.wo_2007",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-2007-official-rpgmaker-corpus-study.md"]
+    },
+    {
+      "id": "edge.production.000083",
+      "from": "work_order.wo_2007",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2007-official-rpgmaker-corpus-study.md"]
+    },
+    {
+      "id": "edge.production.000084",
+      "from": "work_order.wo_2008",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2008-composition-validator.md"]
+    },
+    {
+      "id": "edge.production.000085",
+      "from": "work_order.wo_2008",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2002",
+      "status": "draft",
+      "source": ["work-orders/WO-2008-composition-validator.md"]
+    },
+    {
+      "id": "edge.production.000086",
+      "from": "work_order.wo_2008",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2005",
+      "status": "draft",
+      "source": ["work-orders/WO-2008-composition-validator.md"]
+    },
+    {
+      "id": "edge.production.000087",
+      "from": "work_order.wo_2008",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2007",
+      "status": "draft",
+      "source": ["work-orders/WO-2008-composition-validator.md"]
+    },
+    {
+      "id": "edge.production.000088",
+      "from": "work_order.wo_2008",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-2008-composition-validator.md"]
+    },
+    {
+      "id": "edge.production.000089",
+      "from": "work_order.wo_2008",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2008-composition-validator.md"]
+    },
+    {
+      "id": "edge.production.000090",
+      "from": "work_order.wo_2009",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2009-atlas-academy-cli.md"]
+    },
+    {
+      "id": "edge.production.000091",
+      "from": "work_order.wo_2009",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2000",
+      "status": "draft",
+      "source": ["work-orders/WO-2009-atlas-academy-cli.md"]
+    },
+    {
+      "id": "edge.production.000092",
+      "from": "work_order.wo_2009",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2006",
+      "status": "draft",
+      "source": ["work-orders/WO-2009-atlas-academy-cli.md"]
+    },
+    {
+      "id": "edge.production.000093",
+      "from": "work_order.wo_2009",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2007",
+      "status": "draft",
+      "source": ["work-orders/WO-2009-atlas-academy-cli.md"]
+    },
+    {
+      "id": "edge.production.000094",
+      "from": "work_order.wo_2009",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2008",
+      "status": "draft",
+      "source": ["work-orders/WO-2009-atlas-academy-cli.md"]
+    },
+    {
+      "id": "edge.production.000095",
+      "from": "work_order.wo_2009",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-2009-atlas-academy-cli.md"]
+    },
+    {
+      "id": "edge.production.000096",
+      "from": "work_order.wo_2009",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2009-atlas-academy-cli.md"]
+    },
+    {
+      "id": "edge.production.000097",
+      "from": "work_order.wo_2010",
+      "type": "MODIFIES",
+      "to": "tool.atlas_academy",
+      "status": "draft",
+      "source": ["work-orders/WO-2010-screenshot-analysis-pipeline.md"]
+    },
+    {
+      "id": "edge.production.000098",
+      "from": "work_order.wo_2010",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2000",
+      "status": "draft",
+      "source": ["work-orders/WO-2010-screenshot-analysis-pipeline.md"]
+    },
+    {
+      "id": "edge.production.000099",
+      "from": "work_order.wo_2010",
+      "type": "DEPENDS_ON",
+      "to": "work_order.wo_2002",
+      "status": "draft",
+      "source": ["work-orders/WO-2010-screenshot-analysis-pipeline.md"]
+    },
+    {
+      "id": "edge.production.000100",
+      "from": "work_order.wo_2010",
+      "type": "ASSIGNED_TO",
+      "to": "agent.claude_code",
+      "status": "draft",
+      "source": ["work-orders/WO-2010-screenshot-analysis-pipeline.md"]
+    },
+    {
+      "id": "edge.production.000101",
+      "from": "work_order.wo_2010",
+      "type": "REVIEWED_BY",
+      "to": "agent.human",
+      "status": "draft",
+      "source": ["work-orders/WO-2010-screenshot-analysis-pipeline.md"]
     }
   ]
 }
