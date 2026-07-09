@@ -4,7 +4,7 @@ Status: submitted
 
 > This is a live, authoritative AtlasStudio implementation contract, built under `studio/contracts/PATTERN_CONTRACT_SPEC.md` (`WO-0027`)'s pattern-aware format. Unlike `reports/implementation-contracts/ashford-shop-pattern-aware-contract.md` (an illustrative demonstration layered over an already-existing plain contract), this document is the sole implementation contract for Ashford Inn - no separate WO-0020-era contract exists for this build, since Ashford Inn is new. It does not modify `TheLastSwordProtocol-Game` and does not modify Atlas canon. It executes `IMP-HOM-020`, which now exists in `TheLastSwordProtocol-Atlas`, superseding the earlier draft of this contract that treated `IMP-HOM-020` as missing (see Revision Note below).
 
-**Revision note:** An earlier draft of this contract (same file path) was written before `IMP-HOM-020` existed and correctly refused to invent the missing packet's requirements, gating execution instead. `IMP-HOM-020`, `SCR-HOM-ASH-004`, and `DDR-0005` now exist in `TheLastSwordProtocol-Atlas` (`WO-0038`). This revision replaces that draft's provisional content with the real packet's actual, approved requirements.
+**Revision note:** An earlier draft of this contract (same file path) was written before `IMP-HOM-020` existed and correctly refused to invent the missing packet's requirements, gating execution instead. `IMP-HOM-020`, `SCR-HOM-ASH-004`, and `DDR-0005` now exist in `TheLastSwordProtocol-Atlas` (`WO-0043`; renumbered from a duplicate `WO-0038` slot). This revision replaces that draft's provisional content with the real packet's actual, approved requirements.
 
 ---
 

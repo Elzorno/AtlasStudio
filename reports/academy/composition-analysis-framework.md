@@ -22,7 +22,7 @@ This report is analysis and evidence, not implementation guidance. It does not d
 }
 ```
 
-This is the Ashford Inn build authorized by `reports/implementation-contracts/ashford-inn-pattern-aware-contract.md` and `IMP-HOM-020` (`TheLastSwordProtocol-Atlas`, `WO-0038`). Its first pass was rejected the same day this Academy series began. This report treats that rejection as real evidence, not as a convenient hypothetical - and is equally careful not to overclaim what a one-line rejection reason actually proves.
+This is the Ashford Inn build authorized by `reports/implementation-contracts/ashford-inn-pattern-aware-contract.md` and `IMP-HOM-020` (`TheLastSwordProtocol-Atlas`, `WO-0043`; renumbered from a duplicate `WO-0038` slot). Its first pass was rejected the same day this Academy series began. This report treats that rejection as real evidence, not as a convenient hypothetical - and is equally careful not to overclaim what a one-line rejection reason actually proves.
 
 ## Evidence Sources
 
