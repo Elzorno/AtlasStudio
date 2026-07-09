@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-0012
 title: Capability-Based Orchestration Engine
-status: proposed
+status: accepted
 project: atlasstudio
 recommended_agent: claude-code
 agent_role: senior-software-architect
@@ -217,3 +217,11 @@ python3 tools/atlas_doctor/doctor.py
 Start with architecture and registry design. Do not overbuild provider automation. The goal is to make AtlasStudio choose providers based on capabilities rather than hardcoded agent names.
 
 Formatting: preserve existing house style and avoid broad rewrites.
+
+## Resolution
+
+Accepted at the architecture-decision level per ADR-0007 (`studio/governance/architectural-decision-log.md`), which this frontmatter had not reflected until 2026-07-09 - the graph node `work_order.wo_0012` already carried `work_order_status: accepted`.
+
+Delivered: `studio/orchestration/capability-based-orchestration.md`, `atlas-core/capabilities/README.md`, `atlas-core/providers/README.md`, `atlas-core/orchestration/provider-status.example.json`. `schemas/capability.schema.json` and `schemas/provider.schema.json` were added under WO-0004 (`studio/agent-assignment-model.md`), covering this work order's "optional schema files" deliverable.
+
+Not yet delivered, and not silently marked done: the `atlas-core/capabilities/` and `atlas-core/providers/` registries remain README-only (no populated per-capability or per-provider JSON entries), and the `required_capabilities`/`preferred_capabilities` work-order frontmatter extension described above was never added to `studio/work-order-format.md` or `schemas/work-order.schema.json`. These are open follow-up work, not blockers to this work order's architectural acceptance.

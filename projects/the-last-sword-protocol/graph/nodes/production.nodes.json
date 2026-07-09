@@ -95,10 +95,10 @@
     {
       "id": "work_order.wo_0012",
       "type": "work_order",
-      "name": "Agent Scheduler",
+      "name": "Capability-Based Orchestration Engine",
       "status": "draft",
       "work_order_status": "accepted",
-      "summary": "Designs the manual-first agent scheduling model that recommends agents for work orders by task type, capability, risk, and session status.",
+      "summary": "Designs the capability-based orchestration model that matches work to providers via required capabilities rather than named agents, per ADR-0007 (supersedes the named-agent Agent Scheduler concept).",
       "source": ["work-orders/WO-0012-agent-scheduler.md"]
     },
     {
