@@ -1,7 +1,7 @@
 ---
 work_order_id: WO-2009
 title: Atlas Academy CLI
-status: submitted
+status: accepted
 priority: medium
 phase: Atlas Academy
 recommended_agent: codex
@@ -87,3 +87,7 @@ python3 -m tools.atlas_cli.cli academy grade
 python3 tools/atlas_format/format_guard.py --check
 git status --porcelain
 ```
+
+## Acceptance
+
+Accepted 2026-07-09 following independent verification: every deliverable exists, `python3 -m unittest discover -s tools -p "test_*.py"` passes all 29 tests (12 new `tools/atlas_academy` tests included), and `atlas academy list` / `atlas academy help` were run live and behave as documented.
