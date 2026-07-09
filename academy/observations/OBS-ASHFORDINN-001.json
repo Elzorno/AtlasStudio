@@ -1,0 +1,282 @@
+{
+  "schema_version": "0.1.0",
+  "observation_id": "OBS-ASHFORDINN-001",
+  "source": {
+    "repo": "TheLastSwordProtocol-Game",
+    "file_path": "data/Map026.json",
+    "map_name": "INT_Ashford_Inn",
+    "tileset_reference": "Inside (tilesetId: 3), confirmed against data/Tilesets.json",
+    "source_class": "rejected_build",
+    "captured_at": "2026-07-09",
+    "ownership_state_at_capture": "hand-authored",
+    "provenance_ref": "cc20037711ced91b9b1fa91d0cc10806deaaabf0"
+  },
+  "observer": "claude-code",
+  "created": "2026-07-09",
+  "objective_observations": [
+    {
+      "category": "dimensions",
+      "description": "Map026 is 16 wide by 12 tall tiles, tilesetId 3.",
+      "value": {
+        "width": 16,
+        "height": 12,
+        "tilesetId": 3
+      },
+      "evidence": {
+        "evidence_type": "map_json_tile_layer",
+        "file_path": "data/Map026.json",
+        "coordinates": null,
+        "layer": null
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "tilesetId 3 resolves to the 'Inside' tileset family (tilesetNames Inside_A1/A2/A4/A5/B/C), matching IMP-HOM-020's required tileset family for this build. The tileset assignment itself is correct.",
+      "value": {
+        "tileset_id": 3,
+        "tileset_name": "Inside"
+      },
+      "evidence": {
+        "evidence_type": "tileset_data",
+        "file_path": "data/Tilesets.json",
+        "coordinates": null,
+        "layer": null
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "structural_object",
+      "description": "A multi-tile fireplace/hearth graphic occupies Inside_B.png rows 7-8, columns 13-15 (tile IDs 125,126,127 / 141,142,143) as one continuous 3-column object with a pediment spanning all three columns and a pillar at each end (columns 13 and 15). The map places only tile IDs 126,127,142,143 (sheet columns 14-15) at map tiles (8,2),(9,2),(8,3),(9,3). Sheet column 13 (tile IDs 125,141, the object's left pillar) is not placed anywhere on this map.",
+      "value": {
+        "used_sheet_columns": [
+          14,
+          15
+        ],
+        "omitted_sheet_column": 13,
+        "map_block": {
+          "top_left": [
+            8,
+            2
+          ],
+          "bottom_right": [
+            9,
+            3
+          ]
+        }
+      },
+      "evidence": {
+        "evidence_type": "map_json_tile_layer",
+        "file_path": "data/Map026.json",
+        "coordinates": [
+          8,
+          2
+        ],
+        "layer": 3
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "structural_object",
+      "description": "A bed graphic (Inside_B.png row5 col8 = tile 88, row6 col8 = tile 104; a bed with a blue curtain/blanket) is placed alone at map tiles (2,4),(2,5). The matching shelf tile above it (row4 col8) and side-table tile below it (row7 col8), which accompany this bed variant elsewhere on the same sheet, are not used at (2,3) or (2,6).",
+      "value": {
+        "sheet_column": 8,
+        "map_block": {
+          "top_left": [
+            2,
+            4
+          ],
+          "bottom_right": [
+            2,
+            5
+          ]
+        }
+      },
+      "evidence": {
+        "evidence_type": "map_json_tile_layer",
+        "file_path": "data/Map026.json",
+        "coordinates": [
+          2,
+          4
+        ],
+        "layer": 3
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "structural_object",
+      "description": "A second bed graphic (Inside_B.png row5 cols9-10 = tiles 89,90; row6 cols9-10 = tiles 105,106; a cream-and-orange-striped bed) is placed at map tiles (5,4),(6,4),(5,5),(6,5), immediately adjacent (2 tiles east) to the bed described in the previous entry. The matching shelf/table tiles for this variant are likewise not used.",
+      "value": {
+        "sheet_columns": [
+          9,
+          10
+        ],
+        "map_block": {
+          "top_left": [
+            5,
+            4
+          ],
+          "bottom_right": [
+            6,
+            5
+          ]
+        }
+      },
+      "evidence": {
+        "evidence_type": "map_json_tile_layer",
+        "file_path": "data/Map026.json",
+        "coordinates": [
+          5,
+          4
+        ],
+        "layer": 3
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "structural_object",
+      "description": "A third bed graphic (Inside_B.png row5 cols11-12 = tiles 91,92; row6 cols11-12 = tiles 107,108; a gray tarp/sleeping-bag-style bed) is placed at map tiles (11,4),(12,4),(11,5),(12,5). This is a third visually distinct bed style used on the same map, again without its matching shelf/table tiles.",
+      "value": {
+        "sheet_columns": [
+          11,
+          12
+        ],
+        "map_block": {
+          "top_left": [
+            11,
+            4
+          ],
+          "bottom_right": [
+            12,
+            5
+          ]
+        }
+      },
+      "evidence": {
+        "evidence_type": "map_json_tile_layer",
+        "file_path": "data/Map026.json",
+        "coordinates": [
+          11,
+          4
+        ],
+        "layer": 3
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "The three bed placements above draw from three separate, non-adjacent column groups on Inside_B.png (column 8; columns 9-10; columns 11-12), each a visually distinct bed color/style confirmed by direct inspection of the tileset image, not merely inferred from ID proximity.",
+      "value": {
+        "distinct_bed_variants_used": 3
+      },
+      "evidence": {
+        "evidence_type": "tileset_data",
+        "file_path": "img/tilesets/Inside_B.png",
+        "coordinates": null,
+        "layer": null
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "structural_object",
+      "description": "Wall-mounted picture-frame graphics from Inside_B.png row1 - a world-map chart (cols8-9, tile IDs 24,25), a landscape painting (cols10-11, tile IDs 26,27), and a portrait (col12, tile ID 28) - are placed on the map's upper tile layer at y=7, x=6 through x=10. The cabinet/dresser tiles from row2 of the same sheet columns, which sit below these picture frames elsewhere on the sheet, are not used beneath them at y=8.",
+      "value": {
+        "map_row": 7,
+        "x_range": [
+          6,
+          10
+        ]
+      },
+      "evidence": {
+        "evidence_type": "map_json_tile_layer",
+        "file_path": "data/Map026.json",
+        "coordinates": [
+          6,
+          7
+        ],
+        "layer": 1
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "Tile ID 1536 (Inside_A5.png row0 col0) is a solid, fully opaque black tile (RGB 0,0,0, alpha 255 - confirmed by direct pixel sampling, not a transparent/empty tile). It is used for 64 of 192 (33%) of layer-0 cells: the outer x=0 and x=15 border columns for y=0 through y=8, and nearly all of rows y=9-11 except two door-threshold tiles (ID 2860) at (7,9) and (8,9).",
+      "value": {
+        "tile_id": 1536,
+        "count": 64,
+        "total_layer0_cells": 192
+      },
+      "evidence": {
+        "evidence_type": "map_json_tile_layer",
+        "file_path": "data/Map026.json",
+        "coordinates": null,
+        "layer": 0
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "event",
+      "description": "9 events are placed on this map: an Innkeeper NPC (People1), a door/exit transfer, a warm-stone hearth decoration using the !Flame character graphic at (8,3) (matching IMP-HOM-020's required warm-stone vent/hearth element), and 6 invisible passability-blocker events with no character graphic (counter edges, bed-alcove edges, an entry-tile marker).",
+      "value": {
+        "event_count": 9,
+        "graphic_events": [
+          "People1",
+          "!Door1",
+          "!Flame"
+        ]
+      },
+      "evidence": {
+        "evidence_type": "map_json_event",
+        "file_path": "data/Map026.json",
+        "coordinates": null,
+        "layer": null
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "No tile ID used anywhere on this map's layers 0, 1, or 3 corresponds to a rock, stone-debris, or rubble graphic on Inside_A5.png or Inside_B.png (the only two sheets this map's tile IDs draw from), and no event on this map uses a rock-like character graphic. The rejection reason's specific 'rocks appear in the room' claim is not corroborated by this observation pass.",
+      "value": {
+        "rock_graphic_found": false
+      },
+      "evidence": {
+        "evidence_type": "map_json_tile_layer",
+        "file_path": "data/Map026.json",
+        "coordinates": null,
+        "layer": null
+      },
+      "is_inferred": true,
+      "inference_reasoning": "This is an absence claim: every nonzero tile ID actually used on layers 0/1/3 was enumerated and checked against its source sheet by direct pixel inspection, and every event's character graphic was read from the event's page data. No stronger form of confirmation ('this is definitely what the reviewer meant by rocks') is possible without the original reviewer's own description or a rendered screenshot, neither of which currently exists for this map."
+    }
+  ],
+  "subjective_observations": [
+    {
+      "description": "The fireplace at (8,2)-(9,3), missing its source graphic's left pillar column, would render as visually asymmetric and structurally incomplete rather than a properly composed hearth.",
+      "grounded_in": [
+        "structural_object: fireplace at (8,2)-(9,3) uses only sheet columns 14-15 of a 3-column object"
+      ]
+    },
+    {
+      "description": "Placing three differently colored/styled bed variants immediately adjacent to each other, each also missing its own matching shelf and side-table tiles, would read as a mismatched, incomplete furniture arrangement rather than one coherent bed nook - a concrete, visually plausible referent for the rejection reason's 'sofa/furniture rendering is poor.'",
+      "grounded_in": [
+        "structural_object: bed at (2,4)-(2,5), sheet column 8",
+        "structural_object: bed at (5,4)-(6,5), sheet columns 9-10",
+        "structural_object: bed at (11,4)-(12,5), sheet columns 11-12",
+        "tile_usage: three distinct bed variants used"
+      ]
+    },
+    {
+      "description": "Wall-mounted picture-frame graphics rendered at floor level with no wall or cabinet base beneath them would read as furniture disconnected from any surface - a second concrete, visually plausible contributor to 'interior tiles are incorrect,' distinct from the tileset-family question (which is not at fault here).",
+      "grounded_in": [
+        "structural_object: picture-frame tiles at y=7, x=6-10 with no cabinet base at y=8"
+      ]
+    }
+  ],
+  "screenshot_references": [],
+  "feeds": {
+    "extraction_report": "academy/reports/ashford-inn-revisit-001.md",
+    "pattern_candidates": [],
+    "case_study": "academy/reports/ashford-inn-revisit-001.md"
+  },
+  "notes": "Read-only inspection of data/Map026.json, data/Tilesets.json, and img/tilesets/Inside_B.png / Inside_A5.png. Map026.json remains hand-authored/protected and was not modified. This is the first real file filed under academy/observations/, per that directory's own README ('the first real file filed here should come from an actual Level 1 curriculum pass, not be backfilled from this example'). Produced in response to the concrete next step named by reports/academy/composition-analysis-framework.md and reports/academy/map-grading-system.md."
+}

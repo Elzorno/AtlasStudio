@@ -25,7 +25,7 @@ Every file here should validate against `schemas/academy-observation.schema.json
 
 ## Current Contents
 
-None yet. This directory is created empty by `work-orders/WO-2001-academy-observation-engine.md`. `academy/observation-model.md`'s worked example (`OBS-ITEMSHOP-001`) is illustrative and lives inline in that document, not as a file here, since it re-expresses an existing report's facts rather than resulting from a new observation pass - the first real file filed here should come from an actual Level 1 curriculum pass, not be backfilled from this example.
+- `OBS-ASHFORDINN-001.json` - the first real file filed here, per this section's own prior instruction: an actual Level 1 observation pass over `TheLastSwordProtocol-Game/data/Map026.json`, produced for `academy/reports/ashford-inn-revisit-001.md`. `academy/observation-model.md`'s worked example (`OBS-ITEMSHOP-001`) remains illustrative and inline in that document, not a file here, since it re-expresses an existing report's facts rather than resulting from a new observation pass.
 
 ## References
 

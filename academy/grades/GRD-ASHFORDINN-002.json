@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.1.0",
+  "grade_id": "GRD-ASHFORDINN-002",
+  "target": {
+    "repo": "TheLastSwordProtocol-Game",
+    "file_path": "data/Map026.json",
+    "map_name": "INT_Ashford_Inn",
+    "ownership_state_at_capture": "hand-authored",
+    "captured_at": "2026-07-09"
+  },
+  "grader": "claude-code",
+  "created": "2026-07-09",
+  "category_scores": [
+    {
+      "category": "composition",
+      "score": 2,
+      "confidence": "medium",
+      "rationale": "OBS-ASHFORDINN-001 directly observes three separate furniture-grouping defects: a multi-tile fireplace assembled from only 2 of its 3 source columns, three visually distinct bed variants placed immediately adjacent to each other each missing their matching shelf/table tiles, and wall-mounted picture-frame tiles placed at floor level with no cabinet base beneath them. This raises confidence from GRD-ASHFORDINN-001's 'low' (based only on the ambiguous word 'rendering' in the rejection reason) to 'medium' - the composition problems are now tile-level facts, not inference from a one-line summary.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json"
+      ]
+    },
+    {
+      "category": "traffic_flow",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "OBS-ASHFORDINN-001 does not include walkable-percentage, aisle-width, or reachability metrics. Unchanged from GRD-ASHFORDINN-001 - a metrics pass per schemas/academy-map-metrics.schema.json would be required to score this category.",
+      "evidence": []
+    },
+    {
+      "category": "readability",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "No wayfinding-relevant observation was captured. Unchanged from GRD-ASHFORDINN-001.",
+      "evidence": []
+    },
+    {
+      "category": "visual_hierarchy",
+      "score": 2,
+      "confidence": "medium",
+      "rationale": "IMP-HOM-020 names the warm-stone vent/hearth as a required landmark, echoed by this map's !Flame hearth event at (8,3); OBS-ASHFORDINN-001 confirms the fireplace tile graphic supporting that landmark is assembled from only 2 of its 3 source columns, undermining it as a clean focal point. GRD-ASHFORDINN-001's speculative 'rocks as intrusive focal element' reasoning is retracted: OBS-ASHFORDINN-001 found no rock graphic anywhere on this map.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json"
+      ]
+    },
+    {
+      "category": "passability",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "OBS-ASHFORDINN-001 records 6 invisible passability-blocker events at counter and bed-alcove edges, indicating passability was actively authored rather than ignored - a partial positive signal GRD-ASHFORDINN-001 did not have. This does not confirm the blockers are correctly sized or complete, and no tileset passage-flag or walkability-grid check was performed, so this category remains insufficient_evidence rather than scored.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json"
+      ]
+    },
+    {
+      "category": "environmental_storytelling",
+      "score": 3,
+      "confidence": "medium",
+      "rationale": "IMP-HOM-020 requires a warm-stone vent/hearth echoing LOC-ASH-001's village motif. OBS-ASHFORDINN-001 confirms the required element is present and functional (the !Flame hearth event at (8,3)), so the tone-setting element exists in substance - but its supporting tile graphic is visually truncated, so it is not cleanly executed. This is a mixed finding, raised from GRD-ASHFORDINN-001's score of 2: that grade's reasoning ('unrequested rocks... work against LOC-ASH-001's tone') is retracted, since OBS-ASHFORDINN-001 found no rock graphic on this map.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json"
+      ]
+    },
+    {
+      "category": "project_fit",
+      "score": 3,
+      "confidence": "medium",
+      "rationale": "OBS-ASHFORDINN-001 confirms the tileset family is correct (Inside, tilesetId 3, matching IMP-HOM-020's requirement) - GRD-ASHFORDINN-001's 'wrong tileset family' hypothesis is not supported. IMP-HOM-020 requires 'two to three bed alcoves'; three are present, within spec by count. The packet's named required elements (counter-adjacent blockers, bed alcoves, hearth) are present in count and event terms. The remaining deviation is execution quality (truncated fireplace, inconsistent bed styles, an unlisted floor-placed picture-frame decoration) rather than a missing or wrong required element, which is why this score is raised from GRD-ASHFORDINN-001's 2 to 3 - the asset-execution problems are captured under rpg_maker_quality instead of counted twice here.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json",
+        "TheLastSwordProtocol-Atlas/atlas/docs/09_Technical/Implementation_Packets/Home_Island/IMP_HOM_020_Manual_Map_Build_Ashford_Inn.md"
+      ]
+    },
+    {
+      "category": "rpg_maker_quality",
+      "score": 2,
+      "confidence": "high",
+      "rationale": "bridges/rpg-maker-mz/map-quality-standard.md's bar ('would this be believable as a polished RPG Maker MZ sample map') is directly and concretely failed: OBS-ASHFORDINN-001 documents a multi-tile fireplace missing its left pillar column, three differently styled bed graphics placed adjacently without their matching shelf/table tiles, and wall-art tiles floor-placed without a base. GRD-ASHFORDINN-001 already scored this category 'high' confidence from the rejection text alone; this pass keeps the same score with stronger, tile-level grounding rather than a paraphrase of the human reviewer's note.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json",
+        "bridges/rpg-maker-mz/map-quality-standard.md"
+      ]
+    },
+    {
+      "category": "dragon_quest_exploration_feel",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "Applicable per DDR-0005's building-submap exploration model, but this is a single interior room; OBS-ASHFORDINN-001 gathered no exploration-structure-relevant observation. Unchanged from GRD-ASHFORDINN-001.",
+      "evidence": [
+        "TheLastSwordProtocol-Atlas/atlas/docs/99_Reference/Decision_Records/DDR-0005_Ashford_Inn.md"
+      ]
+    }
+  ],
+  "overall_recommendation": {
+    "summary": "OBS-ASHFORDINN-001's first real observation pass over Map026.json replaces GRD-ASHFORDINN-001's inference from a one-line rejection reason with directly observed tile-level facts, and the picture sharpens rather than simply confirms: the tileset family is correct and the packet's required elements (counter, three bed alcoves, hearth) are present in count and event terms, so this is not a wrong-tileset or missing-element failure. The failure is asset-assembly execution: a multi-tile fireplace built from only 2 of its 3 source columns, three differently styled bed graphics placed adjacently without their matching shelf/table tiles, and wall-mounted picture-frame tiles placed at floor level with no base beneath them. The rejection reason's specific 'rocks appear in the room' claim is not corroborated - no rock graphic exists anywhere in this map's tile or event data - and remains an open question this pass could not resolve; it should be clarified with the original human reviewer or checked against a rendered screenshot before the next build pass, since none currently exists for this map (unlike Map001/Map002, per WO-2010's rendering-pipeline precedent).",
+    "dragon_quest_exploration_feel_applicable": true
+  },
+  "outcome": "rejected",
+  "remediation_tags": [
+    "needs_art_direction"
+  ],
+  "notes": "Compares directly against GRD-ASHFORDINN-001 (reports/academy/map-grading-system.md), the worked example that first recommended this exact follow-up. No file under TheLastSwordProtocol-Game or TheLastSwordProtocol-Atlas was modified - Map026.json remains hand-authored/protected and was read-only, as were Tilesets.json and the two tileset images (Inside_B.png, Inside_A5.png). needs_functional_fix remains omitted: OBS-ASHFORDINN-001's blocker-event finding is a positive signal, not a confirmed problem, and nothing in either grade indicates a functional/passability complaint."
+}

@@ -4,6 +4,7 @@ import contextlib
 import io
 import json
 import unittest
+from unittest import mock
 
 from tools.atlas_academy import cli
 
@@ -85,10 +86,21 @@ class AtlasAcademyCliTests(unittest.TestCase):
         payload = json.loads(stdout.getvalue())
         self.assertEqual(payload["path"], "academy/reports/knowledge-extraction-report.md")
 
-    def test_grade_without_filed_records_reports_where_the_worked_example_lives(self) -> None:
+    def test_grade_finds_the_filed_ashford_inn_regrade(self) -> None:
         stdout = io.StringIO()
         with contextlib.redirect_stdout(stdout):
-            code = cli.main(["grade", "--json"])
+            code = cli.main(["grade", "ashfordinn", "--json"])
+        self.assertEqual(code, 0)
+        payload = json.loads(stdout.getvalue())
+        grade_ids = [item["record"]["grade_id"] for item in payload]
+        self.assertIn("GRD-ASHFORDINN-002", grade_ids)
+
+    def test_grade_reports_missing_directory_when_none_exists(self) -> None:
+        stdout = io.StringIO()
+        missing_dir = cli.ACADEMY_DIR / "grades-that-do-not-exist"
+        with mock.patch.object(cli, "GRADES_DIR", missing_dir):
+            with contextlib.redirect_stdout(stdout):
+                code = cli.main(["grade", "--json"])
         self.assertEqual(code, 9)
         payload = json.loads(stdout.getvalue())
         self.assertFalse(payload["grades_dir_exists"])

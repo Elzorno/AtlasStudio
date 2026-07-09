@@ -26,7 +26,7 @@ Every report filed here follows `studio/design-patterns/PATTERN_EXTRACTION_GUIDE
 
 ## Current Contents
 
-None yet. This directory is created empty by `work-orders/WO-2000-atlas-academy-foundation.md`, ready for the first case study once one meets `academy/grading-rubric.md`'s eligibility criteria.
+- `ashford-inn-revisit-001.md` - the first case study filed here: a Level 3 diagnosis of `TheLastSwordProtocol-Game/data/Map026.json`'s rejected build, built on `academy/observations/OBS-ASHFORDINN-001.json` and `academy/grades/GRD-ASHFORDINN-002.json`, checked against `academy/grading-rubric.md`'s foundation-level eligibility criteria before filing.
 
 ## References
 

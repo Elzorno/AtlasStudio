@@ -108,6 +108,7 @@ This is a backlog of recommended improvements, not new work orders - per this wo
 
 ### Near-Term
 
+- Run an Atlas Academy Level 1 observation pass (`schemas/academy-observation.schema.json`) on a map *before* it goes to human review, not only after a rejection. `academy/reports/ashford-inn-revisit-001.md` found that Map026's rejected build assembled a multi-tile fireplace graphic from only 2 of its 3 source tileset columns and placed three differently-styled bed graphics adjacently without their matching tiles - both are structural, tile-ID-level facts a Level 1 pass would have caught pre-submission, at zero cost beyond the pass itself, rather than requiring a human reviewer to spot them by eye after the fact.
 - Require every implementation artifact's embedded comments (or an accompanying Audit Summary, per `bridges/rpg-maker-mz/handoff-format.md`) to name the specific AtlasStudio contract it executed, closing Finding 7, for every build going forward - not retroactively for Ashford Shop alone.
 - Add a documented distinction, in `bridges/rpg-maker-mz/ownership-model.md` or in practice via the artifact's own note field, between "hand-authored, in progress or awaiting sign-off" and "hand-authored and accepted" - closing Finding 8.
 - Route one genuine production request through `tools/atlas_router/` and observe the result, rather than continuing to rely only on its self-test coverage - addressing the Work-Order Routing rating.
