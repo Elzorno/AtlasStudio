@@ -115,10 +115,16 @@ Until then, the actionable learning is diagnostic:
 - Counter-service layouts need both visual composition and interaction routing; a reachable proxy marker without the shop command is not playable.
 - `hand_authored` ownership protects a map from regeneration but does not imply acceptance.
 
+## Follow-Up Repair
+
+`TheLastSwordProtocol-Game` commit `e191209` (`Repair Ashford shopkeeper counter interaction`) resolves Finding 1.
+
+The reachable customer-side counter event `EVT-HOM-008 Activate Shopkeeper` now carries the shopkeeper dialogue pages and Shop Processing commands while remaining an invisible, below-player action event at `(8,5)`. The visible shopkeeper event remains behind the counter at `(8,3)`.
+
 ## Review Outcome
 
 Map002 is structurally ready for human visual review and playtest, with the keepsake placeholder as the main known content caveat.
 
-Map003 needs a small implementation revision before acceptance: the reachable counter interaction event must run the shopkeeper dialogue and Shop Processing behavior.
+Map003's originally reported shopkeeper interaction gap was repaired in `TheLastSwordProtocol-Game` commit `e191209`. It still requires human visual review and playtest before acceptance.
 
 Neither map should be marked accepted or promoted to Academy reference status until those checks are complete.
