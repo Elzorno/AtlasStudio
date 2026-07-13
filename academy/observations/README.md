@@ -26,6 +26,8 @@ Every file here should validate against `schemas/academy-observation.schema.json
 ## Current Contents
 
 - `OBS-ASHFORDINN-001.json` - the first real file filed here, per this section's own prior instruction: an actual Level 1 observation pass over `TheLastSwordProtocol-Game/data/Map026.json`, produced for `academy/reports/ashford-inn-revisit-001.md`. `academy/observation-model.md`'s worked example (`OBS-ITEMSHOP-001`) remains illustrative and inline in that document, not a file here, since it re-expresses an existing report's facts rather than resulting from a new observation pass.
+- `OBS-ASHFORDINN-002.json` - a companion pass over the same target, adding the map's first-ever engine-faithful render as evidence and cross-checking `OBS-ASHFORDINN-001`'s tile-level findings against it. Feeds `academy/case-studies/lsp-map-inspection-001.md` and `academy/grades/GRD-ASHFORDINN-003.json`.
+- `OBS-ASHFORDINN-003.json` - corrects `OBS-ASHFORDINN-001`'s structural_object tile identification (the "three mismatched beds" were disassembled pieces of one sofa; the "incomplete fireplace" was a mirror and shelf; the "picture frames" were pillars/crates/rubble), found while rebuilding the map's furniture using tile IDs verified by direct pixel crop rather than trusted from the prior record. Confirms the original 2026-07-08 human rejection reasons were accurate. Feeds `academy/grades/GRD-ASHFORDINN-004.json`.
 
 ## References
 

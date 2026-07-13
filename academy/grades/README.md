@@ -20,6 +20,8 @@ Every file here should validate against `schemas/academy-map-grade.schema.json`.
 ## Current Contents
 
 - `GRD-ASHFORDINN-002.json` - re-grade of `TheLastSwordProtocol-Game/data/Map026.json` using `academy/observations/OBS-ASHFORDINN-001.json` as evidence, compared against the worked example `GRD-ASHFORDINN-001` (`reports/academy/map-grading-system.md`). See `academy/reports/ashford-inn-revisit-001.md`. This is the first grade filed here - `atlas academy grade` previously reported no `academy/grades/` directory at all.
+- `GRD-ASHFORDINN-003.json` - supersedes `GRD-ASHFORDINN-002`, re-grading the same target using `academy/observations/OBS-ASHFORDINN-002.json` (the map's first-ever render) and the newly added classic-JRPG Review Gate (`academy/knowledge/classic-jrpg-feel.md`). See `academy/case-studies/lsp-map-inspection-001.md`.
+- `GRD-ASHFORDINN-004.json` - supersedes `GRD-ASHFORDINN-003`, re-grading after a full furniture rebuild using tile IDs corrected by `academy/observations/OBS-ASHFORDINN-003.json` (the prior grades' furniture identification was itself wrong). Outcome moved from `rejected` to `accepted_with_notes`. See `rpgmakerLSP/reports/atlas-import/ashford-inn-rebuild-report.md`.
 
 ## References
 

@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1.0",
+  "grade_id": "GRD-ASHFORDINN-004",
+  "target": {
+    "repo": "TheLastSwordProtocol-Game",
+    "file_path": "data/Map026.json",
+    "map_name": "INT_Ashford_Inn",
+    "ownership_state_at_capture": "hand-authored",
+    "captured_at": "2026-07-13"
+  },
+  "grader": "claude-code",
+  "created": "2026-07-13",
+  "category_scores": [
+    {
+      "category": "composition",
+      "score": 4,
+      "confidence": "high",
+      "rationale": "Raised from GRD-ASHFORDINN-003's 2. OBS-ASHFORDINN-003 corrects the record: the previous low score was based on tile identification that was itself wrong (a real sofa object misread as three mismatched beds, a mirror/shelf misread as an incomplete fireplace, pillars/rubble misread as floor-placed picture frames). The rebuild uses a verified complete single-tile fireplace as the room's one dominant focal point, a verified picture-and-cabinet furnished nook as a secondary cluster, and two consistent (not mismatched) bed alcoves. Not a 5: the counter remains functionally correct but visually unmarked (no visible counter/desk graphic, only invisible blockers), which composition-rubric.md Topic 1 would still flag as a softer focal-point gap.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-003.json",
+        "rpgmakerLSP/reports/atlas-import/ashford-inn-rebuild-render.png"
+      ]
+    },
+    {
+      "category": "traffic_flow",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "Unchanged from prior grades -- no formal metrics pass has been run. BFS reachability (a coarser check) confirms all events reachable/adjacent from the entry tile, but this is not a substitute for a proper traffic_flow metrics pass.",
+      "evidence": []
+    },
+    {
+      "category": "readability",
+      "score": 4,
+      "confidence": "medium",
+      "rationale": "Raised from GRD-ASHFORDINN-003's 2. The fireplace is now a single, correctly legible focal point a first-time viewer could name; the picture/cabinet nook and bed alcoves are visually distinct supporting clusters rather than three furniture types competing at equal weight.",
+      "evidence": ["academy/observations/OBS-ASHFORDINN-003.json"]
+    },
+    {
+      "category": "visual_hierarchy",
+      "score": 4,
+      "confidence": "medium",
+      "rationale": "Raised from GRD-ASHFORDINN-003's 2, for the same reason as composition/readability above -- the fireplace now reads first, the furnished nook second, the beds third, a legible order rather than three equally-weighted, incorrectly-assembled clusters.",
+      "evidence": ["academy/observations/OBS-ASHFORDINN-003.json"]
+    },
+    {
+      "category": "passability",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "Unchanged from prior grades. BFS reachability (scratchpad check, not a formal category score) confirms the innkeeper, exit, and all blocker events remain reachable/adjacent after the rebuild -- a positive signal, not a substitute for the real engine's directional passability algorithm or a live playtest.",
+      "evidence": []
+    },
+    {
+      "category": "environmental_storytelling",
+      "score": 4,
+      "confidence": "medium",
+      "rationale": "Raised from GRD-ASHFORDINN-003's 2. The room now reads as an inhabited inn common room -- a hearth, a furnished corner, and guest beds -- rather than a furniture-storage space. Not a 5: no counter graphic and no additional small details (a rug, a lantern) that would push this fully to LOC-ASH-001's 'warm, ordinary, quietly strange' standard.",
+      "evidence": ["academy/observations/OBS-ASHFORDINN-003.json", "academy/composition-rubric.md"]
+    },
+    {
+      "category": "project_fit",
+      "score": 4,
+      "confidence": "medium",
+      "rationale": "Raised from 3. IMP-HOM-020's required elements (counter, 2-3 bed alcoves, warm-stone vent/hearth) are now all present AND correctly assembled -- the packet's 'two to three bed alcoves' allows two; the hearth is now a real fireplace graphic under the existing flame event rather than a mismatched mirror/shelf.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-003.json",
+        "TheLastSwordProtocol-Atlas/atlas/docs/09_Technical/Implementation_Packets/Home_Island/IMP_HOM_020_Manual_Map_Build_Ashford_Inn.md"
+      ]
+    },
+    {
+      "category": "rpg_maker_quality",
+      "score": 4,
+      "confidence": "high",
+      "rationale": "Raised from GRD-ASHFORDINN-003's 2. bridges/rpg-maker-mz/map-quality-standard.md's bar ('would this be believable as a polished RPG Maker MZ sample map') is now plausibly met: a correct fireplace, a correct furniture nook, and matching beds, with no disassembled or mismatched objects. Not a 5: still lacks a visible counter and any small atmospheric detail beyond the three furniture clusters.",
+      "evidence": ["academy/observations/OBS-ASHFORDINN-003.json", "bridges/rpg-maker-mz/map-quality-standard.md"]
+    },
+    {
+      "category": "dragon_quest_exploration_feel",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "Unchanged from prior grades. Applicable per DDR-0005, but a single interior room's static render still does not supply exploration-structure evidence (no searchable object was added to this room in this pass, unlike the WO-0047 Ashford Exterior pass that added searchable pots/barrels/crates the same session).",
+      "evidence": ["TheLastSwordProtocol-Atlas/atlas/docs/99_Reference/Decision_Records/DDR-0005_Ashford_Inn.md"]
+    }
+  ],
+  "overall_recommendation": {
+    "summary": "Every scored category moved up, and the reason is not merely 'more effort was spent' -- it is that GRD-ASHFORDINN-002/003's underlying evidence (OBS-ASHFORDINN-001) misidentified the room's actual furniture due to a tile-addressing math error, and this pass corrects that error before rebuilding rather than building on top of a wrong diagnosis. The corrected picture matters beyond this one grade: the original 2026-07-08 human rejection ('rocks appear in the room', 'sofa/furniture rendering is poor') was accurate all along, and OBS-ASHFORDINN-001's 'not corroborated' conclusion on the rocks claim was itself the mistake. The rebuild gives the room a single legible fireplace landmark (seated correctly under the pre-existing flame event), a real furnished nook, and two consistent bed alcoves, replacing an incomplete-fireplace/mismatched-beds/floating-pictures diagnosis that never described the actual tiles in the first place. Remaining gaps are real but smaller: no visible counter graphic, and this room was not extended with a searchable object the way Ashford Exterior was in the same session's WO-0047 pass, so dragon_quest_exploration_feel remains unscored.",
+    "dragon_quest_exploration_feel_applicable": true
+  },
+  "outcome": "accepted_with_notes",
+  "remediation_tags": [
+    "needs_art_direction"
+  ],
+  "notes": "Supersedes GRD-ASHFORDINN-003 as the current grade of record. Produced as part of a direct rebuild pass (Chris chose 'rebuild Ashford Inn' as the next priority after the Glassfield/Skyreach remediation and WO-0047 playtest pass), not a pure grading pass -- filed to keep the grade history accurate given the significance of the OBS-ASHFORDINN-001 correction. outcome moved from 'rejected' to 'accepted_with_notes' rather than a bare 'accepted': map_ownership.json's review_status is deliberately renderer_verified_pending_human_review, not a plain accepted state, consistent with this session's standing caution for every terrain change that has not yet had a live-editor human look. needs_functional_fix remains omitted -- BFS reachability confirms nothing broke, and no passability regression is evidenced. A visible counter graphic and a small searchable/atmospheric detail are the named next steps if a further art pass is wanted."
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "REF-COMPARATIVE-JRPG-CATALOG-001",
+  "title": "NES and SNES Comparative JRPG Map References",
+  "source_class": "comparative_jrpg_reference",
+  "approval_status": "candidate",
+  "confidence_contribution": "low",
+  "captured_at": "2026-07-12",
+  "allowed_uses": [
+    "observation",
+    "composition_analysis",
+    "pattern_extraction",
+    "comparative_context",
+    "historical_context"
+  ],
+  "licensing": {
+    "status": "external_citation_only",
+    "asset_copy_allowed": false,
+    "notes": "External proprietary game maps and tiles. Store citations and learning notes only; do not copy assets without separate licensing clearance."
+  },
+  "citation_requirement": "Cite game, platform, area, direct URL, source site, and access date 2026-07-12.",
+  "records": [
+    {"reference_id":"REF-NES-ZELDA-HYRULE-001","console":"NES","game":"The Legend of Zelda","area":"First Quest - Hyrule","map_type":"overworld","indoor_outdoor":"outdoor","learning_scopes":["landmark_spacing","route_readability","regional_gating"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/LegendOfZelda-FirstQuest-Hyrule.png"},
+    {"reference_id":"REF-NES-ZELDA-EAGLE-001","console":"NES","game":"The Legend of Zelda","area":"First Quest - Level 1 (Eagle)","map_type":"dungeon","indoor_outdoor":"indoor","learning_scopes":["route_readability","room_identity","risk_reward"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/LegendOfZelda-FirstQuest-Level-1(Eagle).png"},
+    {"reference_id":"REF-NES-ZELDA2-HYRULE-001","console":"NES","game":"Zelda II: The Adventure of Link","area":"Hyrule","map_type":"hybrid","indoor_outdoor":"mixed","learning_scopes":["regional_gating","landmark_spacing","negative_example"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/ZeldaII-AdventureOfLink-Hyrule.png"},
+    {"reference_id":"REF-NES-ZELDA2-PARAPA-001","console":"NES","game":"Zelda II: The Adventure of Link","area":"Parapa Palace","map_type":"dungeon","indoor_outdoor":"indoor","learning_scopes":["route_readability","room_identity","negative_example"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/ZeldaII-AdventureOfLink-ParapaPalace.png"},
+    {"reference_id":"REF-NES-FF-CONERIA-001","console":"NES","game":"Final Fantasy","area":"Coneria","map_type":"town","indoor_outdoor":"outdoor","learning_scopes":["service_clustering","route_readability","landmark_spacing"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/FinalFantasy-Coneria.png"},
+    {"reference_id":"REF-NES-FF-PRAVOKA-001","console":"NES","game":"Final Fantasy","area":"Pravoka","map_type":"town","indoor_outdoor":"outdoor","learning_scopes":["service_clustering","route_readability","room_identity"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/FinalFantasy-Pravoka.png"},
+    {"reference_id":"REF-NES-FF-MARSH-001","console":"NES","game":"Final Fantasy","area":"Marsh Cave","map_type":"cave","indoor_outdoor":"indoor","learning_scopes":["route_readability","risk_reward","room_identity"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/FinalFantasy-MarshCave.png"},
+    {"reference_id":"REF-NES-FF-EARTH-001","console":"NES","game":"Final Fantasy","area":"Earth Cave","map_type":"cave","indoor_outdoor":"indoor","learning_scopes":["route_readability","risk_reward","landmark_spacing"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/FinalFantasy-EarthCave.png"},
+    {"reference_id":"REF-NES-RYGAR-DORAGO-001","console":"NES","game":"Rygar","area":"Palace of Dorago","map_type":"hybrid","indoor_outdoor":"mixed","learning_scopes":["route_readability","regional_gating","negative_example"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/Rygar-PalaceOfDorago.png"},
+    {"reference_id":"REF-NES-STARTROPICS-CISLAND-001","console":"NES","game":"StarTropics","area":"Chapter 1 - C-Island","map_type":"overworld","indoor_outdoor":"outdoor","learning_scopes":["regional_gating","landmark_spacing","route_readability"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/NES/StarTropics-Chapter1-Prelude-C-Island.png"},
+    {"reference_id":"REF-SNES-FFIV-OVERWORLD-001","console":"SNES","game":"Final Fantasy II (Final Fantasy IV)","area":"Overworld","map_type":"overworld","indoor_outdoor":"outdoor","learning_scopes":["regional_gating","landmark_spacing","risk_reward"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/FinalFantasyII-Overworld.png"},
+    {"reference_id":"REF-SNES-FFIV-BARON-001","console":"SNES","game":"Final Fantasy II (Final Fantasy IV)","area":"Town of Baron","map_type":"town","indoor_outdoor":"outdoor","learning_scopes":["service_clustering","route_readability","landmark_spacing"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/FinalFantasyII-TownOfBaron.png"},
+    {"reference_id":"REF-SNES-FFIV-MISTY-001","console":"SNES","game":"Final Fantasy II (Final Fantasy IV)","area":"Misty Cave","map_type":"cave","indoor_outdoor":"indoor","learning_scopes":["route_readability","room_identity","risk_reward"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/FinalFantasyII-MistyCave.png"},
+    {"reference_id":"REF-SNES-CHRONO-PRESENT-001","console":"SNES","game":"Chrono Trigger","area":"1000 A.D. (Present)","map_type":"overworld","indoor_outdoor":"outdoor","learning_scopes":["regional_gating","landmark_spacing","route_readability"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/ChronoTrigger-1000AD(Present).png"},
+    {"reference_id":"REF-SNES-CHRONO-GUARDIA-001","console":"SNES","game":"Chrono Trigger","area":"1000 A.D. - Guardia Castle","map_type":"castle","indoor_outdoor":"mixed","learning_scopes":["room_identity","route_readability","landmark_spacing"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/ChronoTrigger-1000AD-GuardiaCastle.png"},
+    {"reference_id":"REF-SNES-CHRONO-CATHEDRAL-001","console":"SNES","game":"Chrono Trigger","area":"600 A.D. - Cathedral","map_type":"dungeon","indoor_outdoor":"indoor","learning_scopes":["room_identity","risk_reward","route_readability"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/ChronoTrigger-600AD-Cathedral.png"},
+    {"reference_id":"REF-SNES-MANA-POTOS-001","console":"SNES","game":"Secret of Mana","area":"Potos","map_type":"town","indoor_outdoor":"outdoor","learning_scopes":["service_clustering","route_readability","landmark_spacing"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/SecretOfMana-Potos.png"},
+    {"reference_id":"REF-SNES-MANA-PANDORA-001","console":"SNES","game":"Secret of Mana","area":"Pandora's Ruins","map_type":"dungeon","indoor_outdoor":"indoor","learning_scopes":["route_readability","risk_reward","room_identity"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/SecretOfMana-Pandora'sRuins.png"},
+    {"reference_id":"REF-SNES-EARTHBOUND-ONETT-001","console":"SNES","game":"EarthBound","area":"Onett","map_type":"town","indoor_outdoor":"outdoor","learning_scopes":["service_clustering","landmark_spacing","route_readability"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/EarthBound-Onett.png"},
+    {"reference_id":"REF-SNES-EARTHBOUND-GIANTSTEP-001","console":"SNES","game":"EarthBound","area":"Giant Step","map_type":"dungeon","indoor_outdoor":"mixed","learning_scopes":["regional_gating","risk_reward","route_readability"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/EarthBound-GiantStep.png"},
+    {"reference_id":"REF-SNES-SMRPG-MUSHROOM-001","console":"SNES","game":"Super Mario RPG: Legend of the Seven Stars","area":"Mushroom Kingdom","map_type":"town","indoor_outdoor":"outdoor","learning_scopes":["service_clustering","route_readability","landmark_spacing"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/SuperMarioRPG-LegendOfTheSevenStars-MushroomKingdom-MushroomKingdom.png"},
+    {"reference_id":"REF-SNES-SMRPG-KERO-001","console":"SNES","game":"Super Mario RPG: Legend of the Seven Stars","area":"Kero Sewers","map_type":"dungeon","indoor_outdoor":"indoor","learning_scopes":["route_readability","risk_reward","room_identity"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/SuperMarioRPG-LegendOfTheSevenStars-PondToPipes-KeroSewers.png"},
+    {"reference_id":"REF-SNES-7THSAGA-BELAINE-001","console":"SNES","game":"The 7th Saga","area":"Town of Belaine","map_type":"town","indoor_outdoor":"outdoor","learning_scopes":["service_clustering","route_readability","room_identity"],"source_site":"VGMaps","url":"https://www.vgmaps.com/Atlas/SuperNES/7thSaga-TownOfBelaine.png"},
+    {"reference_id":"REF-SNES-LTTP-TILES-001","console":"SNES","game":"The Legend of Zelda: A Link to the Past","area":"Overworld Tiles","map_type":"tileset","indoor_outdoor":"outdoor","learning_scopes":["terrain_adjacency","negative_example"],"source_site":"The Spriters Resource","url":"https://www.spriters-resource.com/snes/legendofzeldaalinktothepast/asset/28736/","caveat":"A source-page comment reports possible flipped or inaccurate transition tiles; do not treat this candidate as authoritative adjacency evidence."}
+  ]
+}

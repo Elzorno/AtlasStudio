@@ -1,0 +1,110 @@
+{
+  "schema_version": "0.1.0",
+  "grade_id": "GRD-ASHFORDINN-003",
+  "target": {
+    "repo": "TheLastSwordProtocol-Game",
+    "file_path": "data/Map026.json",
+    "map_name": "INT_Ashford_Inn",
+    "ownership_state_at_capture": "hand-authored",
+    "captured_at": "2026-07-12"
+  },
+  "grader": "claude-code",
+  "created": "2026-07-12",
+  "category_scores": [
+    {
+      "category": "composition",
+      "score": 2,
+      "confidence": "high",
+      "rationale": "Unchanged score from GRD-ASHFORDINN-002, but confidence raised from 'medium' to 'high': OBS-ASHFORDINN-002's render makes the fireplace asymmetry and the three-bed mismatch directly visible rather than inferred from tile IDs alone. The new classic-JRPG Review Gate (academy/knowledge/classic-jrpg-feel.md, added 2026-07-12) adds a sharper diagnosis this pass records explicitly: no single dominant landmark is legible in the render - the fireplace, the bed row, and the kitchen counter compete roughly equally rather than one being staged as primary, which composition-rubric.md Topic 1 (Focal Point) already treats as a Gap on its own terms.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json",
+        "academy/observations/OBS-ASHFORDINN-002.json",
+        "academy/knowledge/classic-jrpg-feel.md"
+      ]
+    },
+    {
+      "category": "traffic_flow",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "Unchanged from GRD-ASHFORDINN-002. The new render is a static top-down composite; it does not supply aisle-width or reachability measurements per schemas/academy-map-metrics.schema.json. A metrics pass would still be required.",
+      "evidence": []
+    },
+    {
+      "category": "readability",
+      "score": 2,
+      "confidence": "medium",
+      "rationale": "Newly scored (was insufficient_evidence in GRD-ASHFORDINN-002). academy/knowledge/classic-jrpg-feel.md's Review Gate gives a concrete wayfinding-relevant check this pass can now apply: from the render, a first-time viewer cannot state which element is the room's primary destination or focus, since fireplace, beds, and counter carry roughly equal visual weight. This is a genuine Gap, not just an absence of data.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-002.json",
+        "academy/knowledge/classic-jrpg-feel.md"
+      ]
+    },
+    {
+      "category": "visual_hierarchy",
+      "score": 2,
+      "confidence": "medium",
+      "rationale": "Unchanged score from GRD-ASHFORDINN-002; confidence unchanged at 'medium' since the underlying evidence (the fireplace's incomplete graphic undermining it as a focal point) is the same finding, now visually confirmed rather than newly established.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json",
+        "academy/observations/OBS-ASHFORDINN-002.json"
+      ]
+    },
+    {
+      "category": "passability",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "Unchanged from GRD-ASHFORDINN-002. The render does not add passability-flag or walkability-grid evidence beyond the 6 invisible blocker events OBS-ASHFORDINN-001 already recorded.",
+      "evidence": []
+    },
+    {
+      "category": "environmental_storytelling",
+      "score": 2,
+      "confidence": "medium",
+      "rationale": "Lowered from GRD-ASHFORDINN-002's score of 3. That grade reasoned the required hearth element 'exists in substance' despite being visually truncated. OBS-ASHFORDINN-002's render shows the fuller picture: the room reads as a furniture-storage space competing for attention across three unrelated clusters, not as LOC-ASH-001's required 'warm, ordinary, quietly strange' inn common room - composition-rubric.md Topic 10 names this exact standard for an Ashford interior, and a generic-or-worse read is a Gap 'even if every other topic Holds.' The hearth's presence in substance does not offset a room that does not read as inhabited or warm on the whole.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-002.json",
+        "academy/composition-rubric.md",
+        "TheLastSwordProtocol-Atlas/atlas/docs/99_Reference/Decision_Records/DDR-0005_Ashford_Inn.md"
+      ]
+    },
+    {
+      "category": "project_fit",
+      "score": 3,
+      "confidence": "medium",
+      "rationale": "Unchanged from GRD-ASHFORDINN-002. IMP-HOM-020's named required elements (counter-adjacent blockers, bed alcoves, hearth) remain present in count and event terms; the render does not change this category's evidence.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json",
+        "TheLastSwordProtocol-Atlas/atlas/docs/09_Technical/Implementation_Packets/Home_Island/IMP_HOM_020_Manual_Map_Build_Ashford_Inn.md"
+      ]
+    },
+    {
+      "category": "rpg_maker_quality",
+      "score": 2,
+      "confidence": "high",
+      "rationale": "Unchanged score, confidence unchanged at 'high' (GRD-ASHFORDINN-002 already reached 'high' confidence from the tile-level enumeration alone). The render does not move this score; it visually confirms it.",
+      "evidence": [
+        "academy/observations/OBS-ASHFORDINN-001.json",
+        "academy/observations/OBS-ASHFORDINN-002.json",
+        "bridges/rpg-maker-mz/map-quality-standard.md"
+      ]
+    },
+    {
+      "category": "dragon_quest_exploration_feel",
+      "score": null,
+      "confidence": "insufficient_evidence",
+      "rationale": "Unchanged from GRD-ASHFORDINN-002. Applicable per DDR-0005, but a single interior room's static render does not supply exploration-structure evidence.",
+      "evidence": [
+        "TheLastSwordProtocol-Atlas/atlas/docs/99_Reference/Decision_Records/DDR-0005_Ashford_Inn.md"
+      ]
+    }
+  ],
+  "overall_recommendation": {
+    "summary": "The score most people would ask about first - composition, 2 - did not move. What changed is confidence and scope: this map's first-ever render (OBS-ASHFORDINN-002) closes the exact gap GRD-ASHFORDINN-002 flagged as its own open question, and corroborates rather than contradicts OBS-ASHFORDINN-001's tile-level findings, including settling (without fully confirming) the original 'rocks appear in the room' rejection phrase as most plausibly a description of the gray tarp-style bed variant, not a literal rock tile - no rock graphic exists anywhere in this map's data. Independently, the newly added classic-JRPG Review Gate (academy/knowledge/classic-jrpg-feel.md, 2026-07-12) supplies a criterion GRD-ASHFORDINN-002 did not have: a room needs one dominant, legibly staged landmark, not several competing clusters. Applied here, that criterion sharpens two scores - readability moves from insufficient_evidence to a scored 2, and environmental_storytelling drops from 3 to 2 - because the room's real problem is broader than any single asset defect: fireplace, bed row, and counter compete for attention rather than one being staged as primary, so even a perfectly assembled fireplace would not by itself fix the room's readability. This changes the recommended remediation shape, not just the tally: a rebuild should stage one clear focal point first (most likely the hearth, per IMP-HOM-020's own framing) and treat the beds and counter as supporting elements around it, rather than treating this as three independent asset-repair tickets.",
+    "dragon_quest_exploration_feel_applicable": true
+  },
+  "outcome": "rejected",
+  "remediation_tags": [
+    "needs_art_direction"
+  ],
+  "notes": "Supersedes GRD-ASHFORDINN-002 as the current grade of record for this target, per academy/grades/README.md's filing convention (grades are never overwritten in place). Produced in direct response to the Production Director's 2026-07-12 request for an inspection pass across all hand-built maps using the newly added references/classic-jrpg-maps/ corpus, to see whether scores change. Map026.json was not modified - read-only, as in GRD-ASHFORDINN-002. The literal answer for this map: one category score moved (environmental_storytelling, 3 to 2), one previously-unscored category is now scored (readability, insufficient_evidence to 2), and the overall outcome (rejected, needs_art_direction) is unchanged. See academy/case-studies/lsp-map-inspection-001.md for the corpus-wide pass this grade is one part of - most other hand-built maps had no prior grade to diff against, so this is the only map in the project where 'did the score change' has a direct numeric answer."
+}

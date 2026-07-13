@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.1.0",
+  "observation_id": "OBS-ASHFORDINN-002",
+  "source": {
+    "repo": "TheLastSwordProtocol-Game",
+    "file_path": "data/Map026.json",
+    "map_name": "INT_Ashford_Inn",
+    "tileset_reference": "Inside (tilesetId: 3), confirmed against data/Tilesets.json",
+    "source_class": "rejected_build",
+    "captured_at": "2026-07-12",
+    "ownership_state_at_capture": "hand-authored",
+    "provenance_ref": "65b381cd7a911b11ac4658871cc07d039c4cc9e4 (working tree unchanged for Map026.json since this commit)"
+  },
+  "observer": "claude-code",
+  "created": "2026-07-12",
+  "objective_observations": [
+    {
+      "category": "other",
+      "description": "First engine-faithful render ever captured for this map, filling the exact gap GRD-ASHFORDINN-002's overall_recommendation named as unresolved ('should be clarified ... or checked against a rendered screenshot before the next build pass, since none currently exists for this map'). Produced with a PIL compositor that reads the real Inside_A1/A2/A4/A5/B/C.png files and reproduces rmmz_core.js's _addAutotile/_addNormalTile source-rect math.",
+      "value": {
+        "render_path": "rpgmakerLSP/reports/atlas-import/academy-inspection-001-map026-render.png",
+        "render_type": "engine_faithful_render"
+      },
+      "evidence": {
+        "evidence_type": "screenshot_supplementary",
+        "file_path": "rpgmakerLSP/reports/atlas-import/academy-inspection-001-map026-render.png",
+        "coordinates": null,
+        "layer": null
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "Re-verified OBS-ASHFORDINN-001's absence claim by re-enumerating every nonzero tile ID on layers 0-3 against the render: no rock/boulder graphic is present. The third bed variant (Inside_B.png cols 11-12, tile IDs 91/92/107/108 at map (11,4)-(12,5)) renders as a mottled grey, lumpy tarp/sleeping-bag texture that this inspection pass's own first-look visual read initially misidentified as a pair of rock/boulder objects before re-checking against the tile data. This is recorded as a falsifiable data point, not a retraction of OBS-ASHFORDINN-001: the render corroborates that observation's tile-level conclusion (no rock tile exists) while also demonstrating exactly how a grey, irregularly-shaped furniture graphic can visually read as debris at a glance - a plausible, now-evidenced account of where the original human rejection's 'rocks appear in the room' phrasing may have come from, without confirming it as literally true.",
+      "value": {
+        "rock_graphic_found": false,
+        "likely_visual_source_of_rejection_phrase": "gray tarp-style bed variant, tile IDs 91/92/107/108"
+      },
+      "evidence": {
+        "evidence_type": "screenshot_supplementary",
+        "file_path": "rpgmakerLSP/reports/atlas-import/academy-inspection-001-map026-render.png",
+        "coordinates": [11, 4],
+        "layer": 3
+      },
+      "is_inferred": true,
+      "inference_reasoning": "The 'likely visual source' claim is an inference connecting a rendered visual impression to the original human reviewer's unquoted rejection phrase; it is offered as the most concrete available account, not a confirmed fact - no rock tile exists anywhere in the data (confirmed, not inferred), but what the original reviewer specifically saw cannot be confirmed without their direct account."
+    },
+    {
+      "category": "structural_object",
+      "description": "The render visually confirms OBS-ASHFORDINN-001's fireplace finding: the hearth object at (8,2)-(9,3) is visibly asymmetric, missing a left support column relative to a complete 3-column fireplace assembly, exactly as predicted by that observation's tile-level analysis.",
+      "value": {
+        "confirms": "OBS-ASHFORDINN-001 fireplace finding"
+      },
+      "evidence": {
+        "evidence_type": "screenshot_supplementary",
+        "file_path": "rpgmakerLSP/reports/atlas-import/academy-inspection-001-map026-render.png",
+        "coordinates": [8, 2],
+        "layer": 3
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "structural_object",
+      "description": "The render visually confirms three visibly distinct bed styles (blue-curtained, cream-and-orange-striped, gray tarp-style) placed in an unbroken row with no separating furniture, matching OBS-ASHFORDINN-001's finding and its subjective assessment that this reads as a mismatched furniture arrangement rather than one coherent sleeping nook.",
+      "value": {
+        "confirms": "OBS-ASHFORDINN-001 three-bed-variant finding"
+      },
+      "evidence": {
+        "evidence_type": "screenshot_supplementary",
+        "file_path": "rpgmakerLSP/reports/atlas-import/academy-inspection-001-map026-render.png",
+        "coordinates": [2, 4],
+        "layer": 3
+      },
+      "is_inferred": false
+    }
+  ],
+  "subjective_observations": [
+    {
+      "description": "Applying academy/knowledge/classic-jrpg-feel.md's Review Gate to the render: no single dominant landmark is legible (the fireplace, the three-bed row, and the dining/kitchen counter compete roughly equally for attention rather than one being staged as primary), and the room reads as a storage/furniture-clutter space more than a warm, inhabited inn common room - a Gap against LOC-ASH-001's 'warm, ordinary, quietly strange' tone requirement that composition-rubric.md Topic 10 already names as this map's standard.",
+      "grounded_in": [
+        "structural_object: fireplace at (8,2)-(9,3), incomplete",
+        "structural_object: three mismatched bed variants in an unbroken row",
+        "tile_usage: no rock graphic found, gray bed likely misread as debris"
+      ]
+    }
+  ],
+  "screenshot_references": [
+    "rpgmakerLSP/reports/atlas-import/academy-inspection-001-map026-render.png"
+  ],
+  "feeds": {
+    "extraction_report": "AtlasStudio/academy/case-studies/lsp-map-inspection-001.md",
+    "pattern_candidates": [],
+    "case_study": "AtlasStudio/academy/case-studies/lsp-map-inspection-001.md"
+  },
+  "notes": "Read-only inspection of data/Map026.json (unchanged since commit 65b381c) and its first-ever render. Companion pass to OBS-ASHFORDINN-001, produced in response to the Production Director's request (2026-07-12) for an inspection pass over all hand-built maps against the newly added references/classic-jrpg-maps/ corpus. Feeds GRD-ASHFORDINN-003."
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1.0",
+  "observation_id": "OBS-ASHFORDINN-003",
+  "source": {
+    "repo": "TheLastSwordProtocol-Game",
+    "file_path": "data/Map026.json",
+    "map_name": "INT_Ashford_Inn",
+    "tileset_reference": "Inside (tilesetId: 3), confirmed against data/Tilesets.json",
+    "source_class": "rejected_build",
+    "captured_at": "2026-07-13",
+    "ownership_state_at_capture": "hand-authored",
+    "provenance_ref": "post-rebuild working tree, 2026-07-13"
+  },
+  "observer": "claude-code",
+  "created": "2026-07-13",
+  "objective_observations": [
+    {
+      "category": "tile_usage",
+      "description": "CORRECTION to OBS-ASHFORDINN-001: tile IDs on Inside_B.png are addressed by rmmz_core.js's real formula (sx_col=(tileId//128)%2*8+tileId%8, sy_row=(tileId%256)//8%16), not a naive row-major 16-per-row grid. Re-verifying the original (pre-rebuild) Map026 furniture by rendering each tile with the real formula and cropping precisely (not eyeballing a hand-derived grid) shows: tile IDs 88-92/104-108 (the 'three mismatched bed styles' claim) are actually five pieces of one connected red sofa/couch object (corner, straight, straight, straight, corner), placed at three disconnected map locations with gaps between them, not three different bed graphics. Tile IDs 24-28 (the 'floor-placed picture frames' claim) are pillars, a crate, and rock-pile graphics, not picture frames. Tile IDs 126/127/142/143 (the 'incomplete fireplace missing a pillar' claim) are a wall mirror and a blank frame over a shelf with bowls, not any part of a fireplace -- no multi-column fireplace-pediment object exists on this sheet at all; a complete single-tile fireplace graphic exists elsewhere (tile 195).",
+      "value": {
+        "corrects": "OBS-ASHFORDINN-001 structural_object findings for fireplace, three bed variants, and picture frames",
+        "root_cause": "OBS-ASHFORDINN-001's tile identification appears to have assumed row-major sheet addressing rather than rmmz_core.js's actual formula; this session's own first rebuild attempt (now superseded) made the identical mistake and was only caught by rendering the result and finding it did not match intent, per academy/knowledge/classic-jrpg-feel.md's render-first discipline."
+      },
+      "evidence": {
+        "evidence_type": "screenshot_supplementary",
+        "file_path": "rpgmakerLSP/reports/atlas-import/ashford-inn-rebuild-render.png",
+        "coordinates": null,
+        "layer": null
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "tile_usage",
+      "description": "The original 2026-07-08 human rejection reasons ('rocks appear in the room', 'sofa/furniture rendering is poor') are both confirmed accurate by this corrected re-verification. OBS-ASHFORDINN-001's conclusion that the rock claim was 'not corroborated' was itself the error, not the original human review.",
+      "value": {"rejection_reasons_confirmed": true},
+      "evidence": {
+        "evidence_type": "tileset_data",
+        "file_path": "img/tilesets/Inside_B.png",
+        "coordinates": null,
+        "layer": null
+      },
+      "is_inferred": false
+    },
+    {
+      "category": "structural_object",
+      "description": "Rebuild applied: a complete single-tile fireplace (tile 195) placed at (8,3), the same tile as the pre-existing !Flame hearth event, so the flame animation now renders over an actual fireplace graphic. A picture-and-cabinet nook (landscape/portrait paintings, tiles 130/131/133, over matching dresser/cabinet furniture, tiles 136/138/140) at (3-5, 2-3). Two consistent bed alcoves (tile 168 top / 176 bottom, the same style twice) at (11,4-5) and (13,4-5), replacing the scattered sofa pieces. Border tileId-1536 (Inside_A5 kind0, confirmed solid black by direct pixel sampling, same bug class found repeatedly elsewhere this session) replaced with this file's own already-in-use wall-body tile (7048).",
+      "value": {"rebuild_applied": true},
+      "evidence": {
+        "evidence_type": "screenshot_supplementary",
+        "file_path": "rpgmakerLSP/reports/atlas-import/ashford-inn-rebuild-render.png",
+        "coordinates": null,
+        "layer": null
+      },
+      "is_inferred": false
+    }
+  ],
+  "subjective_observations": [
+    {
+      "description": "The rebuilt room now reads with a single legible dominant landmark (the fireplace, centered, with the flame event correctly seated on it), a distinct secondary furnished corner (pictures over dresser), and two clearly separated bed alcoves -- a meaningful improvement against academy/knowledge/classic-jrpg-feel.md's Review Gate over the pre-rebuild state, where furniture competed for attention without any of it being correctly assembled in the first place.",
+      "grounded_in": [
+        "structural_object: rebuild applied",
+        "tile_usage: corrects OBS-ASHFORDINN-001 findings"
+      ]
+    }
+  ],
+  "screenshot_references": [
+    "rpgmakerLSP/reports/atlas-import/ashford-inn-rebuild-render.png"
+  ],
+  "feeds": {
+    "extraction_report": "rpgmakerLSP/reports/atlas-import/ashford-inn-rebuild-report.md",
+    "pattern_candidates": [],
+    "case_study": "rpgmakerLSP/reports/atlas-import/ashford-inn-rebuild-report.md"
+  },
+  "notes": "Supersedes OBS-ASHFORDINN-001's structural_object tile-identification findings; does not dispute its dimensions/event/border findings, which remain accurate. Produced during a direct rebuild pass, not a pure observation pass -- filed after the fact to correct the record given the significance of the tile-identification error and its propagation into GRD-ASHFORDINN-002/003."
+}
