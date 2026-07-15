@@ -19,6 +19,7 @@ from tile_painter import TilePainterUnavailable, describe_painter_plan, paint_ti
 
 SPEC_PATH = COMPILER_DIR / "specs" / "home_island.world.json"
 MAP027_PATH = REPO_ROOT.parent / "TheLastSwordProtocol-Game" / "data" / "Map027.json"
+MAP027_NEGATIVE_AUDIT = COMPILER_DIR / "audits" / "map027_negative_audit.json"
 
 
 class CompilerTests(unittest.TestCase):
@@ -37,7 +38,7 @@ class CompilerTests(unittest.TestCase):
         self.assertEqual({"width": spec.width, "height": spec.height}, model.to_dict()["size"])
         self.assertEqual(REQUIRED_LOCATIONS, set(model.locations))
 
-    def test_auditor_rejects_current_map027_negative_example(self) -> None:
+    def test_auditor_rejects_current_map027_without_compiler_provenance(self) -> None:
         if not MAP027_PATH.exists():
             self.skipTest("TheLastSwordProtocol-Game Map027 is not available")
 
@@ -45,8 +46,14 @@ class CompilerTests(unittest.TestCase):
         codes = {finding.code for finding in result.findings}
 
         self.assertFalse(result.passed)
-        self.assertIn("known_negative_example", codes)
         self.assertIn("missing_intermediate_model_provenance", codes)
+
+    def test_preserved_map027_negative_audit_records_known_example(self) -> None:
+        payload = json.loads(MAP027_NEGATIVE_AUDIT.read_text(encoding="utf-8"))
+        codes = {finding["code"] for finding in payload["findings"]}
+
+        self.assertFalse(payload["passed"])
+        self.assertIn("known_negative_example", codes)
 
     def test_auditor_rejects_rectangular_forest_blocks(self) -> None:
         width = 12

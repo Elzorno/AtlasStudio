@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "connector_id": "CON-CHOKEPOINT-CORRIDOR",
+  "version": "1.0",
+  "name": "Chokepoint Corridor",
+  "connector_type": "chokepoint_corridor",
+  "compatible_port_types": ["open_floor", "door_transfer"],
+  "width": 2,
+  "traversal": "bidirectional",
+  "allow_rotation": true,
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-INN",
+    "notes": "Formalizes inn.pattern.md's 'a single narrow spine (in the observed map, a two-tile-wide vertical corridor) rather than one continuous open floor' rule -- deliberately narrower / more deliberate a chokepoint than CON-OPEN-FLOOR, used where a pattern requires zones to be structurally separate."
+  }
+}

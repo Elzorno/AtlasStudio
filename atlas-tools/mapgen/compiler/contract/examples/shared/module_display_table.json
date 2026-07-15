@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-DISPLAY-TABLE",
+  "version": "1.0",
+  "name": "Display Table",
+  "semantic_tag": "display_table",
+  "footprint": { "width": 2, "height": 2 },
+  "ports": [
+    {
+      "port_id": "browse_side",
+      "port_type": "open_floor",
+      "orientation": "any",
+      "position": { "x": 0, "y": 1 }
+    }
+  ],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-SHOP",
+    "notes": "Formalizes shop.pattern.md Composition Rules: 'Group goods by surface and storage purpose (shelved stock, table displays, side clusters)' -- a freestanding table display, distinct from MOD-SHELF-WALL-RUN which must terminate into a wall. Used by the offset/L-shaped shop layout tier's browse_loop zone."
+  }
+}

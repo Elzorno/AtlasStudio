@@ -1,0 +1,35 @@
+{
+  "$id": "connector.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Connector",
+  "description": "A typed join between two zones or modules: which port types it accepts, how wide it is, and whether it is traversable both ways. Engine-neutral. MUST NOT reference raw engine tile IDs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "connector_id", "version", "connector_type", "compatible_port_types", "width", "traversal"],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["0.1"] },
+    "connector_id": { "type": "string", "pattern": "^CON-[A-Z0-9-]+$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "name": { "type": "string" },
+    "connector_type": {
+      "description": "e.g. open_floor, chokepoint_corridor, door_transfer.",
+      "type": "string"
+    },
+    "compatible_port_types": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "width": { "type": "integer", "minimum": 1 },
+    "traversal": { "type": "string", "enum": ["bidirectional", "one_way"] },
+    "allow_rotation": { "type": "boolean" },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_pattern_id": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

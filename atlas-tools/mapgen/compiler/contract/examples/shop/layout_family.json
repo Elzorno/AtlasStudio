@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "layout_family_id": "LAY-INTERIOR-SHOP-BILATERAL",
+  "version": "1.0",
+  "name": "Bilateral Single-Room Shop",
+  "applies_to_archetype": "ARCH-INTERIOR-SHOP",
+  "resolution_strategy": "hybrid",
+  "tier": "compact",
+  "size_range": { "min_width": 8, "min_height": 6, "max_width": 12, "max_height": 9 },
+  "zone_placement_rules": [
+    { "zone_role": "entry_threshold", "placement_rule": "centered_on_primary_axis", "notes": "shop.pattern.md: 'Center the entrance on the room's primary axis of symmetry unless a specific narrative or spatial reason requires an off-center door.'" },
+    { "zone_role": "center_aisle", "placement_rule": "adjacent_to:entry_threshold" },
+    { "zone_role": "focal_feature", "placement_rule": "opposite_wall_from:entry_threshold" },
+    { "zone_role": "wall_stock", "placement_rule": "adjacent_to:perimeter_wall" },
+    { "zone_role": "browse_loop", "placement_rule": "adjacent_to:center_aisle" },
+    { "zone_role": "service_point", "placement_rule": "adjacent_to:focal_feature" }
+  ],
+  "allow_rotation": true,
+  "allow_reflection": true,
+  "variants": [
+    { "variant_id": "single_aisle", "weight": 0.7, "notes": "One straight centerline aisle, no browse loop -- the minimal, always-valid variant." },
+    { "variant_id": "loop_aisle", "weight": 0.3, "notes": "Aisle widens into a browse loop per shop.pattern.md's 'widen to two-plus tiles where the lane branches into a browsing loop.'" }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-SHOP",
+    "confidence": "medium",
+    "notes": "allow_reflection reflects shop.pattern.md's bilateral composition rule (left/right merchandise clusters counterbalance without being mirrored tile-for-tile); reflection varies which side wall_stock resolves to, not a literal furniture mirror."
+  }
+}

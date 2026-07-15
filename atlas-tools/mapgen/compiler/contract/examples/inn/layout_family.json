@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "layout_family_id": "LAY-INTERIOR-INN-SPINE-CORRIDOR",
+  "version": "1.0",
+  "name": "Two-Zone Spine Corridor Inn -- Single Wing (Offset Tier)",
+  "applies_to_archetype": "ARCH-INTERIOR-INN",
+  "resolution_strategy": "hybrid",
+  "tier": "offset_l",
+  "size_range": { "min_width": 16, "min_height": 13, "max_width": 18, "max_height": 15 },
+  "zone_placement_rules": [
+    { "zone_role": "vestibule_alcove", "placement_rule": "offset_to_subzone_axis:common_room", "notes": "inn.pattern.md: the door centers on the common room's own sub-axis, not the midpoint of the full building footprint." },
+    { "zone_role": "common_room", "placement_rule": "adjacent_to:vestibule_alcove" },
+    { "zone_role": "spine_corridor", "placement_rule": "adjacent_to:common_room" },
+    { "zone_role": "guest_quarters_wing", "placement_rule": "adjacent_to:spine_corridor" },
+    { "zone_role": "service_point", "placement_rule": "adjacent_to:common_room", "notes": "inn.pattern.md: 'likely near the common room, given that is the only zone with open approach floor.'" }
+  ],
+  "allow_rotation": true,
+  "allow_reflection": true,
+  "variants": [
+    { "variant_id": "single_wing_column", "weight": 1.0, "notes": "One guest_quarters_wing cluster off the spine corridor. WO-0059 split: this tier now carries only the single-wing variant; the directly-observed mirrored-dual-wing configuration moved to LAY-INTERIOR-INN-ZONED-EXPANDED so each of the three tiers is a distinct, unambiguous LayoutFamily artifact." }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-INN",
+    "confidence": "medium",
+    "notes": "This single-wing configuration is an evidence-respecting reduction from the one directly observed sample (Map020.json), which actually shows mirrored upper/lower wings -- see LAY-INTERIOR-INN-ZONED-EXPANDED for that literal configuration. Removing one wing is a straightforward, low-risk simplification of an observed layout, not an unevidenced invention, so confidence stays medium (matching the source pattern's own ceiling) rather than dropping to experimental."
+  }
+}

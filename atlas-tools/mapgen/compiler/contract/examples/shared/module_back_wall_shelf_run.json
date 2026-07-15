@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-BACK-WALL-SHELF-RUN",
+  "version": "1.0",
+  "name": "Back-Wall Shelf Run",
+  "semantic_tag": "back_wall_shelf_run",
+  "footprint": { "width": 8, "height": 1 },
+  "ports": [
+    {
+      "port_id": "floor_side",
+      "port_type": "open_floor",
+      "orientation": "south",
+      "position": { "x": 0, "y": 0 }
+    }
+  ],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-HOUSE",
+    "notes": "Formalizes house.pattern.md Layout Rules: 'Run structural storage furniture (shelving) as a continuous run against the back wall, not as individually spaced items... one long, unbroken shelf run spanning nearly the entire back wall.' Distinct from MOD-SHELF-WALL-RUN (the shop's shorter, clustered wall-stock module) -- this module's footprint is wide and singular by design; a citing LayoutFamily must not split it into segments (house.pattern.md's own Common Mistakes: 'Leaving the back-wall shelf run broken into disconnected segments')."
+  }
+}

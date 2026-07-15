@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-HEARTH-ACCENT",
+  "version": "1.0",
+  "name": "Hearth / Table Accent",
+  "semantic_tag": "hearth_accent",
+  "footprint": { "width": 1, "height": 1 },
+  "ports": [],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-HOUSE",
+    "notes": "Formalizes house.pattern.md Composition Rules: 'a single small piece near the room's center or a corner (a hearth-like or table-like accent), not a cluster... Neither observed house uses more than one such accent.' A citing archetype's modules_required must cap this module at max_count 1 -- it is a single-piece accent, not a cluster module, by direct source-map evidence."
+  }
+}

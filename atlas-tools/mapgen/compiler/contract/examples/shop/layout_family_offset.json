@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "layout_family_id": "LAY-INTERIOR-SHOP-OFFSET",
+  "version": "1.0",
+  "name": "Offset-Door Single-Room Shop",
+  "applies_to_archetype": "ARCH-INTERIOR-SHOP",
+  "resolution_strategy": "hybrid",
+  "tier": "offset_l",
+  "size_range": { "min_width": 10, "min_height": 7, "max_width": 15, "max_height": 11 },
+  "zone_placement_rules": [
+    { "zone_role": "entry_threshold", "placement_rule": "offset_from_primary_axis", "notes": "shop.pattern.md explicitly permits this: 'Center the entrance ... unless a specific narrative or spatial reason requires an off-center door.' A citing MapIntent supplies that reason." },
+    { "zone_role": "center_aisle", "placement_rule": "adjacent_to:entry_threshold" },
+    { "zone_role": "browse_loop", "placement_rule": "alcove_extension_from:center_aisle", "notes": "Pushes browse_loop into a side extension off the main rectangle, producing the L-shaped footprint this tier is named for. The room remains functionally one connected space (still satisfies PAT-INTERIOR-SHOP's 'single room' required condition -- an irregular single-room footprint, not a second walled-off room)." },
+    { "zone_role": "focal_feature", "placement_rule": "opposite_wall_from:entry_threshold" },
+    { "zone_role": "wall_stock", "placement_rule": "adjacent_to:perimeter_wall" },
+    { "zone_role": "service_point", "placement_rule": "adjacent_to:focal_feature" }
+  ],
+  "allow_rotation": true,
+  "allow_reflection": true,
+  "variants": [
+    { "variant_id": "l_extension_left", "weight": 0.5, "notes": "browse_loop alcove on the left of the main rectangle." },
+    { "variant_id": "l_extension_right", "weight": 0.5, "notes": "browse_loop alcove on the right of the main rectangle." }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-SHOP",
+    "confidence": "experimental",
+    "notes": "The off-center door itself is directly permitted by PAT-INTERIOR-SHOP's own Layout Rules. The L-shaped alcove footprint is this contract's own extrapolation beyond the pattern's evidence -- neither observed shop sample (there is only one, Map021.json) has a non-rectangular shell. Filed at experimental confidence (below the source pattern's own medium ceiling) specifically because this geometric extrapolation, not the door offset, is unevidenced. Per WO-0059 task 6, this is the explicit record of a desired variation current evidence does not fully support -- treat as a candidate worth playtesting, not an accepted fact."
+  }
+}

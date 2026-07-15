@@ -1,0 +1,63 @@
+{
+  "$id": "module.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Module",
+  "description": "A small, reusable, self-contained sub-layout unit (a furniture cluster, a service point, a partition nook) placed by a LayoutFamily into a zone. Engine-neutral footprint and ports only; visual realization is deferred to StylePack/TilePalette. MUST NOT reference raw engine tile IDs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "module_id", "version", "semantic_tag", "footprint", "ports", "blocks_movement"],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["0.1"] },
+    "module_id": { "type": "string", "pattern": "^MOD-[A-Z0-9-]+$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "name": { "type": "string" },
+    "semantic_tag": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "footprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "ports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["port_id", "port_type", "orientation", "position"],
+        "properties": {
+          "port_id": { "type": "string" },
+          "port_type": { "type": "string" },
+          "orientation": { "type": "string", "enum": ["north", "south", "east", "west", "any"] },
+          "position": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "integer", "minimum": 0 },
+              "y": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "clearance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "min_adjacent_walkable": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "blocks_movement": { "type": "boolean" },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_pattern_id": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

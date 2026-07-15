@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-BED-DESK-NOOK",
+  "version": "1.0",
+  "name": "Bed / Desk Nook",
+  "semantic_tag": "bed_desk_nook",
+  "footprint": { "width": 2, "height": 3 },
+  "ports": [
+    {
+      "port_id": "aisle_side",
+      "port_type": "open_floor",
+      "orientation": "east",
+      "position": { "x": 1, "y": 1 }
+    }
+  ],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-INN",
+    "notes": "Formalizes inn.pattern.md Layout Rules: 'repeat a smaller partitioned unit (a bed/desk nook) side by side along one wall'. A guest_quarters_wing zone places two or more of these per BuildingArchetype.modules_required."
+  }
+}

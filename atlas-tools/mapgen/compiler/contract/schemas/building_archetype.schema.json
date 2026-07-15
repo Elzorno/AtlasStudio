@@ -1,0 +1,87 @@
+{
+  "$id": "building_archetype.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BuildingArchetype",
+  "description": "A building type's shape grammar: which GameplayGraph it uses, which modules are required per zone role, and its size constraints. Archetypes contain semantics only. They MUST NOT reference raw RPG Maker (or any engine) tile IDs, asset filenames, or database row IDs -- see contract/README.md 'Explicit Boundaries'.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "archetype_id", "version", "name", "category", "gameplay_graph_ref", "provenance"],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["0.1"] },
+    "archetype_id": { "type": "string", "pattern": "^ARCH-[A-Z0-9-]+$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "name": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "enum": ["interior", "exterior", "dungeon", "town", "transition"] },
+    "gameplay_graph_ref": { "type": "string" },
+    "required_conditions": {
+      "description": "Plain-language preconditions that must hold before this archetype applies at all, mirrored from the source design pattern's 'Required Conditions' section.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "modules_required": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["zone_role", "module_ref", "min_count"],
+        "properties": {
+          "zone_role": { "type": "string" },
+          "module_ref": { "type": "string" },
+          "min_count": { "type": "integer", "minimum": 0 },
+          "max_count": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "size_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min_width", "min_height"],
+      "properties": {
+        "min_width": { "type": "integer", "minimum": 1 },
+        "min_height": { "type": "integer", "minimum": 1 },
+        "max_width": { "type": "integer", "minimum": 1 },
+        "max_height": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "style_pack_compatible": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "symmetry_rules": {
+      "description": "Freeform composition-symmetry directives, e.g. bilateral_counterbalance_not_mirrored, no_forced_symmetry. Added for WO-0059.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "circulation_rules": {
+      "description": "Freeform circulation/reachability directives, e.g. single_connected_area_from_entrance, reachability_ring_required. Added for WO-0059.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "landmark_slots": {
+      "description": "Dominant/supporting landmark requirements, per academy/knowledge/classic-jrpg-feel.md's 'Dominant landmark' doctrine. landmark_tag is a StylePack visual_tag. Added for WO-0059.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["zone_role", "landmark_tag", "required"],
+        "properties": {
+          "zone_role": { "type": "string" },
+          "landmark_tag": { "type": "string" },
+          "required": { "type": "boolean" },
+          "dominant": { "type": "boolean" }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_pattern_id", "confidence"],
+      "properties": {
+        "source_pattern_id": { "type": "string" },
+        "source_pattern_version": { "type": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "experimental"] },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

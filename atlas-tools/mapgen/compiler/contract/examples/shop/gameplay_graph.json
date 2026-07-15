@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "graph_id": "GRAPH-INTERIOR-SHOP",
+  "describes_archetype": "ARCH-INTERIOR-SHOP",
+  "zones": [
+    {
+      "zone_id": "entry_threshold",
+      "role": "entry_threshold",
+      "required": true,
+      "min_area": 1,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [
+        { "port_id": "exterior_door", "port_type": "exterior_door", "orientation": "south" }
+      ],
+      "beats": ["exit_transfer"]
+    },
+    {
+      "zone_id": "center_aisle",
+      "role": "center_aisle",
+      "required": true,
+      "min_area": 4,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "browse_loop",
+      "role": "browse_loop",
+      "required": false,
+      "min_area": 4,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "wall_stock",
+      "role": "wall_stock",
+      "required": true,
+      "min_area": 4,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "focal_feature",
+      "role": "focal_feature",
+      "required": true,
+      "min_area": 2,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "service_point",
+      "role": "service_point",
+      "required": false,
+      "min_area": 2,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": ["npc_service_point"]
+    }
+  ],
+  "edges": [
+    { "from_zone": "entry_threshold", "to_zone": "center_aisle", "connector_type": "open_floor", "required": true },
+    { "from_zone": "center_aisle", "to_zone": "wall_stock", "connector_type": "open_floor", "required": true },
+    { "from_zone": "center_aisle", "to_zone": "focal_feature", "connector_type": "open_floor", "required": true },
+    { "from_zone": "center_aisle", "to_zone": "browse_loop", "connector_type": "open_floor", "required": false },
+    { "from_zone": "focal_feature", "to_zone": "service_point", "connector_type": "open_floor", "required": false }
+  ],
+  "reachability": {
+    "entry_zone": "entry_threshold",
+    "must_reach": ["center_aisle", "wall_stock", "focal_feature"]
+  },
+  "provenance": {
+    "source_pattern_ids": ["PAT-INTERIOR-SHOP"],
+    "confidence": "medium",
+    "notes": "service_point and browse_loop are optional zones per shop.pattern.md ('Do not assume a shop interior requires a shopkeeper NPC event by default'; browse loop only 'where the lane branches'). A citing BuildingArchetype's modules_required/required_conditions decides whether they are actually included for a given build."
+  }
+}

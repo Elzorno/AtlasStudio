@@ -1,0 +1,73 @@
+{
+  "$id": "style_pack.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StylePack",
+  "description": "Engine-neutral visual vocabulary bound to a biome/terrain family: mood, decoration density, and a set of abstract visual tags (e.g. wall_mounted_flame, floor_rug_focal_accent). Style packs contain visual vocabulary, not raw tile IDs -- see TilePalette for the engine-specific binding of this vocabulary, which is owned by the engine adapter repo, not this reusable library.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "style_pack_id", "version", "visual_tags", "applicable_archetypes"],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["0.1"] },
+    "style_pack_id": { "type": "string", "pattern": "^STY-[A-Z0-9-]+$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "name": { "type": "string" },
+    "biome_id": { "type": "string" },
+    "terrain_family": { "type": "string" },
+    "visual_tone": { "type": "string" },
+    "decoration_density_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "perimeter": { "type": "string", "enum": ["sparse", "moderate", "dense"] },
+        "center": { "type": "string", "enum": ["sparse", "moderate", "dense"] }
+      }
+    },
+    "visual_tags": {
+      "description": "Abstract visual vocabulary tags. MUST NOT be, or contain, raw engine tile IDs or asset filenames.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+    },
+    "applicable_archetypes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "vocabulary": {
+      "description": "Structured visual vocabulary by role, per WO-0060 task 3. Every tag used here should also appear in visual_tags. Abstract only -- no tile IDs.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "floor": { "type": "array", "items": { "type": "string" } },
+        "wall": { "type": "array", "items": { "type": "string" } },
+        "threshold": { "type": "array", "items": { "type": "string" } },
+        "furniture": { "type": "array", "items": { "type": "string" } },
+        "lighting": { "type": "array", "items": { "type": "string" } },
+        "landmark": { "type": "array", "items": { "type": "string" } },
+        "edge_dressing": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "biome_substitution": {
+      "description": "Explicit substitution rules against another StylePack's vocabulary, so the same MapPlan/archetype can be re-skinned. Per WO-0060 task 3/4.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from_style_pack", "from_tag", "to_tag"],
+        "properties": {
+          "from_style_pack": { "type": "string" },
+          "from_tag": { "type": "string" },
+          "to_tag": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_pattern_id": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

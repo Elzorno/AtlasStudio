@@ -1,0 +1,720 @@
+{
+  "schema_version": "0.1",
+  "candidate_count": 21,
+  "candidates": [
+    {
+      "slug": "shop-compact",
+      "archetype_id": "ARCH-INTERIOR-SHOP",
+      "layout_family_id": "LAY-INTERIOR-SHOP-BILATERAL",
+      "tier": "compact",
+      "seed_index": 1,
+      "manifest_id": "GEN-WO0059-FIXTURE-SHOP-COMPACT-001",
+      "root_seed": 7319118564751684431,
+      "variant_id": "single_aisle",
+      "rotation": 90,
+      "reflected": false,
+      "attempts": 14,
+      "dimensions": {
+        "width": 9,
+        "height": 12,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "floor_rug_focal_accent",
+          "zone_role": "focal_feature",
+          "zone_id": "focal_feature",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 1,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "slug": "shop-compact",
+      "archetype_id": "ARCH-INTERIOR-SHOP",
+      "layout_family_id": "LAY-INTERIOR-SHOP-BILATERAL",
+      "tier": "compact",
+      "seed_index": 2,
+      "manifest_id": "GEN-WO0059-FIXTURE-SHOP-COMPACT-002",
+      "root_seed": 18132416747595077077,
+      "variant_id": "single_aisle",
+      "rotation": 270,
+      "reflected": false,
+      "attempts": 13,
+      "dimensions": {
+        "width": 9,
+        "height": 12,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "floor_rug_focal_accent",
+          "zone_role": "focal_feature",
+          "zone_id": "focal_feature",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 7,
+            "y": 10
+          }
+        }
+      ]
+    },
+    {
+      "slug": "shop-compact",
+      "archetype_id": "ARCH-INTERIOR-SHOP",
+      "layout_family_id": "LAY-INTERIOR-SHOP-BILATERAL",
+      "tier": "compact",
+      "seed_index": 3,
+      "manifest_id": "GEN-WO0059-FIXTURE-SHOP-COMPACT-003",
+      "root_seed": 6265639819595693752,
+      "variant_id": "single_aisle",
+      "rotation": 90,
+      "reflected": false,
+      "attempts": 17,
+      "dimensions": {
+        "width": 9,
+        "height": 12,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "floor_rug_focal_accent",
+          "zone_role": "focal_feature",
+          "zone_id": "focal_feature",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 1,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "slug": "shop-offset",
+      "archetype_id": "ARCH-INTERIOR-SHOP",
+      "layout_family_id": "LAY-INTERIOR-SHOP-OFFSET",
+      "tier": "offset_l",
+      "seed_index": 1,
+      "manifest_id": "GEN-WO0059-FIXTURE-SHOP-OFFSET-001",
+      "root_seed": 3331122194287600771,
+      "variant_id": "l_extension_right",
+      "rotation": 90,
+      "reflected": true,
+      "attempts": 5,
+      "dimensions": {
+        "width": 11,
+        "height": 15,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "floor_rug_focal_accent",
+          "zone_role": "focal_feature",
+          "zone_id": "focal_feature",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 2,
+            "y": 6
+          }
+        }
+      ]
+    },
+    {
+      "slug": "shop-offset",
+      "archetype_id": "ARCH-INTERIOR-SHOP",
+      "layout_family_id": "LAY-INTERIOR-SHOP-OFFSET",
+      "tier": "offset_l",
+      "seed_index": 2,
+      "manifest_id": "GEN-WO0059-FIXTURE-SHOP-OFFSET-002",
+      "root_seed": 7914783948955692791,
+      "variant_id": "l_extension_right",
+      "rotation": 0,
+      "reflected": true,
+      "attempts": 9,
+      "dimensions": {
+        "width": 15,
+        "height": 11,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "floor_rug_focal_accent",
+          "zone_role": "focal_feature",
+          "zone_id": "focal_feature",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 7,
+            "y": 9
+          }
+        }
+      ]
+    },
+    {
+      "slug": "shop-offset",
+      "archetype_id": "ARCH-INTERIOR-SHOP",
+      "layout_family_id": "LAY-INTERIOR-SHOP-OFFSET",
+      "tier": "offset_l",
+      "seed_index": 3,
+      "manifest_id": "GEN-WO0059-FIXTURE-SHOP-OFFSET-003",
+      "root_seed": 17655326998071792200,
+      "variant_id": "l_extension_left",
+      "rotation": 0,
+      "reflected": false,
+      "attempts": 8,
+      "dimensions": {
+        "width": 15,
+        "height": 11,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "floor_rug_focal_accent",
+          "zone_role": "focal_feature",
+          "zone_id": "focal_feature",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 5,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "slug": "inn-compact",
+      "archetype_id": "ARCH-INTERIOR-INN",
+      "layout_family_id": "LAY-INTERIOR-INN-COMPACT",
+      "tier": "compact",
+      "seed_index": 1,
+      "manifest_id": "GEN-WO0059-FIXTURE-INN-COMPACT-001",
+      "root_seed": 14513543704722552964,
+      "variant_id": "single_wing_column",
+      "rotation": 270,
+      "reflected": false,
+      "attempts": 8,
+      "dimensions": {
+        "width": 13,
+        "height": 16,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "wall_mounted_flame",
+          "zone_role": "common_room",
+          "zone_id": "common_room",
+          "required": false,
+          "dominant": false,
+          "anchor": {
+            "shape": "point",
+            "x": 10,
+            "y": 9
+          }
+        }
+      ]
+    },
+    {
+      "slug": "inn-compact",
+      "archetype_id": "ARCH-INTERIOR-INN",
+      "layout_family_id": "LAY-INTERIOR-INN-COMPACT",
+      "tier": "compact",
+      "seed_index": 2,
+      "manifest_id": "GEN-WO0059-FIXTURE-INN-COMPACT-002",
+      "root_seed": 12503086781493307206,
+      "variant_id": "single_wing_column",
+      "rotation": 180,
+      "reflected": false,
+      "attempts": 8,
+      "dimensions": {
+        "width": 16,
+        "height": 13,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "wall_mounted_flame",
+          "zone_role": "common_room",
+          "zone_id": "common_room",
+          "required": false,
+          "dominant": false,
+          "anchor": {
+            "shape": "point",
+            "x": 9,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "slug": "inn-compact",
+      "archetype_id": "ARCH-INTERIOR-INN",
+      "layout_family_id": "LAY-INTERIOR-INN-COMPACT",
+      "tier": "compact",
+      "seed_index": 3,
+      "manifest_id": "GEN-WO0059-FIXTURE-INN-COMPACT-003",
+      "root_seed": 10379409199441233889,
+      "variant_id": "single_wing_column",
+      "rotation": 180,
+      "reflected": false,
+      "attempts": 7,
+      "dimensions": {
+        "width": 16,
+        "height": 13,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "wall_mounted_flame",
+          "zone_role": "common_room",
+          "zone_id": "common_room",
+          "required": false,
+          "dominant": false,
+          "anchor": {
+            "shape": "point",
+            "x": 9,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "slug": "inn-offset",
+      "archetype_id": "ARCH-INTERIOR-INN",
+      "layout_family_id": "LAY-INTERIOR-INN-SPINE-CORRIDOR",
+      "tier": "offset_l",
+      "seed_index": 1,
+      "manifest_id": "GEN-WO0059-FIXTURE-INN-OFFSET-001",
+      "root_seed": 16774345421072123135,
+      "variant_id": "single_wing_column",
+      "rotation": 270,
+      "reflected": true,
+      "attempts": 8,
+      "dimensions": {
+        "width": 15,
+        "height": 18,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "wall_mounted_flame",
+          "zone_role": "common_room",
+          "zone_id": "common_room",
+          "required": false,
+          "dominant": false,
+          "anchor": {
+            "shape": "point",
+            "x": 12,
+            "y": 8
+          }
+        }
+      ]
+    },
+    {
+      "slug": "inn-offset",
+      "archetype_id": "ARCH-INTERIOR-INN",
+      "layout_family_id": "LAY-INTERIOR-INN-SPINE-CORRIDOR",
+      "tier": "offset_l",
+      "seed_index": 2,
+      "manifest_id": "GEN-WO0059-FIXTURE-INN-OFFSET-002",
+      "root_seed": 13789395865205289374,
+      "variant_id": "single_wing_column",
+      "rotation": 180,
+      "reflected": true,
+      "attempts": 4,
+      "dimensions": {
+        "width": 18,
+        "height": 15,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "wall_mounted_flame",
+          "zone_role": "common_room",
+          "zone_id": "common_room",
+          "required": false,
+          "dominant": false,
+          "anchor": {
+            "shape": "point",
+            "x": 8,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "slug": "inn-offset",
+      "archetype_id": "ARCH-INTERIOR-INN",
+      "layout_family_id": "LAY-INTERIOR-INN-SPINE-CORRIDOR",
+      "tier": "offset_l",
+      "seed_index": 3,
+      "manifest_id": "GEN-WO0059-FIXTURE-INN-OFFSET-003",
+      "root_seed": 10015191226360921711,
+      "variant_id": "single_wing_column",
+      "rotation": 180,
+      "reflected": true,
+      "attempts": 8,
+      "dimensions": {
+        "width": 18,
+        "height": 15,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "wall_mounted_flame",
+          "zone_role": "common_room",
+          "zone_id": "common_room",
+          "required": false,
+          "dominant": false,
+          "anchor": {
+            "shape": "point",
+            "x": 8,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "slug": "inn-zoned-expanded",
+      "archetype_id": "ARCH-INTERIOR-INN",
+      "layout_family_id": "LAY-INTERIOR-INN-ZONED-EXPANDED",
+      "tier": "zoned_expanded",
+      "seed_index": 1,
+      "manifest_id": "GEN-WO0059-FIXTURE-INN-ZONED-EXPANDED-001",
+      "root_seed": 9167083903181861495,
+      "variant_id": "mirrored_upper_lower_wings",
+      "rotation": 0,
+      "reflected": true,
+      "attempts": 8,
+      "dimensions": {
+        "width": 20,
+        "height": 17,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "wall_mounted_flame",
+          "zone_role": "common_room",
+          "zone_id": "common_room",
+          "required": false,
+          "dominant": false,
+          "anchor": {
+            "shape": "point",
+            "x": 11,
+            "y": 14
+          }
+        }
+      ]
+    },
+    {
+      "slug": "inn-zoned-expanded",
+      "archetype_id": "ARCH-INTERIOR-INN",
+      "layout_family_id": "LAY-INTERIOR-INN-ZONED-EXPANDED",
+      "tier": "zoned_expanded",
+      "seed_index": 2,
+      "manifest_id": "GEN-WO0059-FIXTURE-INN-ZONED-EXPANDED-002",
+      "root_seed": 11414188285207396847,
+      "variant_id": "mirrored_upper_lower_wings",
+      "rotation": 180,
+      "reflected": true,
+      "attempts": 4,
+      "dimensions": {
+        "width": 20,
+        "height": 17,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "wall_mounted_flame",
+          "zone_role": "common_room",
+          "zone_id": "common_room",
+          "required": false,
+          "dominant": false,
+          "anchor": {
+            "shape": "point",
+            "x": 9,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "slug": "inn-zoned-expanded",
+      "archetype_id": "ARCH-INTERIOR-INN",
+      "layout_family_id": "LAY-INTERIOR-INN-ZONED-EXPANDED",
+      "tier": "zoned_expanded",
+      "seed_index": 3,
+      "manifest_id": "GEN-WO0059-FIXTURE-INN-ZONED-EXPANDED-003",
+      "root_seed": 13433287486515913225,
+      "variant_id": "mirrored_upper_lower_wings",
+      "rotation": 180,
+      "reflected": false,
+      "attempts": 5,
+      "dimensions": {
+        "width": 20,
+        "height": 17,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "wall_mounted_flame",
+          "zone_role": "common_room",
+          "zone_id": "common_room",
+          "required": false,
+          "dominant": false,
+          "anchor": {
+            "shape": "point",
+            "x": 11,
+            "y": 2
+          }
+        }
+      ]
+    },
+    {
+      "slug": "house-compact",
+      "archetype_id": "ARCH-INTERIOR-HOUSE",
+      "layout_family_id": "LAY-INTERIOR-HOUSE-COMPACT",
+      "tier": "compact",
+      "seed_index": 1,
+      "manifest_id": "GEN-WO0059-FIXTURE-HOUSE-COMPACT-001",
+      "root_seed": 11089075493222367100,
+      "variant_id": "no_accent",
+      "rotation": 90,
+      "reflected": false,
+      "attempts": 4,
+      "dimensions": {
+        "width": 9,
+        "height": 12,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "shelf_wall_run",
+          "zone_role": "wall_stock",
+          "zone_id": "wall_stock",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 5,
+            "y": 5
+          }
+        }
+      ]
+    },
+    {
+      "slug": "house-compact",
+      "archetype_id": "ARCH-INTERIOR-HOUSE",
+      "layout_family_id": "LAY-INTERIOR-HOUSE-COMPACT",
+      "tier": "compact",
+      "seed_index": 2,
+      "manifest_id": "GEN-WO0059-FIXTURE-HOUSE-COMPACT-002",
+      "root_seed": 9497537872014373179,
+      "variant_id": "no_accent",
+      "rotation": 270,
+      "reflected": false,
+      "attempts": 4,
+      "dimensions": {
+        "width": 9,
+        "height": 12,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "shelf_wall_run",
+          "zone_role": "wall_stock",
+          "zone_id": "wall_stock",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 3,
+            "y": 7
+          }
+        }
+      ]
+    },
+    {
+      "slug": "house-compact",
+      "archetype_id": "ARCH-INTERIOR-HOUSE",
+      "layout_family_id": "LAY-INTERIOR-HOUSE-COMPACT",
+      "tier": "compact",
+      "seed_index": 3,
+      "manifest_id": "GEN-WO0059-FIXTURE-HOUSE-COMPACT-003",
+      "root_seed": 17687655639384649211,
+      "variant_id": "no_accent",
+      "rotation": 0,
+      "reflected": false,
+      "attempts": 5,
+      "dimensions": {
+        "width": 12,
+        "height": 9,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "shelf_wall_run",
+          "zone_role": "wall_stock",
+          "zone_id": "wall_stock",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 5,
+            "y": 3
+          }
+        }
+      ]
+    },
+    {
+      "slug": "house-offset",
+      "archetype_id": "ARCH-INTERIOR-HOUSE",
+      "layout_family_id": "LAY-INTERIOR-HOUSE-OFFSET",
+      "tier": "offset_l",
+      "seed_index": 1,
+      "manifest_id": "GEN-WO0059-FIXTURE-HOUSE-OFFSET-001",
+      "root_seed": 16499788695352105453,
+      "variant_id": "accent_offset_right",
+      "rotation": 0,
+      "reflected": false,
+      "attempts": 5,
+      "dimensions": {
+        "width": 17,
+        "height": 13,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "shelf_wall_run",
+          "zone_role": "wall_stock",
+          "zone_id": "wall_stock",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 8,
+            "y": 7
+          }
+        }
+      ]
+    },
+    {
+      "slug": "house-offset",
+      "archetype_id": "ARCH-INTERIOR-HOUSE",
+      "layout_family_id": "LAY-INTERIOR-HOUSE-OFFSET",
+      "tier": "offset_l",
+      "seed_index": 2,
+      "manifest_id": "GEN-WO0059-FIXTURE-HOUSE-OFFSET-002",
+      "root_seed": 5683160677420106472,
+      "variant_id": "accent_offset_right",
+      "rotation": 270,
+      "reflected": false,
+      "attempts": 6,
+      "dimensions": {
+        "width": 13,
+        "height": 17,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "shelf_wall_run",
+          "zone_role": "wall_stock",
+          "zone_id": "wall_stock",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 7,
+            "y": 9
+          }
+        }
+      ]
+    },
+    {
+      "slug": "house-offset",
+      "archetype_id": "ARCH-INTERIOR-HOUSE",
+      "layout_family_id": "LAY-INTERIOR-HOUSE-OFFSET",
+      "tier": "offset_l",
+      "seed_index": 3,
+      "manifest_id": "GEN-WO0059-FIXTURE-HOUSE-OFFSET-003",
+      "root_seed": 2137336572853274812,
+      "variant_id": "accent_offset_right",
+      "rotation": 0,
+      "reflected": false,
+      "attempts": 6,
+      "dimensions": {
+        "width": 17,
+        "height": 13,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "landmark_slots": [
+        {
+          "landmark_tag": "shelf_wall_run",
+          "zone_role": "wall_stock",
+          "zone_id": "wall_stock",
+          "required": true,
+          "dominant": true,
+          "anchor": {
+            "shape": "point",
+            "x": 8,
+            "y": 7
+          }
+        }
+      ]
+    }
+  ]
+}

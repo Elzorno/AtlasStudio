@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1",
+  "archetype_id": "ARCH-INTERIOR-HOUSE",
+  "version": "1.0",
+  "name": "Interior Archetype - House",
+  "category": "interior",
+  "gameplay_graph_ref": "GRAPH-INTERIOR-HOUSE",
+  "required_conditions": [
+    "The interior is a single room, not a multi-room house or a multi-floor residence.",
+    "The interior has exactly one primary entrance/exit.",
+    "The interior's function is domestic dwelling, not commerce, lodging-for-hire, or a notable NPC's seat of authority.",
+    "The interior is reached from a town or village exterior map."
+  ],
+  "modules_required": [
+    { "zone_role": "wall_stock", "module_ref": "MOD-BACK-WALL-SHELF-RUN", "min_count": 1, "max_count": 1 },
+    { "zone_role": "hearth_accent", "module_ref": "MOD-HEARTH-ACCENT", "min_count": 0, "max_count": 1 },
+    { "zone_role": "service_point", "module_ref": "MOD-COUNTER-SERVICE-POINT", "min_count": 0, "max_count": 0 }
+  ],
+  "size_constraints": {
+    "min_width": 8,
+    "min_height": 6,
+    "max_width": 17,
+    "max_height": 13
+  },
+  "style_pack_compatible": ["STY-ASHFORD-COZY-INTERIOR", "STY-COASTAL-SETTLEMENT-INTERIOR"],
+  "symmetry_rules": ["no_forced_bilateral_symmetry"],
+  "circulation_rules": ["single_connected_area_from_entrance", "reachability_ring_required_for_interactables_only"],
+  "landmark_slots": [
+    { "zone_role": "wall_stock", "landmark_tag": "shelf_wall_run", "required": true, "dominant": true }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-HOUSE",
+    "source_pattern_version": "1.0",
+    "confidence": "high",
+    "notes": "Confidence inherited directly from the source pattern: two independent official sample maps (Map018.json, Map019.json) corroborate every Layout, Passability, and Event rule, and agree on the composition finding that matters here (low density, single back-wall shelf run). modules_required intentionally sets MOD-COUNTER-SERVICE-POINT max_count to 0 -- a house has no commercial service point; the row exists only so a citing implementation contract cannot accidentally attach one without an explicit archetype revision. WO-0059 candidate not authored: a zoned/expanded (multi-room residence) tier was considered and explicitly rejected, not omitted -- PAT-INTERIOR-HOUSE's Required Conditions forbid 'a multi-room house or a multi-floor residence' outright (see chief-house.pattern.md for the actual multi-floor case, a distinct archetype this work order does not author). Building a zoned/expanded ARCH-INTERIOR-HOUSE layout family would violate that condition, not just carry low confidence."
+  }
+}

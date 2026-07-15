@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "layout_family_id": "LAY-INTERIOR-INN-COMPACT",
+  "version": "1.0",
+  "name": "Two-Zone Spine Corridor Inn -- Compact",
+  "applies_to_archetype": "ARCH-INTERIOR-INN",
+  "resolution_strategy": "hybrid",
+  "tier": "compact",
+  "size_range": { "min_width": 14, "min_height": 12, "max_width": 16, "max_height": 13 },
+  "zone_placement_rules": [
+    { "zone_role": "vestibule_alcove", "placement_rule": "offset_to_subzone_axis:common_room" },
+    { "zone_role": "common_room", "placement_rule": "adjacent_to:vestibule_alcove" },
+    { "zone_role": "spine_corridor", "placement_rule": "adjacent_to:common_room" },
+    { "zone_role": "guest_quarters_wing", "placement_rule": "adjacent_to:spine_corridor" }
+  ],
+  "allow_rotation": true,
+  "allow_reflection": true,
+  "variants": [
+    { "variant_id": "single_wing_column", "weight": 1.0, "notes": "The smallest valid resolution: one wing sized to the archetype's modules_required minimum (2 MOD-BED-DESK-NOOK), at the archetype's minimum footprint." }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-INN",
+    "confidence": "medium",
+    "notes": "Minimal reduction from the one observed sample (Map020.json, 20x17, mirrored dual wings) down to the archetype's own stated size floor and a single wing -- the same kind of straightforward, low-risk simplification as LAY-INTERIOR-INN-SPINE-CORRIDOR (the offset_l tier), just smaller. Not the directly-observed configuration; see LAY-INTERIOR-INN-ZONED-EXPANDED for that."
+  }
+}

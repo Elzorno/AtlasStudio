@@ -1,0 +1,76 @@
+{
+  "$id": "map_plan.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MapPlan",
+  "description": "The resolved, concrete, still engine-neutral spatial plan a seeded compiler run produces. MapPlan IS the existing Map Blueprint format (atlas-tools/mapgen/blueprint_schema.md in TheLastSwordProtocol-Atlas), formalized here as real JSON Schema for the first time, with additive generation_manifest_ref and landmark_slots fields. This is deliberate: WO-0056 introduces no second map generator or competing output format. Engine adapters may ignore additive semantic fields they do not yet consume. Nested arrays are typed loosely (additionalProperties allowed) because their detailed shape is governed by blueprint_schema.md, not restated here field-by-field.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "blueprint_id", "atlas_screen_id", "title", "source_documents", "map_intent", "dimensions"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "blueprint_id": { "type": "string" },
+    "atlas_screen_id": { "type": ["string", "null"] },
+    "title": { "type": "string" },
+    "source_documents": { "type": "array", "items": { "type": "string" } },
+    "map_intent": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["purpose", "layout_mode"],
+      "properties": {
+        "purpose": { "type": "string" },
+        "layout_mode": { "type": "string", "enum": ["handcrafted", "procedural", "hybrid"] },
+        "generation_seed": { "type": ["integer", "null"] },
+        "critical_path_role": { "type": "string" }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "unit": { "type": "string" },
+        "coordinate_system": { "type": "string" },
+        "origin": { "type": "string" }
+      }
+    },
+    "biome": { "type": "object", "additionalProperties": true },
+    "terrain": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "landmark_icons": {
+      "description": "Overworld extension (blueprint_schema.md): readable waypoint icons, distinct from event_anchors. Optional; only used by overworld-scale MapPlans.",
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "landmark_slots": {
+      "description": "Resolved engine-neutral semantic landmark placements for building and settlement plans.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["landmark_tag", "zone_role", "zone_id", "required", "dominant", "anchor"]
+      }
+    },
+    "vegetation_scatter": {
+      "description": "Overworld extension (blueprint_schema.md): deterministic tree-stamp density areas, distinct from terrain biome records. Optional; only used by overworld-scale MapPlans.",
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "elevation": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "traversable_areas": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "obstacles": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "transfer_points": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "npc_spawns": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "enemy_regions": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "treasure_locations": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "event_anchors": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "cinematic_zones": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "lighting_hints": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "audio": { "type": "object", "additionalProperties": true },
+    "validation": { "type": "object", "additionalProperties": true },
+    "generation_manifest_ref": {
+      "description": "manifest_id of the GenerationManifest that produced this MapPlan. Null for a handcrafted MapPlan with no compiler run behind it.",
+      "type": ["string", "null"]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-COUNTER-SERVICE-POINT",
+  "version": "1.0",
+  "name": "Counter Service Point",
+  "semantic_tag": "counter_service_point",
+  "footprint": { "width": 3, "height": 2 },
+  "ports": [
+    {
+      "port_id": "customer_side",
+      "port_type": "service_point",
+      "orientation": "south",
+      "position": { "x": 1, "y": 1 }
+    }
+  ],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-SHOP",
+    "notes": "Formalizes shop.pattern.md Event Rules: 'a deliberate service point (a counter-adjacent reachable tile facing the counter)'. Not placed by default; an archetype's modules_required entry opts a zone into it."
+  }
+}

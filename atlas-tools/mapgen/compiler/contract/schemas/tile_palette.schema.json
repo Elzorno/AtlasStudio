@@ -1,0 +1,78 @@
+{
+  "$id": "tile_palette.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TilePalette",
+  "description": "The engine-specific binding of one StylePack's abstract visual_tags to raw tile IDs (or equivalent asset references) for one target engine and one tileset file. This is the boundary artifact: raw tile IDs and serialization details belong here and in the engine adapter repo that authors TilePalette instances (e.g. rpgmakerLSP for RPG Maker MZ), never in an archetype, layout family, module, connector, or style pack.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "tile_palette_id", "version", "style_pack_ref", "target_engine", "bindings", "owner_repo"],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["0.1"] },
+    "tile_palette_id": { "type": "string", "pattern": "^PAL-[A-Z0-9-]+$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "style_pack_ref": { "type": "string" },
+    "target_engine": { "type": "string", "enum": ["rpg_maker_mz"] },
+    "tileset_file": { "type": "string" },
+    "tileset_id": { "type": "integer", "minimum": 1 },
+    "tileset_name": { "type": "string" },
+    "status": { "type": "string", "enum": ["generated_pending_live_review", "approved"] },
+    "bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["visual_tag", "tile_id"],
+        "properties": {
+          "visual_tag": { "type": "string" },
+          "tile_id": { "type": "integer", "minimum": 0 },
+          "notes": { "type": "string" },
+          "asset_sheet": { "type": "string" },
+          "source_index": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["addressing", "index"],
+            "properties": {
+              "addressing": { "type": "string", "enum": ["autotile_kind", "normal_tile"] },
+              "index": { "type": "integer", "minimum": 0 }
+            }
+          },
+          "role": { "type": "string" },
+          "component": { "type": "string" },
+          "flags": { "type": "integer", "minimum": 0 },
+          "passage": { "type": "string", "enum": ["passable", "blocked", "directional"] },
+          "layer": { "type": "string", "enum": ["base", "object", "upper_star"] },
+          "adjacency": { "type": "string", "enum": ["autotile_48", "none"] },
+          "source_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "provenance": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["contact_sheet", "notes"],
+            "properties": {
+              "contact_sheet": { "type": "string" },
+              "notes": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "owner_repo": {
+      "description": "Which repository owns authoring/maintaining instances of this artifact type. Recorded explicitly because TilePalette instances live in the engine adapter, not in this reusable-library repository, even though the schema is defined here.",
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "verified_against": { "type": "string" },
+        "notes": { "type": "string" },
+        "target_tilesets_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "contact_sheet_root": { "type": "string" }
+      }
+    },
+    "human_review": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

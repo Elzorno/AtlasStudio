@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "layout_family_id": "LAY-INTERIOR-INN-ZONED-EXPANDED",
+  "version": "1.0",
+  "name": "Two-Zone Spine Corridor Inn -- Mirrored Wings (Zoned/Expanded)",
+  "applies_to_archetype": "ARCH-INTERIOR-INN",
+  "resolution_strategy": "hybrid",
+  "tier": "zoned_expanded",
+  "size_range": { "min_width": 18, "min_height": 15, "max_width": 20, "max_height": 17 },
+  "zone_placement_rules": [
+    { "zone_role": "vestibule_alcove", "placement_rule": "offset_to_subzone_axis:common_room" },
+    { "zone_role": "common_room", "placement_rule": "adjacent_to:vestibule_alcove" },
+    { "zone_role": "spine_corridor", "placement_rule": "adjacent_to:common_room" },
+    { "zone_role": "guest_quarters_wing", "placement_rule": "mirrored_above_and_below:spine_corridor", "notes": "inn.pattern.md: 'repeat a smaller partitioned unit... mirrored above and below the connecting spine if the wing has multiple clusters.'" },
+    { "zone_role": "service_point", "placement_rule": "adjacent_to:common_room" }
+  ],
+  "allow_rotation": true,
+  "allow_reflection": true,
+  "variants": [
+    { "variant_id": "mirrored_upper_lower_wings", "weight": 1.0, "notes": "inn.pattern.md: 'near-identical partition rhythm in its upper and lower guest clusters', matching the observed Map020.json corpus source directly." }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-INN",
+    "confidence": "medium",
+    "notes": "Of this archetype's three tiers, this is the most directly evidenced: it reproduces the observed sample's actual off-axis door, single spine corridor, and mirrored dual-wing structure at its actual 20x17-class size. Confidence is still capped at medium, matching PAT-INTERIOR-INN's own single-source ceiling, not because this specific configuration is in doubt."
+  }
+}

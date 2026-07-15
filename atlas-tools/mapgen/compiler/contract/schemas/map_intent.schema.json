@@ -1,0 +1,54 @@
+{
+  "$id": "map_intent.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MapIntent",
+  "description": "Engine-neutral statement of what a map should be and why, authored or approved by canon before any generation runs. Equivalent in role to the existing Map Blueprint's map_intent/biome/dimensions header (atlas-tools/mapgen/blueprint_schema.md), formalized as a standalone versioned artifact so archetype selection can be recorded before a MapPlan exists.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "map_intent_id", "title", "purpose", "layout_mode", "source_documents"],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["0.1"] },
+    "map_intent_id": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+$" },
+    "atlas_screen_id": {
+      "description": "Canonical Atlas screen this intent targets. Null for a not-yet-canonized prototype intent.",
+      "type": ["string", "null"]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "layout_mode": { "type": "string", "enum": ["handcrafted", "procedural", "hybrid"] },
+    "critical_path_role": { "type": "string" },
+    "archetype_ref": {
+      "description": "Which BuildingArchetype this intent wants realized. Null for non-building intents (overworld, dungeon-only, etc.) that this contract version does not yet cover.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["archetype_id", "min_version"],
+      "properties": {
+        "archetype_id": { "type": "string" },
+        "min_version": { "type": "string" }
+      }
+    },
+    "required_gameplay_beats": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "generation_seed_salt": {
+      "description": "Map-specific stable salt consumed by GenerationManifest's seed derivation. Null for handcrafted intents with no procedural component.",
+      "type": ["string", "null"]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created_by", "created_date"],
+      "properties": {
+        "created_by": { "type": "string" },
+        "created_date": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

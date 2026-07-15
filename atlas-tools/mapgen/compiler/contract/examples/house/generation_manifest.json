@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "manifest_id": "GEN-HOUSE-EXAMPLE-001",
+  "map_intent_ref": "MI-HOUSE-EXAMPLE-001",
+  "generator_ref": { "generator_id": "atlas-reusable-map-compiler", "version": "0.1.0" },
+  "adapter_ref": null,
+  "archetype_ref": { "archetype_id": "ARCH-INTERIOR-HOUSE", "version": "1.0" },
+  "layout_family_ref": { "layout_family_id": "LAY-INTERIOR-HOUSE-COMPACT", "version": "1.0", "variant_id": "with_centered_accent" },
+  "style_pack_ref": { "style_pack_id": "STY-ASHFORD-COZY-INTERIOR", "version": "1.0" },
+  "tile_palette_ref": null,
+  "seed": {
+    "algorithm": "sha256_truncated_64",
+    "inputs": [
+      "MI-HOUSE-EXAMPLE-001",
+      "ARCH-INTERIOR-HOUSE@1.0",
+      "LAY-INTERIOR-HOUSE-COMPACT@1.0",
+      "with_centered_accent",
+      "STY-ASHFORD-COZY-INTERIOR@1.0",
+      "example-salt-house-001"
+    ],
+    "salt": "example-salt-house-001",
+    "value": 15009500774478808974
+  },
+  "contract_version": "0.1",
+  "generated_at": "2026-07-13",
+  "output_map_plan_ref": null,
+  "status": "generated_pending_review"
+}

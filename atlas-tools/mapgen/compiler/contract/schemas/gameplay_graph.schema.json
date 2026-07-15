@@ -1,0 +1,95 @@
+{
+  "$id": "gameplay_graph.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GameplayGraph",
+  "description": "The semantic skeleton of a map: zones with roles, typed ports, required beats, and the edges connecting them. Engine-neutral and layout-neutral -- it says what must exist and how it must connect, not where in pixel/tile space. A BuildingArchetype references exactly one GameplayGraph as its structural grammar. Zone `role` and port/connector `type` values are an open, documented vocabulary (not a closed enum) so a second implementer can introduce a new zone role without a contract version bump; see contract/README.md for the vocabulary already in use by the shop and inn examples.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "graph_id", "zones", "edges", "reachability"],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["0.1"] },
+    "graph_id": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+$" },
+    "describes_archetype": {
+      "description": "archetype_id this graph is the skeleton for. Null for a graph not yet bound to a specific archetype.",
+      "type": ["string", "null"]
+    },
+    "zones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["zone_id", "role", "required"],
+        "properties": {
+          "zone_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "role": {
+            "description": "Semantic role tag, e.g. entry_threshold, center_aisle, browse_loop, wall_stock, focal_feature, service_point, common_room, guest_quarters_wing, spine_corridor, vestibule_alcove, hearth_area, keepsake_corner.",
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "required": { "type": "boolean" },
+          "min_area": { "type": "integer", "minimum": 1 },
+          "max_area": { "type": "integer", "minimum": 1 },
+          "clearance": {
+            "description": "Reachability-ring requirement: every interactable placed in this zone needs at least this many adjacent walkable tiles.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "min_adjacent_walkable": { "type": "integer", "minimum": 0 }
+            }
+          },
+          "ports": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["port_id", "port_type", "orientation"],
+              "properties": {
+                "port_id": { "type": "string" },
+                "port_type": { "type": "string" },
+                "orientation": { "type": "string", "enum": ["north", "south", "east", "west", "any"] }
+              }
+            }
+          },
+          "beats": {
+            "description": "Gameplay beat tags placed in this zone, e.g. npc_service_point, treasure_anchor, exit_transfer.",
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from_zone", "to_zone", "connector_type", "required"],
+        "properties": {
+          "from_zone": { "type": "string" },
+          "to_zone": { "type": "string" },
+          "connector_type": { "type": "string" },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "reachability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entry_zone", "must_reach"],
+      "properties": {
+        "entry_zone": { "type": "string" },
+        "must_reach": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_pattern_ids": { "type": "array", "items": { "type": "string" } },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "experimental"] },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

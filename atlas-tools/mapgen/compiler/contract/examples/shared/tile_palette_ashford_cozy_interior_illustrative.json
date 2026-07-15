@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "tile_palette_id": "PAL-ASHFORD-COZY-INTERIOR-ILLUSTRATIVE",
+  "version": "0.1",
+  "style_pack_ref": "STY-ASHFORD-COZY-INTERIOR",
+  "target_engine": "rpg_maker_mz",
+  "tileset_file": "Inside_B",
+  "bindings": [
+    { "visual_tag": "hearth_focal_feature", "tile_id": 195, "notes": "Contact-sheet-verified during the 2026-07-13 Ashford Inn (Map026) rebuild via the project's PIL compositor, not the sample corpus. Single-tile fireplace." },
+    { "visual_tag": "picture_and_cabinet_nook", "tile_id": 130, "notes": "Contact-sheet-verified, Ashford Inn rebuild: picture frame, left." },
+    { "visual_tag": "picture_and_cabinet_nook", "tile_id": 131, "notes": "Contact-sheet-verified, Ashford Inn rebuild: picture frame, center." },
+    { "visual_tag": "picture_and_cabinet_nook", "tile_id": 133, "notes": "Contact-sheet-verified, Ashford Inn rebuild: picture frame, right." },
+    { "visual_tag": "picture_and_cabinet_nook", "tile_id": 136, "notes": "Contact-sheet-verified, Ashford Inn rebuild: matching cabinet/dresser tile." },
+    { "visual_tag": "picture_and_cabinet_nook", "tile_id": 138, "notes": "Contact-sheet-verified, Ashford Inn rebuild: matching cabinet/dresser tile." },
+    { "visual_tag": "picture_and_cabinet_nook", "tile_id": 140, "notes": "Contact-sheet-verified, Ashford Inn rebuild: matching cabinet/dresser tile." },
+    { "visual_tag": "bed_alcove", "tile_id": 168, "notes": "Contact-sheet-verified, Ashford Inn rebuild: bed top half." },
+    { "visual_tag": "bed_alcove", "tile_id": 176, "notes": "Contact-sheet-verified, Ashford Inn rebuild: bed bottom half." },
+    { "visual_tag": "shelf_wall_run", "tile_id": 136, "notes": "Reuses the verified cabinet/dresser tile; a true open-shelf tile has not been contact-sheet-verified on this sheet yet." },
+    { "visual_tag": "wall_mounted_flame", "tile_id": 0, "notes": "PLACEHOLDER, not verified. Per feedback_tileset_pixel_addressing (this project's standing lesson), do not treat this binding as trustworthy until it has been confirmed against a real contact sheet rendered through the project's compositor -- flagged here deliberately as an example of an unverified binding, not asserted as correct." },
+    { "visual_tag": "floor_rug_focal_accent", "tile_id": 0, "notes": "PLACEHOLDER, not verified. Same caveat as wall_mounted_flame." }
+  ],
+  "owner_repo": "rpgmakerLSP",
+  "provenance": {
+    "verified_against": "TheLastSwordProtocol-Game/data/Map026.json as rebuilt 2026-07-13, cross-checked against Inside_B.png via the project's rmmz_core.js-faithful PIL compositor",
+    "notes": "Illustrative example only, included in this reusable-library repository purely to show the TilePalette shape. Production TilePalette instances are authored and owned in rpgmakerLSP (the RPG Maker MZ engine adapter), per contract/README.md 'Explicit Boundaries', not in AtlasStudio."
+  }
+}

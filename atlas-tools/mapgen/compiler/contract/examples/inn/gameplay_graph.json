@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1",
+  "graph_id": "GRAPH-INTERIOR-INN",
+  "describes_archetype": "ARCH-INTERIOR-INN",
+  "zones": [
+    {
+      "zone_id": "vestibule_alcove",
+      "role": "vestibule_alcove",
+      "required": true,
+      "min_area": 1,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [
+        { "port_id": "exterior_door", "port_type": "exterior_door", "orientation": "south" }
+      ],
+      "beats": ["exit_transfer"]
+    },
+    {
+      "zone_id": "common_room",
+      "role": "common_room",
+      "required": true,
+      "min_area": 12,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "spine_corridor",
+      "role": "spine_corridor",
+      "required": true,
+      "min_area": 4,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "guest_quarters_wing",
+      "role": "guest_quarters_wing",
+      "required": true,
+      "min_area": 12,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "service_point",
+      "role": "service_point",
+      "required": false,
+      "min_area": 2,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": ["npc_service_point"]
+    }
+  ],
+  "edges": [
+    { "from_zone": "vestibule_alcove", "to_zone": "common_room", "connector_type": "chokepoint_corridor", "required": true },
+    { "from_zone": "common_room", "to_zone": "spine_corridor", "connector_type": "chokepoint_corridor", "required": true },
+    { "from_zone": "spine_corridor", "to_zone": "guest_quarters_wing", "connector_type": "open_floor", "required": true },
+    { "from_zone": "common_room", "to_zone": "service_point", "connector_type": "open_floor", "required": false }
+  ],
+  "reachability": {
+    "entry_zone": "vestibule_alcove",
+    "must_reach": ["common_room", "spine_corridor", "guest_quarters_wing"]
+  },
+  "provenance": {
+    "source_pattern_ids": ["PAT-INTERIOR-INN"],
+    "confidence": "medium",
+    "notes": "vestibule_alcove is a deliberate dead-end reachable only from common_room per inn.pattern.md's Passability Rules -- do not add a shortcut edge from guest_quarters_wing straight to vestibule_alcove. service_point is optional, same reasoning as the shop graph: 'Do not assume an inn interior requires an innkeeper NPC... by default.'"
+  }
+}

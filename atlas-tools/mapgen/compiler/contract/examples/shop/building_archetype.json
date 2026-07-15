@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1",
+  "archetype_id": "ARCH-INTERIOR-SHOP",
+  "version": "1.0",
+  "name": "Interior Archetype - Shop",
+  "category": "interior",
+  "gameplay_graph_ref": "GRAPH-INTERIOR-SHOP",
+  "required_conditions": [
+    "The interior is a single room, not a multi-room shop, shop-plus-back-office, or shop-plus-living-quarters layout.",
+    "The interior has exactly one primary entrance/exit shared by both directions of travel.",
+    "The interior's commercial function is retail browsing, not a market stall, auction hall, or crafting workshop.",
+    "The interior is reached from a town or village exterior map, not from a dungeon or wilderness screen."
+  ],
+  "modules_required": [
+    { "zone_role": "wall_stock", "module_ref": "MOD-SHELF-WALL-RUN", "min_count": 1, "max_count": 3 },
+    { "zone_role": "service_point", "module_ref": "MOD-COUNTER-SERVICE-POINT", "min_count": 0, "max_count": 1 },
+    { "zone_role": "browse_loop", "module_ref": "MOD-DISPLAY-TABLE", "min_count": 0, "max_count": 2 }
+  ],
+  "size_constraints": {
+    "min_width": 8,
+    "min_height": 6,
+    "max_width": 17,
+    "max_height": 13
+  },
+  "style_pack_compatible": ["STY-ASHFORD-COZY-INTERIOR", "STY-COASTAL-SETTLEMENT-INTERIOR"],
+  "symmetry_rules": ["bilateral_counterbalance_not_mirrored"],
+  "circulation_rules": ["single_connected_loop_from_entrance", "reachability_ring_required_for_interactables"],
+  "landmark_slots": [
+    { "zone_role": "focal_feature", "landmark_tag": "floor_rug_focal_accent", "required": true, "dominant": true }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-SHOP",
+    "source_pattern_version": "1.0",
+    "confidence": "medium",
+    "notes": "Confidence inherited directly from the source pattern: corroborated by exactly one official sample map (Map021.json). Do not report this archetype as High confidence in a citing implementation contract. WO-0059 candidate not authored: a zoned/expanded (shop-plus-back-office) layout tier was considered and explicitly rejected, not merely omitted -- PAT-INTERIOR-SHOP's Required Conditions state the interior must be 'a single room, not a multi-room shop, shop-plus-back-office, or shop-plus-living-quarters layout', and WO-0059's own constraints forbid loosening an accepted pattern's requirements without an explicit proposed exception. Building a zoned/expanded ARCH-INTERIOR-SHOP layout family would violate that condition outright, not just carry low confidence. If a back-office shop is ever wanted, it needs its own proposed exception against PAT-INTERIOR-SHOP (or a new archetype), not a LayoutFamily that quietly ignores the archetype's own required_conditions."
+  }
+}

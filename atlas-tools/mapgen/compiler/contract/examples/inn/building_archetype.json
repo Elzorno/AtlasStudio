@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "archetype_id": "ARCH-INTERIOR-INN",
+  "version": "1.0",
+  "name": "Interior Archetype - Inn",
+  "category": "interior",
+  "gameplay_graph_ref": "GRAPH-INTERIOR-INN",
+  "required_conditions": [
+    "The interior is larger than a single small room and combines at least two functionally distinct zones under one roof (a common/gathering area and a lodging area).",
+    "The interior has exactly one primary exterior entrance/exit, even though it may contain multiple interior sub-zones.",
+    "The interior's function is lodging-for-hire or a comparable multi-purpose gathering-plus-private-space building.",
+    "The interior is reached from a town or village exterior map."
+  ],
+  "modules_required": [
+    { "zone_role": "guest_quarters_wing", "module_ref": "MOD-BED-DESK-NOOK", "min_count": 2, "max_count": 6 },
+    { "zone_role": "service_point", "module_ref": "MOD-COUNTER-SERVICE-POINT", "min_count": 0, "max_count": 1 }
+  ],
+  "size_constraints": {
+    "min_width": 14,
+    "min_height": 12,
+    "max_width": 20,
+    "max_height": 17
+  },
+  "style_pack_compatible": ["STY-ASHFORD-COZY-INTERIOR", "STY-COASTAL-SETTLEMENT-INTERIOR"],
+  "symmetry_rules": ["per_zone_composition_not_shared", "mirrored_upper_lower_wings_when_multi_cluster"],
+  "circulation_rules": ["zone_reachable_via_single_chokepoint", "vestibule_dead_end_reachable_only_from_common_room"],
+  "landmark_slots": [
+    { "zone_role": "common_room", "landmark_tag": "wall_mounted_flame", "required": false, "dominant": false }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-INN",
+    "source_pattern_version": "1.0",
+    "confidence": "medium",
+    "notes": "Confidence inherited directly from the source pattern: corroborated by exactly one official sample map (Map020.json). Do not report this archetype as High confidence in a citing implementation contract. If the interior is genuinely single-room, use ARCH-INTERIOR-SHOP or ARCH-INTERIOR-HOUSE instead -- this archetype's zoning rules do not apply to an undivided room. Gap: PAT-INTERIOR-INN does not evidence one strong single-object dominant landmark (unlike the fireplace this project later hand-built into Map026, which is a project-specific addition, not part of the official-sample-derived pattern) -- the landmark_slots entry above is marked non-required/non-dominant rather than asserting one that current evidence does not support, per WO-0059's own instruction to record unsupported desired variation as an explicit candidate, not an accepted fact."
+  }
+}

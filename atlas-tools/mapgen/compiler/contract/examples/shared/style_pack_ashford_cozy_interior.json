@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "style_pack_id": "STY-ASHFORD-COZY-INTERIOR",
+  "version": "1.0",
+  "name": "Ashford Cozy Interior",
+  "biome_id": "HOM-ashford-interior",
+  "terrain_family": "cozy_home_interior",
+  "visual_tone": "warm, lived-in, ordinary village interior; old-world decoration stays background/foreshadowing only",
+  "decoration_density_profile": {
+    "perimeter": "dense",
+    "center": "sparse"
+  },
+  "visual_tags": [
+    "hearth_focal_feature",
+    "wall_mounted_flame",
+    "floor_rug_focal_accent",
+    "shelf_wall_run",
+    "picture_and_cabinet_nook",
+    "bed_alcove",
+    "warm_wood_plank_floor",
+    "rustic_brick_wall",
+    "warm_wood_paneling",
+    "warm_wood_plank_threshold",
+    "quilted_wood_frame_bed",
+    "red_curtain_accent",
+    "back_wall_shelf_run",
+    "hearth_accent",
+    "counter_service_point",
+    "display_table"
+  ],
+  "applicable_archetypes": ["ARCH-INTERIOR-SHOP", "ARCH-INTERIOR-INN", "ARCH-INTERIOR-HOUSE"],
+  "vocabulary": {
+    "floor": ["warm_wood_plank_floor"],
+    "wall": ["rustic_brick_wall", "warm_wood_paneling"],
+    "threshold": ["warm_wood_plank_threshold"],
+    "furniture": ["quilted_wood_frame_bed", "picture_and_cabinet_nook", "shelf_wall_run", "back_wall_shelf_run", "hearth_accent", "counter_service_point", "display_table"],
+    "lighting": ["wall_mounted_flame"],
+    "landmark": ["hearth_focal_feature"],
+    "edge_dressing": ["red_curtain_accent", "floor_rug_focal_accent"]
+  },
+  "biome_substitution": [],
+  "provenance": {
+    "notes": "Visual tags are abstract vocabulary only; no tile IDs appear here. Derived from this project's own accepted Ashford interiors (Elara House, Ashford Inn) rather than the RPG Maker MZ sample corpus, since it targets this project's specific Inside/SF_Inside tilesets. Serves as the WO-0060 'temperate village' style pack -- Ashford already reads as a temperate village, so no separate pack was created; this one was extended in place with the structured vocabulary/biome_substitution fields and House coverage instead of authoring a near-duplicate. See atlas-tools/mapgen/compiler/style_study/wo0060/temperate-and-coastal-interior-study.md for the contact-sheet evidence trail behind the added tags."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "style_pack_id": "STY-COASTAL-SETTLEMENT-INTERIOR",
+  "version": "1.0",
+  "name": "Coastal Settlement Interior",
+  "biome_id": "HOM-coastal-interior",
+  "terrain_family": "coastal_home_interior",
+  "visual_tone": "bright, airy, whitewashed coastal-village interior; pale stone and tile in place of warm wood, with a striped-linen accent instead of deep reds",
+  "decoration_density_profile": {
+    "perimeter": "dense",
+    "center": "sparse"
+  },
+  "visual_tags": [
+    "hearth_focal_feature",
+    "wall_mounted_flame",
+    "shelf_wall_run",
+    "picture_and_cabinet_nook",
+    "bed_alcove",
+    "pale_mosaic_tile_floor",
+    "whitewashed_plaster_wall",
+    "pale_stone_threshold",
+    "striped_cabana_bed",
+    "pale_curtain_accent",
+    "blue_patterned_floor_accent",
+    "back_wall_shelf_run",
+    "hearth_accent",
+    "counter_service_point",
+    "display_table"
+  ],
+  "applicable_archetypes": ["ARCH-INTERIOR-SHOP", "ARCH-INTERIOR-INN", "ARCH-INTERIOR-HOUSE"],
+  "vocabulary": {
+    "floor": ["pale_mosaic_tile_floor"],
+    "wall": ["whitewashed_plaster_wall"],
+    "threshold": ["pale_stone_threshold"],
+    "furniture": ["striped_cabana_bed", "picture_and_cabinet_nook", "shelf_wall_run", "back_wall_shelf_run", "hearth_accent", "counter_service_point", "display_table"],
+    "lighting": ["wall_mounted_flame"],
+    "landmark": ["hearth_focal_feature", "blue_patterned_floor_accent"],
+    "edge_dressing": ["pale_curtain_accent", "blue_patterned_floor_accent"]
+  },
+  "biome_substitution": [
+    { "from_style_pack": "STY-ASHFORD-COZY-INTERIOR", "from_tag": "warm_wood_plank_floor", "to_tag": "pale_mosaic_tile_floor", "notes": "Inside_A2 kind 16/18/23/24/31 (warm plank) -> kind 17/25/39/47 (pale stone/mosaic), per contact-sheet study." },
+    { "from_style_pack": "STY-ASHFORD-COZY-INTERIOR", "from_tag": "rustic_brick_wall", "to_tag": "whitewashed_plaster_wall", "notes": "Inside_A4 kind 84-87 (reddish brick) -> kind 101/109/113/114/121/122 (cream/white plaster)." },
+    { "from_style_pack": "STY-ASHFORD-COZY-INTERIOR", "from_tag": "warm_wood_paneling", "to_tag": "whitewashed_plaster_wall", "notes": "Same substitution target; this style pack does not distinguish a separate paneling variant." },
+    { "from_style_pack": "STY-ASHFORD-COZY-INTERIOR", "from_tag": "warm_wood_plank_threshold", "to_tag": "pale_stone_threshold", "notes": "Inside_A5 tile 1/9 (warm plank) -> tile 20/40 (pale stone), keeping the same 'stairs-tile one row above floor' threshold construction." },
+    { "from_style_pack": "STY-ASHFORD-COZY-INTERIOR", "from_tag": "quilted_wood_frame_bed", "to_tag": "striped_cabana_bed", "notes": "Inside_B row ~168-175 (quilted/pillow beds) -> tile 177 (orange/white cabana stripe), the clearest single-tile coastal signifier found on this sheet." },
+    { "from_style_pack": "STY-ASHFORD-COZY-INTERIOR", "from_tag": "red_curtain_accent", "to_tag": "pale_curtain_accent", "notes": "Inside_B tiles 56-59/60-63 (deep red curtain) -> tiles 48-51 (tan/cream curtain), or omit in favor of pale_stone_threshold's own brightness if no suitable pale curtain tile is confirmed." },
+    { "from_style_pack": "STY-ASHFORD-COZY-INTERIOR", "from_tag": "floor_rug_focal_accent", "to_tag": "blue_patterned_floor_accent", "notes": "Inside_A5 tile 42 is a passable blue patterned floor accent confirmed in the WO-0061 composited render. It replaces the rug without changing gameplay geometry. The earlier tile-78 citation was rejected after rendering because tile 78 is yellow brick, not blue check." }
+  ],
+  "provenance": {
+    "notes": "WO-0060 'coastal settlement' style pack. All tags are abstract vocabulary; no tile IDs appear here (contact-sheet kind/tile numbers cited above are provenance evidence, not bindings -- the actual verified TilePalette instance, including passability/layer/adjacency confirmation, is WO-0060 task 2, owned by the engine-adapter-side palette tooling, not authored in this reusable-library repository). Evidence trail: atlas-tools/mapgen/compiler/style_study/wo0060/temperate-and-coastal-interior-study.md and its contact sheets. This project's asset library (the 'Inside' RPG Maker MZ RTP-derived tileset family) has no purpose-built nautical/beach props (no net, shell, anchor, or driftwood tiles were found on Inside_B or Inside_C) -- this style pack's coastal identity is built entirely from color and material choice (whitewash, pale stone, blue-checkered tile, striped linen) already present on the sheet, not from thematic prop substitution. That is a real, disclosed limitation, not an oversight."
+  }
+}

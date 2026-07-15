@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "connector_id": "CON-OPEN-FLOOR",
+  "version": "1.0",
+  "name": "Open Floor",
+  "connector_type": "open_floor",
+  "compatible_port_types": ["open_floor"],
+  "width": 2,
+  "traversal": "bidirectional",
+  "allow_rotation": true,
+  "provenance": {
+    "notes": "Default wide connection between two zones sharing one undivided walkable area, e.g. shop.pattern.md's center aisle to browse loop."
+  }
+}

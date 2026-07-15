@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "graph_id": "GRAPH-INTERIOR-HOUSE",
+  "describes_archetype": "ARCH-INTERIOR-HOUSE",
+  "zones": [
+    {
+      "zone_id": "entry_threshold",
+      "role": "entry_threshold",
+      "required": true,
+      "min_area": 1,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [
+        { "port_id": "exterior_door", "port_type": "exterior_door", "orientation": "south" }
+      ],
+      "beats": ["exit_transfer"]
+    },
+    {
+      "zone_id": "main_floor",
+      "role": "main_floor",
+      "required": true,
+      "min_area": 12,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "wall_stock",
+      "role": "wall_stock",
+      "required": true,
+      "min_area": 8,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "hearth_accent",
+      "role": "hearth_accent",
+      "required": false,
+      "min_area": 1,
+      "max_area": 1,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "service_point",
+      "role": "service_point",
+      "required": false,
+      "min_area": 2,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": ["npc_service_point"]
+    }
+  ],
+  "edges": [
+    { "from_zone": "entry_threshold", "to_zone": "main_floor", "connector_type": "open_floor", "required": true },
+    { "from_zone": "main_floor", "to_zone": "wall_stock", "connector_type": "open_floor", "required": true },
+    { "from_zone": "main_floor", "to_zone": "hearth_accent", "connector_type": "open_floor", "required": false },
+    { "from_zone": "main_floor", "to_zone": "service_point", "connector_type": "open_floor", "required": false }
+  ],
+  "reachability": {
+    "entry_zone": "entry_threshold",
+    "must_reach": ["main_floor", "wall_stock"]
+  },
+  "provenance": {
+    "source_pattern_ids": ["PAT-INTERIOR-HOUSE"],
+    "confidence": "high",
+    "notes": "hearth_accent and service_point are optional, per house.pattern.md's own explicit statements: at most one hearth/table accent is ever observed (never a cluster, and one observed house omits it from centerline entirely), and 'Do not assume a house interior requires a resident NPC event by default -- both observed samples demonstrate a fully furnished, atmospheric house with zero character events.'"
+  }
+}

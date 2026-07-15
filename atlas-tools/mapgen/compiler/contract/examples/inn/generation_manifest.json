@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "manifest_id": "GEN-INN-EXAMPLE-001",
+  "map_intent_ref": "MI-INN-EXAMPLE-001",
+  "generator_ref": { "generator_id": "atlas-reusable-map-compiler", "version": "0.1.0" },
+  "adapter_ref": null,
+  "archetype_ref": { "archetype_id": "ARCH-INTERIOR-INN", "version": "1.0" },
+  "layout_family_ref": { "layout_family_id": "LAY-INTERIOR-INN-ZONED-EXPANDED", "version": "1.0", "variant_id": "mirrored_upper_lower_wings" },
+  "style_pack_ref": { "style_pack_id": "STY-ASHFORD-COZY-INTERIOR", "version": "1.0" },
+  "tile_palette_ref": null,
+  "seed": {
+    "algorithm": "sha256_truncated_64",
+    "inputs": [
+      "MI-INN-EXAMPLE-001",
+      "ARCH-INTERIOR-INN@1.0",
+      "LAY-INTERIOR-INN-ZONED-EXPANDED@1.0",
+      "mirrored_upper_lower_wings",
+      "STY-ASHFORD-COZY-INTERIOR@1.0",
+      "example-salt-inn-001"
+    ],
+    "salt": "example-salt-inn-001",
+    "value": 9384457310927723894
+  },
+  "contract_version": "0.1",
+  "generated_at": "2026-07-13",
+  "output_map_plan_ref": null,
+  "status": "generated_pending_review"
+}

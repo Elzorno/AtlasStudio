@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "layout_family_id": "LAY-INTERIOR-HOUSE-OFFSET",
+  "version": "1.0",
+  "name": "Single-Room House -- Off-Axis Accent",
+  "applies_to_archetype": "ARCH-INTERIOR-HOUSE",
+  "resolution_strategy": "handcrafted",
+  "tier": "offset_l",
+  "size_range": { "min_width": 10, "min_height": 7, "max_width": 17, "max_height": 13 },
+  "zone_placement_rules": [
+    { "zone_role": "entry_threshold", "placement_rule": "centered_on_primary_axis", "notes": "Door stays centered -- see LAY-INTERIOR-HOUSE-COMPACT's note; unlike the Shop offset tier, this House tier's 'offset' is about the hearth_accent, not the door, because house.pattern.md gives no evidenced exception for an off-axis House door." },
+    { "zone_role": "main_floor", "placement_rule": "adjacent_to:entry_threshold" },
+    { "zone_role": "wall_stock", "placement_rule": "opposite_wall_from:entry_threshold" },
+    { "zone_role": "hearth_accent", "placement_rule": "offset_from_primary_axis", "notes": "house.pattern.md, directly evidenced: 'One observed house omits this accent from the direct centerline (placed off-axis, one tile from center).'" }
+  ],
+  "allow_rotation": true,
+  "allow_reflection": false,
+  "variants": [
+    { "variant_id": "accent_offset_left", "weight": 0.5 },
+    { "variant_id": "accent_offset_right", "weight": 0.5 }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-HOUSE",
+    "confidence": "medium",
+    "notes": "Unlike LAY-INTERIOR-HOUSE-COMPACT (which both observed houses corroborate identically, hence High), this tier represents only ONE of the two observed houses' specific accent-placement choice -- the other observed house centers its accent instead. Filed at medium, not high, to reflect that this specific configuration has single-sample support even though the archetype as a whole is High confidence."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-SHELF-WALL-RUN",
+  "version": "1.0",
+  "name": "Shelf Wall Run",
+  "semantic_tag": "shelf_wall_run",
+  "footprint": { "width": 4, "height": 1 },
+  "ports": [
+    {
+      "port_id": "browse_side",
+      "port_type": "open_floor",
+      "orientation": "south",
+      "position": { "x": 0, "y": 0 }
+    }
+  ],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-SHOP",
+    "notes": "Formalizes shop.pattern.md Layout Rules: 'Anchor all shelving and heavy storage furniture directly against a wall... every shelf cluster should terminate cleanly into a wall'. Every instance of this module must be placed with its non-port edge against a zone boundary; the compiler enforces this at layout-resolution time, not at the schema level."
+  }
+}

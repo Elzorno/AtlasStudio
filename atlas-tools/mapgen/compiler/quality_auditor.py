@@ -216,6 +216,99 @@ class QualityAuditor:
         passed = not any(finding.severity == "error" for finding in findings)
         return AuditResult(target=str(path), passed=passed, findings=findings)
 
+    def audit_generated_candidate(
+        self,
+        *,
+        plan: dict[str, Any],
+        map_json: dict[str, Any],
+        manifest: dict[str, Any],
+        diagnostics: dict[str, Any],
+        palette: dict[str, Any],
+    ) -> dict[str, Any]:
+        """WO-0062 hard gates plus advisory classic-JRPG evidence.
+
+        Hard failures cannot be offset by the advisory score. Human review is
+        intentionally read from the manifest and never inferred from scores.
+        """
+        hard: list[Finding] = []
+        width, height = int(map_json.get("width", 0)), int(map_json.get("height", 0))
+        data = map_json.get("data", [])
+        events = [event for event in map_json.get("events", []) if event]
+        route = diagnostics.get("route_audit", {})
+        if route.get("result") != "pass":
+            hard.append(Finding("reachability_failed", "error", "Required route audit did not pass.", route))
+        if route.get("interaction_ring_failures"):
+            hard.append(Finding("interaction_ring_failed", "error", "One or more interaction rings are unreachable.", route))
+        interior_capacity = max(0, (width - 2) * (height - 2))
+        if int(route.get("reachable_cells", 0)) < max(1, interior_capacity // 2):
+            hard.append(Finding("isolated_pockets", "error", "Reachable interior is below the minimum connected fraction.", {"reachable": route.get("reachable_cells"), "interior_capacity": interior_capacity}))
+        zone_ids = {item.get("terrain_id", "").removeprefix("ZONE-") for item in plan.get("terrain", [])}
+        bad_edges = [edge.get("area_id") for edge in plan.get("traversable_areas", []) if edge.get("from_zone") not in zone_ids or edge.get("to_zone") not in zone_ids]
+        if bad_edges:
+            hard.append(Finding("connector_alignment_failed", "error", "Connectors reference missing zones.", {"edges": bad_edges}))
+        zone_areas = {item.get("terrain_id", "").removeprefix("ZONE-"): item.get("area", {}) for item in plan.get("terrain", [])}
+        clearance_failures = []
+        for obstacle in plan.get("obstacles", []):
+            parent, area = zone_areas.get(obstacle.get("parent_zone")), obstacle.get("area", {})
+            if not parent or not all((area.get("x", 0) >= parent.get("x", 0), area.get("y", 0) >= parent.get("y", 0), area.get("x", 0) + area.get("w", 0) <= parent.get("x", 0) + parent.get("w", 0), area.get("y", 0) + area.get("h", 0) <= parent.get("y", 0) + parent.get("h", 0))):
+                clearance_failures.append(obstacle.get("obstacle_id"))
+        if clearance_failures:
+            hard.append(Finding("clearance_failed", "error", "Obstacle footprint escapes its parent zone.", {"obstacles": clearance_failures}))
+        transfer_ids = {item.get("transfer_id") for item in plan.get("transfer_points", [])}
+        event_names = {event.get("name") for event in events}
+        if not transfer_ids.issubset(event_names) or manifest.get("round_trip_contract") not in {"verified", "fixture_unbound_safe"}:
+            hard.append(Finding("transfer_round_trip_failed", "error", "Transfer identities or round-trip contract are incomplete.", {"expected": sorted(transfer_ids), "round_trip_contract": manifest.get("round_trip_contract")}))
+        anchor_ids = {item.get("local_anchor_id") for item in plan.get("event_anchors", [])}
+        if not anchor_ids.issubset(event_names):
+            hard.append(Finding("event_anchor_failed", "error", "Required event anchor identity is absent.", {"missing": sorted(anchor_ids - event_names)}))
+        if width < 1 or height < 1 or len(data) != width * height * 6 or int(map_json.get("tilesetId", 0)) != int(palette.get("tileset_id", -1)):
+            hard.append(Finding("rpgmaker_shape_failed", "error", "Dimensions, six-layer data, or tileset reference are invalid.", {"width": width, "height": height, "data_length": len(data), "tileset_id": map_json.get("tilesetId")}))
+        palette_kinds = {(binding["source_index"]["addressing"], binding["source_index"]["index"]) for binding in palette.get("bindings", [])}
+        unknown_tiles = []
+        for tile in set(data[: width * height * 4]):
+            if not tile:
+                continue
+            address = ("autotile_kind", (tile - 2048) // 48) if tile >= 2048 else ("normal_tile", tile - (1536 if 1536 <= tile < 2048 else 256 if tile >= 256 else 0))
+            if address not in palette_kinds:
+                unknown_tiles.append(tile)
+        if unknown_tiles:
+            hard.append(Finding("tile_family_failed", "error", "Candidate uses tiles outside the verified palette.", {"tile_ids": sorted(unknown_tiles)}))
+        required_manifest = {"schema_version", "status", "map_plan", "palette", "style_pack", "candidate_map", "render", "promotion", "ownership_state", "provenance", "round_trip_contract", "human_review"}
+        missing_manifest = sorted(required_manifest - set(manifest))
+        provenance_required = {"map_plan_sha256", "palette_sha256", "style_pack_sha256", "candidate_map_sha256", "render_sha256", "tilesets_sha256"}
+        missing_provenance = sorted(provenance_required - set(manifest.get("provenance", {})))
+        if missing_manifest or missing_provenance or manifest.get("promotion") != "not_applied":
+            hard.append(Finding("manifest_incomplete", "error", "Candidate manifest is incomplete or promotion separation is absent.", {"missing_fields": missing_manifest, "missing_provenance": missing_provenance, "promotion": manifest.get("promotion")}))
+
+        landmark = any(item.get("dominant") for item in plan.get("landmark_slots", []))
+        optional_branch = any(not edge.get("required", False) for edge in plan.get("traversable_areas", []))
+        occupied = sum(int(item.get("area", {}).get("w", 0)) * int(item.get("area", {}).get("h", 0)) for item in plan.get("obstacles", []))
+        density = occupied / max(1, interior_capacity)
+        advisory_checks = {
+            # WO-0065: broadened to also recognize exterior-palette role names
+            # (ground/building/dressing/threshold), which WO-0063's own
+            # Outside palette uses instead of the interior vocabulary
+            # (floor/wall/edge_dressing) this check originally hardcoded --
+            # that mismatch was undercounting genuinely varied exterior
+            # palettes. See WO-0064 finding F3 and WO-0065's report.
+            "immediate_place_identity": len({binding.get("role") for binding in palette.get("bindings", []) if binding.get("role") in {"floor", "wall", "landmark", "edge_dressing", "ground", "building", "dressing", "threshold"}}) >= 3,
+            "dominant_landmark": landmark,
+            "route_legibility": route.get("result") == "pass" and not route.get("interaction_ring_failures"),
+            "compact_meaningful_travel": width <= 30 and height <= 24 and bool(plan.get("traversable_areas")),
+            "curiosity_hook": landmark or optional_branch,
+            "compression_release": bool(plan.get("obstacles")) and int(route.get("reachable_cells", 0)) >= max(1, interior_capacity // 2),
+            "selective_density": 0.01 <= density <= 0.35,
+        }
+        score = round(100 * sum(advisory_checks.values()) / len(advisory_checks), 1)
+        return {
+            "target": map_json.get("displayName", "generated candidate"),
+            "hard_passed": not hard,
+            "hard_findings": [item.to_dict() for item in hard],
+            "advisory": {"score": score, "checks": advisory_checks, "evidence": {"obstacle_density": round(density, 4)}},
+            "human_review": manifest.get("human_review", {"status": "pending", "decision": None}),
+            "promotion": manifest.get("promotion", "not_applied"),
+        }
+
     def _max_straight_coastline_run(self, model: TerrainModel) -> int:
         max_run = 0
         for y in range(model.height):

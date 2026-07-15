@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "map_intent_id": "MI-INN-EXAMPLE-001",
+  "atlas_screen_id": null,
+  "title": "Generic Two-Zone Lodging Interior (Contract Example)",
+  "purpose": "Illustrate the WO-0056 contract end to end for a two-zone lodging interior (common room + guest quarters wing), per PAT-INTERIOR-INN. Not bound to a canonical Atlas screen; a real build would set atlas_screen_id to the target SCR-* id.",
+  "layout_mode": "hybrid",
+  "critical_path_role": "optional_non_critical",
+  "archetype_ref": {
+    "archetype_id": "ARCH-INTERIOR-INN",
+    "min_version": "1.0"
+  },
+  "required_gameplay_beats": ["exit_transfer"],
+  "source_documents": [
+    "studio/design-patterns/interiors/inn.pattern.md",
+    "atlas-tools/mapgen/blueprint_schema.md"
+  ],
+  "generation_seed_salt": "example-salt-inn-001",
+  "provenance": {
+    "created_by": "WO-0056",
+    "created_date": "2026-07-13",
+    "notes": "Fixture example, not a production map intent."
+  }
+}

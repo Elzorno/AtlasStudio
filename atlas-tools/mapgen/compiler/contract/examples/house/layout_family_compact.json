@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "layout_family_id": "LAY-INTERIOR-HOUSE-COMPACT",
+  "version": "1.0",
+  "name": "Single-Room House -- Compact",
+  "applies_to_archetype": "ARCH-INTERIOR-HOUSE",
+  "resolution_strategy": "handcrafted",
+  "tier": "compact",
+  "size_range": { "min_width": 8, "min_height": 6, "max_width": 12, "max_height": 9 },
+  "zone_placement_rules": [
+    { "zone_role": "entry_threshold", "placement_rule": "centered_on_primary_axis", "notes": "house.pattern.md: both observed houses center their door -- unlike shop.pattern.md, this rule has no stated exception for houses. Do not offset the door in any House layout family." },
+    { "zone_role": "main_floor", "placement_rule": "adjacent_to:entry_threshold" },
+    { "zone_role": "wall_stock", "placement_rule": "opposite_wall_from:entry_threshold", "notes": "Continuous run against the back wall, terminating at both side walls." },
+    { "zone_role": "hearth_accent", "placement_rule": "centered_on_primary_axis", "notes": "This tier keeps the accent on-centerline (or omitted), matching house.pattern.md's other observed house rather than the off-axis one -- see LAY-INTERIOR-HOUSE-OFFSET for that variant." }
+  ],
+  "allow_rotation": true,
+  "allow_reflection": false,
+  "variants": [
+    { "variant_id": "with_centered_accent", "weight": 0.5, "notes": "Map018.json's configuration: one flame at room-center." },
+    { "variant_id": "no_accent", "weight": 0.5, "notes": "Valid per house.pattern.md: the hearth_accent zone is optional, not every house needs one." }
+  ],
+  "provenance": {
+    "source_pattern_id": "PAT-INTERIOR-HOUSE",
+    "confidence": "high",
+    "notes": "Directly reproduces both observed samples' shared shell size, centered door, and back-wall shelf run. allow_reflection is false here (unlike Shop/Inn) because house.pattern.md explicitly states 'Do not force bilateral left/right symmetry the way shop.pattern.md recommends' -- there is no side-cluster mass to reflect."
+  }
+}

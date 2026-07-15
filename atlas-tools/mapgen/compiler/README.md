@@ -10,6 +10,7 @@ WO-0025 adds the first deterministic compiler stage for Atlas overworld work. It
 4. Terrain planner: `planner.py` builds the island landmass, elevation, rivers, biomes, landmarks, roads, bridges, mountain passes, and deterministic trail bends.
 5. Quality auditor: `quality_auditor.py` rejects missing locations, unreachable landmarks, overly straight coasts or roads, rectangular terrain blocks, floating landmarks, and known bad RPG Maker overworld candidates.
 6. Tile painter: `tile_painter.py` is an explicit deferred boundary. WO-0025 stops before RPG Maker tile IDs.
+7. Semantic assembler: `assembler.py` resolves WO-0056 gameplay graphs, layout families, and reusable modules into deterministic, engine-neutral `MapPlan` candidates through typed connectors and bounded search.
 
 ## Prototype Outputs
 
@@ -33,6 +34,16 @@ python3 atlas-tools/mapgen/compiler/cli.py audit-map \
   --map ../TheLastSwordProtocol-Game/data/Map027.json \
   --output atlas-tools/mapgen/compiler/audits/map027_negative_audit.json
 ```
+
+Regenerate the WO-0058 three-seed JSON, ASCII, and SVG fixtures with:
+
+```sh
+python3 atlas-tools/mapgen/compiler/generate_wo0058_fixtures.py
+```
+
+The assembler requires an explicit `AssemblyBudget`; incompatible connectors,
+missing required zones, unreachable routes, missing parent zones, unsatisfied
+module clearance, and exhausted search budgets fail with structured diagnostics.
 
 The `audit-map` command should fail for the current `Map027.json`. That map is retained as a negative example after human rejection.
 
