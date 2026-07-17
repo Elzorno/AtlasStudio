@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1", "tile_assembly_id": "TASM-ATOMIC-TREE-01", "version": "0.1", "name": "Complete two-tile tree",
+  "dimensions": { "width": 1, "height": 2 },
+  "layered_cells": [
+    { "x": 0, "y": 0, "layers": [{ "layer": 1, "tile_id": 3100, "source_coordinate": { "map_x": 20, "map_y": 6, "layer": 1 } }] },
+    { "x": 0, "y": 1, "layers": [{ "layer": 1, "tile_id": 3108, "source_coordinate": { "map_x": 20, "map_y": 7, "layer": 1 } }] }
+  ],
+  "anchors": [{ "anchor_id": "placement-origin", "role": "placement_origin", "x": 0, "y": 1 }],
+  "collision_mask": [[true], [true]],
+  "connectors": [],
+  "variations": [{ "variation_id": "base", "weight": 1, "operations": [] }],
+  "source": {
+    "owner_repo": "rpgmakerLSP", "map_ref": "data/Map001.json", "tileset_ref": "data/Tilesets.json#Outside",
+    "hashes": {
+      "source": { "expected_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "observed_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" },
+      "map": { "expected_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "observed_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" },
+      "tileset": { "expected_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "observed_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" },
+      "tileset_images": [{ "asset_name": "Outside_B.png", "expected_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "observed_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" }]
+    }
+  },
+  "preview_refs": ["previews/TASM-ATOMIC-TREE-01.png"],
+  "adapter_ownership": { "owner_repo": "rpgmakerLSP", "adapter_ref": "rpg_maker_mz@0.1", "serialization_owner": "rpgmakerLSP" }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1", "tile_assembly_id": "TASM-HASH-DRIFT", "version": "0.1",
+  "dimensions": { "width": 1, "height": 1 },
+  "layered_cells": [{ "x": 0, "y": 0, "layers": [{ "layer": 0, "tile_id": 1, "source_coordinate": { "map_x": 0, "map_y": 0, "layer": 0 } }] }],
+  "anchors": [{ "anchor_id": "a", "role": "entry", "x": 0, "y": 0 }], "collision_mask": [[false]],
+  "connectors": [{ "connector_id": "c", "type": "road", "x": 0, "y": 0, "facing": "south", "width": 1 }],
+  "variations": [{ "variation_id": "base", "weight": 1, "operations": [] }],
+  "source": { "owner_repo": "adapter", "map_ref": "map", "tileset_ref": "tileset", "hashes": {
+    "source": { "expected_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "observed_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" },
+    "map": { "expected_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "observed_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" },
+    "tileset": { "expected_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "observed_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" },
+    "tileset_images": [{ "asset_name": "Outside_B.png", "expected_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "observed_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" }]
+  } },
+  "preview_refs": ["preview.png"], "adapter_ownership": { "owner_repo": "adapter", "adapter_ref": "adapter@0.1", "serialization_owner": "adapter" }
+}

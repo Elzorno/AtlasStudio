@@ -84,6 +84,35 @@
     "contract_version": { "type": "string", "enum": ["0.1"] },
     "generated_at": { "type": "string" },
     "output_map_plan_ref": { "type": ["string", "null"] },
-    "status": { "type": "string", "enum": ["generated_pending_review", "accepted", "accepted_with_notes", "rejected"] }
+    "status": { "type": "string", "enum": ["generated_pending_review", "accepted", "accepted_with_notes", "rejected"] },
+    "map_vision_ref": {
+      "description": "WO-0071: version-pinned MapVision this run resolved visual constraints from. Optional and null for runs outside the visual pipeline; existing 0.1 manifests remain valid without it.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["map_vision_id", "version"],
+      "properties": {
+        "map_vision_id": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "tile_assembly_bindings": {
+      "description": "WO-0071: one entry per semantic tag bound to a catalog-enabled TileAssembly/custom-extension asset during this run. Optional and empty for runs outside the visual pipeline.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["semantic_tag", "tile_assembly_id", "tile_assembly_source_kit", "review_state", "adapter_ref", "width", "height", "building_height_rows"],
+        "properties": {
+          "semantic_tag": { "type": "string" },
+          "tile_assembly_id": { "type": "string" },
+          "tile_assembly_source_kit": { "type": "string" },
+          "review_state": { "type": "string" },
+          "adapter_ref": { "type": "string" },
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 },
+          "building_height_rows": { "type": ["integer", "null"], "minimum": 1 }
+        }
+      }
+    }
   }
 }

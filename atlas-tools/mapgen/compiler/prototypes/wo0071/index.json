@@ -1,0 +1,415 @@
+{
+  "schema_version": "0.1",
+  "map_vision_ref": "MV-HOM-ASH-001@0.1",
+  "candidate_count": 4,
+  "candidates": [
+    {
+      "slug": "core",
+      "seed_index": 1,
+      "manifest_id": "GEN-WO0071-FIXTURE-CORE-001",
+      "root_seed": 7456172634209696246,
+      "required_beats": [
+        "exit_transfer"
+      ],
+      "variant_id": "organic_core",
+      "attempts": 11,
+      "dimensions": {
+        "width": 26,
+        "height": 30,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "tile_assembly_bindings": [
+        {
+          "semantic_tag": "ashford_elder_house",
+          "tile_assembly_id": "TASM-ASHFORD-ELDER-HOUSE-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 7,
+          "height": 5,
+          "building_height_rows": 4
+        },
+        {
+          "semantic_tag": "ashford_inn",
+          "tile_assembly_id": "TASM-ASHFORD-INN-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved_with_revision",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 9,
+          "height": 6,
+          "building_height_rows": 5
+        },
+        {
+          "semantic_tag": "ashford_shop",
+          "tile_assembly_id": "TASM-ASHFORD-SHOP-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved_with_revision",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 7,
+          "height": 6,
+          "building_height_rows": 5
+        },
+        {
+          "semantic_tag": "central_well",
+          "tile_assembly_id": "ASH-CUSTOM-WELL-ROOFED-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 2,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "elara_house",
+          "tile_assembly_id": "TASM-ASHFORD-ELARA-HOUSE-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 6,
+          "height": 5,
+          "building_height_rows": 4
+        },
+        {
+          "semantic_tag": "humming_panel",
+          "tile_assembly_id": "ASH-CUSTOM-PANEL-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 1,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "warm_vent",
+          "tile_assembly_id": "TASM-ASHFORD-WARM-VENT-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 3,
+          "height": 2,
+          "building_height_rows": null
+        }
+      ],
+      "gate_recommendation": "candidate_for_human_review"
+    },
+    {
+      "slug": "core",
+      "seed_index": 2,
+      "manifest_id": "GEN-WO0071-FIXTURE-CORE-002",
+      "root_seed": 5762162206053234304,
+      "required_beats": [
+        "exit_transfer"
+      ],
+      "variant_id": "organic_wide",
+      "attempts": 15,
+      "dimensions": {
+        "width": 30,
+        "height": 26,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "tile_assembly_bindings": [
+        {
+          "semantic_tag": "ashford_elder_house",
+          "tile_assembly_id": "TASM-ASHFORD-ELDER-HOUSE-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 7,
+          "height": 5,
+          "building_height_rows": 4
+        },
+        {
+          "semantic_tag": "ashford_inn",
+          "tile_assembly_id": "TASM-ASHFORD-INN-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved_with_revision",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 9,
+          "height": 6,
+          "building_height_rows": 5
+        },
+        {
+          "semantic_tag": "ashford_shop",
+          "tile_assembly_id": "TASM-ASHFORD-SHOP-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved_with_revision",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 7,
+          "height": 6,
+          "building_height_rows": 5
+        },
+        {
+          "semantic_tag": "central_well",
+          "tile_assembly_id": "ASH-CUSTOM-WELL-ROOFED-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 2,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "elara_house",
+          "tile_assembly_id": "TASM-ASHFORD-ELARA-HOUSE-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 6,
+          "height": 5,
+          "building_height_rows": 4
+        },
+        {
+          "semantic_tag": "humming_panel",
+          "tile_assembly_id": "ASH-CUSTOM-PANEL-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 1,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "warm_vent",
+          "tile_assembly_id": "TASM-ASHFORD-WARM-VENT-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 3,
+          "height": 2,
+          "building_height_rows": null
+        }
+      ],
+      "gate_recommendation": "candidate_for_human_review"
+    },
+    {
+      "slug": "dressed",
+      "seed_index": 1,
+      "manifest_id": "GEN-WO0071-FIXTURE-DRESSED-001",
+      "root_seed": 9984084482439972949,
+      "required_beats": [
+        "exit_transfer",
+        "cultivation_dressing",
+        "forest_dressing"
+      ],
+      "variant_id": "organic_wide",
+      "attempts": 13,
+      "dimensions": {
+        "width": 26,
+        "height": 30,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "tile_assembly_bindings": [
+        {
+          "semantic_tag": "ashford_elder_house",
+          "tile_assembly_id": "TASM-ASHFORD-ELDER-HOUSE-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 7,
+          "height": 5,
+          "building_height_rows": 4
+        },
+        {
+          "semantic_tag": "ashford_inn",
+          "tile_assembly_id": "TASM-ASHFORD-INN-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved_with_revision",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 9,
+          "height": 6,
+          "building_height_rows": 5
+        },
+        {
+          "semantic_tag": "ashford_shop",
+          "tile_assembly_id": "TASM-ASHFORD-SHOP-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved_with_revision",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 7,
+          "height": 6,
+          "building_height_rows": 5
+        },
+        {
+          "semantic_tag": "broadleaf_tree",
+          "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-001",
+          "review_state": "verified_reusable",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 2,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "central_well",
+          "tile_assembly_id": "ASH-CUSTOM-WELL-ROOFED-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 2,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "elara_house",
+          "tile_assembly_id": "TASM-ASHFORD-ELARA-HOUSE-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 6,
+          "height": 5,
+          "building_height_rows": 4
+        },
+        {
+          "semantic_tag": "humming_panel",
+          "tile_assembly_id": "ASH-CUSTOM-PANEL-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 1,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "patched_metal_fence",
+          "tile_assembly_id": "ASH-CUSTOM-FENCE-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 6,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "warm_vent",
+          "tile_assembly_id": "TASM-ASHFORD-WARM-VENT-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 3,
+          "height": 2,
+          "building_height_rows": null
+        }
+      ],
+      "gate_recommendation": "candidate_for_human_review"
+    },
+    {
+      "slug": "dressed",
+      "seed_index": 2,
+      "manifest_id": "GEN-WO0071-FIXTURE-DRESSED-002",
+      "root_seed": 9543399474551240302,
+      "required_beats": [
+        "exit_transfer",
+        "cultivation_dressing",
+        "forest_dressing"
+      ],
+      "variant_id": "organic_core",
+      "attempts": 15,
+      "dimensions": {
+        "width": 26,
+        "height": 30,
+        "unit": "tile",
+        "coordinate_system": "atlas_tile",
+        "origin": "top_left"
+      },
+      "tile_assembly_bindings": [
+        {
+          "semantic_tag": "ashford_elder_house",
+          "tile_assembly_id": "TASM-ASHFORD-ELDER-HOUSE-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 7,
+          "height": 5,
+          "building_height_rows": 4
+        },
+        {
+          "semantic_tag": "ashford_inn",
+          "tile_assembly_id": "TASM-ASHFORD-INN-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved_with_revision",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 9,
+          "height": 6,
+          "building_height_rows": 5
+        },
+        {
+          "semantic_tag": "ashford_shop",
+          "tile_assembly_id": "TASM-ASHFORD-SHOP-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved_with_revision",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 7,
+          "height": 6,
+          "building_height_rows": 5
+        },
+        {
+          "semantic_tag": "broadleaf_tree",
+          "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-001",
+          "review_state": "verified_reusable",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 2,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "central_well",
+          "tile_assembly_id": "ASH-CUSTOM-WELL-ROOFED-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 2,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "elara_house",
+          "tile_assembly_id": "TASM-ASHFORD-ELARA-HOUSE-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 6,
+          "height": 5,
+          "building_height_rows": 4
+        },
+        {
+          "semantic_tag": "humming_panel",
+          "tile_assembly_id": "ASH-CUSTOM-PANEL-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 1,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "patched_metal_fence",
+          "tile_assembly_id": "ASH-CUSTOM-FENCE-01",
+          "tile_assembly_source_kit": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 6,
+          "height": 2,
+          "building_height_rows": null
+        },
+        {
+          "semantic_tag": "warm_vent",
+          "tile_assembly_id": "TASM-ASHFORD-WARM-VENT-AUTHORED",
+          "tile_assembly_source_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+          "review_state": "human_approved",
+          "adapter_ref": "rpg_maker_mz@0.1",
+          "width": 3,
+          "height": 2,
+          "building_height_rows": null
+        }
+      ],
+      "gate_recommendation": "candidate_for_human_review"
+    }
+  ]
+}

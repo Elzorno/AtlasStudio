@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1", "tile_assembly_id": "TASM-ASHFORD-COTTAGE-01", "version": "0.1", "name": "Compact cottage facade",
+  "dimensions": { "width": 2, "height": 2 },
+  "layered_cells": [
+    { "x": 0, "y": 0, "layers": [{ "layer": 0, "tile_id": 2048, "source_coordinate": { "map_x": 12, "map_y": 8, "layer": 0 } }] },
+    { "x": 1, "y": 0, "layers": [{ "layer": 0, "tile_id": 2049, "source_coordinate": { "map_x": 13, "map_y": 8, "layer": 0 } }] },
+    { "x": 0, "y": 1, "layers": [{ "layer": 0, "tile_id": 2056, "source_coordinate": { "map_x": 12, "map_y": 9, "layer": 0 } }] },
+    { "x": 1, "y": 1, "layers": [{ "layer": 0, "tile_id": 2057, "source_coordinate": { "map_x": 13, "map_y": 9, "layer": 0 } }] }
+  ],
+  "anchors": [{ "anchor_id": "door", "role": "entry", "x": 0, "y": 1 }],
+  "collision_mask": [[true, true], [false, true]],
+  "connectors": [{ "connector_id": "front-door", "type": "footpath", "x": 0, "y": 1, "facing": "south", "width": 1 }],
+  "variations": [{ "variation_id": "base", "weight": 1, "operations": [] }],
+  "source": {
+    "owner_repo": "rpgmakerLSP", "map_ref": "data/Map001.json", "tileset_ref": "data/Tilesets.json#Outside",
+    "hashes": {
+      "source": { "expected_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "observed_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" },
+      "map": { "expected_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "observed_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" },
+      "tileset": { "expected_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "observed_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" },
+      "tileset_images": [
+        { "asset_name": "Outside_A2.png", "expected_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "observed_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" },
+        { "asset_name": "Outside_B.png", "expected_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "observed_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" }
+      ]
+    }
+  },
+  "preview_refs": ["previews/TASM-ASHFORD-COTTAGE-01.png"],
+  "event_overlays": [{
+    "x": 0, "y": 1, "source_event_id": 7, "source_coordinate": { "map_x": 12, "map_y": 9 },
+    "character_name": "!Door1", "character_index": 0, "direction": 2,
+    "pattern": 0, "priority_type": 1, "through": false
+  }],
+  "adapter_ownership": { "owner_repo": "rpgmakerLSP", "adapter_ref": "rpg_maker_mz@0.1", "serialization_owner": "rpgmakerLSP" }
+}

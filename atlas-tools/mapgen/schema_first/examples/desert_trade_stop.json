@@ -1,0 +1,8 @@
+{
+  "map_id":"EX-DESERT-STOP-001","seed":"salt-road-44","map_type":"town","biome":"desert","width":44,"height":28,"tileset_profile":"SAMPLE-MZ-OUTSIDE-PLACEHOLDER-0.1","theme":"Saffron Wells Trade Stop","traversal_style":"hub_and_spoke",
+  "entrances":[{"id":"west_caravan","position":{"side":"west","offset":14},"target":"salt_road_west"}],"exits":[{"id":"east_caravan","position":{"side":"east","offset":12},"target":"salt_road_east"}],
+  "required_pois":[{"id":"cistern_plaza","kind":"plaza","focal":true},{"id":"caravanserai","kind":"inn","district":"market","size":[7,5]},{"id":"spice_shop","kind":"shop","district":"market","size":[5,4]},{"id":"watch_post","kind":"house","district":"gate","size":[5,4]},{"id":"sun_shrine","kind":"shrine","district":"sacred"}],
+  "optional_pois":[{"id":"cloth_merchant","kind":"shop","district":"market","size":[5,4]}],"districts":[{"id":"market","role":"trade","contains":["cistern_plaza","caravanserai","spice_shop","cloth_merchant"]},{"id":"gate","role":"security","contains":["watch_post"]},{"id":"sacred","role":"pilgrimage","contains":["sun_shrine"]}],
+  "boundary_type":"cliff","path_style":{"semantic":"road","width":2,"meander":0.1},"required_landmarks":["cistern_plaza"],"constraints":{"allowed_building_dimensions":[[5,4],[7,5]],"max_empty_ratio":0.72,"allow_walkable_islands":false},"forbidden_patterns":["generic_crossroad_three_houses"],
+  "event_hooks":[{"id":"caravan_master","kind":"innkeeper","at":"caravanserai"},{"id":"spice_vendor","kind":"shopkeeper","at":"spice_shop"},{"id":"east_transfer","kind":"transfer","at":"east_caravan"}],"region_painting_rules":[{"semantic":"road","region_id":20,"purpose":"caravan_route"},{"semantic":"sand","region_id":21,"purpose":"heat_hazard_candidate"}]
+}

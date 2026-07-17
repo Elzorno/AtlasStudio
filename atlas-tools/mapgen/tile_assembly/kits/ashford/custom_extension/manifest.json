@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.1",
+  "extension_id": "ASHFORD-CUSTOM-TILESET-EXTENSION-001",
+  "approval_state": "human_approved",
+  "enabled": true,
+  "tile_size": 48,
+  "tileset_slot": "B",
+  "tileset_image": "Ashford_Custom_B.png",
+  "tileset_image_sha256": "3fdea6af7dbc8e97c743dd138214237ed79d546e7a611b74bb75ea456cf09a87",
+  "source": {
+    "type": "ai_generated_adapter_asset",
+    "generator": "OpenAI built-in image generation",
+    "source_image": "source/ashford-custom-extension-alpha-v1.png",
+    "source_image_sha256": "86dacabdab71f27c7b05f8dccf1adc639b3ad74d8ab8d05bb2ed5f20897fe4fd",
+    "reference_role": "approved Ashford authored contact sheet supplied style and scale only"
+  },
+  "assets": [
+    {
+      "asset_id": "ASH-CUSTOM-WELL-ROOFED-01",
+      "name": "Roofed civic well",
+      "tile_origin": {
+        "x": 0,
+        "y": 0
+      },
+      "tile_size": {
+        "width": 2,
+        "height": 2
+      },
+      "visible_pixel_size": {
+        "width": 88,
+        "height": 88
+      },
+      "review_state": "human_approved",
+      "enabled": true,
+      "downstream_generation_allowed": true
+    },
+    {
+      "asset_id": "ASH-CUSTOM-DRAINAGE-01",
+      "name": "Maintenance drainage outlet",
+      "tile_origin": {
+        "x": 2,
+        "y": 0
+      },
+      "tile_size": {
+        "width": 2,
+        "height": 2
+      },
+      "visible_pixel_size": {
+        "width": 72,
+        "height": 88
+      },
+      "review_state": "human_approved",
+      "enabled": true,
+      "downstream_generation_allowed": true
+    },
+    {
+      "asset_id": "ASH-CUSTOM-PANEL-01",
+      "name": "Humming utility panel",
+      "tile_origin": {
+        "x": 4,
+        "y": 0
+      },
+      "tile_size": {
+        "width": 1,
+        "height": 2
+      },
+      "visible_pixel_size": {
+        "width": 44,
+        "height": 52
+      },
+      "review_state": "human_approved",
+      "enabled": true,
+      "downstream_generation_allowed": true
+    },
+    {
+      "asset_id": "ASH-CUSTOM-FENCE-01",
+      "name": "Patched metal fence",
+      "tile_origin": {
+        "x": 0,
+        "y": 4
+      },
+      "tile_size": {
+        "width": 6,
+        "height": 2
+      },
+      "visible_pixel_size": {
+        "width": 268,
+        "height": 68
+      },
+      "review_state": "human_approved",
+      "enabled": true,
+      "downstream_generation_allowed": true
+    }
+  ],
+  "preview_refs": [
+    "previews/ashford-custom-extension-review-v1.png",
+    "previews/ashford-custom-extension-scale-context-v2.png"
+  ]
+}

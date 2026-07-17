@@ -1,0 +1,26 @@
+{
+  "map_id": "EX-RURAL-VILLAGE-001",
+  "valid": true,
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "reachable_cells": 987,
+    "walkable_cells": 987
+  },
+  "findings": [],
+  "repairs": [
+    {
+      "pass": 0,
+      "code": "excess_empty_terrain",
+      "action": "added non-blocking terrain texture markers"
+    },
+    {
+      "pass": 0,
+      "code": "invalid_event_anchor",
+      "action": "moved anchor",
+      "id": "innkeeper",
+      "x": 22,
+      "y": 22
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.1",
+  "graph_id": "GRAPH-EXTERIOR-SETTLEMENT-COMPACT",
+  "describes_archetype": "ARCH-EXTERIOR-SETTLEMENT-COMPACT",
+  "zones": [
+    {
+      "zone_id": "arrival_domestic",
+      "role": "arrival_domestic",
+      "required": true,
+      "min_area": 12,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "well_square",
+      "role": "well_square",
+      "required": true,
+      "min_area": 144,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "shop_frontage",
+      "role": "shop_frontage",
+      "required": true,
+      "min_area": 10,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "inn_frontage",
+      "role": "inn_frontage",
+      "required": true,
+      "min_area": 12,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "elder_frontage",
+      "role": "elder_frontage",
+      "required": true,
+      "min_area": 10,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "route_mouth",
+      "role": "route_mouth",
+      "required": true,
+      "min_area": 2,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [
+        { "port_id": "mainland_road", "port_type": "road_connection", "orientation": "south" }
+      ],
+      "beats": ["exit_transfer"]
+    },
+    {
+      "zone_id": "cultivation_edge",
+      "role": "cultivation_edge",
+      "required": false,
+      "min_area": 8,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": ["cultivation_dressing"]
+    },
+    {
+      "zone_id": "forest_edge",
+      "role": "forest_edge",
+      "required": false,
+      "min_area": 6,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": ["forest_dressing"]
+    }
+  ],
+  "edges": [
+    { "from_zone": "arrival_domestic", "to_zone": "well_square", "connector_type": "open_floor", "required": true },
+    { "from_zone": "well_square", "to_zone": "shop_frontage", "connector_type": "road_connection", "required": true },
+    { "from_zone": "well_square", "to_zone": "inn_frontage", "connector_type": "road_connection", "required": true },
+    { "from_zone": "well_square", "to_zone": "elder_frontage", "connector_type": "road_connection", "required": true },
+    { "from_zone": "shop_frontage", "to_zone": "route_mouth", "connector_type": "road_connection", "required": true },
+    { "from_zone": "arrival_domestic", "to_zone": "cultivation_edge", "connector_type": "road_connection", "required": false },
+    { "from_zone": "elder_frontage", "to_zone": "forest_edge", "connector_type": "road_connection", "required": false }
+  ],
+  "reachability": {
+    "entry_zone": "arrival_domestic",
+    "must_reach": ["well_square", "shop_frontage", "inn_frontage", "elder_frontage", "route_mouth"]
+  },
+  "provenance": {
+    "source_pattern_ids": ["MV-HOM-ASH-001", "AVCP-HOM-ASH-001"],
+    "confidence": "experimental",
+    "notes": "First exterior-settlement GameplayGraph in this contract; corroborated by MapVision/constraint-profile prose only, not by an official sample map the way the shop/house/inn interior graphs are. Do not report this as high or medium confidence in a citing implementation contract."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-ASHFORD-INN",
+  "version": "1.0",
+  "name": "Ashford Inn Exterior Footprint",
+  "semantic_tag": "ashford_inn",
+  "footprint": { "width": 9, "height": 6 },
+  "ports": [],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "MV-HOM-ASH-001",
+    "notes": "Footprint pinned to TASM-ASHFORD-INN-AUTHORED's source_region (9x6, the Chris-approved two-wall-row revision, widest public building per ASH-BUILD-002)."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "map_id":"EX-RURAL-VILLAGE-001","seed":1701,"map_type":"town","biome":"temperate_rural","width":42,"height":30,"tileset_profile":"SAMPLE-MZ-OUTSIDE-PLACEHOLDER-0.1","theme":"Willowford Village","traversal_style":"loop",
+  "entrances":[{"id":"south_gate","position":{"side":"south","offset":20},"target":"world_map"}],"exits":[{"id":"north_trail","position":{"side":"north","offset":31},"target":"forest_trail"}],
+  "required_pois":[{"id":"village_well","kind":"well","focal":true},{"id":"inn","kind":"inn","district":"commons","size":[7,5]},{"id":"general_store","kind":"shop","district":"commons","size":[5,4]},{"id":"elder_house","kind":"house","district":"residential","size":[5,4]},{"id":"riverside_shrine","kind":"shrine","district":"quiet_edge"}],
+  "optional_pois":[{"id":"farmstead","kind":"house","district":"agricultural","size":[5,4]}],
+  "districts":[{"id":"commons","role":"public","contains":["village_well","inn","general_store"]},{"id":"residential","role":"homes","contains":["elder_house"]},{"id":"quiet_edge","role":"contemplative","contains":["riverside_shrine"]}],
+  "boundary_type":"forest","path_style":{"semantic":"road","width":2,"meander":0.25},"required_landmarks":["village_well"],
+  "constraints":{"allowed_building_dimensions":[[5,4],[7,5]],"max_empty_ratio":0.70,"allow_walkable_islands":false},"forbidden_patterns":["generic_crossroad_three_houses"],
+  "event_hooks":[{"id":"innkeeper","kind":"innkeeper","at":"inn"},{"id":"shopkeeper","kind":"shopkeeper","at":"general_store"},{"id":"elder","kind":"npc","at":"elder_house"}],
+  "region_painting_rules":[{"semantic":"road","region_id":10,"purpose":"safe_town_circulation"},{"semantic":"plaza","region_id":11,"purpose":"town_event_zone"}]
+}

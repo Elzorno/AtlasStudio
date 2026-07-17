@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-ELARA-HOUSE",
+  "version": "1.0",
+  "name": "Elara House Exterior Footprint",
+  "semantic_tag": "elara_house",
+  "footprint": { "width": 6, "height": 5 },
+  "ports": [],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "MV-HOM-ASH-001",
+    "notes": "Footprint pinned to TASM-ASHFORD-ELARA-HOUSE-AUTHORED's source_region (6x5) so the WO-0071 dimension fail-closed check passes by construction on the happy path; engine-neutral, carries no tile IDs."
+  }
+}

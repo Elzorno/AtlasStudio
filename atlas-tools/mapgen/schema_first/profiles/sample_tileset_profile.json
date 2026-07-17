@@ -1,0 +1,26 @@
+{
+  "profile_id": "SAMPLE-MZ-OUTSIDE-PLACEHOLDER-0.1",
+  "tilesetId": 1,
+  "warning": "Illustrative bindings only. Replace tile IDs with IDs verified against the target project's Tilesets.json and image sheets.",
+  "semantic_tiles": {
+    "void": { "layer": 0, "tile_id": 0 },
+    "grass": { "layer": 0, "variants": [2048, 2049, 2050] },
+    "dirt": { "layer": 0, "variants": [2816, 2817] },
+    "road": { "layer": 0, "variants": [2816, 2817, 2818] },
+    "plaza": { "layer": 0, "tile_id": 2824 },
+    "water": { "layer": 0, "tile_id": 2096 },
+    "sand": { "layer": 0, "variants": [2576, 2577] },
+    "cliff": { "layer": 1, "tile_id": 4352 },
+    "mountain": { "layer": 1, "tile_id": 4400 },
+    "building_footprint": { "layer": 1, "tile_id": 4448 },
+    "doorway": { "layer": 1, "tile_id": 0 },
+    "wall": { "layer": 1, "tile_id": 6320 },
+    "interior_floor": { "layer": 0, "tile_id": 3152 },
+    "furniture_zone": { "layer": 2, "tile_id": 7000 },
+    "obstacle": { "layer": 2, "tile_id": 7100 },
+    "decorative": { "layer": 2, "variants": [7200, 7201, 7202] },
+    "special_marker": { "layer": 2, "tile_id": 7300 },
+    "event_anchor": { "layer": 0, "tile_id": 0 },
+    "region_marker": { "layer": 0, "tile_id": 0 }
+  }
+}

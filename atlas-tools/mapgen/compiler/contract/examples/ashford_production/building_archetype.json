@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "archetype_id": "ARCH-EXTERIOR-ASHFORD-PRODUCTION",
+  "version": "1.0",
+  "name": "Exterior Archetype - Ashford Production Candidate",
+  "category": "town",
+  "gameplay_graph_ref": "GRAPH-EXTERIOR-ASHFORD-PRODUCTION",
+  "required_conditions": [
+    "The exterior is Ashford at production scale (40x32 per IMP-HOM-017), not a scaled-down study.",
+    "Elara House, Shop, Inn, and Elder House each have a reachable, distinct silhouette.",
+    "A dominant roofed well anchors the civic square.",
+    "All four canonical boundary routes (Skyreach, Rustshore, Glassfield, Fogfen) remain present and readable.",
+    "Every current Map001 event/transfer beat has exactly one corresponding zone anchor."
+  ],
+  "modules_required": [
+    { "zone_role": "arrival_domestic", "module_ref": "MOD-ELARA-HOUSE", "min_count": 1, "max_count": 1 },
+    { "zone_role": "shop_frontage", "module_ref": "MOD-ASHFORD-SHOP", "min_count": 1, "max_count": 1 },
+    { "zone_role": "inn_frontage", "module_ref": "MOD-ASHFORD-INN", "min_count": 1, "max_count": 1 },
+    { "zone_role": "elder_frontage", "module_ref": "MOD-ASHFORD-ELDER-HOUSE", "min_count": 1, "max_count": 1 },
+    { "zone_role": "patched_fence_edge", "module_ref": "MOD-PATCHED-FENCE", "min_count": 1, "max_count": 1 },
+    { "zone_role": "forest_edge", "module_ref": "MOD-BROADLEAF-TREE", "min_count": 2, "max_count": 2 }
+  ],
+  "size_constraints": {
+    "min_width": 32,
+    "min_height": 26,
+    "max_width": 40,
+    "max_height": 32
+  },
+  "style_pack_compatible": [],
+  "symmetry_rules": ["no_forced_symmetry"],
+  "circulation_rules": ["single_connected_area_from_entrance", "reachability_ring_required"],
+  "landmark_slots": [
+    { "zone_role": "well_square", "landmark_tag": "central_well", "required": true, "dominant": true },
+    { "zone_role": "cultivation_edge", "landmark_tag": "warm_vent", "required": true, "dominant": false },
+    { "zone_role": "old_panel_edge", "landmark_tag": "humming_panel", "required": true, "dominant": false }
+  ],
+  "provenance": {
+    "source_pattern_id": "IMP-HOM-017",
+    "source_pattern_version": "0.2",
+    "confidence": "experimental",
+    "notes": "WO-0073 disposable production-scale candidate archetype, not a production-corroborated pattern in the WO-0056 contract sense -- it is instead directly corroborated by IMP-HOM-017's own build requirements and the real Map001.json it is meant to regenerate. village_cottage and a working Elder House transfer are both deliberately absent from modules_required: cottages have zero catalog-enabled TileAssembly candidates today (see WO-0071's own finding), and Map001 does not yet have a built Elder House transfer event (TRN-HOM-040 is reserved per DDR-0007/IMP-HOM-017) -- WO-0073's own constraint against inventing canon means this candidate places the Elder House facade only, with no new transfer event."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-ASHFORD-ELDER-HOUSE",
+  "version": "1.0",
+  "name": "Ashford Elder House Exterior Footprint",
+  "semantic_tag": "ashford_elder_house",
+  "footprint": { "width": 7, "height": 5 },
+  "ports": [],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "MV-HOM-ASH-001",
+    "notes": "Footprint pinned to TASM-ASHFORD-ELDER-HOUSE-AUTHORED's source_region (7x5, the Chris-approved one-wall-row treatment)."
+  }
+}

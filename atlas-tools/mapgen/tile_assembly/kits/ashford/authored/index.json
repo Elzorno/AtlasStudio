@@ -1,0 +1,221 @@
+{
+  "schema_version": "0.1",
+  "kit_id": "TASM-KIT-ASHFORD-AUTHORED-001",
+  "source_fixture": "source/MapAshfordAuthored.json",
+  "source_fixture_sha256": "f76f3d5479928784a29a3f14340eacfbb9b413419c91c4756ca8de29db4c423f",
+  "tileset_id": 2,
+  "tileset_name": "Outside",
+  "authorship": "adapter_authored_candidate",
+  "reference_extracted": false,
+  "approval_state": "partial_human_approval",
+  "enabled": false,
+  "assemblies": [
+    {
+      "tile_assembly_id": "TASM-ASHFORD-ELARA-HOUSE-AUTHORED",
+      "file": "tasm-ashford-elara-house-authored.json",
+      "authorship": "adapter_authored_candidate",
+      "reference_extracted": false,
+      "review_state": "human_approved",
+      "enabled": true,
+      "downstream_generation_allowed": true,
+      "fidelity_review_state": "human_approved",
+      "fidelity_review_reason": "Building direction approved by Chris 2026-07-15 with compact one-wall-row treatment retained.",
+      "source_region": {
+        "x": 1,
+        "y": 1,
+        "width": 6,
+        "height": 5
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-elara-house-authored-isolated.png",
+        "previews/tasm-ashford-elara-house-authored-fixture.png",
+        "previews/ashford-authored-contact-sheet.png"
+      ],
+      "asset_vocabulary_limitation": null
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-SHOP-AUTHORED",
+      "file": "tasm-ashford-shop-authored.json",
+      "authorship": "adapter_authored_candidate",
+      "reference_extracted": false,
+      "review_state": "human_approved_with_revision",
+      "enabled": true,
+      "downstream_generation_allowed": true,
+      "fidelity_review_state": "human_approved_with_revision",
+      "fidelity_review_reason": "Building direction approved by Chris 2026-07-15; requested two wall rows applied.",
+      "source_region": {
+        "x": 9,
+        "y": 1,
+        "width": 7,
+        "height": 6
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-shop-authored-isolated.png",
+        "previews/tasm-ashford-shop-authored-fixture.png",
+        "previews/ashford-authored-contact-sheet.png"
+      ],
+      "asset_vocabulary_limitation": null
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-INN-AUTHORED",
+      "file": "tasm-ashford-inn-authored.json",
+      "authorship": "adapter_authored_candidate",
+      "reference_extracted": false,
+      "review_state": "human_approved_with_revision",
+      "enabled": true,
+      "downstream_generation_allowed": true,
+      "fidelity_review_state": "human_approved_with_revision",
+      "fidelity_review_reason": "Building direction approved by Chris 2026-07-15; requested two wall rows applied.",
+      "source_region": {
+        "x": 18,
+        "y": 1,
+        "width": 9,
+        "height": 6
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-inn-authored-isolated.png",
+        "previews/tasm-ashford-inn-authored-fixture.png",
+        "previews/ashford-authored-contact-sheet.png"
+      ],
+      "asset_vocabulary_limitation": null
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-ELDER-HOUSE-AUTHORED",
+      "file": "tasm-ashford-elder-house-authored.json",
+      "authorship": "adapter_authored_candidate",
+      "reference_extracted": false,
+      "review_state": "human_approved",
+      "enabled": true,
+      "downstream_generation_allowed": true,
+      "fidelity_review_state": "human_approved",
+      "fidelity_review_reason": "Building direction approved by Chris 2026-07-15 with compact one-wall-row treatment retained.",
+      "source_region": {
+        "x": 29,
+        "y": 1,
+        "width": 7,
+        "height": 5
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-elder-house-authored-isolated.png",
+        "previews/tasm-ashford-elder-house-authored-fixture.png",
+        "previews/ashford-authored-contact-sheet.png"
+      ],
+      "asset_vocabulary_limitation": null
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-WELL-ROOFED-AUTHORED",
+      "file": "tasm-ashford-well-roofed-authored.json",
+      "authorship": "adapter_authored_candidate",
+      "reference_extracted": false,
+      "review_state": "human_rejected",
+      "enabled": false,
+      "downstream_generation_allowed": false,
+      "fidelity_review_state": "human_rejected",
+      "fidelity_review_reason": "Chris did not approve the detached awning/tent-like well proxy.",
+      "source_region": {
+        "x": 38,
+        "y": 1,
+        "width": 3,
+        "height": 3
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-well-roofed-authored-isolated.png",
+        "previews/tasm-ashford-well-roofed-authored-fixture.png",
+        "previews/ashford-authored-contact-sheet.png"
+      ],
+      "asset_vocabulary_limitation": "Outside has no verified roofed-well object; candidate combines verified roof/facade and open-well components."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-BRIDGE-AUTHORED",
+      "file": "tasm-ashford-bridge-authored.json",
+      "authorship": "adapter_authored_candidate",
+      "reference_extracted": false,
+      "review_state": "human_corrected_bridge_reference",
+      "enabled": false,
+      "downstream_generation_allowed": false,
+      "fidelity_review_state": "human_corrected_bridge_reference",
+      "fidelity_review_reason": "Chris identified this correctly as a bridge, not drainage; it cannot satisfy the drainage requirement.",
+      "source_region": {
+        "x": 43,
+        "y": 1,
+        "width": 3,
+        "height": 4
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-bridge-authored-isolated.png",
+        "previews/tasm-ashford-bridge-authored-fixture.png",
+        "previews/ashford-authored-contact-sheet.png"
+      ],
+      "asset_vocabulary_limitation": "Human-corrected classification: this is a natural bridge reference and provides no maintenance-drainage evidence."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-WARM-VENT-AUTHORED",
+      "file": "tasm-ashford-warm-vent-authored.json",
+      "authorship": "adapter_authored_candidate",
+      "reference_extracted": false,
+      "review_state": "human_approved",
+      "enabled": true,
+      "downstream_generation_allowed": true,
+      "fidelity_review_state": "human_approved",
+      "fidelity_review_reason": "Approved by Chris 2026-07-15; grounded closed vent and stone context fit the ordinary agricultural-utility direction.",
+      "source_region": {
+        "x": 48,
+        "y": 1,
+        "width": 3,
+        "height": 2
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-warm-vent-authored-isolated.png",
+        "previews/tasm-ashford-warm-vent-authored-fixture.png",
+        "previews/ashford-authored-contact-sheet.png"
+      ],
+      "asset_vocabulary_limitation": "Outside has no verified warm-vent graphic; this is an abstract prop proxy and must not establish canon appearance."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-HUMMING-PANEL-AUTHORED",
+      "file": "tasm-ashford-humming-panel-authored.json",
+      "authorship": "adapter_authored_candidate",
+      "reference_extracted": false,
+      "review_state": "human_rejected",
+      "enabled": false,
+      "downstream_generation_allowed": false,
+      "fidelity_review_state": "human_rejected",
+      "fidelity_review_reason": "Chris found the panel visually incorrect.",
+      "source_region": {
+        "x": 53,
+        "y": 1,
+        "width": 2,
+        "height": 2
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-humming-panel-authored-isolated.png",
+        "previews/tasm-ashford-humming-panel-authored-fixture.png",
+        "previews/ashford-authored-contact-sheet.png"
+      ],
+      "asset_vocabulary_limitation": "Outside has no verified powered-panel graphic; this is an abstract facade-detail proxy."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-PATCHED-METAL-FENCE-AUTHORED",
+      "file": "tasm-ashford-patched-metal-fence-authored.json",
+      "authorship": "adapter_authored_candidate",
+      "reference_extracted": false,
+      "review_state": "human_rejected",
+      "enabled": false,
+      "downstream_generation_allowed": false,
+      "fidelity_review_state": "human_rejected",
+      "fidelity_review_reason": "Chris found the fence visually incorrect.",
+      "source_region": {
+        "x": 57,
+        "y": 1,
+        "width": 5,
+        "height": 1
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-patched-metal-fence-authored-isolated.png",
+        "previews/tasm-ashford-patched-metal-fence-authored-fixture.png",
+        "previews/ashford-authored-contact-sheet.png"
+      ],
+      "asset_vocabulary_limitation": "Outside has no verified patched-metal fence set; this uses general-purpose boundary fragments as a silhouette proxy."
+    }
+  ]
+}

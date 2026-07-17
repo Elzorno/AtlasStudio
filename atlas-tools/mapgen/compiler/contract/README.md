@@ -9,10 +9,12 @@ compiler implementation lives here yet (that is `WO-0057` and later).
 See the architecture decision this contract implements:
 `TheLastSwordProtocol-Atlas/atlas/docs/09_Technical/Map_Generation/ATLAS-TEC-063_Reusable_Seeded_Map_Compiler_Contract.md`.
 
-## The Ten Contract Types
+## The Twelve Contract Types
 
 | Type | Schema | What it is |
 |---|---|---|
+| `MapVision` | `schemas/map_vision.schema.json` | Authority-labeled visual brief between Atlas canon/`MapIntent` and spatial generation. No coordinates or engine bindings. See `MapVision_Contract.md`. |
+| `TileAssembly` | `schemas/tile_assembly.schema.json` | Adapter-owned, source-pinned reusable layered tile component with anchors, collision, connectors, variations, and preview evidence. See `TileAssembly_Contract.md`. |
 | `MapIntent` | `schemas/map_intent.schema.json` | What a map should be and why, before generation runs. Formalizes the existing Map Blueprint's `map_intent` header as a standalone artifact. |
 | `GameplayGraph` | `schemas/gameplay_graph.schema.json` | The semantic skeleton: zones, typed ports, required beats, edges, reachability. Topology, not pixels. |
 | `BuildingArchetype` | `schemas/building_archetype.schema.json` | A building type's shape grammar: which `GameplayGraph` it uses, which `Module`s are required per zone. No tile IDs. |
@@ -49,6 +51,11 @@ Per WO-0056 required task 8:
   existing status vocabulary (`generated_pending_review` / `accepted` /
   `accepted_with_notes` / `rejected`); nothing in this contract marks its own
   output accepted.
+- **MapVision describes visual intent but cannot add canon or spatial evidence.**
+  Every statement is authority/confidence labeled. Concept art is always
+  `visual_direction_only_not_structural_evidence`. Canon conflicts trigger a
+  human question and halt generation; see `MapVision_Contract.md` for the exact
+  trigger and the Ashford rejection record.
 
 ## Zone Role / Port Type / Connector Type Vocabulary
 
@@ -131,11 +138,24 @@ own "stdlib only" note) -- no `jsonschema` package is required or assumed.
 actually used by `schemas/*.json`: `type`, `properties`, `required`,
 `additionalProperties`, `items`, `enum`, `pattern`, `minimum`/`maximum`,
 `minItems`/`minLength`. It does not implement `$ref`/`$defs`, `oneOf`, or
-cross-file references -- none of the ten schemas need them; every cross-artifact
+cross-file references -- none of the eleven schemas need them; every cross-artifact
 relationship is a plain ID+version string (e.g. `BuildingArchetype.gameplay_graph_ref`),
 not a JSON Pointer.
 
+WO-0066 adds `MapVision` as an eleventh additive type, and WO-0070 adds
+`TileAssembly` as a twelfth. Existing WO-0056
+artifacts remain valid unchanged; migration guidance is in
+`MapVision_Contract.md`.
+
 ## Examples
+
+- `examples/map_vision/` -- one schema-valid, engine-neutral visual brief plus
+  explicit invalid raw-tile and silent-canon fixtures exercised by the tests.
+
+- `examples/tile_assembly/` -- complete source-pinned building and connectorless
+  atomic-prop assemblies plus explicit incomplete/hash-drift fixtures. Only the
+  valid fixtures are in the validation manifest; focused tests prove the invalid
+  fixtures fail closed.
 
 - `examples/shop/` -- `MapIntent`, `GameplayGraph`, `BuildingArchetype`,
   `GenerationManifest`, and **two** `LayoutFamily` tiers (`layout_family.json`

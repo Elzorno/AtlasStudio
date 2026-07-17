@@ -1,0 +1,12 @@
+{
+  "map_id": "EX-INN-INTERIOR-001",
+  "valid": true,
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "reachable_cells": 89,
+    "walkable_cells": 89
+  },
+  "findings": [],
+  "repairs": []
+}

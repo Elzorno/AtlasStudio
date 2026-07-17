@@ -1,0 +1,21 @@
+{
+  "map_id": "EX-DESERT-STOP-001",
+  "valid": true,
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "reachable_cells": 1022,
+    "walkable_cells": 1022
+  },
+  "findings": [],
+  "repairs": [
+    {
+      "pass": 0,
+      "code": "invalid_event_anchor",
+      "action": "moved anchor",
+      "id": "caravan_master",
+      "x": 19,
+      "y": 22
+    }
+  ]
+}

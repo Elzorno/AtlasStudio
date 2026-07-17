@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1",
+  "map_vision_id": "MV-INVALID-TILE-001",
+  "version": "0.1",
+  "status": "approved",
+  "atlas_screen_id": "SCR-INVALID-001",
+  "map_intent_ref": "MI-INVALID-001@0.1",
+  "title": "Invalid raw engine binding",
+  "tile_id": 2816
+}

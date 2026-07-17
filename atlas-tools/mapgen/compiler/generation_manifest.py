@@ -75,6 +75,9 @@ class GenerationManifest:
         tile_palette_version: str | None = None,
         output_map_plan_ref: str | None = None,
         status: str = "generated_pending_review",
+        map_vision_id: str | None = None,
+        map_vision_version: str | None = None,
+        tile_assembly_bindings: list[dict[str, Any]] | None = None,
     ) -> "GenerationManifest":
         inputs = seed_inputs(
             map_intent_id,
@@ -91,6 +94,8 @@ class GenerationManifest:
             raise ManifestValidationError("adapter_id and adapter_version must be supplied together")
         if (tile_palette_id is None) != (tile_palette_version is None):
             raise ManifestValidationError("tile_palette_id and tile_palette_version must be supplied together")
+        if (map_vision_id is None) != (map_vision_version is None):
+            raise ManifestValidationError("map_vision_id and map_vision_version must be supplied together")
         payload = {
             "schema_version": "0.1",
             "manifest_id": manifest_id,
@@ -113,6 +118,11 @@ class GenerationManifest:
             "generated_at": generated_at,
             "output_map_plan_ref": output_map_plan_ref,
             "status": status,
+            "map_vision_ref": None if map_vision_id is None else {
+                "map_vision_id": map_vision_id,
+                "version": map_vision_version,
+            },
+            "tile_assembly_bindings": list(tile_assembly_bindings) if tile_assembly_bindings is not None else [],
         }
         return cls.from_dict(payload)
 

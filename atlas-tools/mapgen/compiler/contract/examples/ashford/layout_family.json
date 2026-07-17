@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "layout_family_id": "LAY-EXTERIOR-SETTLEMENT-ASHFORD-ORGANIC",
+  "version": "1.0",
+  "name": "Organic Compact Settlement",
+  "applies_to_archetype": "ARCH-EXTERIOR-SETTLEMENT-COMPACT",
+  "resolution_strategy": "hybrid",
+  "tier": "compact",
+  "size_range": { "min_width": 22, "min_height": 18, "max_width": 30, "max_height": 26 },
+  "zone_placement_rules": [
+    { "zone_role": "arrival_domestic", "placement_rule": "centered_on_primary_axis", "notes": "Elara's house frames the starting read, per MV-HOM-ASH-001 ST-ASH-FIRST-ARRIVAL." },
+    { "zone_role": "well_square", "placement_rule": "adjacent_to:arrival_domestic" },
+    { "zone_role": "shop_frontage", "placement_rule": "adjacent_to:well_square" },
+    { "zone_role": "inn_frontage", "placement_rule": "adjacent_to:well_square" },
+    { "zone_role": "elder_frontage", "placement_rule": "adjacent_to:well_square" },
+    { "zone_role": "route_mouth", "placement_rule": "adjacent_to:well_square" },
+    { "zone_role": "cultivation_edge", "placement_rule": "adjacent_to:arrival_domestic" },
+    { "zone_role": "forest_edge", "placement_rule": "adjacent_to:well_square" }
+  ],
+  "allow_rotation": true,
+  "allow_reflection": true,
+  "variants": [
+    { "variant_id": "organic_core", "weight": 0.6, "notes": "Baseline weighted label; recorded in GenerationManifest/MapPlan provenance and in the layout_variant seed stream. This archetype does not yet hook variant_id into zone selection (unlike ARCH-INTERIOR-SHOP's browse_loop special case), so the two variants are a provenance/extensibility axis here, not the compositional-difference mechanism for this fixture." },
+    { "variant_id": "organic_wide", "weight": 0.4, "notes": "Same note as organic_core. This fixture's actual meaningfully-different composition comes from required_beats (cultivation_edge/forest_edge optional zone + module inclusion), the established mechanism ARCH-INTERIOR-SHOP already uses for its own optional service_point -- see generate_wo0071_fixtures.py and test_map_vision_integration.py." }
+  ],
+  "provenance": {
+    "source_pattern_id": "MV-HOM-ASH-001",
+    "confidence": "experimental",
+    "notes": "WO-0071 disposable fixture layout family, not a production-corroborated pattern."
+  }
+}

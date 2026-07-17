@@ -17,6 +17,13 @@ import sys
 from pathlib import Path
 from typing import Any
 
+try:
+    from .map_vision_validation import validate_map_vision_semantics
+    from .tile_assembly_validation import validate_tile_assembly_semantics
+except ImportError:  # Direct `python3 validate_contract.py` execution.
+    from map_vision_validation import validate_map_vision_semantics
+    from tile_assembly_validation import validate_tile_assembly_semantics
+
 TYPE_MAP = {
     "object": dict,
     "array": list,
@@ -94,6 +101,9 @@ def validate_file(instance_path: Path, schema_path: Path) -> list[str]:
 
 # instance file -> schema file it must validate against
 EXAMPLE_MANIFEST: dict[str, str] = {
+    "examples/tile_assembly/valid_tile_assembly.json": "schemas/tile_assembly.schema.json",
+    "examples/tile_assembly/valid_atomic_prop.json": "schemas/tile_assembly.schema.json",
+    "examples/map_vision/valid_map_vision.json": "schemas/map_vision.schema.json",
     "examples/shop/map_intent.json": "schemas/map_intent.schema.json",
     "examples/shop/gameplay_graph.json": "schemas/gameplay_graph.schema.json",
     "examples/shop/building_archetype.json": "schemas/building_archetype.schema.json",
@@ -124,6 +134,20 @@ EXAMPLE_MANIFEST: dict[str, str] = {
     "examples/house/layout_family_offset.json": "schemas/layout_family.schema.json",
     "examples/house/generation_manifest.json": "schemas/generation_manifest.schema.json",
     "examples/shared/style_pack_coastal_settlement_interior.json": "schemas/style_pack.schema.json",
+    "examples/ashford/map_intent.json": "schemas/map_intent.schema.json",
+    "examples/ashford/gameplay_graph.json": "schemas/gameplay_graph.schema.json",
+    "examples/ashford/building_archetype.json": "schemas/building_archetype.schema.json",
+    "examples/ashford/layout_family.json": "schemas/layout_family.schema.json",
+    "examples/shared/module_elara_house.json": "schemas/module.schema.json",
+    "examples/shared/module_ashford_shop.json": "schemas/module.schema.json",
+    "examples/shared/module_ashford_inn.json": "schemas/module.schema.json",
+    "examples/shared/module_ashford_elder_house.json": "schemas/module.schema.json",
+    "examples/shared/module_patched_fence.json": "schemas/module.schema.json",
+    "examples/shared/module_broadleaf_tree.json": "schemas/module.schema.json",
+    "examples/ashford_production/map_intent.json": "schemas/map_intent.schema.json",
+    "examples/ashford_production/gameplay_graph.json": "schemas/gameplay_graph.schema.json",
+    "examples/ashford_production/building_archetype.json": "schemas/building_archetype.schema.json",
+    "examples/ashford_production/layout_family.json": "schemas/layout_family.schema.json",
 }
 
 
@@ -134,6 +158,12 @@ def main() -> int:
         instance_path = root / instance_rel
         schema_path = root / schema_rel
         errors = validate_file(instance_path, schema_path)
+        if schema_rel == "schemas/map_vision.schema.json" and not errors:
+            instance = json.loads(instance_path.read_text(encoding="utf-8"))
+            errors.extend(validate_map_vision_semantics(instance))
+        if schema_rel == "schemas/tile_assembly.schema.json" and not errors:
+            instance = json.loads(instance_path.read_text(encoding="utf-8"))
+            errors.extend(validate_tile_assembly_semantics(instance))
         if errors:
             failures += 1
             print(f"FAIL {instance_rel} against {schema_rel}:")

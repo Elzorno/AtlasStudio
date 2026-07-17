@@ -1,0 +1,241 @@
+{
+  "schema_version": "0.1",
+  "kit_id": "TASM-KIT-ASHFORD-001",
+  "source": "TheLastSwordProtocol-Game/data/Map017.json",
+  "assemblies": [
+    {
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "file": "tasm-ashford-tree-broadleaf-01.json",
+      "source_region": {
+        "x": 8,
+        "y": 3,
+        "width": 2,
+        "height": 2
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-tree-broadleaf-01-isolated.png",
+        "previews/tasm-ashford-tree-broadleaf-01-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "verified_reusable",
+      "downstream_generation_allowed": true,
+      "review_reason": "Complete object-specific 2x2 tree signature verified."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-COTTAGE-LOW-A",
+      "file": "tasm-ashford-cottage-low-a.json",
+      "source_region": {
+        "x": 1,
+        "y": 18,
+        "width": 3,
+        "height": 5
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-cottage-low-a-isolated.png",
+        "previews/tasm-ashford-cottage-low-a-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "study_only",
+      "downstream_generation_allowed": false,
+      "review_reason": "Reference proportion and complete-door study; not the selected Ashford material family."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-COTTAGE-LOW-B",
+      "file": "tasm-ashford-cottage-low-b.json",
+      "source_region": {
+        "x": 5,
+        "y": 18,
+        "width": 3,
+        "height": 5
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-cottage-low-b-isolated.png",
+        "previews/tasm-ashford-cottage-low-b-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "study_only",
+      "downstream_generation_allowed": false,
+      "review_reason": "Reference variation study; not the selected Ashford material family."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-HOUSE-COMPACT-01",
+      "file": "tasm-ashford-house-compact-01.json",
+      "source_region": {
+        "x": 19,
+        "y": 11,
+        "width": 3,
+        "height": 4
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-house-compact-01-isolated.png",
+        "previews/tasm-ashford-house-compact-01-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "study_only",
+      "downstream_generation_allowed": false,
+      "review_reason": "Compact-house and door study; role and material mapping remain unapproved."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-SHOP-TAVERN-FRONTAGE",
+      "file": "tasm-ashford-shop-tavern-frontage.json",
+      "source_region": {
+        "x": 6,
+        "y": 4,
+        "width": 7,
+        "height": 5
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-shop-tavern-frontage-isolated.png",
+        "previews/tasm-ashford-shop-tavern-frontage-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "blocked_for_ashford",
+      "downstream_generation_allowed": false,
+      "review_reason": "Cropped paired frontage with tree overlap and an unsupported extra service."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-INN-BROAD-01",
+      "file": "tasm-ashford-inn-broad-01.json",
+      "source_region": {
+        "x": 22,
+        "y": 17,
+        "width": 7,
+        "height": 7
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-inn-broad-01-isolated.png",
+        "previews/tasm-ashford-inn-broad-01-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "blocked_for_ashford",
+      "downstream_generation_allowed": false,
+      "review_reason": "Cropped mixed composition, seven rows high, and mismatched to approved Ashford silhouette/material direction."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-FARM-FENCE-CLUSTER",
+      "file": "tasm-ashford-farm-fence-cluster.json",
+      "source_region": {
+        "x": 2,
+        "y": 10,
+        "width": 7,
+        "height": 7
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-farm-fence-cluster-isolated.png",
+        "previews/tasm-ashford-farm-fence-cluster-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "study_only",
+      "downstream_generation_allowed": false,
+      "review_reason": "Functional context study; not an Ashford patched-metal fence assembly."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-WELL-OPEN-CONTEXT",
+      "file": "tasm-ashford-well-open-context.json",
+      "source_region": {
+        "x": 9,
+        "y": 21,
+        "width": 3,
+        "height": 3
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-well-open-context-isolated.png",
+        "previews/tasm-ashford-well-open-context-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "study_only",
+      "downstream_generation_allowed": false,
+      "review_reason": "Open-well plaza context only; Ashford requires a roofed well."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-BRIDGE-BANKS-REFERENCE",
+      "file": "tasm-ashford-bridge-banks-reference.json",
+      "source_region": {
+        "x": 12,
+        "y": 17,
+        "width": 3,
+        "height": 4
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-bridge-banks-reference-isolated.png",
+        "previews/tasm-ashford-bridge-banks-reference-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "study_only",
+      "downstream_generation_allowed": false,
+      "review_reason": "Natural bridge composition only; cannot establish maintenance drainage."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-SHOP-PROP-CLUSTER",
+      "file": "tasm-ashford-shop-prop-cluster.json",
+      "source_region": {
+        "x": 5,
+        "y": 7,
+        "width": 8,
+        "height": 3
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-shop-prop-cluster-isolated.png",
+        "previews/tasm-ashford-shop-prop-cluster-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "study_only",
+      "downstream_generation_allowed": false,
+      "review_reason": "Functional frontage cluster study; not a complete Shop building."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-INN-PROP-CLUSTER",
+      "file": "tasm-ashford-inn-prop-cluster.json",
+      "source_region": {
+        "x": 21,
+        "y": 20,
+        "width": 8,
+        "height": 4
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-inn-prop-cluster-isolated.png",
+        "previews/tasm-ashford-inn-prop-cluster-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "study_only",
+      "downstream_generation_allowed": false,
+      "review_reason": "Hospitality frontage cluster study; not a complete Inn building."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-WINDOW-01",
+      "file": "tasm-ashford-window-01.json",
+      "source_region": {
+        "x": 2,
+        "y": 21,
+        "width": 1,
+        "height": 1
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-window-01-isolated.png",
+        "previews/tasm-ashford-window-01-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "verified_reusable",
+      "downstream_generation_allowed": true,
+      "review_reason": "Complete atomic window component verified."
+    },
+    {
+      "tile_assembly_id": "TASM-ASHFORD-SIGN-SHOP-01",
+      "file": "tasm-ashford-sign-shop-01.json",
+      "source_region": {
+        "x": 7,
+        "y": 7,
+        "width": 1,
+        "height": 1
+      },
+      "preview_refs": [
+        "previews/tasm-ashford-sign-shop-01-isolated.png",
+        "previews/tasm-ashford-sign-shop-01-fixture.png",
+        "previews/ashford-kit-contact-sheet.png"
+      ],
+      "review_state": "verified_reusable",
+      "downstream_generation_allowed": true,
+      "review_reason": "Complete atomic Shop sign component verified."
+    }
+  ]
+}

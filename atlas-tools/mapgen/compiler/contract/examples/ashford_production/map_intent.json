@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "map_intent_id": "MI-ASHFORD-PRODUCTION-CANDIDATE-001",
+  "atlas_screen_id": null,
+  "title": "Ashford Exterior WO-0073 Production-Scale Candidate",
+  "purpose": "WO-0073 disposable candidate proving the MapVision/TileAssembly compiler pipeline can regenerate Ashford Exterior at production scale (40x32) while preserving all 27 current Map001 events and every canonical transfer. Mirrors MI-HOM-ASH-001's purpose at candidate fidelity; does not itself authorize a production map write.",
+  "layout_mode": "hybrid",
+  "critical_path_role": "Journey I opening hub and recurring home-state screen",
+  "archetype_ref": {
+    "archetype_id": "ARCH-EXTERIOR-ASHFORD-PRODUCTION",
+    "min_version": "1.0"
+  },
+  "required_gameplay_beats": [
+    "exit_transfer_elara", "exit_transfer_shop", "exit_transfer_inn",
+    "exit_transfer_north", "exit_transfer_south", "exit_transfer_glassfield", "exit_transfer_fogfen"
+  ],
+  "source_documents": [
+    "IMP-HOM-017@0.2",
+    "SCR-HOM-ASH-001@0.2",
+    "MI-HOM-ASH-001@0.1",
+    "MV-HOM-ASH-001@0.1",
+    "TheLastSwordProtocol-Game/data/Map001.json"
+  ],
+  "generation_seed_salt": "wo-0073-ashford-production-001",
+  "provenance": {
+    "created_by": "WO-0073",
+    "created_date": "2026-07-15",
+    "notes": "Disposable candidate fixture. Does not authorize writing production Map001.json; installation requires Chris's explicit acceptance per WO-0073's own constraints."
+  }
+}

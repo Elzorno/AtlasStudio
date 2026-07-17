@@ -12,10 +12,12 @@ import random
 from collections import deque
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Iterable
+from typing import Any, Iterable, Mapping
 
 from map_plan import MapPlan
+from map_vision_resolution import MapVisionResolutionError, resolve_map_vision
 from seed_streams import SeedStreams
+from tile_assembly_catalog import DEFAULT_ADAPTER_REF, AssemblyRecord
 
 
 class PortType(str, Enum):
@@ -147,6 +149,7 @@ class AssemblyResult:
     reflected: bool
     attempts: int
     diagnostics: tuple[Diagnostic, ...] = ()
+    tile_assembly_bindings: tuple[dict[str, Any], ...] = ()
 
 
 def standard_connector_registry() -> dict[str, ConnectorDefinition]:
@@ -189,6 +192,10 @@ class SemanticAssembler:
         streams: SeedStreams,
         manifest_id: str,
         required_beats: Iterable[str] = (),
+        assembly_catalog: Mapping[str, AssemblyRecord] | None = None,
+        map_vision: dict[str, Any] | None = None,
+        visual_constraint_profile: dict[str, Any] | None = None,
+        adapter_ref: str = DEFAULT_ADAPTER_REF,
     ) -> AssemblyResult:
         self._validate_references(gameplay_graph, archetype, layout_family)
         variant = self._choose_variant(layout_family, streams.seed("structures", "layout_variant"))
@@ -198,8 +205,26 @@ class SemanticAssembler:
         self._validate_graph(zones, edges, gameplay_graph)
         width, height = self._choose_dimensions(archetype, layout_family, streams.seed("structures", "dimensions"))
         placements = self._place_zones(zones, edges, gameplay_graph["reachability"]["entry_zone"], width, height, streams)
-        module_placements = self._place_modules(archetype, modules, zones, placements)
+        all_zone_roles = {zone["role"] for zone in gameplay_graph["zones"]}
+        module_placements = self._place_modules(archetype, modules, zones, placements, all_zone_roles)
         self._validate_reachability(gameplay_graph, zones, edges)
+        tile_assembly_by_tag: dict[str, dict[str, Any]] = {}
+        if map_vision is not None:
+            graph_zones = {zone["zone_id"]: zone for zone in gameplay_graph["zones"]}
+            landmark_tags = {
+                slot["landmark_tag"]
+                for slot in self._resolve_landmark_slots(archetype, graph_zones, placements)
+            }
+            module_tags = {module["semantic_tag"] for module in module_placements}
+            tile_assembly_by_tag = self._bind_tile_assemblies(
+                required_semantic_tags=sorted(module_tags | landmark_tags),
+                assembly_catalog=assembly_catalog or {},
+                map_vision=map_vision,
+                visual_constraint_profile=visual_constraint_profile or {},
+                adapter_ref=adapter_ref,
+                streams=streams,
+                module_placements=module_placements,
+            )
         rotation = self._choose_rotation(layout_family, streams.seed("structures", "rotation"))
         reflected = bool(layout_family.get("allow_reflection", False) and streams.seed("structures", "reflection") % 2)
         placements, module_placements, width, height = self._transform(
@@ -220,8 +245,12 @@ class SemanticAssembler:
             streams.root_seed,
             rotation,
             reflected,
+            tile_assembly_by_tag=tile_assembly_by_tag,
         )
-        return AssemblyResult(plan, variant["variant_id"], rotation, reflected, self._attempts)
+        bindings = tuple(
+            {"semantic_tag": tag, **binding} for tag, binding in sorted(tile_assembly_by_tag.items())
+        )
+        return AssemblyResult(plan, variant["variant_id"], rotation, reflected, self._attempts, tile_assembly_bindings=bindings)
 
     def _validate_references(self, graph: dict[str, Any], archetype: dict[str, Any], family: dict[str, Any]) -> None:
         if archetype["gameplay_graph_ref"] != graph["graph_id"]:
@@ -392,6 +421,7 @@ class SemanticAssembler:
         modules: dict[str, dict[str, Any]],
         zones: list[dict[str, Any]],
         placements: dict[str, Rect],
+        all_zone_roles: set[str] = frozenset(),
     ) -> list[dict[str, Any]]:
         zone_by_role = {zone["role"]: zone for zone in zones}
         result = []
@@ -402,6 +432,11 @@ class SemanticAssembler:
             role = requirement["zone_role"]
             module_ref = requirement["module_ref"]
             if role not in zone_by_role:
+                if role in all_zone_roles:
+                    # The zone role is real but this run did not select it (an
+                    # optional, beat-gated zone that was not requested) -- not
+                    # an archetype/graph authoring mismatch, so skip quietly.
+                    continue
                 raise AssemblyError(Diagnostic("module_parent_zone_missing", "required module has no selected parent zone", {"module_ref": module_ref, "zone_role": role}))
             if module_ref not in modules:
                 raise AssemblyError(Diagnostic("module_definition_missing", "required module definition was not supplied", {"module_ref": module_ref}))
@@ -427,6 +462,65 @@ class SemanticAssembler:
                     "clearance": clearance,
                 })
         return result
+
+    def _bind_tile_assemblies(
+        self,
+        *,
+        required_semantic_tags: list[str],
+        assembly_catalog: Mapping[str, AssemblyRecord],
+        map_vision: dict[str, Any],
+        visual_constraint_profile: dict[str, Any],
+        adapter_ref: str,
+        streams: SeedStreams,
+        module_placements: list[dict[str, Any]],
+    ) -> dict[str, dict[str, Any]]:
+        """Resolve MapVision + TileAssembly catalog into one binding per
+        requested semantic tag, deterministically choosing among enabled
+        candidates via the ``building_selection`` seed stream and failing
+        closed on dimension or adapter mismatches (WO-0071)."""
+
+        resolved = resolve_map_vision(
+            map_vision, visual_constraint_profile, assembly_catalog, required_semantic_tags=required_semantic_tags
+        )
+        modules_by_tag: dict[str, list[dict[str, Any]]] = {}
+        for module in module_placements:
+            modules_by_tag.setdefault(module["semantic_tag"], []).append(module)
+
+        bindings: dict[str, dict[str, Any]] = {}
+        for tag in required_semantic_tags:
+            candidates = [record for record in resolved.role_candidates[tag] if record.adapter_ref == adapter_ref]
+            if not candidates:
+                raise MapVisionResolutionError(
+                    "unsupported_adapter_capability",
+                    "no catalog-enabled candidate for this semantic tag supports the requested adapter",
+                    {"semantic_tag": tag, "adapter_ref": adapter_ref},
+                )
+            candidates.sort(key=lambda record: record.assembly_id)
+            choice_seed = streams.seed("building_selection", tag)
+            chosen = random.Random(choice_seed).choice(candidates)
+            for module in modules_by_tag.get(tag, []):
+                rect: Rect = module["rect"]
+                if chosen.width > rect.width or chosen.height > rect.height:
+                    raise MapVisionResolutionError(
+                        "incompatible_dimensions",
+                        "resolved TileAssembly does not fit its placed module footprint",
+                        {
+                            "semantic_tag": tag,
+                            "assembly_id": chosen.assembly_id,
+                            "assembly_size": [chosen.width, chosen.height],
+                            "module_footprint": [rect.width, rect.height],
+                        },
+                    )
+            bindings[tag] = {
+                "tile_assembly_id": chosen.assembly_id,
+                "tile_assembly_source_kit": chosen.source_kit,
+                "review_state": chosen.review_state,
+                "adapter_ref": chosen.adapter_ref,
+                "width": chosen.width,
+                "height": chosen.height,
+                "building_height_rows": chosen.building_height_rows,
+            }
+        return bindings
 
     @staticmethod
     def _validate_reachability(graph: dict[str, Any], zones: list[dict[str, Any]], edges: list[dict[str, Any]]) -> None:
@@ -498,7 +592,9 @@ class SemanticAssembler:
         root_seed: int,
         rotation: int,
         reflected: bool,
+        tile_assembly_by_tag: dict[str, dict[str, Any]] | None = None,
     ) -> MapPlan:
+        tile_assembly_by_tag = tile_assembly_by_tag or {}
         graph_zones = {zone["zone_id"]: zone for zone in graph["zones"]}
         terrain = [
             {
@@ -518,15 +614,38 @@ class SemanticAssembler:
                 "module_ref": module["module_ref"],
                 "parent_zone": module["zone_id"],
                 "clearance": module["clearance"],
+                **self._tile_assembly_fields(module["semantic_tag"], tile_assembly_by_tag),
             }
             for module in modules
         ]
+        occupied_by_zone: dict[str, set[tuple[int, int]]] = {}
+        for module in modules:
+            module_rect: Rect = module["rect"]
+            cells = occupied_by_zone.setdefault(module["zone_id"], set())
+            cells.update(
+                (x, y)
+                for y in range(module_rect.y, module_rect.bottom)
+                for x in range(module_rect.x, module_rect.right)
+            )
+
+        landmark_slots = [
+            {**slot, **self._tile_assembly_fields(slot["landmark_tag"], tile_assembly_by_tag)}
+            for slot in self._resolve_landmark_slots(archetype, graph_zones, zones)
+        ]
+        for slot in landmark_slots:
+            slot_width = slot.get("tile_assembly_width", 1)
+            slot_height = slot.get("tile_assembly_height", 1)
+            ax, ay = slot["anchor"]["x"], slot["anchor"]["y"]
+            ox, oy = ax - slot_width // 2, ay - slot_height // 2
+            cells = occupied_by_zone.setdefault(slot["zone_id"], set())
+            cells.update((x, y) for y in range(oy, oy + slot_height) for x in range(ox, ox + slot_width))
+
         transfer_points = []
         event_anchors = []
         for zone_id, rect in zones.items():
             beats = graph_zones[zone_id].get("beats", [])
-            point = {"shape": "point", "x": rect.x + rect.width // 2, "y": rect.y + rect.height // 2}
-            for beat in beats:
+            points = self._distribute_beat_points(rect, len(beats), frozenset(occupied_by_zone.get(zone_id, ())))
+            for beat, point in zip(beats, points):
                 if "transfer" in beat:
                     transfer_points.append({"transfer_id": f"GEN-{beat}-{zone_id}", "anchor": point, "placement_intent": beat})
                 elif "service" in beat or "event" in beat or "treasure" in beat:
@@ -563,9 +682,61 @@ class SemanticAssembler:
                 "assembly_attempts": self._attempts,
                 "assembly_budget": {"max_attempts": self.budget.max_attempts, "max_depth": self.budget.max_depth},
             },
-            "landmark_slots": self._resolve_landmark_slots(archetype, graph_zones, zones),
+            "landmark_slots": landmark_slots,
             "generation_manifest_ref": manifest_id,
         })
+
+    @staticmethod
+    def _distribute_beat_points(
+        rect: Rect, count: int, occupied: frozenset[tuple[int, int]] = frozenset()
+    ) -> list[dict[str, Any]]:
+        """Return ``count`` distinct point anchors within ``rect``, avoiding
+        any cell in ``occupied`` (a module/building already placed in this
+        same zone).
+
+        A zone's beats previously all collapsed onto its exact center point
+        -- harmless when a zone carries at most one beat (every existing
+        WO-0058/0059 example), but a real bug once a zone carries several
+        (e.g. an NPC, a treasure object, and a decoration beat all in one
+        production zone): they must not land on the identical tile, and must
+        not land inside a building's own collision footprint either (found
+        while reconciling WO-0073's real event set: several decoration/
+        treasure beats landed inside their zone's own Elara House module
+        before this exclusion was added). For a single beat this still
+        returns the center when it is not occupied, so existing single-beat
+        fixtures are unaffected byte-for-byte.
+        """
+
+        if count <= 0:
+            return []
+        center = (rect.x + rect.width // 2, rect.y + rect.height // 2)
+        if count == 1 and center not in occupied:
+            return [{"shape": "point", "x": center[0], "y": center[1]}]
+        interior_xs = range(rect.x + 1, rect.right - 1) if rect.width > 2 else range(rect.x, rect.right)
+        interior_ys = range(rect.y + 1, rect.bottom - 1) if rect.height > 2 else range(rect.y, rect.bottom)
+        cells = [(x, y) for y in interior_ys for x in interior_xs if (x, y) not in occupied]
+        if not cells:
+            cells = [(x, y) for y in range(rect.y, rect.bottom) for x in range(rect.x, rect.right) if (x, y) not in occupied]
+        if not cells:
+            cells = [center]
+        return [
+            {"shape": "point", "x": cells[i % len(cells)][0], "y": cells[i % len(cells)][1]}
+            for i in range(count)
+        ]
+
+    @staticmethod
+    def _tile_assembly_fields(tag: str, tile_assembly_by_tag: dict[str, dict[str, Any]]) -> dict[str, Any]:
+        binding = tile_assembly_by_tag.get(tag)
+        if binding is None:
+            return {}
+        return {
+            "tile_assembly_ref": binding["tile_assembly_id"],
+            "tile_assembly_source_kit": binding["tile_assembly_source_kit"],
+            "tile_assembly_review_state": binding["review_state"],
+            "tile_assembly_width": binding["width"],
+            "tile_assembly_height": binding["height"],
+            "tile_assembly_building_height_rows": binding["building_height_rows"],
+        }
 
     @staticmethod
     def _resolve_landmark_slots(

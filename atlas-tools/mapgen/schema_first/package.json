@@ -1,0 +1,11 @@
+{
+  "name": "atlas-schema-first-mapgen",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node src/cli.js generate-all",
+    "artwork": "node src/artwork_compiler.js && PYTHONPATH=../.. python3 src/render_artwork.py",
+    "test": "node --test"
+  }
+}

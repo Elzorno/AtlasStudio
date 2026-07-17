@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-ASHFORD-SHOP",
+  "version": "1.0",
+  "name": "Ashford Shop Exterior Footprint",
+  "semantic_tag": "ashford_shop",
+  "footprint": { "width": 7, "height": 6 },
+  "ports": [],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "MV-HOM-ASH-001",
+    "notes": "Footprint pinned to TASM-ASHFORD-SHOP-AUTHORED's source_region (7x6, the Chris-approved two-wall-row revision)."
+  }
+}

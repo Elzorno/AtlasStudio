@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-BROADLEAF-TREE",
+  "version": "1.0",
+  "name": "Broadleaf Tree",
+  "semantic_tag": "broadleaf_tree",
+  "footprint": { "width": 2, "height": 2 },
+  "ports": [],
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "MV-HOM-ASH-001",
+    "notes": "Footprint pinned to the reference kit's TASM-ASHFORD-TREE-BROADLEAF-01 (2x2, verified_reusable) -- the exact complete-canopy assembly CA-ASH-TREES requires; never a half-tree."
+  }
+}

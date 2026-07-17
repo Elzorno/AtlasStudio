@@ -1,0 +1,314 @@
+{
+  "schema_version": "0.1",
+  "tile_assembly_id": "TASM-ASHFORD-PATCHED-METAL-FENCE-AUTHORED",
+  "version": "0.1",
+  "dimensions": {
+    "width": 5,
+    "height": 1
+  },
+  "layered_cells": [
+    {
+      "x": 0,
+      "y": 0,
+      "layers": [
+        {
+          "layer": 0,
+          "tile_id": 2816,
+          "source_coordinate": {
+            "map_x": 57,
+            "map_y": 1,
+            "layer": 0
+          }
+        },
+        {
+          "layer": 1,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 57,
+            "map_y": 1,
+            "layer": 1
+          }
+        },
+        {
+          "layer": 2,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 57,
+            "map_y": 1,
+            "layer": 2
+          }
+        },
+        {
+          "layer": 3,
+          "tile_id": 188,
+          "source_coordinate": {
+            "map_x": 57,
+            "map_y": 1,
+            "layer": 3
+          }
+        }
+      ]
+    },
+    {
+      "x": 1,
+      "y": 0,
+      "layers": [
+        {
+          "layer": 0,
+          "tile_id": 2816,
+          "source_coordinate": {
+            "map_x": 58,
+            "map_y": 1,
+            "layer": 0
+          }
+        },
+        {
+          "layer": 1,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 58,
+            "map_y": 1,
+            "layer": 1
+          }
+        },
+        {
+          "layer": 2,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 58,
+            "map_y": 1,
+            "layer": 2
+          }
+        },
+        {
+          "layer": 3,
+          "tile_id": 84,
+          "source_coordinate": {
+            "map_x": 58,
+            "map_y": 1,
+            "layer": 3
+          }
+        }
+      ]
+    },
+    {
+      "x": 2,
+      "y": 0,
+      "layers": [
+        {
+          "layer": 0,
+          "tile_id": 2816,
+          "source_coordinate": {
+            "map_x": 59,
+            "map_y": 1,
+            "layer": 0
+          }
+        },
+        {
+          "layer": 1,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 59,
+            "map_y": 1,
+            "layer": 1
+          }
+        },
+        {
+          "layer": 2,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 59,
+            "map_y": 1,
+            "layer": 2
+          }
+        },
+        {
+          "layer": 3,
+          "tile_id": 189,
+          "source_coordinate": {
+            "map_x": 59,
+            "map_y": 1,
+            "layer": 3
+          }
+        }
+      ]
+    },
+    {
+      "x": 3,
+      "y": 0,
+      "layers": [
+        {
+          "layer": 0,
+          "tile_id": 2816,
+          "source_coordinate": {
+            "map_x": 60,
+            "map_y": 1,
+            "layer": 0
+          }
+        },
+        {
+          "layer": 1,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 60,
+            "map_y": 1,
+            "layer": 1
+          }
+        },
+        {
+          "layer": 2,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 60,
+            "map_y": 1,
+            "layer": 2
+          }
+        },
+        {
+          "layer": 3,
+          "tile_id": 86,
+          "source_coordinate": {
+            "map_x": 60,
+            "map_y": 1,
+            "layer": 3
+          }
+        }
+      ]
+    },
+    {
+      "x": 4,
+      "y": 0,
+      "layers": [
+        {
+          "layer": 0,
+          "tile_id": 2816,
+          "source_coordinate": {
+            "map_x": 61,
+            "map_y": 1,
+            "layer": 0
+          }
+        },
+        {
+          "layer": 1,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 61,
+            "map_y": 1,
+            "layer": 1
+          }
+        },
+        {
+          "layer": 2,
+          "tile_id": 0,
+          "source_coordinate": {
+            "map_x": 61,
+            "map_y": 1,
+            "layer": 2
+          }
+        },
+        {
+          "layer": 3,
+          "tile_id": 190,
+          "source_coordinate": {
+            "map_x": 61,
+            "map_y": 1,
+            "layer": 3
+          }
+        }
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "origin",
+      "role": "placement",
+      "x": 2,
+      "y": 0
+    }
+  ],
+  "collision_mask": [
+    [
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  ],
+  "connectors": [],
+  "variations": [
+    {
+      "variation_id": "base",
+      "weight": 1,
+      "operations": []
+    }
+  ],
+  "source": {
+    "owner_repo": "AtlasStudio",
+    "map_ref": "AtlasStudio/atlas-tools/mapgen/tile_assembly/kits/ashford/authored/source/MapAshfordAuthored.json",
+    "tileset_ref": "TheLastSwordProtocol-Game/data/Tilesets.json#tilesetId=2",
+    "hashes": {
+      "source": {
+        "expected_sha256": "be73e19924a41be76d50bce12cbd8865b5fd5edf021fb9e088f60d5cf696f200",
+        "observed_sha256": "be73e19924a41be76d50bce12cbd8865b5fd5edf021fb9e088f60d5cf696f200"
+      },
+      "map": {
+        "expected_sha256": "f76f3d5479928784a29a3f14340eacfbb9b413419c91c4756ca8de29db4c423f",
+        "observed_sha256": "f76f3d5479928784a29a3f14340eacfbb9b413419c91c4756ca8de29db4c423f"
+      },
+      "tileset": {
+        "expected_sha256": "d8be843ce0cb036721c7ffda998b9d04009c09ac0731fa6ead753d70d23cc086",
+        "observed_sha256": "d8be843ce0cb036721c7ffda998b9d04009c09ac0731fa6ead753d70d23cc086"
+      },
+      "tileset_images": [
+        {
+          "asset_name": "Outside_A1.png",
+          "expected_sha256": "2c68df4c7b081de046879ccacce6c5037b82dca27e9b85c1b71c0ff1b2d136ef",
+          "observed_sha256": "2c68df4c7b081de046879ccacce6c5037b82dca27e9b85c1b71c0ff1b2d136ef"
+        },
+        {
+          "asset_name": "Outside_A2.png",
+          "expected_sha256": "25d14640624ca445788588b0a2ddaa133e4aef1d90c18ae812a73d1a154dad39",
+          "observed_sha256": "25d14640624ca445788588b0a2ddaa133e4aef1d90c18ae812a73d1a154dad39"
+        },
+        {
+          "asset_name": "Outside_A3.png",
+          "expected_sha256": "35bb73f1ef555ec4ba05127fcb30d8a3b0b78b031bbc80559f4ef3d7528b3a72",
+          "observed_sha256": "35bb73f1ef555ec4ba05127fcb30d8a3b0b78b031bbc80559f4ef3d7528b3a72"
+        },
+        {
+          "asset_name": "Outside_A4.png",
+          "expected_sha256": "67110fd3fb7ce4ba064fccd27a6c673855d1af4dd512818581e869ac41a9ba6b",
+          "observed_sha256": "67110fd3fb7ce4ba064fccd27a6c673855d1af4dd512818581e869ac41a9ba6b"
+        },
+        {
+          "asset_name": "Outside_A5.png",
+          "expected_sha256": "ab1a5a75222272c52ffe959ddef26babf664133d2bfb9fba172fd6b89874e497",
+          "observed_sha256": "ab1a5a75222272c52ffe959ddef26babf664133d2bfb9fba172fd6b89874e497"
+        },
+        {
+          "asset_name": "Outside_B.png",
+          "expected_sha256": "0a6c9eaf1ec9bbc921d03e69648dd05f0b2a65d68fbf714ee7c058d5490f41ee",
+          "observed_sha256": "0a6c9eaf1ec9bbc921d03e69648dd05f0b2a65d68fbf714ee7c058d5490f41ee"
+        },
+        {
+          "asset_name": "Outside_C.png",
+          "expected_sha256": "fc5e06aedb64a6b02dcdd0c42a7a462a99c32ae18a01b2aa393a93782ac18198",
+          "observed_sha256": "fc5e06aedb64a6b02dcdd0c42a7a462a99c32ae18a01b2aa393a93782ac18198"
+        }
+      ]
+    }
+  },
+  "preview_refs": [
+    "previews/tasm-ashford-patched-metal-fence-authored-isolated.png",
+    "previews/tasm-ashford-patched-metal-fence-authored-fixture.png",
+    "previews/ashford-authored-contact-sheet.png"
+  ],
+  "event_overlays": [],
+  "adapter_ownership": {
+    "owner_repo": "AtlasStudio",
+    "adapter_ref": "rpg_maker_mz@0.1",
+    "serialization_owner": "AtlasStudio"
+  },
+  "name": "Patched-metal fence visual proxy"
+}

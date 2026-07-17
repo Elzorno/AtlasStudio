@@ -1,0 +1,42 @@
+{
+  "candidate_ref": "BP-GEN-MI-ASHFORD-EXAMPLE-001",
+  "concept_refs": [
+    "TheLastSwordProtocol-Atlas/atlas/docs/09_Technical/Map_Generation/Concepts/Ashford/ashford-overhead-composition-v2.png",
+    "TheLastSwordProtocol-Atlas/atlas/docs/09_Technical/Map_Generation/Concepts/Ashford/ashford-building-silhouettes-v2.png"
+  ],
+  "human_decision": {
+    "decided_at": null,
+    "decided_by": null,
+    "decision": null,
+    "notes": null,
+    "status": "pending"
+  },
+  "not_yet_automatable": [
+    "ASH-FIRST-001",
+    "ASH-FIRST-002",
+    "ASH-BUILD-002",
+    "ASH-PATH-002",
+    "ASH-PATH-003",
+    "ASH-RHYTHM-001",
+    "ASH-DENSITY-001",
+    "ASH-MATERIAL-001",
+    "ASH-MATERIAL-002",
+    "ASH-VOCAB-001"
+  ],
+  "recommendation": "candidate_for_human_review",
+  "render_refs": [
+    "atlas-tools/mapgen/compiler/prototypes/wo0071/dressed-seed-2.svg",
+    "atlas-tools/mapgen/compiler/prototypes/wo0071/dressed-seed-2.txt"
+  ],
+  "schema_version": "0.1",
+  "structural": {
+    "findings": [],
+    "passed": true,
+    "target": "BP-GEN-MI-ASHFORD-EXAMPLE-001"
+  },
+  "visual_proxy": {
+    "findings": [],
+    "passed": true,
+    "target": "BP-GEN-MI-ASHFORD-EXAMPLE-001"
+  }
+}

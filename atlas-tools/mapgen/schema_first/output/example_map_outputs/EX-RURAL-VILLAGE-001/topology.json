@@ -1,0 +1,677 @@
+{
+  "map_id": "EX-RURAL-VILLAGE-001",
+  "seed": 1701,
+  "traversal_style": "loop",
+  "focal_node": "village_well",
+  "nodes": [
+    {
+      "id": "south_gate",
+      "kind": "entrance",
+      "position": {
+        "x": 20,
+        "y": 29
+      },
+      "target": "world_map"
+    },
+    {
+      "id": "north_trail",
+      "kind": "exit",
+      "position": {
+        "x": 31,
+        "y": 0
+      },
+      "target": "forest_trail"
+    },
+    {
+      "id": "village_well",
+      "kind": "well",
+      "role": "well",
+      "position": {
+        "x": 20,
+        "y": 13
+      },
+      "size": [
+        3,
+        3
+      ],
+      "required": true,
+      "focal": true
+    },
+    {
+      "id": "inn",
+      "kind": "building",
+      "role": "inn",
+      "position": {
+        "x": 22,
+        "y": 20
+      },
+      "size": [
+        7,
+        5
+      ],
+      "district": "commons",
+      "required": true,
+      "focal": false
+    },
+    {
+      "id": "general_store",
+      "kind": "building",
+      "role": "shop",
+      "position": {
+        "x": 10,
+        "y": 16
+      },
+      "size": [
+        5,
+        4
+      ],
+      "district": "commons",
+      "required": true,
+      "focal": false
+    },
+    {
+      "id": "elder_house",
+      "kind": "building",
+      "role": "house",
+      "position": {
+        "x": 13,
+        "y": 8
+      },
+      "size": [
+        5,
+        4
+      ],
+      "district": "residential",
+      "required": true,
+      "focal": false
+    },
+    {
+      "id": "riverside_shrine",
+      "kind": "shrine",
+      "role": "shrine",
+      "position": {
+        "x": 26,
+        "y": 7
+      },
+      "size": [
+        3,
+        3
+      ],
+      "district": "quiet_edge",
+      "required": true,
+      "focal": false
+    },
+    {
+      "id": "farmstead",
+      "kind": "building",
+      "role": "house",
+      "position": {
+        "x": 30,
+        "y": 15
+      },
+      "size": [
+        5,
+        4
+      ],
+      "district": "agricultural",
+      "required": false,
+      "focal": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "south_gate",
+      "to": "village_well",
+      "kind": "main_path",
+      "cells": [
+        {
+          "x": 20,
+          "y": 29
+        },
+        {
+          "x": 20,
+          "y": 28
+        },
+        {
+          "x": 20,
+          "y": 27
+        },
+        {
+          "x": 20,
+          "y": 26
+        },
+        {
+          "x": 20,
+          "y": 25
+        },
+        {
+          "x": 20,
+          "y": 24
+        },
+        {
+          "x": 20,
+          "y": 23
+        },
+        {
+          "x": 20,
+          "y": 22
+        },
+        {
+          "x": 20,
+          "y": 21
+        },
+        {
+          "x": 20,
+          "y": 20
+        },
+        {
+          "x": 20,
+          "y": 19
+        },
+        {
+          "x": 20,
+          "y": 18
+        },
+        {
+          "x": 20,
+          "y": 17
+        },
+        {
+          "x": 20,
+          "y": 16
+        },
+        {
+          "x": 20,
+          "y": 15
+        },
+        {
+          "x": 20,
+          "y": 14
+        },
+        {
+          "x": 20,
+          "y": 13
+        }
+      ]
+    },
+    {
+      "from": "north_trail",
+      "to": "village_well",
+      "kind": "main_path",
+      "cells": [
+        {
+          "x": 31,
+          "y": 0
+        },
+        {
+          "x": 31,
+          "y": 1
+        },
+        {
+          "x": 31,
+          "y": 2
+        },
+        {
+          "x": 30,
+          "y": 2
+        },
+        {
+          "x": 29,
+          "y": 2
+        },
+        {
+          "x": 28,
+          "y": 2
+        },
+        {
+          "x": 27,
+          "y": 2
+        },
+        {
+          "x": 26,
+          "y": 2
+        },
+        {
+          "x": 25,
+          "y": 2
+        },
+        {
+          "x": 24,
+          "y": 2
+        },
+        {
+          "x": 23,
+          "y": 2
+        },
+        {
+          "x": 22,
+          "y": 2
+        },
+        {
+          "x": 21,
+          "y": 2
+        },
+        {
+          "x": 20,
+          "y": 2
+        },
+        {
+          "x": 20,
+          "y": 3
+        },
+        {
+          "x": 20,
+          "y": 4
+        },
+        {
+          "x": 20,
+          "y": 5
+        },
+        {
+          "x": 20,
+          "y": 6
+        },
+        {
+          "x": 20,
+          "y": 7
+        },
+        {
+          "x": 20,
+          "y": 8
+        },
+        {
+          "x": 20,
+          "y": 9
+        },
+        {
+          "x": 20,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 11
+        },
+        {
+          "x": 20,
+          "y": 12
+        },
+        {
+          "x": 20,
+          "y": 13
+        }
+      ]
+    },
+    {
+      "from": "village_well",
+      "to": "inn",
+      "kind": "access_path",
+      "cells": [
+        {
+          "x": 20,
+          "y": 13
+        },
+        {
+          "x": 21,
+          "y": 13
+        },
+        {
+          "x": 22,
+          "y": 13
+        },
+        {
+          "x": 22,
+          "y": 14
+        },
+        {
+          "x": 22,
+          "y": 15
+        },
+        {
+          "x": 22,
+          "y": 16
+        },
+        {
+          "x": 22,
+          "y": 17
+        },
+        {
+          "x": 22,
+          "y": 18
+        },
+        {
+          "x": 22,
+          "y": 19
+        },
+        {
+          "x": 22,
+          "y": 20
+        }
+      ]
+    },
+    {
+      "from": "village_well",
+      "to": "general_store",
+      "kind": "access_path",
+      "cells": [
+        {
+          "x": 20,
+          "y": 13
+        },
+        {
+          "x": 19,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 15,
+          "y": 13
+        },
+        {
+          "x": 14,
+          "y": 13
+        },
+        {
+          "x": 13,
+          "y": 13
+        },
+        {
+          "x": 12,
+          "y": 13
+        },
+        {
+          "x": 11,
+          "y": 13
+        },
+        {
+          "x": 10,
+          "y": 13
+        },
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 10,
+          "y": 15
+        },
+        {
+          "x": 10,
+          "y": 16
+        }
+      ]
+    },
+    {
+      "from": "village_well",
+      "to": "elder_house",
+      "kind": "access_path",
+      "cells": [
+        {
+          "x": 20,
+          "y": 13
+        },
+        {
+          "x": 19,
+          "y": 13
+        },
+        {
+          "x": 18,
+          "y": 13
+        },
+        {
+          "x": 17,
+          "y": 13
+        },
+        {
+          "x": 16,
+          "y": 13
+        },
+        {
+          "x": 15,
+          "y": 13
+        },
+        {
+          "x": 14,
+          "y": 13
+        },
+        {
+          "x": 13,
+          "y": 13
+        },
+        {
+          "x": 13,
+          "y": 12
+        },
+        {
+          "x": 13,
+          "y": 11
+        },
+        {
+          "x": 13,
+          "y": 10
+        },
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 8
+        }
+      ]
+    },
+    {
+      "from": "village_well",
+      "to": "riverside_shrine",
+      "kind": "side_path",
+      "cells": [
+        {
+          "x": 20,
+          "y": 13
+        },
+        {
+          "x": 20,
+          "y": 12
+        },
+        {
+          "x": 20,
+          "y": 11
+        },
+        {
+          "x": 20,
+          "y": 10
+        },
+        {
+          "x": 20,
+          "y": 9
+        },
+        {
+          "x": 20,
+          "y": 8
+        },
+        {
+          "x": 20,
+          "y": 7
+        },
+        {
+          "x": 21,
+          "y": 7
+        },
+        {
+          "x": 22,
+          "y": 7
+        },
+        {
+          "x": 23,
+          "y": 7
+        },
+        {
+          "x": 24,
+          "y": 7
+        },
+        {
+          "x": 25,
+          "y": 7
+        },
+        {
+          "x": 26,
+          "y": 7
+        }
+      ]
+    },
+    {
+      "from": "village_well",
+      "to": "farmstead",
+      "kind": "access_path",
+      "cells": [
+        {
+          "x": 20,
+          "y": 13
+        },
+        {
+          "x": 20,
+          "y": 14
+        },
+        {
+          "x": 20,
+          "y": 15
+        },
+        {
+          "x": 21,
+          "y": 15
+        },
+        {
+          "x": 22,
+          "y": 15
+        },
+        {
+          "x": 23,
+          "y": 15
+        },
+        {
+          "x": 24,
+          "y": 15
+        },
+        {
+          "x": 25,
+          "y": 15
+        },
+        {
+          "x": 26,
+          "y": 15
+        },
+        {
+          "x": 27,
+          "y": 15
+        },
+        {
+          "x": 28,
+          "y": 15
+        },
+        {
+          "x": 29,
+          "y": 15
+        },
+        {
+          "x": 30,
+          "y": 15
+        }
+      ]
+    },
+    {
+      "from": "inn",
+      "to": "farmstead",
+      "kind": "loop_path",
+      "cells": [
+        {
+          "x": 22,
+          "y": 20
+        },
+        {
+          "x": 22,
+          "y": 19
+        },
+        {
+          "x": 22,
+          "y": 18
+        },
+        {
+          "x": 22,
+          "y": 17
+        },
+        {
+          "x": 22,
+          "y": 16
+        },
+        {
+          "x": 22,
+          "y": 15
+        },
+        {
+          "x": 23,
+          "y": 15
+        },
+        {
+          "x": 24,
+          "y": 15
+        },
+        {
+          "x": 25,
+          "y": 15
+        },
+        {
+          "x": 26,
+          "y": 15
+        },
+        {
+          "x": 27,
+          "y": 15
+        },
+        {
+          "x": 28,
+          "y": 15
+        },
+        {
+          "x": 29,
+          "y": 15
+        },
+        {
+          "x": 30,
+          "y": 15
+        }
+      ]
+    }
+  ],
+  "containment": [
+    {
+      "parent": "commons",
+      "child": "village_well"
+    },
+    {
+      "parent": "commons",
+      "child": "inn"
+    },
+    {
+      "parent": "commons",
+      "child": "general_store"
+    },
+    {
+      "parent": "residential",
+      "child": "elder_house"
+    },
+    {
+      "parent": "quiet_edge",
+      "child": "riverside_shrine"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "layout_family_id": "LAY-EXTERIOR-ASHFORD-PRODUCTION-ORGANIC",
+  "version": "1.0",
+  "name": "Ashford Production Organic Layout",
+  "applies_to_archetype": "ARCH-EXTERIOR-ASHFORD-PRODUCTION",
+  "resolution_strategy": "hybrid",
+  "tier": "production",
+  "size_range": { "min_width": 32, "min_height": 26, "max_width": 40, "max_height": 32 },
+  "zone_placement_rules": [
+    { "zone_role": "arrival_domestic", "placement_rule": "centered_on_primary_axis", "notes": "Elara's house frames the starting read, per MV-HOM-ASH-001 ST-ASH-FIRST-ARRIVAL and Map001's own south-central door at (17,27)." },
+    { "zone_role": "well_square", "placement_rule": "adjacent_to:arrival_domestic" },
+    { "zone_role": "route_south", "placement_rule": "adjacent_to:arrival_domestic" },
+    { "zone_role": "cultivation_edge", "placement_rule": "adjacent_to:arrival_domestic" },
+    { "zone_role": "old_panel_edge", "placement_rule": "adjacent_to:arrival_domestic" },
+    { "zone_role": "shop_frontage", "placement_rule": "adjacent_to:well_square" },
+    { "zone_role": "inn_frontage", "placement_rule": "adjacent_to:well_square" },
+    { "zone_role": "elder_frontage", "placement_rule": "adjacent_to:well_square" },
+    { "zone_role": "route_glassfield", "placement_rule": "adjacent_to:shop_frontage" },
+    { "zone_role": "route_fogfen", "placement_rule": "adjacent_to:route_glassfield" },
+    { "zone_role": "route_north", "placement_rule": "adjacent_to:inn_frontage" },
+    { "zone_role": "patched_fence_edge", "placement_rule": "adjacent_to:cultivation_edge" },
+    { "zone_role": "forest_edge", "placement_rule": "adjacent_to:elder_frontage" }
+  ],
+  "allow_rotation": false,
+  "allow_reflection": false,
+  "variants": [
+    { "variant_id": "ashford_production_v1", "weight": 1.0, "notes": "Single variant: this candidate's purpose is faithful regeneration of the existing accepted geography (per IMP-HOM-017), not exploring structural alternatives. Rotation/reflection disabled so the real event-reconciliation table's directional assumptions (north route at the top, south route at the bottom) hold." }
+  ],
+  "provenance": {
+    "source_pattern_id": "IMP-HOM-017",
+    "confidence": "experimental",
+    "notes": "WO-0073 disposable production-scale candidate layout family, not a production-corroborated pattern."
+  }
+}

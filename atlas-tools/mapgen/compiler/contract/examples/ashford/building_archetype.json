@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "archetype_id": "ARCH-EXTERIOR-SETTLEMENT-COMPACT",
+  "version": "1.0",
+  "name": "Exterior Archetype - Compact Settlement",
+  "category": "town",
+  "gameplay_graph_ref": "GRAPH-EXTERIOR-SETTLEMENT-COMPACT",
+  "required_conditions": [
+    "The exterior is one compact, quickly-readable settlement, not a sprawling town.",
+    "Elara House, Shop, Inn, and Elder House each have a reachable, distinct entrance.",
+    "A dominant civic well anchors the settlement's path hierarchy.",
+    "At least one boundary route mouth is preserved toward the wider world."
+  ],
+  "modules_required": [
+    { "zone_role": "arrival_domestic", "module_ref": "MOD-ELARA-HOUSE", "min_count": 1, "max_count": 1 },
+    { "zone_role": "shop_frontage", "module_ref": "MOD-ASHFORD-SHOP", "min_count": 1, "max_count": 1 },
+    { "zone_role": "inn_frontage", "module_ref": "MOD-ASHFORD-INN", "min_count": 1, "max_count": 1 },
+    { "zone_role": "elder_frontage", "module_ref": "MOD-ASHFORD-ELDER-HOUSE", "min_count": 1, "max_count": 1 },
+    { "zone_role": "cultivation_edge", "module_ref": "MOD-PATCHED-FENCE", "min_count": 1, "max_count": 1 },
+    { "zone_role": "forest_edge", "module_ref": "MOD-BROADLEAF-TREE", "min_count": 2, "max_count": 2 }
+  ],
+  "size_constraints": {
+    "min_width": 22,
+    "min_height": 18,
+    "max_width": 34,
+    "max_height": 30
+  },
+  "style_pack_compatible": [],
+  "symmetry_rules": ["no_forced_symmetry"],
+  "circulation_rules": ["single_connected_area_from_entrance", "reachability_ring_required"],
+  "landmark_slots": [
+    { "zone_role": "well_square", "landmark_tag": "central_well", "required": true, "dominant": true },
+    { "zone_role": "arrival_domestic", "landmark_tag": "warm_vent", "required": true, "dominant": false },
+    { "zone_role": "arrival_domestic", "landmark_tag": "humming_panel", "required": true, "dominant": false }
+  ],
+  "provenance": {
+    "source_pattern_id": "MV-HOM-ASH-001",
+    "source_pattern_version": "0.1",
+    "confidence": "experimental",
+    "notes": "WO-0071 disposable fixture archetype, not a production-corroborated pattern. Its modules_required/landmark_slots exist to exercise MapVision + TileAssembly resolution end to end (see tile_assembly_catalog.py / map_vision_resolution.py), not to encode a finished Ashford layout grammar. village_cottage is deliberately absent from modules_required: the current Ashford TileAssembly catalog has zero enabled candidates for that role (both reference-kit cottage records remain study_only), so a required cottage module would always fail closed -- see test_map_vision_integration.py's dedicated missing_assembly test instead."
+  }
+}

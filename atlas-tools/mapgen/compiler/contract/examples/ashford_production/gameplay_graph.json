@@ -1,0 +1,165 @@
+{
+  "schema_version": "0.1",
+  "graph_id": "GRAPH-EXTERIOR-ASHFORD-PRODUCTION",
+  "describes_archetype": "ARCH-EXTERIOR-ASHFORD-PRODUCTION",
+  "zones": [
+    {
+      "zone_id": "arrival_domestic",
+      "role": "arrival_domestic",
+      "required": true,
+      "min_area": 100,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [
+        { "port_id": "rustshore_road", "port_type": "road_connection", "orientation": "south" }
+      ],
+      "beats": [
+        "exit_transfer_elara", "treasure_anchor_pot_elara",
+        "exit_transfer_south", "service_point_dock_messenger",
+        "event_anchor_elara_house_exterior_dec"
+      ]
+    },
+    {
+      "zone_id": "well_square",
+      "role": "well_square",
+      "required": true,
+      "min_area": 100,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": ["treasure_anchor_jug_well", "service_point_village_elder", "event_anchor_village_ground_dec"]
+    },
+    {
+      "zone_id": "cultivation_edge",
+      "role": "cultivation_edge",
+      "required": true,
+      "min_area": 36,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": [
+        "service_point_farmer_warm_stones",
+        "treasure_anchor_hidden_item",
+        "treasure_anchor_barrel_farmyard",
+        "event_anchor_garden_patch_dec",
+        "event_anchor_warm_stone_vent_dec",
+        "event_anchor_reused_metal_fence_dec"
+      ]
+    },
+    {
+      "zone_id": "old_panel_edge",
+      "role": "old_panel_edge",
+      "required": true,
+      "min_area": 16,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": ["service_point_child_old_panel"]
+    },
+    {
+      "zone_id": "shop_frontage",
+      "role": "shop_frontage",
+      "required": true,
+      "min_area": 90,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": ["exit_transfer_shop", "treasure_anchor_crate_shop", "event_anchor_shop_exterior_dec"]
+    },
+    {
+      "zone_id": "inn_frontage",
+      "role": "inn_frontage",
+      "required": true,
+      "min_area": 12,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": ["exit_transfer_inn"]
+    },
+    {
+      "zone_id": "elder_frontage",
+      "role": "elder_frontage",
+      "required": true,
+      "min_area": 10,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "route_glassfield",
+      "role": "route_glassfield",
+      "required": true,
+      "min_area": 4,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [
+        { "port_id": "glassfield_road", "port_type": "road_connection", "orientation": "east" }
+      ],
+      "beats": ["exit_transfer_glassfield"]
+    },
+    {
+      "zone_id": "route_fogfen",
+      "role": "route_fogfen",
+      "required": true,
+      "min_area": 4,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [
+        { "port_id": "fogfen_road", "port_type": "road_connection", "orientation": "east" }
+      ],
+      "beats": ["exit_transfer_fogfen"]
+    },
+    {
+      "zone_id": "route_north",
+      "role": "route_north",
+      "required": true,
+      "min_area": 20,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [
+        { "port_id": "skyreach_road", "port_type": "road_connection", "orientation": "north" }
+      ],
+      "beats": [
+        "exit_transfer_north",
+        "service_point_skyreach_joker",
+        "event_anchor_tremor_trigger",
+        "event_anchor_route_edge_dec"
+      ]
+    },
+    {
+      "zone_id": "patched_fence_edge",
+      "role": "patched_fence_edge",
+      "required": true,
+      "min_area": 12,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    },
+    {
+      "zone_id": "forest_edge",
+      "role": "forest_edge",
+      "required": true,
+      "min_area": 4,
+      "clearance": { "min_adjacent_walkable": 1 },
+      "ports": [],
+      "beats": []
+    }
+  ],
+  "edges": [
+    { "from_zone": "arrival_domestic", "to_zone": "well_square", "connector_type": "open_floor", "required": true },
+    { "from_zone": "arrival_domestic", "to_zone": "cultivation_edge", "connector_type": "road_connection", "required": true },
+    { "from_zone": "arrival_domestic", "to_zone": "old_panel_edge", "connector_type": "road_connection", "required": true },
+    { "from_zone": "well_square", "to_zone": "shop_frontage", "connector_type": "road_connection", "required": true },
+    { "from_zone": "well_square", "to_zone": "inn_frontage", "connector_type": "road_connection", "required": true },
+    { "from_zone": "well_square", "to_zone": "elder_frontage", "connector_type": "road_connection", "required": true },
+    { "from_zone": "shop_frontage", "to_zone": "route_glassfield", "connector_type": "road_connection", "required": true },
+    { "from_zone": "route_glassfield", "to_zone": "route_fogfen", "connector_type": "road_connection", "required": true },
+    { "from_zone": "inn_frontage", "to_zone": "route_north", "connector_type": "road_connection", "required": true },
+    { "from_zone": "cultivation_edge", "to_zone": "patched_fence_edge", "connector_type": "road_connection", "required": true },
+    { "from_zone": "elder_frontage", "to_zone": "forest_edge", "connector_type": "road_connection", "required": true }
+  ],
+  "reachability": {
+    "entry_zone": "arrival_domestic",
+    "must_reach": [
+      "well_square", "cultivation_edge", "old_panel_edge",
+      "shop_frontage", "inn_frontage", "elder_frontage", "route_glassfield",
+      "route_fogfen", "route_north", "patched_fence_edge", "forest_edge"
+    ]
+  },
+  "provenance": {
+    "source_pattern_ids": ["IMP-HOM-017", "MV-HOM-ASH-001", "AVCP-HOM-ASH-001"],
+    "confidence": "experimental",
+    "notes": "WO-0073 production-scale candidate graph. Zone topology deliberately keeps each parent's new-child fan-out at or below its free-side count. _place_zones hardcodes the entry zone flush against the map's south edge (start = Rect(..., height - entry_height, ...)), so the entry zone (arrival_domestic) only has 3 usable sides (N/E/W), not 4 -- discovered while smoke-testing this graph, and distinct from WO-0071-IMPLEMENTATION-NOTES.md's star-topology finding (which covers small-parent/large-child spillover). route_south was folded into arrival_domestic's own beats rather than kept as a fourth child for exactly this reason -- it also matches production Map001's real geography, where the south route mouth (18,31) and Dock Messenger (21,28) sit immediately next to Elara's door (17,27). Every other zone keeps its new-child fan-out at or below its own 3 free sides (parent occupies the 4th). Beat names use the assembler's existing transfer/service/event/treasure keyword classification (assembler.py _build_map_plan); each beat's real EVT-HOM-*/TRN-HOM-* registry correspondence is recorded separately in the WO-0073 event-reconciliation table, not encoded in the beat string itself."
+  }
+}

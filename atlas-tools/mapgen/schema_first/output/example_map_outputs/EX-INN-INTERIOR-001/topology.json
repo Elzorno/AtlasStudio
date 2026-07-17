@@ -1,0 +1,383 @@
+{
+  "map_id": "EX-INN-INTERIOR-001",
+  "seed": 811,
+  "traversal_style": "rooms_and_corridors",
+  "focal_node": "common_room",
+  "nodes": [
+    {
+      "id": "front_door",
+      "kind": "entrance",
+      "position": {
+        "x": 13,
+        "y": 17
+      },
+      "target": "village"
+    },
+    {
+      "id": "stairs_up",
+      "kind": "exit",
+      "position": {
+        "x": 21,
+        "y": 0
+      },
+      "target": "inn_upper_floor"
+    },
+    {
+      "id": "common_room",
+      "kind": "plaza",
+      "role": "plaza",
+      "position": {
+        "x": 13,
+        "y": 9
+      },
+      "size": [
+        3,
+        3
+      ],
+      "required": true,
+      "focal": true
+    },
+    {
+      "id": "service_counter",
+      "kind": "counter",
+      "role": "counter",
+      "position": {
+        "x": 11,
+        "y": 13
+      },
+      "size": [
+        3,
+        3
+      ],
+      "district": "service",
+      "required": true,
+      "focal": false
+    },
+    {
+      "id": "hearth",
+      "kind": "hearth",
+      "role": "hearth",
+      "position": {
+        "x": 7,
+        "y": 9
+      },
+      "size": [
+        3,
+        3
+      ],
+      "district": "common",
+      "required": true,
+      "focal": false
+    },
+    {
+      "id": "guest_room",
+      "kind": "room",
+      "role": "room",
+      "position": {
+        "x": 13,
+        "y": 5
+      },
+      "size": [
+        3,
+        3
+      ],
+      "district": "private",
+      "required": true,
+      "focal": false
+    },
+    {
+      "id": "storage",
+      "kind": "room",
+      "role": "room",
+      "position": {
+        "x": 19,
+        "y": 9
+      },
+      "size": [
+        3,
+        3
+      ],
+      "district": "service",
+      "required": true,
+      "focal": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "front_door",
+      "to": "common_room",
+      "kind": "corridor",
+      "cells": [
+        {
+          "x": 13,
+          "y": 17
+        },
+        {
+          "x": 13,
+          "y": 16
+        },
+        {
+          "x": 13,
+          "y": 15
+        },
+        {
+          "x": 13,
+          "y": 14
+        },
+        {
+          "x": 13,
+          "y": 13
+        },
+        {
+          "x": 13,
+          "y": 12
+        },
+        {
+          "x": 13,
+          "y": 11
+        },
+        {
+          "x": 13,
+          "y": 10
+        },
+        {
+          "x": 13,
+          "y": 9
+        }
+      ]
+    },
+    {
+      "from": "stairs_up",
+      "to": "common_room",
+      "kind": "corridor",
+      "cells": [
+        {
+          "x": 21,
+          "y": 0
+        },
+        {
+          "x": 21,
+          "y": 1
+        },
+        {
+          "x": 21,
+          "y": 2
+        },
+        {
+          "x": 20,
+          "y": 2
+        },
+        {
+          "x": 19,
+          "y": 2
+        },
+        {
+          "x": 18,
+          "y": 2
+        },
+        {
+          "x": 17,
+          "y": 2
+        },
+        {
+          "x": 16,
+          "y": 2
+        },
+        {
+          "x": 15,
+          "y": 2
+        },
+        {
+          "x": 14,
+          "y": 2
+        },
+        {
+          "x": 13,
+          "y": 2
+        },
+        {
+          "x": 13,
+          "y": 3
+        },
+        {
+          "x": 13,
+          "y": 4
+        },
+        {
+          "x": 13,
+          "y": 5
+        },
+        {
+          "x": 13,
+          "y": 6
+        },
+        {
+          "x": 13,
+          "y": 7
+        },
+        {
+          "x": 13,
+          "y": 8
+        },
+        {
+          "x": 13,
+          "y": 9
+        }
+      ]
+    },
+    {
+      "from": "common_room",
+      "to": "service_counter",
+      "kind": "side_path",
+      "cells": [
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 10
+        },
+        {
+          "x": 13,
+          "y": 11
+        },
+        {
+          "x": 13,
+          "y": 12
+        },
+        {
+          "x": 13,
+          "y": 13
+        },
+        {
+          "x": 12,
+          "y": 13
+        },
+        {
+          "x": 11,
+          "y": 13
+        }
+      ]
+    },
+    {
+      "from": "common_room",
+      "to": "hearth",
+      "kind": "side_path",
+      "cells": [
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 12,
+          "y": 9
+        },
+        {
+          "x": 11,
+          "y": 9
+        },
+        {
+          "x": 10,
+          "y": 9
+        },
+        {
+          "x": 9,
+          "y": 9
+        },
+        {
+          "x": 8,
+          "y": 9
+        },
+        {
+          "x": 7,
+          "y": 9
+        }
+      ]
+    },
+    {
+      "from": "common_room",
+      "to": "guest_room",
+      "kind": "side_path",
+      "cells": [
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 13,
+          "y": 8
+        },
+        {
+          "x": 13,
+          "y": 7
+        },
+        {
+          "x": 13,
+          "y": 6
+        },
+        {
+          "x": 13,
+          "y": 5
+        }
+      ]
+    },
+    {
+      "from": "common_room",
+      "to": "storage",
+      "kind": "side_path",
+      "cells": [
+        {
+          "x": 13,
+          "y": 9
+        },
+        {
+          "x": 14,
+          "y": 9
+        },
+        {
+          "x": 15,
+          "y": 9
+        },
+        {
+          "x": 16,
+          "y": 9
+        },
+        {
+          "x": 17,
+          "y": 9
+        },
+        {
+          "x": 18,
+          "y": 9
+        },
+        {
+          "x": 19,
+          "y": 9
+        }
+      ]
+    }
+  ],
+  "containment": [
+    {
+      "parent": "common",
+      "child": "common_room"
+    },
+    {
+      "parent": "common",
+      "child": "hearth"
+    },
+    {
+      "parent": "service",
+      "child": "service_counter"
+    },
+    {
+      "parent": "service",
+      "child": "storage"
+    },
+    {
+      "parent": "private",
+      "child": "guest_room"
+    }
+  ]
+}

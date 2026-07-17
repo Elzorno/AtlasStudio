@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "map_vision_id": "MV-INVALID-CANON-001",
+  "version": "0.1",
+  "status": "approved",
+  "atlas_screen_id": "SCR-INVALID-001",
+  "map_intent_ref": "MI-INVALID-001@0.1",
+  "title": "Invalid self-authorized canon",
+  "emotional_read": [],
+  "memorable_identity": {"statement_id":"ST-NEW-CANON","text":"A newly invented royal palace dominates the town.","authority":"required_canon","confidence":"verified","source_refs":["CONCEPT-IMAGE-001"]},
+  "geography": [], "first_view": [], "landmarks": [], "building_silhouettes": [],
+  "materials": [], "color_language": [], "roads_and_circulation": [],
+  "density": {"overall":"moderate","negative_space":"None.","zones":[],"authority":"required_canon","confidence":"verified","source_refs":["CONCEPT-IMAGE-001"]},
+  "environmental_storytelling": [], "story_state_variants": [], "canon_anchors": [], "exclusions": [],
+  "concept_direction": {"status":"approved_direction","artifact_refs":["CONCEPT-IMAGE-001"],"use_policy":"visual_direction_only_not_structural_evidence"},
+  "source_provenance": [{"source_ref":"CONCEPT-IMAGE-001","source_type":"concept_art","authority":"required_canon","revision":"1"}],
+  "approval": {"canon_reconciled":true,"unresolved_conflicts":[],"approved_by":"Example","approved_at":"2026-07-15"}
+}

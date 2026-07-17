@@ -14,6 +14,8 @@ CONTRACT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(CONTRACT_ROOT))
 
 from validate_contract import EXAMPLE_MANIFEST, validate  # noqa: E402
+from map_vision_validation import validate_map_vision_semantics  # noqa: E402
+from tile_assembly_validation import validate_tile_assembly_semantics  # noqa: E402
 
 BLUEPRINT_GLOB = str(
     CONTRACT_ROOT.parents[4]
@@ -106,6 +108,119 @@ class TestContractExamples(unittest.TestCase):
                 instance = json.loads(Path(path).read_text(encoding="utf-8"))
                 errors = validate(instance, schema)
                 self.assertEqual(errors, [], f"{path} failed: {errors}")
+
+    def test_map_vision_invalid_examples_fail_closed(self) -> None:
+        schema = json.loads((CONTRACT_ROOT / "schemas/map_vision.schema.json").read_text(encoding="utf-8"))
+        for name in ("invalid_raw_tile_id.json", "invalid_silent_canon.json"):
+            with self.subTest(instance=name):
+                instance = json.loads((CONTRACT_ROOT / "examples/map_vision" / name).read_text(encoding="utf-8"))
+                self.assertTrue(validate(instance, schema), f"{name} must not pass schema validation")
+
+    def test_map_vision_cannot_use_concept_art_as_canon_authority(self) -> None:
+        instance = json.loads((CONTRACT_ROOT / "examples/map_vision/invalid_silent_canon.json").read_text(encoding="utf-8"))
+        provenance = {entry["source_ref"]: entry for entry in instance["source_provenance"]}
+        identity = instance["memorable_identity"]
+        canon_sources = [provenance[ref] for ref in identity["source_refs"]]
+        self.assertEqual(identity["authority"], "required_canon")
+        self.assertTrue(any(source["source_type"] == "concept_art" for source in canon_sources))
+        self.assertFalse(all(source["source_type"] == "atlas_canon" for source in canon_sources))
+        errors = validate_map_vision_semantics(instance)
+        self.assertIn("required_canon statement has no atlas_canon source", errors)
+        self.assertIn("concept_art provenance cannot have required_canon authority", errors)
+
+    def test_map_vision_has_no_raw_engine_bindings(self) -> None:
+        instance = json.loads((CONTRACT_ROOT / "examples/map_vision/valid_map_vision.json").read_text(encoding="utf-8"))
+        forbidden = {"tile_id", "tileId", "tilesetId", "asset_filename", "database_id"}
+
+        def walk(value: object) -> None:
+            if isinstance(value, dict):
+                self.assertTrue(forbidden.isdisjoint(value), f"MapVision carries engine binding: {forbidden.intersection(value)}")
+                for child in value.values():
+                    walk(child)
+            elif isinstance(value, list):
+                for child in value:
+                    walk(child)
+
+        walk(instance)
+        self.assertEqual(validate_map_vision_semantics(instance), [])
+
+    def test_map_vision_conflict_forces_human_pending_state(self) -> None:
+        instance = json.loads((CONTRACT_ROOT / "examples/map_vision/valid_map_vision.json").read_text(encoding="utf-8"))
+        instance["status"] = "approved"
+        instance["approval"] = {
+            "canon_reconciled": True,
+            "unresolved_conflicts": [{
+                "conflict_id": "CONFLICT-ROUTE-001",
+                "statement_refs": ["ST-GEOGRAPHY-001", "ST-ROAD-001"],
+                "question_for_human": "Which route requirement controls?",
+            }],
+            "approved_by": "Agent",
+            "approved_at": "2026-07-15",
+        }
+        errors = validate_map_vision_semantics(instance)
+        self.assertIn("unresolved conflicts require pending_human_approval status", errors)
+        self.assertIn("unresolved conflicts require canon_reconciled=false", errors)
+        self.assertIn("approved MapVision cannot have unresolved conflicts", errors)
+
+    def test_approved_map_vision_requires_resolved_human_gate(self) -> None:
+        instance = json.loads((CONTRACT_ROOT / "examples/map_vision/valid_map_vision.json").read_text(encoding="utf-8"))
+        approval = instance["approval"]
+        if instance["status"] == "approved":
+            self.assertTrue(approval["canon_reconciled"])
+            self.assertEqual(approval["unresolved_conflicts"], [])
+            self.assertIsNotNone(approval["approved_by"])
+            self.assertIsNotNone(approval["approved_at"])
+        else:
+            self.assertEqual(instance["status"], "pending_human_approval")
+
+    def test_tile_assembly_valid_example_passes_schema_and_semantics(self) -> None:
+        schema = json.loads((CONTRACT_ROOT / "schemas/tile_assembly.schema.json").read_text(encoding="utf-8"))
+        instance = json.loads((CONTRACT_ROOT / "examples/tile_assembly/valid_tile_assembly.json").read_text(encoding="utf-8"))
+        self.assertEqual(validate(instance, schema), [])
+        self.assertEqual(validate_tile_assembly_semantics(instance), [])
+
+    def test_tile_assembly_accepts_connectorless_atomic_prop(self) -> None:
+        schema = json.loads((CONTRACT_ROOT / "schemas/tile_assembly.schema.json").read_text(encoding="utf-8"))
+        instance = json.loads((CONTRACT_ROOT / "examples/tile_assembly/valid_atomic_prop.json").read_text(encoding="utf-8"))
+        self.assertEqual(instance["connectors"], [])
+        self.assertGreaterEqual(len(instance["anchors"]), 1)
+        self.assertEqual(validate(instance, schema), [])
+        self.assertEqual(validate_tile_assembly_semantics(instance), [])
+
+    def test_tile_assembly_event_overlay_is_source_consistent(self) -> None:
+        instance = json.loads((CONTRACT_ROOT / "examples/tile_assembly/valid_tile_assembly.json").read_text(encoding="utf-8"))
+        overlay = instance["event_overlays"][0]
+        self.assertEqual(overlay["character_name"], "!Door1")
+        self.assertEqual(validate_tile_assembly_semantics(instance), [])
+
+        overlay["source_coordinate"] = {"map_x": 99, "map_y": 99}
+        overlay["character_name"] = "   "
+        errors = validate_tile_assembly_semantics(instance)
+        self.assertTrue(any("does not match its layered cell provenance" in error for error in errors))
+        self.assertIn("event overlay character_name must be nonblank", errors)
+
+    def test_tile_assembly_incomplete_fixture_fails_closed(self) -> None:
+        schema = json.loads((CONTRACT_ROOT / "schemas/tile_assembly.schema.json").read_text(encoding="utf-8"))
+        instance = json.loads((CONTRACT_ROOT / "examples/tile_assembly/invalid_incomplete.json").read_text(encoding="utf-8"))
+        self.assertTrue(validate(instance, schema), "incomplete hash components must fail schema validation")
+        errors = validate_tile_assembly_semantics(instance)
+        self.assertIn("layered_cells must contain exactly one complete cell for every assembly coordinate", errors)
+        self.assertIn("collision_mask must be exactly dimensions.height rows by dimensions.width columns", errors)
+
+    def test_tile_assembly_hash_drift_fixture_fails_closed(self) -> None:
+        schema = json.loads((CONTRACT_ROOT / "schemas/tile_assembly.schema.json").read_text(encoding="utf-8"))
+        instance = json.loads((CONTRACT_ROOT / "examples/tile_assembly/invalid_hash_drift.json").read_text(encoding="utf-8"))
+        self.assertEqual(validate(instance, schema), [])
+        errors = validate_tile_assembly_semantics(instance)
+        self.assertIn("source hash mismatch", errors)
+        self.assertIn("tileset image hash mismatch: Outside_B.png", errors)
+
+    def test_tile_assembly_rejects_duplicate_tileset_image_names(self) -> None:
+        instance = json.loads((CONTRACT_ROOT / "examples/tile_assembly/valid_tile_assembly.json").read_text(encoding="utf-8"))
+        instance["source"]["hashes"]["tileset_images"].append(
+            dict(instance["source"]["hashes"]["tileset_images"][0])
+        )
+        self.assertIn("tileset image asset_name values must be unique", validate_tile_assembly_semantics(instance))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,125 @@
+{
+  "map_id": "EX-INN-INTERIOR-001",
+  "seed": 811,
+  "map_type": "interior",
+  "biome": "temperate_interior",
+  "width": 26,
+  "height": 18,
+  "tileset_profile": "SAMPLE-MZ-OUTSIDE-PLACEHOLDER-0.1",
+  "theme": "Lantern Rest Inn",
+  "traversal_style": "rooms_and_corridors",
+  "entrances": [
+    {
+      "id": "front_door",
+      "position": {
+        "side": "south",
+        "offset": 13
+      },
+      "target": "village"
+    }
+  ],
+  "exits": [
+    {
+      "id": "stairs_up",
+      "position": {
+        "side": "north",
+        "offset": 21
+      },
+      "target": "inn_upper_floor"
+    }
+  ],
+  "required_pois": [
+    {
+      "id": "common_room",
+      "kind": "plaza",
+      "focal": true
+    },
+    {
+      "id": "service_counter",
+      "kind": "counter",
+      "district": "service"
+    },
+    {
+      "id": "hearth",
+      "kind": "hearth",
+      "district": "common"
+    },
+    {
+      "id": "guest_room",
+      "kind": "room",
+      "district": "private"
+    },
+    {
+      "id": "storage",
+      "kind": "room",
+      "district": "service"
+    }
+  ],
+  "optional_pois": [],
+  "districts": [
+    {
+      "id": "common",
+      "role": "social",
+      "contains": [
+        "common_room",
+        "hearth"
+      ]
+    },
+    {
+      "id": "service",
+      "role": "staff",
+      "contains": [
+        "service_counter",
+        "storage"
+      ]
+    },
+    {
+      "id": "private",
+      "role": "lodging",
+      "contains": [
+        "guest_room"
+      ]
+    }
+  ],
+  "boundary_type": "interior_wall",
+  "path_style": {
+    "semantic": "interior_floor",
+    "width": 2,
+    "meander": 0
+  },
+  "required_landmarks": [
+    "hearth"
+  ],
+  "constraints": {
+    "allowed_building_dimensions": [],
+    "max_empty_ratio": 0.58,
+    "allow_walkable_islands": false
+  },
+  "forbidden_patterns": [
+    "blocked_counter_lane"
+  ],
+  "event_hooks": [
+    {
+      "id": "host",
+      "kind": "innkeeper",
+      "at": "service_counter"
+    },
+    {
+      "id": "guest",
+      "kind": "npc",
+      "at": "common_room"
+    },
+    {
+      "id": "storage_chest",
+      "kind": "treasure",
+      "at": "storage"
+    }
+  ],
+  "region_painting_rules": [
+    {
+      "semantic": "interior_floor",
+      "region_id": 30,
+      "purpose": "indoor_footstep_and_no_encounter"
+    }
+  ]
+}

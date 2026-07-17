@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1", "tile_assembly_id": "TASM-INCOMPLETE", "version": "0.1",
+  "dimensions": { "width": 2, "height": 2 },
+  "layered_cells": [{ "x": 0, "y": 0, "layers": [{ "layer": 0, "tile_id": 1, "source_coordinate": { "map_x": 0, "map_y": 0, "layer": 0 } }] }],
+  "anchors": [{ "anchor_id": "a", "role": "entry", "x": 0, "y": 0 }], "collision_mask": [[false]],
+  "connectors": [{ "connector_id": "c", "type": "road", "x": 0, "y": 0, "facing": "south", "width": 1 }],
+  "variations": [{ "variation_id": "base", "weight": 1, "operations": [] }],
+  "source": { "owner_repo": "adapter", "map_ref": "map", "tileset_ref": "tileset", "hashes": {} },
+  "preview_refs": ["preview.png"], "adapter_ownership": { "owner_repo": "adapter", "adapter_ref": "adapter@0.1", "serialization_owner": "adapter" }
+}

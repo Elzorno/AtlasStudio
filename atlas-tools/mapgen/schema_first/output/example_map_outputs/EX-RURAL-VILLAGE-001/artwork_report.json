@@ -1,0 +1,204 @@
+{
+  "map_id": "EX-RURAL-VILLAGE-001",
+  "state": "review_candidate",
+  "tileset_id": 2,
+  "placements": [
+    {
+      "node_id": "inn",
+      "tile_assembly_id": "TASM-ASHFORD-INN-AUTHORED",
+      "x": 18,
+      "y": 18,
+      "width": 9,
+      "height": 6,
+      "approval": "human_approved"
+    },
+    {
+      "node_id": "general_store",
+      "tile_assembly_id": "TASM-ASHFORD-SHOP-AUTHORED",
+      "x": 7,
+      "y": 13,
+      "width": 7,
+      "height": 6,
+      "approval": "human_approved"
+    },
+    {
+      "node_id": "elder_house",
+      "tile_assembly_id": "TASM-ASHFORD-ELDER-HOUSE-AUTHORED",
+      "x": 10,
+      "y": 6,
+      "width": 7,
+      "height": 5,
+      "approval": "human_approved"
+    },
+    {
+      "node_id": "farmstead",
+      "tile_assembly_id": "TASM-ASHFORD-ELARA-HOUSE-AUTHORED",
+      "x": 28,
+      "y": 13,
+      "width": 6,
+      "height": 5,
+      "approval": "human_approved"
+    },
+    {
+      "node_id": "decorative_tree_1",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 6,
+      "y": 2,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_2",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 10,
+      "y": 2,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_3",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 30,
+      "y": 5,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_4",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 34,
+      "y": 5,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_5",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 34,
+      "y": 8,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_6",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 38,
+      "y": 8,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_7",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 2,
+      "y": 11,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_8",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 38,
+      "y": 11,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_9",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 2,
+      "y": 14,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_10",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 10,
+      "y": 20,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_11",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 14,
+      "y": 20,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_12",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 30,
+      "y": 20,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_13",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 34,
+      "y": 20,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_14",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 14,
+      "y": 23,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_15",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 34,
+      "y": 23,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "decorative_tree_16",
+      "tile_assembly_id": "TASM-ASHFORD-TREE-BROADLEAF-01",
+      "x": 38,
+      "y": 23,
+      "width": 2,
+      "height": 2,
+      "approval": "verified_reusable"
+    },
+    {
+      "node_id": "village_well",
+      "preview_overlay": "well",
+      "x": 19,
+      "y": 12,
+      "width": 2,
+      "height": 2,
+      "approval": "human_approved",
+      "map_serialization": "pending combined tileset slot"
+    }
+  ],
+  "unresolved": [
+    {
+      "node_id": "riverside_shrine",
+      "reason": "no approved Ashford shrine assembly"
+    }
+  ],
+  "production_map_modified": false
+}

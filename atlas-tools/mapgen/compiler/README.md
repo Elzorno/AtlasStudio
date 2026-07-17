@@ -11,6 +11,8 @@ WO-0025 adds the first deterministic compiler stage for Atlas overworld work. It
 5. Quality auditor: `quality_auditor.py` rejects missing locations, unreachable landmarks, overly straight coasts or roads, rectangular terrain blocks, floating landmarks, and known bad RPG Maker overworld candidates.
 6. Tile painter: `tile_painter.py` is an explicit deferred boundary. WO-0025 stops before RPG Maker tile IDs.
 7. Semantic assembler: `assembler.py` resolves WO-0056 gameplay graphs, layout families, and reusable modules into deterministic, engine-neutral `MapPlan` candidates through typed connectors and bounded search.
+8. MapVision/TileAssembly integration (WO-0071): `tile_assembly_catalog.py` and `map_vision_resolution.py` let `assembler.py` optionally resolve an approved `MapVision` + visual constraint profile into catalog-enabled `TileAssembly` bindings per semantic tag, deterministically selected via the existing `building_selection` seed stream and attached to the output `MapPlan`/`GenerationManifest` as provenance. See `WO-0071-IMPLEMENTATION-NOTES.md` for the architecture and judgment calls.
+9. Dual quality gate (WO-0072): `quality_gate.py` runs two independent audits over a `MapPlan` + `GenerationManifest` -- `audit_structural` (retained route/collision/ownership/manifest hard gates) and `audit_visual_proxy` (MapVision-derived checks computable from `tile_assembly_*` provenance: complete/verified assemblies, building height/family, dominant landmark). Neither can offset the other's failure; only `apply_human_decision(..., decided_by="Chris")` may record final acceptance. Checks requiring an actual rendered image (first-camera salience, color/material share, density/path-rhythm) are explicitly listed in `NOT_YET_AUTOMATABLE`, not silently skipped.
 
 ## Prototype Outputs
 
@@ -39,6 +41,13 @@ Regenerate the WO-0058 three-seed JSON, ASCII, and SVG fixtures with:
 
 ```sh
 python3 atlas-tools/mapgen/compiler/generate_wo0058_fixtures.py
+```
+
+Regenerate the WO-0071 Ashford exterior-settlement fixtures (real approved
+MapVision + TileAssembly catalog, disposable output only) with:
+
+```sh
+python3 atlas-tools/mapgen/compiler/generate_wo0071_fixtures.py
 ```
 
 The assembler requires an explicit `AssemblyBudget`; incompatible connectors,

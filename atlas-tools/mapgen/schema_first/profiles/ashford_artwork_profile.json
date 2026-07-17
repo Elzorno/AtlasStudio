@@ -1,0 +1,37 @@
+{
+  "profile_id": "ASHFORD-OUTSIDE-ARTWORK-0.1",
+  "tilesetId": 2,
+  "tileset_name": "Outside",
+  "tile_size": 48,
+  "terrain": {
+    "grass": { "autotile_kind": 16 },
+    "road": { "autotile_kind": 17 },
+    "plaza": { "autotile_kind": 17 },
+    "doorway": { "autotile_kind": 17 },
+    "decorative": { "autotile_kind": 16 },
+    "obstacle": { "autotile_kind": 16 },
+    "special_marker": { "autotile_kind": 17 }
+  },
+  "assemblies": {
+    "inn": "../../tile_assembly/kits/ashford/authored/tasm-ashford-inn-authored.json",
+    "shop": "../../tile_assembly/kits/ashford/authored/tasm-ashford-shop-authored.json",
+    "elder_house": "../../tile_assembly/kits/ashford/authored/tasm-ashford-elder-house-authored.json",
+    "house": "../../tile_assembly/kits/ashford/authored/tasm-ashford-elara-house-authored.json",
+    "tree": "../../tile_assembly/kits/ashford/tasm-ashford-tree-broadleaf-01.json"
+  },
+  "preview_overlays": {
+    "well": {
+      "image": "../../tile_assembly/kits/ashford/custom_extension/Ashford_Custom_B.png",
+      "source_box": [0, 0, 96, 96],
+      "width_tiles": 2,
+      "height_tiles": 2,
+      "approval_state": "human_approved"
+    }
+  },
+  "provenance": {
+    "terrain_reference": "TheLastSwordProtocol-Game/data/Map017.json",
+    "tileset_database": "TheLastSwordProtocol-Game/data/Tilesets.json",
+    "building_kit": "TASM-KIT-ASHFORD-AUTHORED-001",
+    "custom_extension": "ASHFORD-CUSTOM-TILESET-EXTENSION-001"
+  }
+}

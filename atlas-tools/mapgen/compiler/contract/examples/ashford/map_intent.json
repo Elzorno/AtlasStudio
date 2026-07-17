@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "map_intent_id": "MI-ASHFORD-EXAMPLE-001",
+  "atlas_screen_id": null,
+  "title": "Ashford Exterior Compact Settlement (Contract Example)",
+  "purpose": "Disposable WO-0071 compiler-integration fixture proving MapVision and TileAssembly resolution end to end for a compact exterior settlement archetype. Not the production MI-HOM-ASH-001 and authorizes no production map write.",
+  "layout_mode": "hybrid",
+  "critical_path_role": "optional_non_critical",
+  "archetype_ref": {
+    "archetype_id": "ARCH-EXTERIOR-SETTLEMENT-COMPACT",
+    "min_version": "1.0"
+  },
+  "required_gameplay_beats": ["exit_transfer"],
+  "source_documents": [
+    "atlas-tools/mapgen/compiler/contract/MapVision_Contract.md",
+    "atlas-tools/mapgen/tile_assembly/kits/ashford/README.md"
+  ],
+  "generation_seed_salt": "example-salt-ashford-001",
+  "provenance": {
+    "created_by": "WO-0071",
+    "created_date": "2026-07-15",
+    "notes": "Fixture example, not a production map intent. Mirrors MI-HOM-ASH-001's purpose at contract-example fidelity only."
+  }
+}

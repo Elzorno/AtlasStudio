@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "module_id": "MOD-PATCHED-FENCE",
+  "version": "1.0",
+  "name": "Patched Metal Fence Run",
+  "semantic_tag": "patched_metal_fence",
+  "footprint": { "width": 6, "height": 2 },
+  "ports": [],
+  "clearance": { "min_adjacent_walkable": 1 },
+  "blocks_movement": true,
+  "provenance": {
+    "source_pattern_id": "MV-HOM-ASH-001",
+    "notes": "Footprint pinned to the human-approved custom extension's ASH-CUSTOM-FENCE-01 (6x2 modular run); the authored kit's own fence record was human_rejected and is not this module's bound candidate."
+  }
+}
